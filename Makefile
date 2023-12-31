@@ -58,6 +58,14 @@ install-protoc:  ## Install Protocol Buffers compiler
 	rm -rf /tmp/extremo-protoc
 
 
+# install-protoc-grpc-plugin-rb:  ## Install protocol buffers compiler gRPC plugins for Ruby
+# 	# FIXME this must be install with `Gemfile` using fixed version
+# 	gem install google-protobuf -v 3.24.3
+# 	gem install googleapis-common-protos-types -v 1.8.0
+# 	gem install grpc -v 1.58.0
+# 	gem install grpc-tools
+
+
 install-buf:  ## Install Protocol Buffers build tool
 	mkdir -p /tmp/extremo-buf
 	( \
@@ -68,9 +76,65 @@ install-buf:  ## Install Protocol Buffers build tool
 	rm -rf /tmp/extremo-buf
 
 
+install-protobuf:  ## Deploy protobuf repository to $GOPATH
+	-go get -v github.com/protocolbuffers/protobuf/src/... &> /dev/null
+
+
+install-grpc:  ## Deploy grpc repository to $GOPATH, see go.mod which is defined using current version
+	# go get -v google.golang.org/genproto/...
+	go get -v google.golang.org/grpc
+	go get -v github.com/golang/protobuf/protoc-gen-go
+	go install github.com/golang/protobuf/protoc-gen-go
+
+
+install-googleapis:
+	go get github.com/googleapis/api-common-protos/... &> /dev/null
+
+
+install-ecosystem:  ## Deploy ecosystem repository to $GOPATH, see go.mod which is defined using current version
+	go install \
+		github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+		github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+		google.golang.org/protobuf/cmd/protoc-gen-go \
+		google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+
 install-validator:  ## Deploy protoc-gen-validate repository to $GOPATH, see go.mod which is defined using current version
-	go get -v github.com/envoyproxy/protoc-gen-validate
 	go install github.com/envoyproxy/protoc-gen-validate
+
+
+format-shown:  ## Preview next formatting code
+	@buf format -d
+
+
+format:  ## Format proto files to properly
+	@buf format -w
+
+
+lint:  ## Lint proto files to properly
+	@buf lint
+	@buf build
+
+
+protocol:  ## Generate actual code lika as `go,rb,ts,py,scala,dart` from .proto schema
+	@buf build
+	@buf generate
+	@go tool fix -force context extremogo
+	@tree extremogo extremodart
+
+
+generate: protocol  ## Alias: protocol task
+
+
+clean-go:  ## Clean generated go code
+	rm -rf extremogo/*
+
+
+clean-dart:  ## Clean generated dart code
+	rm -rf extremodart/*
+
+
+clean: | clean-go clean-dart  ## Clean generated code
 
 
 help:  ## Show all of tasks

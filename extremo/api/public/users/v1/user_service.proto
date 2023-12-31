@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package extremo.api.public.users.v1;
+
+// import "extremo/msg/api/v1/api.proto";
+import "extremo/msg/db/v1/db.proto";
+import "google/api/annotations.proto";
+// import "google/protobuf/empty.proto";
+// import "google/protobuf/wrappers.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/public/users/v1;users";
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "UserServiceProto";
+option java_package = "com.extremo.api.public.users.v1";
+
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+// Service for reading from and writing to existing Users.
+//
+service UserService {
+  // Get returns an user by primary key
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {get: "/api/public/v1/users/{pk}"};
+  }
+  // List returns an user list
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {get: "/api/public/v1/users"};
+  }
+}
+
+message GetRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  // PrimaryKey
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+}
+
+message GetResponse {
+  // A user message. if request user is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.User user = 1 [(validate.rules).message = {required: true}];
+}
+
+message ListRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Page Number
+  int32 page = 1 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 2 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListResponse {
+  // A user message. if request user is not published, it filtered them. so response might be empty.
+  repeated extremo.msg.db.v1.User users = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+}

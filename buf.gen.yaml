@@ -1,8 +1,28 @@
 version: v1
 plugins:
-  - plugin: buf.build/bufbuild/validate-go
-    out: gen
+  # Go
+  - plugin: buf.build/protocolbuffers/go  # hash or version
+    out: extremogo
     opt: paths=source_relative
-  - plugin: buf.build/protocolbuffers/go
-    out: gen
+
+  - plugin: buf.build/grpc/go  # hash or version
+    out: extremogo
+    opt:
+      - paths=source_relative
+
+  - plugin: buf.build/bufbuild/validate-go  # hash or version
+    out: extremogo
     opt: paths=source_relative
+
+  - plugin: buf.build/grpc-ecosystem/gateway  # hash or version
+    out: extremogo
+    opt:
+      - paths=source_relative
+      - generate_unbound_methods=true
+      - logtostderr=true
+
+  # Dart
+  - plugin: buf.build/protocolbuffers/dart
+    out: extremodart
+    # opt: paths=source_relative
+

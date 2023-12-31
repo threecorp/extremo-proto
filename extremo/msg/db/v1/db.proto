@@ -2,16 +2,16 @@ syntax = "proto3";
 
 package extremo.msg.db.v1;
 
-option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db/v1;db"; // option go_package = "messages";
-option java_multiple_files = true;
-option java_outer_classname = "DbProto";
-option java_package = "com.extremo.msg.db.v1";
-
 // import "google/protobuf/empty.proto";
 // import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 // import "extremo/msg/db/v1/enum.proto";
 import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db/v1;db"; // option go_package = "messages";
+option java_multiple_files = true;
+option java_outer_classname = "DbProto";
+option java_package = "com.extremo.msg.db.v1";
 
 // import "google/protobuf/wrappers.proto";
 
@@ -25,31 +25,20 @@ message User {
   // Priamry KEY
   int32 pk = 1 [(validate.rules).int32.gt = 0];
   // Unique email
-  string email = 2 [
-    (validate.rules).string = {
-      email: true
-      min_len: 1
-    }
-  ];
+  string email = 2 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
   // A value will be encrypted.
   string password = 3;
   // Sign Up date
-  google.protobuf.Timestamp date_joined = 4 [
-    (validate.rules).timestamp = {
-      required: true
-    }
-  ];
+  google.protobuf.Timestamp date_joined = 4 [(validate.rules).timestamp = {required: true}];
   // is deleted user
   bool is_deleted = 5;
   // Deleted time
-  google.protobuf.Timestamp deleted_at = 6 [
-    (validate.rules).timestamp = {
-      required: false
-    }
-  ];
+  google.protobuf.Timestamp deleted_at = 6 [(validate.rules).timestamp = {required: false}];
   // Created time
   google.protobuf.Timestamp created_at = 14; // [(validate.rules).timestamp.required = true]
   // Updated time
   google.protobuf.Timestamp updated_at = 15; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
 }
-
