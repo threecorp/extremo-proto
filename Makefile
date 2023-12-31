@@ -47,6 +47,22 @@ uname:  ## Show the Archi,OSS and etc.
 	@echo "$(OSS) $(ALT) $(ARCHI) $(ARCHI_ALT)"
 
 
+gomodule:  ## Tidy up Golang dependencies, see https://github.com/golang/go/wiki/Modules
+	@go mod tidy
+
+
+gomodule-upgradable:  ## List to view available minor and patch upgrades only for the direct dependencies
+	@go list -u -f '{{if (and (not (or .Main .Indirect)) .Update)}}{{.Path}}: {{.Version}} -> {{.Update.Version}}{{end}}' -m all 2> /dev/null
+
+
+gomodule-upgrade:  ## Upgrade to use the latest minor or patch releases (and add -t to also upgrade test dependencies)
+	@go get -u ./...
+
+
+gomodule-upgrade-patch:  ## Upgrade to use the latest patch releases (and add -t to also upgrade test dependencies)
+	@go get -u=patch ./...
+
+
 install-protoc:  ## Install Protocol Buffers compiler
 	mkdir -p /tmp/extremo-protoc
 	( \
@@ -58,12 +74,8 @@ install-protoc:  ## Install Protocol Buffers compiler
 	rm -rf /tmp/extremo-protoc
 
 
-# install-protoc-grpc-plugin-rb:  ## Install protocol buffers compiler gRPC plugins for Ruby
-# 	# FIXME this must be install with `Gemfile` using fixed version
-# 	gem install google-protobuf -v 3.24.3
-# 	gem install googleapis-common-protos-types -v 1.8.0
-# 	gem install grpc -v 1.58.0
-# 	gem install grpc-tools
+install-protoc-grpc-plugin-dart:  ## Install protocol buffers compiler gRPC plugins for Dart
+	@echo "mockgen not yet implemented"
 
 
 install-buf:  ## Install Protocol Buffers build tool
@@ -76,22 +88,15 @@ install-buf:  ## Install Protocol Buffers build tool
 	rm -rf /tmp/extremo-buf
 
 
-install-protobuf:  ## Deploy protobuf repository to $GOPATH
-	-go get -v github.com/protocolbuffers/protobuf/src/... &> /dev/null
-
-
 install-grpc:  ## Deploy grpc repository to $GOPATH, see go.mod which is defined using current version
-	# go get -v google.golang.org/genproto/...
 	go get -v google.golang.org/grpc
 	go get -v github.com/golang/protobuf/protoc-gen-go
 	go install github.com/golang/protobuf/protoc-gen-go
 
 
-install-googleapis:
-	go get github.com/googleapis/api-common-protos/... &> /dev/null
-
-
 install-ecosystem:  ## Deploy ecosystem repository to $GOPATH, see go.mod which is defined using current version
+	go get -v github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+	go get -v github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
 	go install \
 		github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
 		github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
@@ -100,6 +105,7 @@ install-ecosystem:  ## Deploy ecosystem repository to $GOPATH, see go.mod which 
 
 
 install-validator:  ## Deploy protoc-gen-validate repository to $GOPATH, see go.mod which is defined using current version
+	go get -v github.com/envoyproxy/protoc-gen-validate
 	go install github.com/envoyproxy/protoc-gen-validate
 
 
@@ -119,8 +125,14 @@ lint:  ## Lint proto files to properly
 protocol:  ## Generate actual code lika as `go,rb,ts,py,scala,dart` from .proto schema
 	@buf build
 	@buf generate
+	@make mockgen
 	@go tool fix -force context extremogo
+	@make gomodule
 	@tree extremogo extremodart
+
+
+mockgen:  ## Generate mock code
+	@echo "mockgen not yet implemented"
 
 
 generate: protocol  ## Alias: protocol task
@@ -135,6 +147,31 @@ clean-dart:  ## Clean generated dart code
 
 
 clean: | clean-go clean-dart  ## Clean generated code
+
+
+docker-run-make-local:  ## Docker run Makefile by local Dockerfile: $ make docker-run-make-local TASK=show-format-proto
+	docker build -t extremo-proto -f Dockerfile .
+	docker run -v `pwd`:/go/src/github.com/threecorp/extremo-proto --name extremo-proto -it --rm extremo-proto make $(TASK)
+
+
+docker-run-protocol-local:  ## Docker run protocol by local Dockerfile
+	docker build -t extremo-proto -f Dockerfile .
+	make docker-run-make-local TASK=protocol
+
+
+docker-run-generate-local:  docker-run-protocol-local  ## Alias: docker-run-protocol-local
+
+
+docker-run-format-local:  ## Docker run format code by local Dockerfile
+	make docker-run-make-local TASK=format
+
+
+docker-run-format-shown-local:  ## Docker run format-shown by local Dockerfile
+	make docker-run-make-local TASK=format-shown
+
+
+docker-run-lint-local:  ## Docker run format-shown by local Dockerfile
+	make docker-run-make-local TASK=lint
 
 
 help:  ## Show all of tasks

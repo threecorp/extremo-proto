@@ -4,16 +4,12 @@ plugins:
   - plugin: buf.build/protocolbuffers/go  # hash or version
     out: extremogo
     opt: paths=source_relative
-
   - plugin: buf.build/grpc/go  # hash or version
     out: extremogo
-    opt:
-      - paths=source_relative
-
+    opt: paths=source_relative
   - plugin: buf.build/bufbuild/validate-go  # hash or version
     out: extremogo
     opt: paths=source_relative
-
   - plugin: buf.build/grpc-ecosystem/gateway  # hash or version
     out: extremogo
     opt:
