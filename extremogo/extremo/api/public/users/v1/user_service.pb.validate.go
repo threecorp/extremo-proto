@@ -472,6 +472,17 @@ func (m *ListResponse) validate(all bool) error {
 
 	}
 
+	if m.GetTotalSize() < 0 {
+		err := ListResponseValidationError{
+			field:  "TotalSize",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return ListResponseMultiError(errors)
 	}

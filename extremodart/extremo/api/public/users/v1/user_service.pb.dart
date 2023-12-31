@@ -194,10 +194,14 @@ class ListRequest extends $pb.GeneratedMessage {
 class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse({
     $core.Iterable<$1.User>? users,
+    $core.int? totalSize,
   }) {
     final $result = create();
     if (users != null) {
       $result.users.addAll(users);
+    }
+    if (totalSize != null) {
+      $result.totalSize = totalSize;
     }
     return $result;
   }
@@ -207,6 +211,7 @@ class ListResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.public.users.v1'), createEmptyInstance: create)
     ..pc<$1.User>(1, _omitFieldNames ? '' : 'users', $pb.PbFieldType.PM, subBuilder: $1.User.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -234,6 +239,16 @@ class ListResponse extends $pb.GeneratedMessage {
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
   $core.List<$1.User> get users => $_getList(0);
+
+  /// Total Size
+  @$pb.TagNumber(2)
+  $core.int get totalSize => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set totalSize($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTotalSize() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTotalSize() => clearField(2);
 }
 
 class UserServiceApi {

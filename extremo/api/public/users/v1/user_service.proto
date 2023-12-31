@@ -62,4 +62,6 @@ message ListResponse {
     min_items: 0
     max_items: 30
   }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
 }

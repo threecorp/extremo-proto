@@ -60,13 +60,15 @@ const ListResponse$json = {
   '1': 'ListResponse',
   '2': [
     {'1': 'users', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'users'},
+    {'1': 'total_size', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'totalSize'},
   ],
 };
 
 /// Descriptor for `ListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listResponseDescriptor = $convert.base64Decode(
     'CgxMaXN0UmVzcG9uc2USOQoFdXNlcnMYASADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQg'
-    'r6QgeSAQQIABAeUgV1c2Vycw==');
+    'r6QgeSAQQIABAeUgV1c2VycxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0b3RhbFNp'
+    'emU=');
 
 const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = {
   '1': 'UserService',
