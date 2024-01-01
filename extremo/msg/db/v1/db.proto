@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package extremo.msg.db.v1;
 
+import "extremo/msg/db/v1/enum.proto";
 // import "google/protobuf/empty.proto";
 // import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
@@ -12,7 +13,6 @@ option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db
 option java_multiple_files = true;
 option java_outer_classname = "DbProto";
 option java_package = "com.extremo.msg.db.v1";
-
 // import "google/protobuf/wrappers.proto";
 
 //
@@ -38,7 +38,76 @@ message User {
   // Deleted time
   google.protobuf.Timestamp deleted_at = 6 [(validate.rules).timestamp = {required: false}];
   // Created time
-  google.protobuf.Timestamp created_at = 14; // [(validate.rules).timestamp.required = true]
+  google.protobuf.Timestamp created_at = 7; // [(validate.rules).timestamp.required = true]
   // Updated time
-  google.protobuf.Timestamp updated_at = 15; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  google.protobuf.Timestamp updated_at = 8; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  //
+  // 1:N relation
+  //
+  repeated Artifact artifacts = 9 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 10
+  }];
+}
+
+message Artifact {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 user_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User user = 3 [(validate.rules).message = {required: true}];
+  // Artifact Title
+  string title = 4 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Artifact content text NOT NULL
+  string content = 5 [(validate.rules).string = {min_len: 1}];
+  // Artifact summary varchar(1023) NOT NULL DEFAULT ''
+  string summary = 6;
+  // start
+  google.protobuf.Timestamp publish_from = 7 [(validate.rules).timestamp = {required: false}];
+  // until
+  google.protobuf.Timestamp publish_until = 8 [(validate.rules).timestamp = {required: false}];
+  // status cannot be NONE (0)
+  ArtifactEnum.Status status = 9 [
+    (validate.rules).enum = {
+      not_in: [
+        0
+      ]
+    }
+  ];
+  // 1:N relation
+  repeated ArtifactImage images = 10 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 20
+  }];
+  // Created time
+  google.protobuf.Timestamp created_at = 11; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 12; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+message ArtifactImage {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 artifact_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Artifact artifact = 3 [(validate.rules).message = {required: true}];
+  // image_type cannot be NONE (0)
+  ArtifactImageEnum.Kind kind = 4;
+  // Image Name
+  string name = 5 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Image Path
+  string path = 6 [(validate.rules).string = {
+    uri_ref: true
+    pattern: "\\.(?:jpg|jpeg|gif|png|bmp|webp|tif)$"
+  }];
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }

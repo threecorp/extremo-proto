@@ -1,0 +1,35 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+// README: https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/util/json_format_proto3.proto
+//
+// REAMED: https://github.com/googleapis/googleapis/blob/master/google/type/type.yaml
+//
+
+syntax = "proto3";
+
+package extremo.msg.db.v1;
+
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db/v1;db"; // option go_package = "messages";
+option java_multiple_files = true;
+option java_outer_classname = "EnumProto";
+option java_package = "com.extremo.msg.db.v1";
+
+
+message ArtifactEnum {
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_DRAFT = 1;
+    STATUS_PUBLISH = 2;
+  }
+}
+
+
+message ArtifactImageEnum {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    KIND_THUMB = 1;
+    KIND_CONTENT = 2;
+  }
+}

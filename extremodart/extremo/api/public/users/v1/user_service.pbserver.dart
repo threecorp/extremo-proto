@@ -15,27 +15,27 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'user_service.pb.dart' as $2;
+import 'user_service.pb.dart' as $5;
 import 'user_service.pbjson.dart';
 
 export 'user_service.pb.dart';
 
 abstract class UserServiceBase extends $pb.GeneratedService {
-  $async.Future<$2.GetResponse> get($pb.ServerContext ctx, $2.GetRequest request);
-  $async.Future<$2.ListResponse> list($pb.ServerContext ctx, $2.ListRequest request);
+  $async.Future<$5.GetResponse> get($pb.ServerContext ctx, $5.GetRequest request);
+  $async.Future<$5.ListResponse> list($pb.ServerContext ctx, $5.ListRequest request);
 
   $pb.GeneratedMessage createRequest($core.String methodName) {
     switch (methodName) {
-      case 'Get': return $2.GetRequest();
-      case 'List': return $2.ListRequest();
+      case 'Get': return $5.GetRequest();
+      case 'List': return $5.ListRequest();
       default: throw $core.ArgumentError('Unknown method: $methodName');
     }
   }
 
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String methodName, $pb.GeneratedMessage request) {
     switch (methodName) {
-      case 'Get': return this.get(ctx, request as $2.GetRequest);
-      case 'List': return this.list(ctx, request as $2.ListRequest);
+      case 'Get': return this.get(ctx, request as $5.GetRequest);
+      case 'List': return this.list(ctx, request as $5.ListRequest);
       default: throw $core.ArgumentError('Unknown method: $methodName');
     }
   }

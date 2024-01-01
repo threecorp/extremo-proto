@@ -14,7 +14,7 @@ import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
 import '../../../../../google/protobuf/timestamp.pbjson.dart' as $0;
-import '../../../../msg/db/v1/db.pbjson.dart' as $1;
+import '../../../../msg/db/v1/db.pbjson.dart' as $2;
 
 @$core.Deprecated('Use getRequestDescriptor instead')
 const GetRequest$json = {
@@ -32,14 +32,14 @@ final $typed_data.Uint8List getRequestDescriptor = $convert.base64Decode(
 const GetResponse$json = {
   '1': 'GetResponse',
   '2': [
-    {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'user'},
+    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'element'},
   ],
 };
 
 /// Descriptor for `GetResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getResponseDescriptor = $convert.base64Decode(
-    'CgtHZXRSZXNwb25zZRI1CgR1c2VyGAEgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuVXNlckII+k'
-    'IFigECEAFSBHVzZXI=');
+    'CgtHZXRSZXNwb25zZRI7CgdlbGVtZW50GAEgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuVXNlck'
+    'II+kIFigECEAFSB2VsZW1lbnQ=');
 
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
@@ -59,16 +59,16 @@ final $typed_data.Uint8List listRequestDescriptor = $convert.base64Decode(
 const ListResponse$json = {
   '1': 'ListResponse',
   '2': [
-    {'1': 'users', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'users'},
+    {'1': 'elements', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'elements'},
     {'1': 'total_size', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'totalSize'},
   ],
 };
 
 /// Descriptor for `ListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listResponseDescriptor = $convert.base64Decode(
-    'CgxMaXN0UmVzcG9uc2USOQoFdXNlcnMYASADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQg'
-    'r6QgeSAQQIABAeUgV1c2VycxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0b3RhbFNp'
-    'emU=');
+    'CgxMaXN0UmVzcG9uc2USPwoIZWxlbWVudHMYASADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2'
+    'VyQgr6QgeSAQQIABAeUghlbGVtZW50cxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0'
+    'b3RhbFNpemU=');
 
 const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = {
   '1': 'UserService',
@@ -82,8 +82,10 @@ const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> UserServiceBase$messageJson = {
   '.extremo.api.public.users.v1.GetRequest': GetRequest$json,
   '.extremo.api.public.users.v1.GetResponse': GetResponse$json,
-  '.extremo.msg.db.v1.User': $1.User$json,
+  '.extremo.msg.db.v1.User': $2.User$json,
   '.google.protobuf.Timestamp': $0.Timestamp$json,
+  '.extremo.msg.db.v1.Artifact': $2.Artifact$json,
+  '.extremo.msg.db.v1.ArtifactImage': $2.ArtifactImage$json,
   '.extremo.api.public.users.v1.ListRequest': ListRequest$json,
   '.extremo.api.public.users.v1.ListResponse': ListResponse$json,
 };

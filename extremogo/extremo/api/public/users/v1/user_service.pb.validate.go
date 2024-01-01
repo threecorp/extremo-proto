@@ -167,9 +167,9 @@ func (m *GetResponse) validate(all bool) error {
 
 	var errors []error
 
-	if m.GetUser() == nil {
+	if m.GetElement() == nil {
 		err := GetResponseValidationError{
-			field:  "User",
+			field:  "Element",
 			reason: "value is required",
 		}
 		if !all {
@@ -179,11 +179,11 @@ func (m *GetResponse) validate(all bool) error {
 	}
 
 	if all {
-		switch v := interface{}(m.GetUser()).(type) {
+		switch v := interface{}(m.GetElement()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, GetResponseValidationError{
-					field:  "User",
+					field:  "Element",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -191,16 +191,16 @@ func (m *GetResponse) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, GetResponseValidationError{
-					field:  "User",
+					field:  "Element",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetElement()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return GetResponseValidationError{
-				field:  "User",
+				field:  "Element",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
@@ -427,9 +427,9 @@ func (m *ListResponse) validate(all bool) error {
 
 	var errors []error
 
-	if len(m.GetUsers()) > 30 {
+	if len(m.GetElements()) > 30 {
 		err := ListResponseValidationError{
-			field:  "Users",
+			field:  "Elements",
 			reason: "value must contain no more than 30 item(s)",
 		}
 		if !all {
@@ -438,7 +438,7 @@ func (m *ListResponse) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	for idx, item := range m.GetUsers() {
+	for idx, item := range m.GetElements() {
 		_, _ = idx, item
 
 		if all {
@@ -446,7 +446,7 @@ func (m *ListResponse) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, ListResponseValidationError{
-						field:  fmt.Sprintf("Users[%v]", idx),
+						field:  fmt.Sprintf("Elements[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -454,7 +454,7 @@ func (m *ListResponse) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, ListResponseValidationError{
-						field:  fmt.Sprintf("Users[%v]", idx),
+						field:  fmt.Sprintf("Elements[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -463,7 +463,7 @@ func (m *ListResponse) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return ListResponseValidationError{
-					field:  fmt.Sprintf("Users[%v]", idx),
+					field:  fmt.Sprintf("Elements[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}

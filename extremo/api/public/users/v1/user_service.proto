@@ -40,7 +40,7 @@ message GetRequest {
 
 message GetResponse {
   // A user message. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.User user = 1 [(validate.rules).message = {required: true}];
+  extremo.msg.db.v1.User element = 1 [(validate.rules).message = {required: true}];
 }
 
 message ListRequest {
@@ -58,7 +58,7 @@ message ListRequest {
 
 message ListResponse {
   // A user message. if request user is not published, it filtered them. so response might be empty.
-  repeated extremo.msg.db.v1.User users = 1 [(validate.rules).repeated = {
+  repeated extremo.msg.db.v1.User elements = 1 [(validate.rules).repeated = {
     min_items: 0
     max_items: 30
   }];
