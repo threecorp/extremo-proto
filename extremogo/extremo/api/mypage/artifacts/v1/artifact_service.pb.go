@@ -202,7 +202,7 @@ type GetResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A user message. if request user is not published, it filtered them. so response might be empty.
+	// A artifact message. if request artifact is not published, it filtered them. so response might be empty.
 	Element *v1.Artifact `protobuf:"bytes,1,opt,name=element,proto3" json:"element,omitempty"`
 }
 
@@ -255,7 +255,7 @@ type CreateRequest struct {
 	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	// Artifact content text NOT NULL
 	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
-	// Artifact summary varchar(1023) NOT NULL DEFAULT ”
+	// Artifact summary varchar(2048) NOT NULL DEFAULT ”
 	Summary string `protobuf:"bytes,3,opt,name=summary,proto3" json:"summary,omitempty"`
 	// public or private
 	IsPublished bool `protobuf:"varint,4,opt,name=is_published,json=isPublished,proto3" json:"is_published,omitempty"`

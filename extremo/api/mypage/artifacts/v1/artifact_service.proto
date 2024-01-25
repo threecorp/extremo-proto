@@ -100,7 +100,7 @@ message GetRequest {
 }
 
 message GetResponse {
-  // A user message. if request user is not published, it filtered them. so response might be empty.
+  // A artifact message. if request artifact is not published, it filtered them. so response might be empty.
   extremo.msg.db.v1.Artifact element = 1 [(validate.rules).message = {required: true}];
 }
 
@@ -113,7 +113,7 @@ message CreateRequest {
   }];
   // Artifact content text NOT NULL
   string content = 2;
-  // Artifact summary varchar(1023) NOT NULL DEFAULT ''
+  // Artifact summary varchar(2048) NOT NULL DEFAULT ''
   string summary = 3;
   // public or private
   bool is_published = 4;
@@ -229,4 +229,3 @@ message UpdateImageResponse {
   // A user message. if request user is not published, it filtered them. so response might be empty.
   extremo.msg.db.v1.ArtifactImage element = 1 [(validate.rules).message = {required: true}];
 }
-

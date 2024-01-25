@@ -10,12 +10,10 @@ syntax = "proto3";
 
 package extremo.msg.db.v1;
 
-
 option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db/v1;db"; // option go_package = "messages";
 option java_multiple_files = true;
 option java_outer_classname = "EnumProto";
 option java_package = "com.extremo.msg.db.v1";
-
 
 message ArtifactEnum {
   enum Status {
@@ -24,7 +22,6 @@ message ArtifactEnum {
     STATUS_PUBLISH = 2;
   }
 }
-
 
 message ArtifactImageEnum {
   enum Kind {

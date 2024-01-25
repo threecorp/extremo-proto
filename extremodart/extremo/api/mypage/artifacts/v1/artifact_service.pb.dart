@@ -241,7 +241,7 @@ class GetResponse extends $pb.GeneratedMessage {
   static GetResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetResponse>(create);
   static GetResponse? _defaultInstance;
 
-  /// A user message. if request user is not published, it filtered them. so response might be empty.
+  /// A artifact message. if request artifact is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
   $2.Artifact get element => $_getN(0);
   @$pb.TagNumber(1)
@@ -340,7 +340,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearContent() => clearField(2);
 
-  /// Artifact summary varchar(1023) NOT NULL DEFAULT ''
+  /// Artifact summary varchar(2048) NOT NULL DEFAULT ''
   @$pb.TagNumber(3)
   $core.String get summary => $_getSZ(2);
   @$pb.TagNumber(3)

@@ -1,0 +1,15 @@
+name: extremodart
+version: 0.1.0
+description: A Dart gRPC library for Extremo services.
+author: ikeikeikeike / ikedat <jp.ne.co.jp@gmail.com>
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  grpc: ^3.0.0
+  protobuf: ^2.0.0
+
+dev_dependencies:
+

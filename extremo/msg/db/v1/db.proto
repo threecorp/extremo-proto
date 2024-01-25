@@ -71,13 +71,9 @@ message Artifact {
   // until
   google.protobuf.Timestamp publish_until = 8 [(validate.rules).timestamp = {required: false}];
   // status cannot be NONE (0)
-  ArtifactEnum.Status status = 9 [
-    (validate.rules).enum = {
-      not_in: [
-        0
-      ]
-    }
-  ];
+  ArtifactEnum.Status status = 9 [(validate.rules).enum = {
+    not_in: [0]
+  }];
   // 1:N relation
   repeated ArtifactImage images = 10 [(validate.rules).repeated = {
     min_items: 0
