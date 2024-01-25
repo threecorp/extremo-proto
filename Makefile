@@ -128,7 +128,7 @@ protocol:  ## Generate actual code lika as `go,rb,ts,py,scala,dart` from .proto 
 	@make mockgen
 	@go tool fix -force context extremogo
 	@make gomodule
-	@tree extremogo extremodart
+	@tree extremogo lib
 
 
 mockgen:  ## Generate mock code
@@ -143,7 +143,7 @@ clean-go:  ## Clean generated go code
 
 
 clean-dart:  ## Clean generated dart code
-	rm -rf extremodart/*
+	rm -rf lib/*
 
 
 clean: | clean-go clean-dart  ## Clean generated code
