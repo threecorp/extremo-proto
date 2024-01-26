@@ -16,3 +16,8 @@ deps:
     repository: grpc-gateway
     commit: 3f42134f4c564983838425bc43c7a65f
     digest: shake256:3d11d4c0fe5e05fda0131afefbce233940e27f0c31c5d4e385686aea58ccd30f72053f61af432fa83f1fc11cda57f5f18ca3da26a29064f73c5a0d076bba8d92
+  - remote: buf.build
+    owner: protocolbuffers
+    repository: wellknowntypes
+    commit: 11912caccc894a0e8bfa509e433b10c0
+    digest: shake256:c14a5a03f8db59c57b701c95f6e524b42f3f3be251e60ccf4108d91c068a5c31b123ec402e62f8171734a663a8c8a940a1ec48c09448c88033112b45f5ae4c7f

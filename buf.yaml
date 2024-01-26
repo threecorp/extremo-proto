@@ -3,6 +3,7 @@ deps:
   - buf.build/envoyproxy/protoc-gen-validate  # TODO: commit hash or version
   - buf.build/googleapis/googleapis  # TODO: commit hash or version
   - buf.build/grpc-ecosystem/grpc-gateway  # TODO: commit hash or version
+  - buf.build/protocolbuffers/wellknowntypes  # TODO: commit hash or version
 
 breaking:
   use:
