@@ -9,15 +9,13 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../../google/protobuf/empty.pb.dart' as $3;
-import '../../../../../google/protobuf/timestamp.pb.dart' as $0;
-import '../../../../msg/db/v1/db.pb.dart' as $2;
-import '../../../../msg/db/v1/enum.pbenum.dart' as $1;
+import '../../../../../google/protobuf/timestamp.pb.dart' as $3;
+import '../../../../msg/db/v1/db.pb.dart' as $5;
+import '../../../../msg/db/v1/enum.pbenum.dart' as $4;
 
 class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest({
@@ -90,7 +88,7 @@ class ListRequest extends $pb.GeneratedMessage {
 
 class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse({
-    $core.Iterable<$2.Artifact>? elements,
+    $core.Iterable<$5.Artifact>? elements,
     $core.int? totalSize,
   }) {
     final $result = create();
@@ -107,7 +105,7 @@ class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..pc<$2.Artifact>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $2.Artifact.create)
+    ..pc<$5.Artifact>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $5.Artifact.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -135,7 +133,7 @@ class ListResponse extends $pb.GeneratedMessage {
 
   /// article msg.db
   @$pb.TagNumber(1)
-  $core.List<$2.Artifact> get elements => $_getList(0);
+  $core.List<$5.Artifact> get elements => $_getList(0);
 
   /// Total Size
   @$pb.TagNumber(2)
@@ -203,7 +201,7 @@ class GetRequest extends $pb.GeneratedMessage {
 
 class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse({
-    $2.Artifact? element,
+    $5.Artifact? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -216,7 +214,7 @@ class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$2.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.Artifact.create)
+    ..aOM<$5.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.Artifact.create)
     ..hasRequiredFields = false
   ;
 
@@ -243,15 +241,15 @@ class GetResponse extends $pb.GeneratedMessage {
 
   /// A artifact message. if request artifact is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.Artifact get element => $_getN(0);
+  $5.Artifact get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.Artifact v) { setField(1, v); }
+  set element($5.Artifact v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.Artifact ensureElement() => $_ensure(0);
+  $5.Artifact ensureElement() => $_ensure(0);
 }
 
 /// PrimaryKey is set by JWT Token
@@ -261,8 +259,8 @@ class CreateRequest extends $pb.GeneratedMessage {
     $core.String? content,
     $core.String? summary,
     $core.bool? isPublished,
-    $0.Timestamp? publishFrom,
-    $0.Timestamp? publishUntil,
+    $3.Timestamp? publishFrom,
+    $3.Timestamp? publishUntil,
   }) {
     final $result = create();
     if (title != null) {
@@ -294,8 +292,8 @@ class CreateRequest extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'content')
     ..aOS(3, _omitFieldNames ? '' : 'summary')
     ..aOB(4, _omitFieldNames ? '' : 'isPublished')
-    ..aOM<$0.Timestamp>(5, _omitFieldNames ? '' : 'publishFrom', subBuilder: $0.Timestamp.create)
-    ..aOM<$0.Timestamp>(6, _omitFieldNames ? '' : 'publishUntil', subBuilder: $0.Timestamp.create)
+    ..aOM<$3.Timestamp>(5, _omitFieldNames ? '' : 'publishFrom', subBuilder: $3.Timestamp.create)
+    ..aOM<$3.Timestamp>(6, _omitFieldNames ? '' : 'publishUntil', subBuilder: $3.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -362,32 +360,32 @@ class CreateRequest extends $pb.GeneratedMessage {
 
   /// start
   @$pb.TagNumber(5)
-  $0.Timestamp get publishFrom => $_getN(4);
+  $3.Timestamp get publishFrom => $_getN(4);
   @$pb.TagNumber(5)
-  set publishFrom($0.Timestamp v) { setField(5, v); }
+  set publishFrom($3.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasPublishFrom() => $_has(4);
   @$pb.TagNumber(5)
   void clearPublishFrom() => clearField(5);
   @$pb.TagNumber(5)
-  $0.Timestamp ensurePublishFrom() => $_ensure(4);
+  $3.Timestamp ensurePublishFrom() => $_ensure(4);
 
   /// until
   @$pb.TagNumber(6)
-  $0.Timestamp get publishUntil => $_getN(5);
+  $3.Timestamp get publishUntil => $_getN(5);
   @$pb.TagNumber(6)
-  set publishUntil($0.Timestamp v) { setField(6, v); }
+  set publishUntil($3.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasPublishUntil() => $_has(5);
   @$pb.TagNumber(6)
   void clearPublishUntil() => clearField(6);
   @$pb.TagNumber(6)
-  $0.Timestamp ensurePublishUntil() => $_ensure(5);
+  $3.Timestamp ensurePublishUntil() => $_ensure(5);
 }
 
 class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse({
-    $2.Artifact? element,
+    $5.Artifact? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -400,7 +398,7 @@ class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$2.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.Artifact.create)
+    ..aOM<$5.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.Artifact.create)
     ..hasRequiredFields = false
   ;
 
@@ -427,15 +425,15 @@ class CreateResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.Artifact get element => $_getN(0);
+  $5.Artifact get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.Artifact v) { setField(1, v); }
+  set element($5.Artifact v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.Artifact ensureElement() => $_ensure(0);
+  $5.Artifact ensureElement() => $_ensure(0);
 }
 
 class UpdateRequest extends $pb.GeneratedMessage {
@@ -445,8 +443,8 @@ class UpdateRequest extends $pb.GeneratedMessage {
     $core.String? content,
     $core.String? summary,
     $core.bool? isPublished,
-    $0.Timestamp? publishFrom,
-    $0.Timestamp? publishUntil,
+    $3.Timestamp? publishFrom,
+    $3.Timestamp? publishUntil,
   }) {
     final $result = create();
     if (pk != null) {
@@ -482,8 +480,8 @@ class UpdateRequest extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'content')
     ..aOS(4, _omitFieldNames ? '' : 'summary')
     ..aOB(5, _omitFieldNames ? '' : 'isPublished')
-    ..aOM<$0.Timestamp>(6, _omitFieldNames ? '' : 'publishFrom', subBuilder: $0.Timestamp.create)
-    ..aOM<$0.Timestamp>(7, _omitFieldNames ? '' : 'publishUntil', subBuilder: $0.Timestamp.create)
+    ..aOM<$3.Timestamp>(6, _omitFieldNames ? '' : 'publishFrom', subBuilder: $3.Timestamp.create)
+    ..aOM<$3.Timestamp>(7, _omitFieldNames ? '' : 'publishUntil', subBuilder: $3.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -560,32 +558,32 @@ class UpdateRequest extends $pb.GeneratedMessage {
 
   /// start
   @$pb.TagNumber(6)
-  $0.Timestamp get publishFrom => $_getN(5);
+  $3.Timestamp get publishFrom => $_getN(5);
   @$pb.TagNumber(6)
-  set publishFrom($0.Timestamp v) { setField(6, v); }
+  set publishFrom($3.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasPublishFrom() => $_has(5);
   @$pb.TagNumber(6)
   void clearPublishFrom() => clearField(6);
   @$pb.TagNumber(6)
-  $0.Timestamp ensurePublishFrom() => $_ensure(5);
+  $3.Timestamp ensurePublishFrom() => $_ensure(5);
 
   /// until
   @$pb.TagNumber(7)
-  $0.Timestamp get publishUntil => $_getN(6);
+  $3.Timestamp get publishUntil => $_getN(6);
   @$pb.TagNumber(7)
-  set publishUntil($0.Timestamp v) { setField(7, v); }
+  set publishUntil($3.Timestamp v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasPublishUntil() => $_has(6);
   @$pb.TagNumber(7)
   void clearPublishUntil() => clearField(7);
   @$pb.TagNumber(7)
-  $0.Timestamp ensurePublishUntil() => $_ensure(6);
+  $3.Timestamp ensurePublishUntil() => $_ensure(6);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse({
-    $2.Artifact? element,
+    $5.Artifact? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -598,7 +596,7 @@ class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$2.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.Artifact.create)
+    ..aOM<$5.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.Artifact.create)
     ..hasRequiredFields = false
   ;
 
@@ -625,15 +623,15 @@ class UpdateResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.Artifact get element => $_getN(0);
+  $5.Artifact get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.Artifact v) { setField(1, v); }
+  set element($5.Artifact v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.Artifact ensureElement() => $_ensure(0);
+  $5.Artifact ensureElement() => $_ensure(0);
 }
 
 class DeleteRequest extends $pb.GeneratedMessage {
@@ -690,7 +688,7 @@ class DeleteRequest extends $pb.GeneratedMessage {
 class CreateImageRequest extends $pb.GeneratedMessage {
   factory CreateImageRequest({
     $core.int? artifactFk,
-    $1.ArtifactImageEnum_Kind? kind,
+    $4.ArtifactImageEnum_Kind? kind,
     $core.String? image,
     $core.String? name,
   }) {
@@ -715,7 +713,7 @@ class CreateImageRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateImageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
-    ..e<$1.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $1.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $1.ArtifactImageEnum_Kind.valueOf, enumValues: $1.ArtifactImageEnum_Kind.values)
+    ..e<$4.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $4.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $4.ArtifactImageEnum_Kind.valueOf, enumValues: $4.ArtifactImageEnum_Kind.values)
     ..aOS(3, _omitFieldNames ? '' : 'image')
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
@@ -754,9 +752,9 @@ class CreateImageRequest extends $pb.GeneratedMessage {
 
   /// kind cannot be NONE (0)
   @$pb.TagNumber(2)
-  $1.ArtifactImageEnum_Kind get kind => $_getN(1);
+  $4.ArtifactImageEnum_Kind get kind => $_getN(1);
   @$pb.TagNumber(2)
-  set kind($1.ArtifactImageEnum_Kind v) { setField(2, v); }
+  set kind($4.ArtifactImageEnum_Kind v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasKind() => $_has(1);
   @$pb.TagNumber(2)
@@ -785,7 +783,7 @@ class CreateImageRequest extends $pb.GeneratedMessage {
 
 class CreateImageResponse extends $pb.GeneratedMessage {
   factory CreateImageResponse({
-    $2.ArtifactImage? element,
+    $5.ArtifactImage? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -798,7 +796,7 @@ class CreateImageResponse extends $pb.GeneratedMessage {
   factory CreateImageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateImageResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$2.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.ArtifactImage.create)
+    ..aOM<$5.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.ArtifactImage.create)
     ..hasRequiredFields = false
   ;
 
@@ -825,21 +823,21 @@ class CreateImageResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.ArtifactImage get element => $_getN(0);
+  $5.ArtifactImage get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.ArtifactImage v) { setField(1, v); }
+  set element($5.ArtifactImage v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.ArtifactImage ensureElement() => $_ensure(0);
+  $5.ArtifactImage ensureElement() => $_ensure(0);
 }
 
 class UpdateImageRequest extends $pb.GeneratedMessage {
   factory UpdateImageRequest({
     $core.int? artifactFk,
-    $1.ArtifactImageEnum_Kind? kind,
+    $4.ArtifactImageEnum_Kind? kind,
     $core.String? image,
     $core.String? name,
     $core.int? pk,
@@ -868,7 +866,7 @@ class UpdateImageRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateImageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
-    ..e<$1.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $1.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $1.ArtifactImageEnum_Kind.valueOf, enumValues: $1.ArtifactImageEnum_Kind.values)
+    ..e<$4.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $4.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $4.ArtifactImageEnum_Kind.valueOf, enumValues: $4.ArtifactImageEnum_Kind.values)
     ..aOS(3, _omitFieldNames ? '' : 'image')
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..a<$core.int>(5, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
@@ -908,9 +906,9 @@ class UpdateImageRequest extends $pb.GeneratedMessage {
 
   /// kind cannot be NONE (0)
   @$pb.TagNumber(2)
-  $1.ArtifactImageEnum_Kind get kind => $_getN(1);
+  $4.ArtifactImageEnum_Kind get kind => $_getN(1);
   @$pb.TagNumber(2)
-  set kind($1.ArtifactImageEnum_Kind v) { setField(2, v); }
+  set kind($4.ArtifactImageEnum_Kind v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasKind() => $_has(1);
   @$pb.TagNumber(2)
@@ -949,7 +947,7 @@ class UpdateImageRequest extends $pb.GeneratedMessage {
 
 class UpdateImageResponse extends $pb.GeneratedMessage {
   factory UpdateImageResponse({
-    $2.ArtifactImage? element,
+    $5.ArtifactImage? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -962,7 +960,7 @@ class UpdateImageResponse extends $pb.GeneratedMessage {
   factory UpdateImageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateImageResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$2.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.ArtifactImage.create)
+    ..aOM<$5.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.ArtifactImage.create)
     ..hasRequiredFields = false
   ;
 
@@ -989,42 +987,15 @@ class UpdateImageResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.ArtifactImage get element => $_getN(0);
+  $5.ArtifactImage get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.ArtifactImage v) { setField(1, v); }
+  set element($5.ArtifactImage v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.ArtifactImage ensureElement() => $_ensure(0);
-}
-
-class ArtifactServiceApi {
-  $pb.RpcClient _client;
-  ArtifactServiceApi(this._client);
-
-  $async.Future<UpdateResponse> update($pb.ClientContext? ctx, UpdateRequest request) =>
-    _client.invoke<UpdateResponse>(ctx, 'ArtifactService', 'Update', request, UpdateResponse())
-  ;
-  $async.Future<$3.Empty> delete($pb.ClientContext? ctx, DeleteRequest request) =>
-    _client.invoke<$3.Empty>(ctx, 'ArtifactService', 'Delete', request, $3.Empty())
-  ;
-  $async.Future<GetResponse> get($pb.ClientContext? ctx, GetRequest request) =>
-    _client.invoke<GetResponse>(ctx, 'ArtifactService', 'Get', request, GetResponse())
-  ;
-  $async.Future<ListResponse> list($pb.ClientContext? ctx, ListRequest request) =>
-    _client.invoke<ListResponse>(ctx, 'ArtifactService', 'List', request, ListResponse())
-  ;
-  $async.Future<CreateResponse> create_($pb.ClientContext? ctx, CreateRequest request) =>
-    _client.invoke<CreateResponse>(ctx, 'ArtifactService', 'Create', request, CreateResponse())
-  ;
-  $async.Future<CreateImageResponse> createImage($pb.ClientContext? ctx, CreateImageRequest request) =>
-    _client.invoke<CreateImageResponse>(ctx, 'ArtifactService', 'CreateImage', request, CreateImageResponse())
-  ;
-  $async.Future<UpdateImageResponse> updateImage($pb.ClientContext? ctx, UpdateImageRequest request) =>
-    _client.invoke<UpdateImageResponse>(ctx, 'ArtifactService', 'UpdateImage', request, UpdateImageResponse())
-  ;
+  $5.ArtifactImage ensureElement() => $_ensure(0);
 }
 
 

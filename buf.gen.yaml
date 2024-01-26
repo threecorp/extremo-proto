@@ -20,5 +20,7 @@ plugins:
   # Dart
   - plugin: buf.build/protocolbuffers/dart
     out: lib
+    opt:
+      - grpc
     # opt: paths=source_relative
 

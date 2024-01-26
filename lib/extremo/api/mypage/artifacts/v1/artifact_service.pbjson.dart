@@ -13,10 +13,6 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-import '../../../../../google/protobuf/empty.pbjson.dart' as $3;
-import '../../../../../google/protobuf/timestamp.pbjson.dart' as $0;
-import '../../../../msg/db/v1/db.pbjson.dart' as $2;
-
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
   '1': 'ListRequest',
@@ -218,62 +214,4 @@ const UpdateImageResponse$json = {
 final $typed_data.Uint8List updateImageResponseDescriptor = $convert.base64Decode(
     'ChNVcGRhdGVJbWFnZVJlc3BvbnNlEkQKB2VsZW1lbnQYASABKAsyIC5leHRyZW1vLm1zZy5kYi'
     '52MS5BcnRpZmFjdEltYWdlQgj6QgWKAQIQAVIHZWxlbWVudA==');
-
-const $core.Map<$core.String, $core.dynamic> ArtifactServiceBase$json = {
-  '1': 'ArtifactService',
-  '2': [
-    {'1': 'Update', '2': '.extremo.api.mypage.artifacts.v1.UpdateRequest', '3': '.extremo.api.mypage.artifacts.v1.UpdateResponse', '4': {}},
-    {'1': 'Delete', '2': '.extremo.api.mypage.artifacts.v1.DeleteRequest', '3': '.google.protobuf.Empty', '4': {}},
-    {'1': 'Get', '2': '.extremo.api.mypage.artifacts.v1.GetRequest', '3': '.extremo.api.mypage.artifacts.v1.GetResponse', '4': {}},
-    {'1': 'List', '2': '.extremo.api.mypage.artifacts.v1.ListRequest', '3': '.extremo.api.mypage.artifacts.v1.ListResponse', '4': {}},
-    {'1': 'Create', '2': '.extremo.api.mypage.artifacts.v1.CreateRequest', '3': '.extremo.api.mypage.artifacts.v1.CreateResponse', '4': {}},
-    {'1': 'CreateImage', '2': '.extremo.api.mypage.artifacts.v1.CreateImageRequest', '3': '.extremo.api.mypage.artifacts.v1.CreateImageResponse', '4': {}},
-    {'1': 'UpdateImage', '2': '.extremo.api.mypage.artifacts.v1.UpdateImageRequest', '3': '.extremo.api.mypage.artifacts.v1.UpdateImageResponse', '4': {}},
-  ],
-};
-
-@$core.Deprecated('Use artifactServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> ArtifactServiceBase$messageJson = {
-  '.extremo.api.mypage.artifacts.v1.UpdateRequest': UpdateRequest$json,
-  '.google.protobuf.Timestamp': $0.Timestamp$json,
-  '.extremo.api.mypage.artifacts.v1.UpdateResponse': UpdateResponse$json,
-  '.extremo.msg.db.v1.Artifact': $2.Artifact$json,
-  '.extremo.msg.db.v1.User': $2.User$json,
-  '.extremo.msg.db.v1.ArtifactImage': $2.ArtifactImage$json,
-  '.extremo.api.mypage.artifacts.v1.DeleteRequest': DeleteRequest$json,
-  '.google.protobuf.Empty': $3.Empty$json,
-  '.extremo.api.mypage.artifacts.v1.GetRequest': GetRequest$json,
-  '.extremo.api.mypage.artifacts.v1.GetResponse': GetResponse$json,
-  '.extremo.api.mypage.artifacts.v1.ListRequest': ListRequest$json,
-  '.extremo.api.mypage.artifacts.v1.ListResponse': ListResponse$json,
-  '.extremo.api.mypage.artifacts.v1.CreateRequest': CreateRequest$json,
-  '.extremo.api.mypage.artifacts.v1.CreateResponse': CreateResponse$json,
-  '.extremo.api.mypage.artifacts.v1.CreateImageRequest': CreateImageRequest$json,
-  '.extremo.api.mypage.artifacts.v1.CreateImageResponse': CreateImageResponse$json,
-  '.extremo.api.mypage.artifacts.v1.UpdateImageRequest': UpdateImageRequest$json,
-  '.extremo.api.mypage.artifacts.v1.UpdateImageResponse': UpdateImageResponse$json,
-};
-
-/// Descriptor for `ArtifactService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List artifactServiceDescriptor = $convert.base64Decode(
-    'Cg9BcnRpZmFjdFNlcnZpY2USkwEKBlVwZGF0ZRIuLmV4dHJlbW8uYXBpLm15cGFnZS5hcnRpZm'
-    'FjdHMudjEuVXBkYXRlUmVxdWVzdBovLmV4dHJlbW8uYXBpLm15cGFnZS5hcnRpZmFjdHMudjEu'
-    'VXBkYXRlUmVzcG9uc2UiKILT5JMCIjoBKhodL2FwaS9teXBhZ2UvdjEvYXJ0aWZhY3RzL3twa3'
-    '0SdwoGRGVsZXRlEi4uZXh0cmVtby5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5EZWxldGVSZXF1'
-    'ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IiWC0+STAh8qHS9hcGkvbXlwYWdlL3YxL2FydG'
-    'lmYWN0cy97cGt9EocBCgNHZXQSKy5leHRyZW1vLmFwaS5teXBhZ2UuYXJ0aWZhY3RzLnYxLkdl'
-    'dFJlcXVlc3QaLC5leHRyZW1vLmFwaS5teXBhZ2UuYXJ0aWZhY3RzLnYxLkdldFJlc3BvbnNlIi'
-    'WC0+STAh8SHS9hcGkvbXlwYWdlL3YxL2FydGlmYWN0cy97cGt9EoUBCgRMaXN0EiwuZXh0cmVt'
-    'by5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5MaXN0UmVxdWVzdBotLmV4dHJlbW8uYXBpLm15cG'
-    'FnZS5hcnRpZmFjdHMudjEuTGlzdFJlc3BvbnNlIiCC0+STAhoSGC9hcGkvbXlwYWdlL3YxL2Fy'
-    'dGlmYWN0cxKOAQoGQ3JlYXRlEi4uZXh0cmVtby5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5Dcm'
-    'VhdGVSZXF1ZXN0Gi8uZXh0cmVtby5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5DcmVhdGVSZXNw'
-    'b25zZSIjgtPkkwIdOgEqIhgvYXBpL215cGFnZS92MS9hcnRpZmFjdHMSsQEKC0NyZWF0ZUltYW'
-    'dlEjMuZXh0cmVtby5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5DcmVhdGVJbWFnZVJlcXVlc3Qa'
-    'NC5leHRyZW1vLmFwaS5teXBhZ2UuYXJ0aWZhY3RzLnYxLkNyZWF0ZUltYWdlUmVzcG9uc2UiN4'
-    'LT5JMCMToBKiIsL2FwaS9teXBhZ2UvdjEvYXJ0aWZhY3RzL3thcnRpZmFjdF9ma30vaW1hZ2US'
-    'tgEKC1VwZGF0ZUltYWdlEjMuZXh0cmVtby5hcGkubXlwYWdlLmFydGlmYWN0cy52MS5VcGRhdG'
-    'VJbWFnZVJlcXVlc3QaNC5leHRyZW1vLmFwaS5teXBhZ2UuYXJ0aWZhY3RzLnYxLlVwZGF0ZUlt'
-    'YWdlUmVzcG9uc2UiPILT5JMCNjoBKhoxL2FwaS9teXBhZ2UvdjEvYXJ0aWZhY3RzL3thcnRpZm'
-    'FjdF9ma30vaW1hZ2Uve3BrfQ==');
 

@@ -8,8 +8,8 @@ environment:
   flutter: '>=3.10.0'
 
 dependencies:
-  grpc: ^3.0.0
   async: ^2.2.0
+  grpc: ^3.0.0
   protobuf: ^3.0.0
 
 dev_dependencies:

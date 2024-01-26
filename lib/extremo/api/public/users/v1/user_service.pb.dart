@@ -9,12 +9,11 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../msg/db/v1/db.pb.dart' as $2;
+import '../../../../msg/db/v1/db.pb.dart' as $5;
 
 class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest({
@@ -71,7 +70,7 @@ class GetRequest extends $pb.GeneratedMessage {
 
 class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse({
-    $2.User? element,
+    $5.User? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -84,7 +83,7 @@ class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.public.users.v1'), createEmptyInstance: create)
-    ..aOM<$2.User>(1, _omitFieldNames ? '' : 'element', subBuilder: $2.User.create)
+    ..aOM<$5.User>(1, _omitFieldNames ? '' : 'element', subBuilder: $5.User.create)
     ..hasRequiredFields = false
   ;
 
@@ -111,15 +110,15 @@ class GetResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $2.User get element => $_getN(0);
+  $5.User get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($2.User v) { setField(1, v); }
+  set element($5.User v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $2.User ensureElement() => $_ensure(0);
+  $5.User ensureElement() => $_ensure(0);
 }
 
 class ListRequest extends $pb.GeneratedMessage {
@@ -193,7 +192,7 @@ class ListRequest extends $pb.GeneratedMessage {
 
 class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse({
-    $core.Iterable<$2.User>? elements,
+    $core.Iterable<$5.User>? elements,
     $core.int? totalSize,
   }) {
     final $result = create();
@@ -210,7 +209,7 @@ class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.public.users.v1'), createEmptyInstance: create)
-    ..pc<$2.User>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $2.User.create)
+    ..pc<$5.User>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $5.User.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -238,7 +237,7 @@ class ListResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $core.List<$2.User> get elements => $_getList(0);
+  $core.List<$5.User> get elements => $_getList(0);
 
   /// Total Size
   @$pb.TagNumber(2)
@@ -249,18 +248,6 @@ class ListResponse extends $pb.GeneratedMessage {
   $core.bool hasTotalSize() => $_has(1);
   @$pb.TagNumber(2)
   void clearTotalSize() => clearField(2);
-}
-
-class UserServiceApi {
-  $pb.RpcClient _client;
-  UserServiceApi(this._client);
-
-  $async.Future<GetResponse> get($pb.ClientContext? ctx, GetRequest request) =>
-    _client.invoke<GetResponse>(ctx, 'UserService', 'Get', request, GetResponse())
-  ;
-  $async.Future<ListResponse> list($pb.ClientContext? ctx, ListRequest request) =>
-    _client.invoke<ListResponse>(ctx, 'UserService', 'List', request, ListResponse())
-  ;
 }
 
 

@@ -13,9 +13,6 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-import '../../../../../google/protobuf/timestamp.pbjson.dart' as $0;
-import '../../../../msg/db/v1/db.pbjson.dart' as $2;
-
 @$core.Deprecated('Use getRequestDescriptor instead')
 const GetRequest$json = {
   '1': 'GetRequest',
@@ -69,32 +66,4 @@ final $typed_data.Uint8List listResponseDescriptor = $convert.base64Decode(
     'CgxMaXN0UmVzcG9uc2USPwoIZWxlbWVudHMYASADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2'
     'VyQgr6QgeSAQQIABAeUghlbGVtZW50cxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0'
     'b3RhbFNpemU=');
-
-const $core.Map<$core.String, $core.dynamic> UserServiceBase$json = {
-  '1': 'UserService',
-  '2': [
-    {'1': 'Get', '2': '.extremo.api.public.users.v1.GetRequest', '3': '.extremo.api.public.users.v1.GetResponse', '4': {}},
-    {'1': 'List', '2': '.extremo.api.public.users.v1.ListRequest', '3': '.extremo.api.public.users.v1.ListResponse', '4': {}},
-  ],
-};
-
-@$core.Deprecated('Use userServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> UserServiceBase$messageJson = {
-  '.extremo.api.public.users.v1.GetRequest': GetRequest$json,
-  '.extremo.api.public.users.v1.GetResponse': GetResponse$json,
-  '.extremo.msg.db.v1.User': $2.User$json,
-  '.google.protobuf.Timestamp': $0.Timestamp$json,
-  '.extremo.msg.db.v1.Artifact': $2.Artifact$json,
-  '.extremo.msg.db.v1.ArtifactImage': $2.ArtifactImage$json,
-  '.extremo.api.public.users.v1.ListRequest': ListRequest$json,
-  '.extremo.api.public.users.v1.ListResponse': ListResponse$json,
-};
-
-/// Descriptor for `UserService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List userServiceDescriptor = $convert.base64Decode(
-    'CgtVc2VyU2VydmljZRJ7CgNHZXQSJy5leHRyZW1vLmFwaS5wdWJsaWMudXNlcnMudjEuR2V0Um'
-    'VxdWVzdBooLmV4dHJlbW8uYXBpLnB1YmxpYy51c2Vycy52MS5HZXRSZXNwb25zZSIhgtPkkwIb'
-    'EhkvYXBpL3B1YmxpYy92MS91c2Vycy97cGt9EnkKBExpc3QSKC5leHRyZW1vLmFwaS5wdWJsaW'
-    'MudXNlcnMudjEuTGlzdFJlcXVlc3QaKS5leHRyZW1vLmFwaS5wdWJsaWMudXNlcnMudjEuTGlz'
-    'dFJlc3BvbnNlIhyC0+STAhYSFC9hcGkvcHVibGljL3YxL3VzZXJz');
 
