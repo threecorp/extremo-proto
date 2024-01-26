@@ -124,7 +124,7 @@ lint:  ## Lint proto files to properly
 
 protocol:  ## Generate actual code lika as `go,rb,ts,py,scala,dart` from .proto schema
 	@buf build
-	@buf generate
+	@buf generate --include-imports --include-wkt
 	@make mockgen
 	@go tool fix -force context extremogo
 	@make gomodule
