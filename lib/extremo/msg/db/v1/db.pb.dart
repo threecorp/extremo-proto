@@ -26,6 +26,7 @@ class User extends $pb.GeneratedMessage {
     $4.Timestamp? deletedAt,
     $4.Timestamp? createdAt,
     $4.Timestamp? updatedAt,
+    UserProfile? profile,
     $core.Iterable<Artifact>? artifacts,
   }) {
     final $result = create();
@@ -53,6 +54,9 @@ class User extends $pb.GeneratedMessage {
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
     }
+    if (profile != null) {
+      $result.profile = profile;
+    }
     if (artifacts != null) {
       $result.artifacts.addAll(artifacts);
     }
@@ -71,7 +75,8 @@ class User extends $pb.GeneratedMessage {
     ..aOM<$4.Timestamp>(6, _omitFieldNames ? '' : 'deletedAt', subBuilder: $4.Timestamp.create)
     ..aOM<$4.Timestamp>(7, _omitFieldNames ? '' : 'createdAt', subBuilder: $4.Timestamp.create)
     ..aOM<$4.Timestamp>(8, _omitFieldNames ? '' : 'updatedAt', subBuilder: $4.Timestamp.create)
-    ..pc<Artifact>(9, _omitFieldNames ? '' : 'artifacts', $pb.PbFieldType.PM, subBuilder: Artifact.create)
+    ..aOM<UserProfile>(9, _omitFieldNames ? '' : 'profile', subBuilder: UserProfile.create)
+    ..pc<Artifact>(10, _omitFieldNames ? '' : 'artifacts', $pb.PbFieldType.PM, subBuilder: Artifact.create)
     ..hasRequiredFields = false
   ;
 
@@ -185,9 +190,154 @@ class User extends $pb.GeneratedMessage {
   $4.Timestamp ensureUpdatedAt() => $_ensure(7);
 
   ///
-  ///  1:N relation
+  ///  1:1 Reverse Relation
   @$pb.TagNumber(9)
-  $core.List<Artifact> get artifacts => $_getList(8);
+  UserProfile get profile => $_getN(8);
+  @$pb.TagNumber(9)
+  set profile(UserProfile v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasProfile() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearProfile() => clearField(9);
+  @$pb.TagNumber(9)
+  UserProfile ensureProfile() => $_ensure(8);
+
+  ///
+  ///  1:N relation
+  @$pb.TagNumber(10)
+  $core.List<Artifact> get artifacts => $_getList(9);
+}
+
+class UserProfile extends $pb.GeneratedMessage {
+  factory UserProfile({
+    $core.int? pk,
+    $core.int? userFk,
+    User? user,
+    $core.String? name,
+    $4.Timestamp? createdAt,
+    $4.Timestamp? updatedAt,
+  }) {
+    final $result = create();
+    if (pk != null) {
+      $result.pk = pk;
+    }
+    if (userFk != null) {
+      $result.userFk = userFk;
+    }
+    if (user != null) {
+      $result.user = user;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
+    if (updatedAt != null) {
+      $result.updatedAt = updatedAt;
+    }
+    return $result;
+  }
+  UserProfile._() : super();
+  factory UserProfile.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserProfile.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserProfile', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'userFk', $pb.PbFieldType.O3)
+    ..aOM<User>(3, _omitFieldNames ? '' : 'user', subBuilder: User.create)
+    ..aOS(4, _omitFieldNames ? '' : 'name')
+    ..aOM<$4.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $4.Timestamp.create)
+    ..aOM<$4.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $4.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserProfile clone() => UserProfile()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserProfile copyWith(void Function(UserProfile) updates) => super.copyWith((message) => updates(message as UserProfile)) as UserProfile;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserProfile create() => UserProfile._();
+  UserProfile createEmptyInstance() => create();
+  static $pb.PbList<UserProfile> createRepeated() => $pb.PbList<UserProfile>();
+  @$core.pragma('dart2js:noInline')
+  static UserProfile getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserProfile>(create);
+  static UserProfile? _defaultInstance;
+
+  /// primary key
+  @$pb.TagNumber(1)
+  $core.int get pk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set pk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPk() => clearField(1);
+
+  /// FK
+  @$pb.TagNumber(2)
+  $core.int get userFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set userFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserFk() => clearField(2);
+
+  /// Relation Message
+  @$pb.TagNumber(3)
+  User get user => $_getN(2);
+  @$pb.TagNumber(3)
+  set user(User v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUser() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUser() => clearField(3);
+  @$pb.TagNumber(3)
+  User ensureUser() => $_ensure(2);
+
+  /// user name
+  @$pb.TagNumber(4)
+  $core.String get name => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set name($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearName() => clearField(4);
+
+  /// Created time
+  @$pb.TagNumber(10)
+  $4.Timestamp get createdAt => $_getN(4);
+  @$pb.TagNumber(10)
+  set createdAt($4.Timestamp v) { setField(10, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasCreatedAt() => $_has(4);
+  @$pb.TagNumber(10)
+  void clearCreatedAt() => clearField(10);
+  @$pb.TagNumber(10)
+  $4.Timestamp ensureCreatedAt() => $_ensure(4);
+
+  /// Updated time
+  @$pb.TagNumber(11)
+  $4.Timestamp get updatedAt => $_getN(5);
+  @$pb.TagNumber(11)
+  set updatedAt($4.Timestamp v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasUpdatedAt() => $_has(5);
+  @$pb.TagNumber(11)
+  void clearUpdatedAt() => clearField(11);
+  @$pb.TagNumber(11)
+  $4.Timestamp ensureUpdatedAt() => $_ensure(5);
 }
 
 class Artifact extends $pb.GeneratedMessage {

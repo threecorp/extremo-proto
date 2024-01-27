@@ -25,7 +25,8 @@ const User$json = {
     {'1': 'deleted_at', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'deletedAt'},
     {'1': 'created_at', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-    {'1': 'artifacts', '3': 9, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifacts'},
+    {'1': 'profile', '3': 9, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.UserProfile', '8': {}, '10': 'profile'},
+    {'1': 'artifacts', '3': 10, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifacts'},
   ],
 };
 
@@ -37,9 +38,32 @@ final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'ppc19kZWxldGVkGAUgASgIUglpc0RlbGV0ZWQSQwoKZGVsZXRlZF9hdBgGIAEoCzIaLmdvb2ds'
     'ZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggAUglkZWxldGVkQXQSOQoKY3JlYXRlZF9hdB'
     'gHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVk'
-    'X2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0EkUKCWFydG'
-    'lmYWN0cxgJIAMoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgr6QgeSAQQIABAKUglh'
-    'cnRpZmFjdHM=');
+    'X2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0EkIKB3Byb2'
+    'ZpbGUYCSABKAsyHi5leHRyZW1vLm1zZy5kYi52MS5Vc2VyUHJvZmlsZUII+kIFigECEAFSB3By'
+    'b2ZpbGUSRQoJYXJ0aWZhY3RzGAogAygLMhsuZXh0cmVtby5tc2cuZGIudjEuQXJ0aWZhY3RCCv'
+    'pCB5IBBAgAEApSCWFydGlmYWN0cw==');
+
+@$core.Deprecated('Use userProfileDescriptor instead')
+const UserProfile$json = {
+  '1': 'UserProfile',
+  '2': [
+    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'user_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'userFk'},
+    {'1': 'user', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'user'},
+    {'1': 'name', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'name'},
+    {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+  ],
+};
+
+/// Descriptor for `UserProfile`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userProfileDescriptor = $convert.base64Decode(
+    'CgtVc2VyUHJvZmlsZRIXCgJwaxgBIAEoBUIH+kIEGgIgAFICcGsSIAoHdXNlcl9maxgCIAEoBU'
+    'IH+kIEGgIgAFIGdXNlckZrEjUKBHVzZXIYAyABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2Vy'
+    'Qgj6QgWKAQIQAVIEdXNlchIeCgRuYW1lGAQgASgJQgr6QgdyBRABGP8BUgRuYW1lEjkKCmNyZW'
+    'F0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoK'
+    'dXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA'
+    '==');
 
 @$core.Deprecated('Use artifactDescriptor instead')
 const Artifact$json = {
