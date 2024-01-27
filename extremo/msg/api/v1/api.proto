@@ -1,0 +1,41 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
+syntax = "proto3";
+
+package extremo.msg.api.v1;
+
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/msg/api/v1;api"; // option go_package = "messages";
+option java_multiple_files = true;
+option java_outer_classname = "ApiProto";
+option java_package = "com.threecorp.msg.api.v1";
+
+// import "google/protobuf/struct.proto";
+// import "google/protobuf/empty.proto";
+// import "google/protobuf/wrappers.proto";
+
+message Account {
+  // Priamry KEY
+  int32 pk = 10 [(validate.rules).int32 = {gt: 0}];
+  // Sign Up date
+  google.protobuf.Timestamp date_joined = 20 [(validate.rules).timestamp = {required: true}];
+  // is deleted user
+  bool is_deleted = 30;
+  // Deleted time
+  google.protobuf.Timestamp deleted_at = 400 [(validate.rules).timestamp = {required: false}];
+}
+
+message AccountToken {
+  // JWT
+  string token = 1 [(validate.rules).string = {min_len: 10}];
+  // Session Key
+  string session_key = 2 [(validate.rules).string = {min_len: 1}];
+  // Time count as a second.
+  int64 max_age = 3 [(validate.rules).int64 = {gt: -10}];
+  // cookie domain
+  string domain = 4 [(validate.rules).string = {min_len: 1}];
+}

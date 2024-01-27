@@ -1,6 +1,5 @@
 //
-// README: https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/util/json_format_proto3.proto
-// README: https://github.com/googleapis/googleapis/blob/master/google/type/type.yaml
+// README: https://cloud.google.com/apis/design/standard_methods
 //
 
 syntax = "proto3";

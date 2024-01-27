@@ -1,3 +1,7 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
 syntax = "proto3";
 
 package extremo.api.public.users.v1;
