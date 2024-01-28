@@ -16,40 +16,40 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../../google/protobuf/empty.pb.dart' as $1;
-import 'artifact_service.pb.dart' as $0;
+import 'artifact_service.pb.dart' as $2;
 
 export 'artifact_service.pb.dart';
 
 @$pb.GrpcServiceName('extremo.api.mypage.artifacts.v1.ArtifactService')
 class ArtifactServiceClient extends $grpc.Client {
-  static final _$update = $grpc.ClientMethod<$0.UpdateRequest, $0.UpdateResponse>(
+  static final _$update = $grpc.ClientMethod<$2.UpdateRequest, $2.UpdateResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/Update',
-      ($0.UpdateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.UpdateResponse.fromBuffer(value));
-  static final _$delete = $grpc.ClientMethod<$0.DeleteRequest, $1.Empty>(
+      ($2.UpdateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.UpdateResponse.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$2.DeleteRequest, $1.Empty>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/Delete',
-      ($0.DeleteRequest value) => value.writeToBuffer(),
+      ($2.DeleteRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
-  static final _$get = $grpc.ClientMethod<$0.GetRequest, $0.GetResponse>(
+  static final _$get = $grpc.ClientMethod<$2.GetRequest, $2.GetResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/Get',
-      ($0.GetRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.GetResponse.fromBuffer(value));
-  static final _$list = $grpc.ClientMethod<$0.ListRequest, $0.ListResponse>(
+      ($2.GetRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.GetResponse.fromBuffer(value));
+  static final _$list = $grpc.ClientMethod<$2.ListRequest, $2.ListResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/List',
-      ($0.ListRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.ListResponse.fromBuffer(value));
-  static final _$create = $grpc.ClientMethod<$0.CreateRequest, $0.CreateResponse>(
+      ($2.ListRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.ListResponse.fromBuffer(value));
+  static final _$create = $grpc.ClientMethod<$2.CreateRequest, $2.CreateResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/Create',
-      ($0.CreateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.CreateResponse.fromBuffer(value));
-  static final _$createImage = $grpc.ClientMethod<$0.CreateImageRequest, $0.CreateImageResponse>(
+      ($2.CreateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.CreateResponse.fromBuffer(value));
+  static final _$createImage = $grpc.ClientMethod<$2.CreateImageRequest, $2.CreateImageResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/CreateImage',
-      ($0.CreateImageRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.CreateImageResponse.fromBuffer(value));
-  static final _$updateImage = $grpc.ClientMethod<$0.UpdateImageRequest, $0.UpdateImageResponse>(
+      ($2.CreateImageRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.CreateImageResponse.fromBuffer(value));
+  static final _$updateImage = $grpc.ClientMethod<$2.UpdateImageRequest, $2.UpdateImageResponse>(
       '/extremo.api.mypage.artifacts.v1.ArtifactService/UpdateImage',
-      ($0.UpdateImageRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.UpdateImageResponse.fromBuffer(value));
+      ($2.UpdateImageRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.UpdateImageResponse.fromBuffer(value));
 
   ArtifactServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -57,31 +57,31 @@ class ArtifactServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.UpdateResponse> update($0.UpdateRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.UpdateResponse> update($2.UpdateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.Empty> delete($0.DeleteRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$1.Empty> delete($2.DeleteRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetResponse> get($0.GetRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.GetResponse> get($2.GetRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.ListResponse> list($0.ListRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.ListResponse> list($2.ListRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.CreateResponse> create($0.CreateRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.CreateResponse> create($2.CreateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$create, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.CreateImageResponse> createImage($0.CreateImageRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.CreateImageResponse> createImage($2.CreateImageRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createImage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.UpdateImageResponse> updateImage($0.UpdateImageRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.UpdateImageResponse> updateImage($2.UpdateImageRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateImage, request, options: options);
   }
 }
@@ -91,90 +91,90 @@ abstract class ArtifactServiceBase extends $grpc.Service {
   $core.String get $name => 'extremo.api.mypage.artifacts.v1.ArtifactService';
 
   ArtifactServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.UpdateRequest, $0.UpdateResponse>(
+    $addMethod($grpc.ServiceMethod<$2.UpdateRequest, $2.UpdateResponse>(
         'Update',
         update_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.UpdateRequest.fromBuffer(value),
-        ($0.UpdateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.DeleteRequest, $1.Empty>(
+        ($core.List<$core.int> value) => $2.UpdateRequest.fromBuffer(value),
+        ($2.UpdateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.DeleteRequest, $1.Empty>(
         'Delete',
         delete_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.DeleteRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.DeleteRequest.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetRequest, $0.GetResponse>(
+    $addMethod($grpc.ServiceMethod<$2.GetRequest, $2.GetResponse>(
         'Get',
         get_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.GetRequest.fromBuffer(value),
-        ($0.GetResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ListRequest, $0.ListResponse>(
+        ($core.List<$core.int> value) => $2.GetRequest.fromBuffer(value),
+        ($2.GetResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ListRequest, $2.ListResponse>(
         'List',
         list_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.ListRequest.fromBuffer(value),
-        ($0.ListResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.CreateRequest, $0.CreateResponse>(
+        ($core.List<$core.int> value) => $2.ListRequest.fromBuffer(value),
+        ($2.ListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.CreateRequest, $2.CreateResponse>(
         'Create',
         create_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.CreateRequest.fromBuffer(value),
-        ($0.CreateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.CreateImageRequest, $0.CreateImageResponse>(
+        ($core.List<$core.int> value) => $2.CreateRequest.fromBuffer(value),
+        ($2.CreateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.CreateImageRequest, $2.CreateImageResponse>(
         'CreateImage',
         createImage_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.CreateImageRequest.fromBuffer(value),
-        ($0.CreateImageResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.UpdateImageRequest, $0.UpdateImageResponse>(
+        ($core.List<$core.int> value) => $2.CreateImageRequest.fromBuffer(value),
+        ($2.CreateImageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.UpdateImageRequest, $2.UpdateImageResponse>(
         'UpdateImage',
         updateImage_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.UpdateImageRequest.fromBuffer(value),
-        ($0.UpdateImageResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $2.UpdateImageRequest.fromBuffer(value),
+        ($2.UpdateImageResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$0.UpdateRequest> request) async {
+  $async.Future<$2.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$2.UpdateRequest> request) async {
     return update(call, await request);
   }
 
-  $async.Future<$1.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$0.DeleteRequest> request) async {
+  $async.Future<$1.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$2.DeleteRequest> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$0.GetResponse> get_Pre($grpc.ServiceCall call, $async.Future<$0.GetRequest> request) async {
+  $async.Future<$2.GetResponse> get_Pre($grpc.ServiceCall call, $async.Future<$2.GetRequest> request) async {
     return get(call, await request);
   }
 
-  $async.Future<$0.ListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$0.ListRequest> request) async {
+  $async.Future<$2.ListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$2.ListRequest> request) async {
     return list(call, await request);
   }
 
-  $async.Future<$0.CreateResponse> create_Pre($grpc.ServiceCall call, $async.Future<$0.CreateRequest> request) async {
+  $async.Future<$2.CreateResponse> create_Pre($grpc.ServiceCall call, $async.Future<$2.CreateRequest> request) async {
     return create(call, await request);
   }
 
-  $async.Future<$0.CreateImageResponse> createImage_Pre($grpc.ServiceCall call, $async.Future<$0.CreateImageRequest> request) async {
+  $async.Future<$2.CreateImageResponse> createImage_Pre($grpc.ServiceCall call, $async.Future<$2.CreateImageRequest> request) async {
     return createImage(call, await request);
   }
 
-  $async.Future<$0.UpdateImageResponse> updateImage_Pre($grpc.ServiceCall call, $async.Future<$0.UpdateImageRequest> request) async {
+  $async.Future<$2.UpdateImageResponse> updateImage_Pre($grpc.ServiceCall call, $async.Future<$2.UpdateImageRequest> request) async {
     return updateImage(call, await request);
   }
 
-  $async.Future<$0.UpdateResponse> update($grpc.ServiceCall call, $0.UpdateRequest request);
-  $async.Future<$1.Empty> delete($grpc.ServiceCall call, $0.DeleteRequest request);
-  $async.Future<$0.GetResponse> get($grpc.ServiceCall call, $0.GetRequest request);
-  $async.Future<$0.ListResponse> list($grpc.ServiceCall call, $0.ListRequest request);
-  $async.Future<$0.CreateResponse> create($grpc.ServiceCall call, $0.CreateRequest request);
-  $async.Future<$0.CreateImageResponse> createImage($grpc.ServiceCall call, $0.CreateImageRequest request);
-  $async.Future<$0.UpdateImageResponse> updateImage($grpc.ServiceCall call, $0.UpdateImageRequest request);
+  $async.Future<$2.UpdateResponse> update($grpc.ServiceCall call, $2.UpdateRequest request);
+  $async.Future<$1.Empty> delete($grpc.ServiceCall call, $2.DeleteRequest request);
+  $async.Future<$2.GetResponse> get($grpc.ServiceCall call, $2.GetRequest request);
+  $async.Future<$2.ListResponse> list($grpc.ServiceCall call, $2.ListRequest request);
+  $async.Future<$2.CreateResponse> create($grpc.ServiceCall call, $2.CreateRequest request);
+  $async.Future<$2.CreateImageResponse> createImage($grpc.ServiceCall call, $2.CreateImageRequest request);
+  $async.Future<$2.UpdateImageResponse> updateImage($grpc.ServiceCall call, $2.UpdateImageRequest request);
 }

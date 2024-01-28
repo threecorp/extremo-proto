@@ -1,0 +1,254 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
+syntax = "proto3";
+
+package extremo.api.auth.accounts.v1;
+
+import "extremo/msg/api/v1/api.proto";
+//import "extremo/msg/db/v1/db.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+// import "google/protobuf/wrappers.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/auth/accounts/v1;accounts";
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "AccountServiceProto";
+option java_package = "com.extremo.api.auth.accounts.v1";
+
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+// Service for reading from and writing to existing Accounts.
+//
+service AccountService {
+  // Register registers a user as company role
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post: "/api/auth/v1/accounts/register"
+      body: "*"
+    };
+  }
+  // Unregister quit(cancel, unsubscribe) the membership
+  rpc Unregister(UnregisterRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/api/auth/v1/accounts/unregister"
+      body: "*"
+    };
+  }
+  // ConfirmEmail confirms a email for it is validated or not.
+  // rpc ConfirmEmail(ConfirmEmailRequest) returns (google.protobuf.Empty) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/confirm/email"
+  //   };
+  // }
+  // // EmailExists returns a boolean. It is confirmed value that a users.email exists or not.
+  // rpc EmailExists(EmailExistsRequest) returns (google.protobuf.BoolValue) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/exists/email"
+  //   };
+  // }
+  // // AccountExists returns a boolean instead which confirms a account is alive. This ops similar login.
+  // rpc AccountExists(AccountExistsRequest) returns (google.protobuf.BoolValue) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/exists/account"
+  //   };
+  // }
+  // // GetAccountByToken gets account by token
+  // rpc GetAccountByToken(GetAccountByTokenRequest) returns (extremo.msg.api.v1.Account) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/account/token"
+  //   };
+  // }
+  // // Cookie returns AccountToken without token
+  // rpc Cookie(CookieRequest) returns (extremo.msg.api.v1.AccountToken) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/cookie"
+  //   };
+  // }
+  // // Login returns a account
+  // rpc Login(LoginRequest) returns (extremo.msg.api.v1.AccountToken) {
+  //   option (google.api.http) = {
+  //     post: "/api/auth/v1/accounts/login"
+  //     body: "*"
+  //   };
+  // }
+  // // Logout just notify to api server
+  // rpc Logout(LogoutRequest) returns (google.protobuf.Empty) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/logout"
+  //   };
+  // }
+  // // ResetPasswordMail sends reset password mail
+  // rpc ResetPasswordMail(ResetPasswordMailRequest) returns (google.protobuf.Empty) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/reset"
+  //   };
+  // }
+  // // ResetPassword updates a user password
+  // rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
+  //   option (google.api.http) = {
+  //     post: "/api/auth/v1/accounts/reset"
+  //     body: "*"
+  //   };
+  // }
+  // // ConfirmInvitation returns a boolean. It is confirmed value that a invitation token exists or not.
+  // rpc ConfirmInvitation(ConfirmInvitationRequest) returns (google.protobuf.BoolValue) {
+  //   option (google.api.http) = {
+  //     get: "/api/auth/v1/accounts/invite"
+  //   };
+  // }
+  // // RegisterByInvitation confirms account invitation key and register a account
+  // rpc RegisterByInvitation(RegisterByInvitationRequest) returns (extremo.msg.api.v1.AccountToken) {
+  //   option (google.api.http) = {
+  //     post: "/api/auth/v1/accounts/invite"
+  //     body: "*"
+  //   };
+  // }
+}
+
+message RegisterRequest {
+  // users.email
+  string email = 1 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+  // users.password can be this value which is raw data.
+  string raw_password = 2 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+  // confirm_password can be this value which is raw data.
+  string confirm_password = 3 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+}
+
+message RegisterResponse {
+  extremo.msg.api.v1.AccountToken element = 1 [(validate.rules).message = {required: true}];
+}
+
+message UnregisterRequest {
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+  string email = 2 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+}
+
+message ConfirmEmailRequest {
+  // key is used confirmation key
+  string key = 1 [(validate.rules).string = {
+    pattern: "^[A-Za-z0-9]+$"
+    min_len: 1
+  }];
+}
+
+message EmailExistsRequest {
+  // email
+  string email = 1 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+}
+
+message AccountExistsRequest {
+  // email
+  string email = 1 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+  // password
+  string password = 2 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+}
+
+message GetAccountByTokenRequest {
+  // JWT Token
+  string token = 1 [(validate.rules).string = {min_len: 10}];
+}
+
+// A operator has administorator permit
+message SpoofLoginRequest {
+  // User PrimaryID
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+}
+
+message LoginRequest {
+  // email
+  string email = 1 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+  // password
+  string password = 2 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+}
+
+// Returns AccountToken without token
+message CookieRequest {}
+
+message LogoutRequest {
+  // JWT Token
+  string token = 1 [(validate.rules).string = {min_len: 10}];
+}
+
+message ResetPasswordMailRequest {
+  // email
+  string email = 1 [(validate.rules).string = {
+    email: true
+    min_len: 1
+  }];
+}
+
+message ResetPasswordRequest {
+  // key is used confirmation key
+  string key = 1 [(validate.rules).string = {
+    pattern: "^[A-Za-z0-9]+$"
+    min_len: 1
+  }];
+  // users.password can be this value which is raw data.
+  string raw_password = 2 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+  // confirm_password can be this value which is raw data.
+  string confirm_password = 3 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+}
+
+message ConfirmInvitationRequest {
+  // invitation key which is generated by mypage.users.v1.UserService.InviteAccount api
+  string key = 1 [(validate.rules).string = {
+    pattern: "^[A-Za-z0-9]+$"
+    min_len: 1
+  }];
+}
+
+message RegisterByInvitationRequest {
+  // invitation key which is generated by mypage.users.v1.UserService.InviteAccount api
+  string key = 1 [(validate.rules).string = {
+    pattern: "^[A-Za-z0-9]+$"
+    min_len: 1
+  }];
+  // users.password can be this value which is raw data.
+  string raw_password = 2 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+  // confirm_password can be this value which is raw data.
+  string confirm_password = 3 [(validate.rules).string = {
+    min_len: 8
+    max_len: 255
+  }];
+}
