@@ -57,31 +57,27 @@ service AccountService {
   //     get: "/api/auth/v1/accounts/exists/account"
   //   };
   // }
-  // // GetAccountByToken gets account by token
-  // rpc GetAccountByToken(GetAccountByTokenRequest) returns (extremo.msg.api.v1.Account) {
-  //   option (google.api.http) = {
-  //     get: "/api/auth/v1/accounts/account/token"
-  //   };
-  // }
+  // GetAccountByToken gets account by token
+  rpc GetAccountByToken(GetAccountByTokenRequest) returns (GetAccountByTokenResponse) {
+    option (google.api.http) = {get: "/api/auth/v1/accounts/account/token"};
+  }
   // // Cookie returns AccountToken without token
   // rpc Cookie(CookieRequest) returns (extremo.msg.api.v1.AccountToken) {
   //   option (google.api.http) = {
   //     get: "/api/auth/v1/accounts/cookie"
   //   };
   // }
-  // // Login returns a account
-  // rpc Login(LoginRequest) returns (extremo.msg.api.v1.AccountToken) {
-  //   option (google.api.http) = {
-  //     post: "/api/auth/v1/accounts/login"
-  //     body: "*"
-  //   };
-  // }
-  // // Logout just notify to api server
-  // rpc Logout(LogoutRequest) returns (google.protobuf.Empty) {
-  //   option (google.api.http) = {
-  //     get: "/api/auth/v1/accounts/logout"
-  //   };
-  // }
+  // Login returns a account
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/api/auth/v1/accounts/login"
+      body: "*"
+    };
+  }
+  // Logout just notify to api server
+  rpc Logout(LogoutRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {get: "/api/auth/v1/accounts/logout"};
+  }
   // // ResetPasswordMail sends reset password mail
   // rpc ResetPasswordMail(ResetPasswordMailRequest) returns (google.protobuf.Empty) {
   //   option (google.api.http) = {
@@ -174,6 +170,10 @@ message GetAccountByTokenRequest {
   string token = 1 [(validate.rules).string = {min_len: 10}];
 }
 
+message GetAccountByTokenResponse {
+  extremo.msg.api.v1.AccountToken element = 1 [(validate.rules).message = {required: true}];
+}
+
 // A operator has administorator permit
 message SpoofLoginRequest {
   // User PrimaryID
@@ -191,6 +191,10 @@ message LoginRequest {
     min_len: 8
     max_len: 255
   }];
+}
+
+message LoginResponse {
+  extremo.msg.api.v1.AccountToken element = 1 [(validate.rules).message = {required: true}];
 }
 
 // Returns AccountToken without token

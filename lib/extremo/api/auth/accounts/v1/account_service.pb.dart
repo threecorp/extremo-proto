@@ -431,6 +431,58 @@ class GetAccountByTokenRequest extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 }
 
+class GetAccountByTokenResponse extends $pb.GeneratedMessage {
+  factory GetAccountByTokenResponse({
+    $7.AccountToken? element,
+  }) {
+    final $result = create();
+    if (element != null) {
+      $result.element = element;
+    }
+    return $result;
+  }
+  GetAccountByTokenResponse._() : super();
+  factory GetAccountByTokenResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAccountByTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetAccountByTokenResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
+    ..aOM<$7.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $7.AccountToken.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAccountByTokenResponse clone() => GetAccountByTokenResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAccountByTokenResponse copyWith(void Function(GetAccountByTokenResponse) updates) => super.copyWith((message) => updates(message as GetAccountByTokenResponse)) as GetAccountByTokenResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetAccountByTokenResponse create() => GetAccountByTokenResponse._();
+  GetAccountByTokenResponse createEmptyInstance() => create();
+  static $pb.PbList<GetAccountByTokenResponse> createRepeated() => $pb.PbList<GetAccountByTokenResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetAccountByTokenResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAccountByTokenResponse>(create);
+  static GetAccountByTokenResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $7.AccountToken get element => $_getN(0);
+  @$pb.TagNumber(1)
+  set element($7.AccountToken v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasElement() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearElement() => clearField(1);
+  @$pb.TagNumber(1)
+  $7.AccountToken ensureElement() => $_ensure(0);
+}
+
 /// A operator has administorator permit
 class SpoofLoginRequest extends $pb.GeneratedMessage {
   factory SpoofLoginRequest({
@@ -547,6 +599,58 @@ class LoginRequest extends $pb.GeneratedMessage {
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
   void clearPassword() => clearField(2);
+}
+
+class LoginResponse extends $pb.GeneratedMessage {
+  factory LoginResponse({
+    $7.AccountToken? element,
+  }) {
+    final $result = create();
+    if (element != null) {
+      $result.element = element;
+    }
+    return $result;
+  }
+  LoginResponse._() : super();
+  factory LoginResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
+    ..aOM<$7.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $7.AccountToken.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginResponse clone() => LoginResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginResponse copyWith(void Function(LoginResponse) updates) => super.copyWith((message) => updates(message as LoginResponse)) as LoginResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LoginResponse create() => LoginResponse._();
+  LoginResponse createEmptyInstance() => create();
+  static $pb.PbList<LoginResponse> createRepeated() => $pb.PbList<LoginResponse>();
+  @$core.pragma('dart2js:noInline')
+  static LoginResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginResponse>(create);
+  static LoginResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $7.AccountToken get element => $_getN(0);
+  @$pb.TagNumber(1)
+  set element($7.AccountToken v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasElement() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearElement() => clearField(1);
+  @$pb.TagNumber(1)
+  $7.AccountToken ensureElement() => $_ensure(0);
 }
 
 /// Returns AccountToken without token

@@ -108,6 +108,19 @@ final $typed_data.Uint8List getAccountByTokenRequestDescriptor = $convert.base64
     'ChhHZXRBY2NvdW50QnlUb2tlblJlcXVlc3QSHQoFdG9rZW4YASABKAlCB/pCBHICEApSBXRva2'
     'Vu');
 
+@$core.Deprecated('Use getAccountByTokenResponseDescriptor instead')
+const GetAccountByTokenResponse$json = {
+  '1': 'GetAccountByTokenResponse',
+  '2': [
+    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.api.v1.AccountToken', '8': {}, '10': 'element'},
+  ],
+};
+
+/// Descriptor for `GetAccountByTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAccountByTokenResponseDescriptor = $convert.base64Decode(
+    'ChlHZXRBY2NvdW50QnlUb2tlblJlc3BvbnNlEkQKB2VsZW1lbnQYASABKAsyIC5leHRyZW1vLm'
+    '1zZy5hcGkudjEuQWNjb3VudFRva2VuQgj6QgWKAQIQAVIHZWxlbWVudA==');
+
 @$core.Deprecated('Use spoofLoginRequestDescriptor instead')
 const SpoofLoginRequest$json = {
   '1': 'SpoofLoginRequest',
@@ -133,6 +146,19 @@ const LoginRequest$json = {
 final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
     'CgxMb2dpblJlcXVlc3QSHwoFZW1haWwYASABKAlCCfpCBnIEEAFgAVIFZW1haWwSJgoIcGFzc3'
     'dvcmQYAiABKAlCCvpCB3IFEAgY/wFSCHBhc3N3b3Jk');
+
+@$core.Deprecated('Use loginResponseDescriptor instead')
+const LoginResponse$json = {
+  '1': 'LoginResponse',
+  '2': [
+    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.api.v1.AccountToken', '8': {}, '10': 'element'},
+  ],
+};
+
+/// Descriptor for `LoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode(
+    'Cg1Mb2dpblJlc3BvbnNlEkQKB2VsZW1lbnQYASABKAsyIC5leHRyZW1vLm1zZy5hcGkudjEuQW'
+    'Njb3VudFRva2VuQgj6QgWKAQIQAVIHZWxlbWVudA==');
 
 @$core.Deprecated('Use cookieRequestDescriptor instead')
 const CookieRequest$json = {

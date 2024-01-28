@@ -30,6 +30,18 @@ class AccountServiceClient extends $grpc.Client {
       '/extremo.api.auth.accounts.v1.AccountService/Unregister',
       ($0.UnregisterRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$getAccountByToken = $grpc.ClientMethod<$0.GetAccountByTokenRequest, $0.GetAccountByTokenResponse>(
+      '/extremo.api.auth.accounts.v1.AccountService/GetAccountByToken',
+      ($0.GetAccountByTokenRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetAccountByTokenResponse.fromBuffer(value));
+  static final _$login = $grpc.ClientMethod<$0.LoginRequest, $0.LoginResponse>(
+      '/extremo.api.auth.accounts.v1.AccountService/Login',
+      ($0.LoginRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.LoginResponse.fromBuffer(value));
+  static final _$logout = $grpc.ClientMethod<$0.LogoutRequest, $1.Empty>(
+      '/extremo.api.auth.accounts.v1.AccountService/Logout',
+      ($0.LogoutRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
 
   AccountServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -43,6 +55,18 @@ class AccountServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.Empty> unregister($0.UnregisterRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$unregister, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetAccountByTokenResponse> getAccountByToken($0.GetAccountByTokenRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAccountByToken, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.LoginResponse> login($0.LoginRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$login, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Empty> logout($0.LogoutRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$logout, request, options: options);
   }
 }
 
@@ -65,6 +89,27 @@ abstract class AccountServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.UnregisterRequest.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.GetAccountByTokenRequest, $0.GetAccountByTokenResponse>(
+        'GetAccountByToken',
+        getAccountByToken_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.GetAccountByTokenRequest.fromBuffer(value),
+        ($0.GetAccountByTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.LoginRequest, $0.LoginResponse>(
+        'Login',
+        login_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.LoginRequest.fromBuffer(value),
+        ($0.LoginResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.LogoutRequest, $1.Empty>(
+        'Logout',
+        logout_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.LogoutRequest.fromBuffer(value),
+        ($1.Empty value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.RegisterResponse> register_Pre($grpc.ServiceCall call, $async.Future<$0.RegisterRequest> request) async {
@@ -75,6 +120,21 @@ abstract class AccountServiceBase extends $grpc.Service {
     return unregister(call, await request);
   }
 
+  $async.Future<$0.GetAccountByTokenResponse> getAccountByToken_Pre($grpc.ServiceCall call, $async.Future<$0.GetAccountByTokenRequest> request) async {
+    return getAccountByToken(call, await request);
+  }
+
+  $async.Future<$0.LoginResponse> login_Pre($grpc.ServiceCall call, $async.Future<$0.LoginRequest> request) async {
+    return login(call, await request);
+  }
+
+  $async.Future<$1.Empty> logout_Pre($grpc.ServiceCall call, $async.Future<$0.LogoutRequest> request) async {
+    return logout(call, await request);
+  }
+
   $async.Future<$0.RegisterResponse> register($grpc.ServiceCall call, $0.RegisterRequest request);
   $async.Future<$1.Empty> unregister($grpc.ServiceCall call, $0.UnregisterRequest request);
+  $async.Future<$0.GetAccountByTokenResponse> getAccountByToken($grpc.ServiceCall call, $0.GetAccountByTokenRequest request);
+  $async.Future<$0.LoginResponse> login($grpc.ServiceCall call, $0.LoginRequest request);
+  $async.Future<$1.Empty> logout($grpc.ServiceCall call, $0.LogoutRequest request);
 }

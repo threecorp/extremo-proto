@@ -24,8 +24,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AccountService_Register_FullMethodName   = "/extremo.api.auth.accounts.v1.AccountService/Register"
-	AccountService_Unregister_FullMethodName = "/extremo.api.auth.accounts.v1.AccountService/Unregister"
+	AccountService_Register_FullMethodName          = "/extremo.api.auth.accounts.v1.AccountService/Register"
+	AccountService_Unregister_FullMethodName        = "/extremo.api.auth.accounts.v1.AccountService/Unregister"
+	AccountService_GetAccountByToken_FullMethodName = "/extremo.api.auth.accounts.v1.AccountService/GetAccountByToken"
+	AccountService_Login_FullMethodName             = "/extremo.api.auth.accounts.v1.AccountService/Login"
+	AccountService_Logout_FullMethodName            = "/extremo.api.auth.accounts.v1.AccountService/Logout"
 )
 
 // AccountServiceClient is the client API for AccountService service.
@@ -36,6 +39,44 @@ type AccountServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	// Unregister quit(cancel, unsubscribe) the membership
 	Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// ConfirmEmail confirms a email for it is validated or not.
+	//
+	//	rpc ConfirmEmail(ConfirmEmailRequest) returns (google.protobuf.Empty) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/confirm/email"
+	//	  };
+	//	}
+	//
+	// // EmailExists returns a boolean. It is confirmed value that a users.email exists or not.
+	//
+	//	rpc EmailExists(EmailExistsRequest) returns (google.protobuf.BoolValue) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/exists/email"
+	//	  };
+	//	}
+	//
+	// // AccountExists returns a boolean instead which confirms a account is alive. This ops similar login.
+	//
+	//	rpc AccountExists(AccountExistsRequest) returns (google.protobuf.BoolValue) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/exists/account"
+	//	  };
+	//	}
+	//
+	// GetAccountByToken gets account by token
+	GetAccountByToken(ctx context.Context, in *GetAccountByTokenRequest, opts ...grpc.CallOption) (*GetAccountByTokenResponse, error)
+	// // Cookie returns AccountToken without token
+	//
+	//	rpc Cookie(CookieRequest) returns (extremo.msg.api.v1.AccountToken) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/cookie"
+	//	  };
+	//	}
+	//
+	// Login returns a account
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	// Logout just notify to api server
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type accountServiceClient struct {
@@ -64,6 +105,33 @@ func (c *accountServiceClient) Unregister(ctx context.Context, in *UnregisterReq
 	return out, nil
 }
 
+func (c *accountServiceClient) GetAccountByToken(ctx context.Context, in *GetAccountByTokenRequest, opts ...grpc.CallOption) (*GetAccountByTokenResponse, error) {
+	out := new(GetAccountByTokenResponse)
+	err := c.cc.Invoke(ctx, AccountService_GetAccountByToken_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, AccountService_Login_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, AccountService_Logout_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AccountServiceServer is the server API for AccountService service.
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility
@@ -72,6 +140,44 @@ type AccountServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	// Unregister quit(cancel, unsubscribe) the membership
 	Unregister(context.Context, *UnregisterRequest) (*emptypb.Empty, error)
+	// ConfirmEmail confirms a email for it is validated or not.
+	//
+	//	rpc ConfirmEmail(ConfirmEmailRequest) returns (google.protobuf.Empty) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/confirm/email"
+	//	  };
+	//	}
+	//
+	// // EmailExists returns a boolean. It is confirmed value that a users.email exists or not.
+	//
+	//	rpc EmailExists(EmailExistsRequest) returns (google.protobuf.BoolValue) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/exists/email"
+	//	  };
+	//	}
+	//
+	// // AccountExists returns a boolean instead which confirms a account is alive. This ops similar login.
+	//
+	//	rpc AccountExists(AccountExistsRequest) returns (google.protobuf.BoolValue) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/exists/account"
+	//	  };
+	//	}
+	//
+	// GetAccountByToken gets account by token
+	GetAccountByToken(context.Context, *GetAccountByTokenRequest) (*GetAccountByTokenResponse, error)
+	// // Cookie returns AccountToken without token
+	//
+	//	rpc Cookie(CookieRequest) returns (extremo.msg.api.v1.AccountToken) {
+	//	  option (google.api.http) = {
+	//	    get: "/api/auth/v1/accounts/cookie"
+	//	  };
+	//	}
+	//
+	// Login returns a account
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	// Logout just notify to api server
+	Logout(context.Context, *LogoutRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -84,6 +190,15 @@ func (UnimplementedAccountServiceServer) Register(context.Context, *RegisterRequ
 }
 func (UnimplementedAccountServiceServer) Unregister(context.Context, *UnregisterRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Unregister not implemented")
+}
+func (UnimplementedAccountServiceServer) GetAccountByToken(context.Context, *GetAccountByTokenRequest) (*GetAccountByTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountByToken not implemented")
+}
+func (UnimplementedAccountServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedAccountServiceServer) Logout(context.Context, *LogoutRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}
 
@@ -134,6 +249,60 @@ func _AccountService_Unregister_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccountService_GetAccountByToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAccountByTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).GetAccountByToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_GetAccountByToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).GetAccountByToken(ctx, req.(*GetAccountByTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_Login_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountService_Logout_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).Logout(ctx, req.(*LogoutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AccountService_ServiceDesc is the grpc.ServiceDesc for AccountService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -148,6 +317,18 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Unregister",
 			Handler:    _AccountService_Unregister_Handler,
+		},
+		{
+			MethodName: "GetAccountByToken",
+			Handler:    _AccountService_GetAccountByToken_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _AccountService_Login_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _AccountService_Logout_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
