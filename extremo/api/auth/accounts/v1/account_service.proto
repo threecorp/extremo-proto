@@ -171,7 +171,7 @@ message GetAccountByTokenRequest {
 }
 
 message GetAccountByTokenResponse {
-  extremo.msg.api.v1.AccountToken element = 1 [(validate.rules).message = {required: true}];
+  extremo.msg.api.v1.Account element = 1 [(validate.rules).message = {required: true}];
 }
 
 // A operator has administorator permit
