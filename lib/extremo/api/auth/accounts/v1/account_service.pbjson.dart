@@ -112,14 +112,14 @@ final $typed_data.Uint8List getAccountByTokenRequestDescriptor = $convert.base64
 const GetAccountByTokenResponse$json = {
   '1': 'GetAccountByTokenResponse',
   '2': [
-    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.api.v1.AccountToken', '8': {}, '10': 'element'},
+    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.api.v1.Account', '8': {}, '10': 'element'},
   ],
 };
 
 /// Descriptor for `GetAccountByTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getAccountByTokenResponseDescriptor = $convert.base64Decode(
-    'ChlHZXRBY2NvdW50QnlUb2tlblJlc3BvbnNlEkQKB2VsZW1lbnQYASABKAsyIC5leHRyZW1vLm'
-    '1zZy5hcGkudjEuQWNjb3VudFRva2VuQgj6QgWKAQIQAVIHZWxlbWVudA==');
+    'ChlHZXRBY2NvdW50QnlUb2tlblJlc3BvbnNlEj8KB2VsZW1lbnQYASABKAsyGy5leHRyZW1vLm'
+    '1zZy5hcGkudjEuQWNjb3VudEII+kIFigECEAFSB2VsZW1lbnQ=');
 
 @$core.Deprecated('Use spoofLoginRequestDescriptor instead')
 const SpoofLoginRequest$json = {

@@ -433,7 +433,7 @@ class GetAccountByTokenRequest extends $pb.GeneratedMessage {
 
 class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   factory GetAccountByTokenResponse({
-    $7.AccountToken? element,
+    $7.Account? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -446,7 +446,7 @@ class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   factory GetAccountByTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetAccountByTokenResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
-    ..aOM<$7.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $7.AccountToken.create)
+    ..aOM<$7.Account>(1, _omitFieldNames ? '' : 'element', subBuilder: $7.Account.create)
     ..hasRequiredFields = false
   ;
 
@@ -472,15 +472,15 @@ class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   static GetAccountByTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $7.AccountToken get element => $_getN(0);
+  $7.Account get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($7.AccountToken v) { setField(1, v); }
+  set element($7.Account v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $7.AccountToken ensureElement() => $_ensure(0);
+  $7.Account ensureElement() => $_ensure(0);
 }
 
 /// A operator has administorator permit
