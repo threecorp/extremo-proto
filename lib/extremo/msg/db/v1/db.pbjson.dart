@@ -125,3 +125,39 @@ final $typed_data.Uint8List artifactImageDescriptor = $convert.base64Decode(
     'Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgIIA'
     'EoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
 
+@$core.Deprecated('Use reservationDescriptor instead')
+const Reservation$json = {
+  '1': 'Reservation',
+  '2': [
+    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'user_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'userFk'},
+    {'1': 'user', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'user'},
+    {'1': 'artifact_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'artifactFk'},
+    {'1': 'artifact', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifact'},
+    {'1': 'name', '3': 6, '4': 1, '5': 9, '8': {}, '10': 'name'},
+    {'1': 'link', '3': 7, '4': 1, '5': 9, '8': {}, '10': 'link'},
+    {'1': 'summary', '3': 8, '4': 1, '5': 9, '8': {}, '10': 'summary'},
+    {'1': 'status', '3': 9, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.ReservationEnum.Status', '8': {}, '10': 'status'},
+    {'1': 'opened_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
+    {'1': 'closed_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
+    {'1': 'created_at', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'updated_at', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+  ],
+};
+
+/// Descriptor for `Reservation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List reservationDescriptor = $convert.base64Decode(
+    'CgtSZXNlcnZhdGlvbhIXCgJwaxgBIAEoBUIH+kIEGgIgAFICcGsSIAoHdXNlcl9maxgCIAEoBU'
+    'IH+kIEGgIgAFIGdXNlckZrEjUKBHVzZXIYAyABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2Vy'
+    'Qgj6QgWKAQIQAVIEdXNlchIoCgthcnRpZmFjdF9maxgEIAEoBUIH+kIEGgIgAFIKYXJ0aWZhY3'
+    'RGaxJBCghhcnRpZmFjdBgFIAEoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgj6QgWK'
+    'AQIQAVIIYXJ0aWZhY3QSHgoEbmFtZRgGIAEoCUIK+kIHcgUQARj/AVIEbmFtZRIhCgRsaW5rGA'
+    'cgASgJQg36QgpyCBAAGIAIiAEBUgRsaW5rEiQKB3N1bW1hcnkYCCABKAlCCvpCB3IFEAAYgAhS'
+    'B3N1bW1hcnkSSwoGc3RhdHVzGAkgASgOMikuZXh0cmVtby5tc2cuZGIudjEuUmVzZXJ2YXRpb2'
+    '5FbnVtLlN0YXR1c0II+kIFggECIABSBnN0YXR1cxJBCglvcGVuZWRfYXQYCiABKAsyGi5nb29n'
+    'bGUucHJvdG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAVIIb3BlbmVkQXQSQQoJY2xvc2VkX2F0GA'
+    'sgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCAFSCGNsb3NlZEF0EjkK'
+    'CmNyZWF0ZWRfYXQYDCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQX'
+    'QSOQoKdXBkYXRlZF9hdBgNIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0'
+    'ZWRBdA==');
+

@@ -55,3 +55,24 @@ final $typed_data.Uint8List artifactImageEnumDescriptor = $convert.base64Decode(
     'ChFBcnRpZmFjdEltYWdlRW51bSI+CgRLaW5kEhQKEEtJTkRfVU5TUEVDSUZJRUQQABIOCgpLSU'
     '5EX1RIVU1CEAESEAoMS0lORF9DT05URU5UEAI=');
 
+@$core.Deprecated('Use reservationEnumDescriptor instead')
+const ReservationEnum$json = {
+  '1': 'ReservationEnum',
+  '4': [ReservationEnum_Status$json],
+};
+
+@$core.Deprecated('Use reservationEnumDescriptor instead')
+const ReservationEnum_Status$json = {
+  '1': 'Status',
+  '2': [
+    {'1': 'STATUS_UNSPECIFIED', '2': 0},
+    {'1': 'STATUS_DRAFT', '2': 1},
+    {'1': 'STATUS_RESERVED', '2': 2},
+  ],
+};
+
+/// Descriptor for `ReservationEnum`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List reservationEnumDescriptor = $convert.base64Decode(
+    'Cg9SZXNlcnZhdGlvbkVudW0iRwoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEhAKDF'
+    'NUQVRVU19EUkFGVBABEhMKD1NUQVRVU19SRVNFUlZFRBAC');
+

@@ -720,6 +720,249 @@ class ArtifactImage extends $pb.GeneratedMessage {
   $5.Timestamp ensureUpdatedAt() => $_ensure(7);
 }
 
+class Reservation extends $pb.GeneratedMessage {
+  factory Reservation({
+    $core.int? pk,
+    $core.int? userFk,
+    User? user,
+    $core.int? artifactFk,
+    Artifact? artifact,
+    $core.String? name,
+    $core.String? link,
+    $core.String? summary,
+    $8.ReservationEnum_Status? status,
+    $5.Timestamp? openedAt,
+    $5.Timestamp? closedAt,
+    $5.Timestamp? createdAt,
+    $5.Timestamp? updatedAt,
+  }) {
+    final $result = create();
+    if (pk != null) {
+      $result.pk = pk;
+    }
+    if (userFk != null) {
+      $result.userFk = userFk;
+    }
+    if (user != null) {
+      $result.user = user;
+    }
+    if (artifactFk != null) {
+      $result.artifactFk = artifactFk;
+    }
+    if (artifact != null) {
+      $result.artifact = artifact;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (link != null) {
+      $result.link = link;
+    }
+    if (summary != null) {
+      $result.summary = summary;
+    }
+    if (status != null) {
+      $result.status = status;
+    }
+    if (openedAt != null) {
+      $result.openedAt = openedAt;
+    }
+    if (closedAt != null) {
+      $result.closedAt = closedAt;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
+    if (updatedAt != null) {
+      $result.updatedAt = updatedAt;
+    }
+    return $result;
+  }
+  Reservation._() : super();
+  factory Reservation.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Reservation.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Reservation', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'userFk', $pb.PbFieldType.O3)
+    ..aOM<User>(3, _omitFieldNames ? '' : 'user', subBuilder: User.create)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
+    ..aOM<Artifact>(5, _omitFieldNames ? '' : 'artifact', subBuilder: Artifact.create)
+    ..aOS(6, _omitFieldNames ? '' : 'name')
+    ..aOS(7, _omitFieldNames ? '' : 'link')
+    ..aOS(8, _omitFieldNames ? '' : 'summary')
+    ..e<$8.ReservationEnum_Status>(9, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $8.ReservationEnum_Status.STATUS_UNSPECIFIED, valueOf: $8.ReservationEnum_Status.valueOf, enumValues: $8.ReservationEnum_Status.values)
+    ..aOM<$5.Timestamp>(10, _omitFieldNames ? '' : 'openedAt', subBuilder: $5.Timestamp.create)
+    ..aOM<$5.Timestamp>(11, _omitFieldNames ? '' : 'closedAt', subBuilder: $5.Timestamp.create)
+    ..aOM<$5.Timestamp>(12, _omitFieldNames ? '' : 'createdAt', subBuilder: $5.Timestamp.create)
+    ..aOM<$5.Timestamp>(13, _omitFieldNames ? '' : 'updatedAt', subBuilder: $5.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Reservation clone() => Reservation()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Reservation copyWith(void Function(Reservation) updates) => super.copyWith((message) => updates(message as Reservation)) as Reservation;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Reservation create() => Reservation._();
+  Reservation createEmptyInstance() => create();
+  static $pb.PbList<Reservation> createRepeated() => $pb.PbList<Reservation>();
+  @$core.pragma('dart2js:noInline')
+  static Reservation getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reservation>(create);
+  static Reservation? _defaultInstance;
+
+  /// Priamry KEY
+  @$pb.TagNumber(1)
+  $core.int get pk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set pk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPk() => clearField(1);
+
+  /// FK
+  @$pb.TagNumber(2)
+  $core.int get userFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set userFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserFk() => clearField(2);
+
+  /// Relation Message
+  @$pb.TagNumber(3)
+  User get user => $_getN(2);
+  @$pb.TagNumber(3)
+  set user(User v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUser() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUser() => clearField(3);
+  @$pb.TagNumber(3)
+  User ensureUser() => $_ensure(2);
+
+  /// FK
+  @$pb.TagNumber(4)
+  $core.int get artifactFk => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set artifactFk($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasArtifactFk() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearArtifactFk() => clearField(4);
+
+  /// Relation Message
+  @$pb.TagNumber(5)
+  Artifact get artifact => $_getN(4);
+  @$pb.TagNumber(5)
+  set artifact(Artifact v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasArtifact() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearArtifact() => clearField(5);
+  @$pb.TagNumber(5)
+  Artifact ensureArtifact() => $_ensure(4);
+
+  /// Name of resrvation
+  @$pb.TagNumber(6)
+  $core.String get name => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set name($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasName() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearName() => clearField(6);
+
+  /// Atag Link. Therefore must be set absolute URI
+  @$pb.TagNumber(7)
+  $core.String get link => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set link($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasLink() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearLink() => clearField(7);
+
+  /// Describe to what is this schedule
+  @$pb.TagNumber(8)
+  $core.String get summary => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set summary($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasSummary() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearSummary() => clearField(8);
+
+  /// status cannot be NONE (0)
+  @$pb.TagNumber(9)
+  $8.ReservationEnum_Status get status => $_getN(8);
+  @$pb.TagNumber(9)
+  set status($8.ReservationEnum_Status v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasStatus() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearStatus() => clearField(9);
+
+  /// start
+  @$pb.TagNumber(10)
+  $5.Timestamp get openedAt => $_getN(9);
+  @$pb.TagNumber(10)
+  set openedAt($5.Timestamp v) { setField(10, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasOpenedAt() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearOpenedAt() => clearField(10);
+  @$pb.TagNumber(10)
+  $5.Timestamp ensureOpenedAt() => $_ensure(9);
+
+  /// until
+  @$pb.TagNumber(11)
+  $5.Timestamp get closedAt => $_getN(10);
+  @$pb.TagNumber(11)
+  set closedAt($5.Timestamp v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasClosedAt() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearClosedAt() => clearField(11);
+  @$pb.TagNumber(11)
+  $5.Timestamp ensureClosedAt() => $_ensure(10);
+
+  /// Created time
+  @$pb.TagNumber(12)
+  $5.Timestamp get createdAt => $_getN(11);
+  @$pb.TagNumber(12)
+  set createdAt($5.Timestamp v) { setField(12, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasCreatedAt() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearCreatedAt() => clearField(12);
+  @$pb.TagNumber(12)
+  $5.Timestamp ensureCreatedAt() => $_ensure(11);
+
+  /// Updated time
+  @$pb.TagNumber(13)
+  $5.Timestamp get updatedAt => $_getN(12);
+  @$pb.TagNumber(13)
+  set updatedAt($5.Timestamp v) { setField(13, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasUpdatedAt() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearUpdatedAt() => clearField(13);
+  @$pb.TagNumber(13)
+  $5.Timestamp ensureUpdatedAt() => $_ensure(12);
+}
+
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

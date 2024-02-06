@@ -47,5 +47,22 @@ class ArtifactImageEnum_Kind extends $pb.ProtobufEnum {
   const ArtifactImageEnum_Kind._($core.int v, $core.String n) : super(v, n);
 }
 
+class ReservationEnum_Status extends $pb.ProtobufEnum {
+  static const ReservationEnum_Status STATUS_UNSPECIFIED = ReservationEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
+  static const ReservationEnum_Status STATUS_DRAFT = ReservationEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
+  static const ReservationEnum_Status STATUS_RESERVED = ReservationEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVED');
+
+  static const $core.List<ReservationEnum_Status> values = <ReservationEnum_Status> [
+    STATUS_UNSPECIFIED,
+    STATUS_DRAFT,
+    STATUS_RESERVED,
+  ];
+
+  static final $core.Map<$core.int, ReservationEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static ReservationEnum_Status? valueOf($core.int value) => _byValue[value];
+
+  const ReservationEnum_Status._($core.int v, $core.String n) : super(v, n);
+}
+
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

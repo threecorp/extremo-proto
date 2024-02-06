@@ -1165,3 +1165,364 @@ var _ interface {
 } = ArtifactImageValidationError{}
 
 var _ArtifactImage_Path_Pattern = regexp.MustCompile("\\.(?:jpg|jpeg|gif|png|bmp|webp|tif)$")
+
+// Validate checks the field values on Reservation with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Reservation) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Reservation with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in ReservationMultiError, or
+// nil if none found.
+func (m *Reservation) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Reservation) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := ReservationValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetUserFk() <= 0 {
+		err := ReservationValidationError{
+			field:  "UserFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetUser() == nil {
+		err := ReservationValidationError{
+			field:  "User",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetUser()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservationValidationError{
+				field:  "User",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetArtifactFk() <= 0 {
+		err := ReservationValidationError{
+			field:  "ArtifactFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetArtifact() == nil {
+		err := ReservationValidationError{
+			field:  "Artifact",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetArtifact()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "Artifact",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "Artifact",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetArtifact()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservationValidationError{
+				field:  "Artifact",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := ReservationValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetLink()); l < 0 || l > 1024 {
+		err := ReservationValidationError{
+			field:  "Link",
+			reason: "value length must be between 0 and 1024 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if uri, err := url.Parse(m.GetLink()); err != nil {
+		err = ReservationValidationError{
+			field:  "Link",
+			reason: "value must be a valid URI",
+			cause:  err,
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	} else if !uri.IsAbs() {
+		err := ReservationValidationError{
+			field:  "Link",
+			reason: "value must be absolute",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetSummary()); l < 0 || l > 1024 {
+		err := ReservationValidationError{
+			field:  "Summary",
+			reason: "value length must be between 0 and 1024 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _Reservation_Status_NotInLookup[m.GetStatus()]; ok {
+		err := ReservationValidationError{
+			field:  "Status",
+			reason: "value must not be in list [STATUS_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOpenedAt() == nil {
+		err := ReservationValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := ReservationValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservationValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservationValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservationValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ReservationMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReservationMultiError is an error wrapping multiple validation errors
+// returned by Reservation.ValidateAll() if the designated constraints aren't met.
+type ReservationMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReservationMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReservationMultiError) AllErrors() []error { return m }
+
+// ReservationValidationError is the validation error returned by
+// Reservation.Validate if the designated constraints aren't met.
+type ReservationValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReservationValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReservationValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReservationValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReservationValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReservationValidationError) ErrorName() string { return "ReservationValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ReservationValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReservation.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReservationValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReservationValidationError{}
+
+var _Reservation_Status_NotInLookup = map[ReservationEnum_Status]struct{}{
+	0: {},
+}

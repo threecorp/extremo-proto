@@ -30,3 +30,11 @@ message ArtifactImageEnum {
     KIND_CONTENT = 2;
   }
 }
+
+message ReservationEnum {
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_DRAFT = 1;
+    STATUS_RESERVED = 2;
+  }
+}

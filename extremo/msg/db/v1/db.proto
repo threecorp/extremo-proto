@@ -133,3 +133,44 @@ message ArtifactImage {
   google.protobuf.Timestamp created_at = 7;
   google.protobuf.Timestamp updated_at = 8;
 }
+
+message Reservation {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 user_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User user = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 artifact_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Artifact artifact = 5 [(validate.rules).message = {required: true}];
+  // Name of resrvation
+  string name = 6 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Atag Link. Therefore must be set absolute URI
+  string link = 7 [(validate.rules).string = {
+    uri: true
+    min_len: 0
+    max_len: 1024
+  }];
+  // Describe to what is this schedule
+  string summary = 8 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // status cannot be NONE (0)
+  ReservationEnum.Status status = 9 [(validate.rules).enum = {
+    not_in: [0]
+  }];
+  // start
+  google.protobuf.Timestamp opened_at = 10 [(validate.rules).timestamp = {required: true}];
+  // until
+  google.protobuf.Timestamp closed_at = 11 [(validate.rules).timestamp = {required: true}];
+  // Created time
+  google.protobuf.Timestamp created_at = 12; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 13; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}

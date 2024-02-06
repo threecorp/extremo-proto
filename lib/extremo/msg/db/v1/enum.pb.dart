@@ -79,5 +79,37 @@ class ArtifactImageEnum extends $pb.GeneratedMessage {
   static ArtifactImageEnum? _defaultInstance;
 }
 
+class ReservationEnum extends $pb.GeneratedMessage {
+  factory ReservationEnum() => create();
+  ReservationEnum._() : super();
+  factory ReservationEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReservationEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReservationEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReservationEnum clone() => ReservationEnum()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReservationEnum copyWith(void Function(ReservationEnum) updates) => super.copyWith((message) => updates(message as ReservationEnum)) as ReservationEnum;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReservationEnum create() => ReservationEnum._();
+  ReservationEnum createEmptyInstance() => create();
+  static $pb.PbList<ReservationEnum> createRepeated() => $pb.PbList<ReservationEnum>();
+  @$core.pragma('dart2js:noInline')
+  static ReservationEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReservationEnum>(create);
+  static ReservationEnum? _defaultInstance;
+}
+
 
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
