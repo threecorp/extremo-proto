@@ -147,7 +147,7 @@ message Reservation {
   Artifact artifact = 5 [(validate.rules).message = {required: true}];
   // Name of resrvation
   string name = 6 [(validate.rules).string = {
-    min_len: 1
+    min_len: 0
     max_len: 255
   }];
   // Atag Link. Therefore must be set absolute URI

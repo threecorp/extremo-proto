@@ -1301,10 +1301,10 @@ func (m *Reservation) validate(all bool) error {
 		}
 	}
 
-	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
 		err := ReservationValidationError{
 			field:  "Name",
-			reason: "value length must be between 1 and 255 runes, inclusive",
+			reason: "value length must be between 0 and 255 runes, inclusive",
 		}
 		if !all {
 			return err
