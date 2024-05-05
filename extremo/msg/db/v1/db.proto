@@ -174,3 +174,33 @@ message Reservation {
   // Updated time
   google.protobuf.Timestamp updated_at = 13; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
 }
+
+message Message {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 from_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User from_user = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 to_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User to_user = 5 [(validate.rules).message = {required: true}];
+  // Content
+  string message = 6 [(validate.rules).string = {
+    min_len: 1
+    max_len: 10240
+  }];
+  // Atag Link. Therefore must be set absolute URI
+  bool is_read = 7;
+  // Read time
+  google.protobuf.Timestamp read_at = 8 [(validate.rules).timestamp.required = false];
+  // Deleted message
+  bool is_deleted = 9;
+  // Delete time
+  google.protobuf.Timestamp deleted_at = 10 [(validate.rules).timestamp.required = false];
+  // Created time
+  google.protobuf.Timestamp created_at = 11; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 12; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}

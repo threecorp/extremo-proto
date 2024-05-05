@@ -161,3 +161,36 @@ final $typed_data.Uint8List reservationDescriptor = $convert.base64Decode(
     'QSOQoKdXBkYXRlZF9hdBgNIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0'
     'ZWRBdA==');
 
+@$core.Deprecated('Use messageDescriptor instead')
+const Message$json = {
+  '1': 'Message',
+  '2': [
+    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'from_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'fromFk'},
+    {'1': 'from_user', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'fromUser'},
+    {'1': 'to_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'toFk'},
+    {'1': 'to_user', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'toUser'},
+    {'1': 'message', '3': 6, '4': 1, '5': 9, '8': {}, '10': 'message'},
+    {'1': 'is_read', '3': 7, '4': 1, '5': 8, '10': 'isRead'},
+    {'1': 'read_at', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'readAt'},
+    {'1': 'is_deleted', '3': 9, '4': 1, '5': 8, '10': 'isDeleted'},
+    {'1': 'deleted_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'deletedAt'},
+    {'1': 'created_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'updated_at', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+  ],
+};
+
+/// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
+    'CgdNZXNzYWdlEhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIgCgdmcm9tX2ZrGAIgASgFQgf6Qg'
+    'QaAiAAUgZmcm9tRmsSPgoJZnJvbV91c2VyGAMgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuVXNl'
+    'ckII+kIFigECEAFSCGZyb21Vc2VyEhwKBXRvX2ZrGAQgASgFQgf6QgQaAiAAUgR0b0ZrEjoKB3'
+    'RvX3VzZXIYBSABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgj6QgWKAQIQAVIGdG9Vc2Vy'
+    'EiQKB21lc3NhZ2UYBiABKAlCCvpCB3IFEAEYgFBSB21lc3NhZ2USFwoHaXNfcmVhZBgHIAEoCF'
+    'IGaXNSZWFkEj0KB3JlYWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgj6'
+    'QgWyAQIIAFIGcmVhZEF0Eh0KCmlzX2RlbGV0ZWQYCSABKAhSCWlzRGVsZXRlZBJDCgpkZWxldG'
+    'VkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCABSCWRlbGV0'
+    'ZWRBdBI5CgpjcmVhdGVkX2F0GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3'
+    'JlYXRlZEF0EjkKCnVwZGF0ZWRfYXQYDCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1w'
+    'Ugl1cGRhdGVkQXQ=');
+
