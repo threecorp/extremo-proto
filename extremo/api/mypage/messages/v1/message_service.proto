@@ -105,30 +105,15 @@ message GetResponse {
 
 // PrimaryKey is set by JWT Token
 message CreateRequest {
-  // Message Title
-  string title = 1 [(validate.rules).string = {
+  // FK
+  int32 from_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 to_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Content
+  string message = 3 [(validate.rules).string = {
     min_len: 1
-    max_len: 255
+    max_len: 10240
   }];
-  // Message content text NOT NULL
-  string content = 2;
-  // Message summary varchar(2048) NOT NULL DEFAULT ''
-  string summary = 3;
-  // public or private
-  bool is_published = 4;
-  // start
-  google.protobuf.Timestamp publish_from = 5 [(validate.rules).timestamp = {required: false}];
-  // until
-  google.protobuf.Timestamp publish_until = 6 [(validate.rules).timestamp = {required: false}];
-  // message_images table: datauri
-  // string thumb = 7 [
-  //   (validate.rules).string = {
-  //     min_bytes: 10
-  //     max_bytes: 25000000
-  //     prefix: "data:image/"
-  //     contains: ";base64,"
-  //   }
-  // ];
 }
 
 message CreateResponse {

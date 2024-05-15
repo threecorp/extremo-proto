@@ -254,31 +254,19 @@ class GetResponse extends $pb.GeneratedMessage {
 /// PrimaryKey is set by JWT Token
 class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest({
-    $core.String? title,
-    $core.String? content,
-    $core.String? summary,
-    $core.bool? isPublished,
-    $6.Timestamp? publishFrom,
-    $6.Timestamp? publishUntil,
+    $core.int? fromFk,
+    $core.int? toFk,
+    $core.String? message,
   }) {
     final $result = create();
-    if (title != null) {
-      $result.title = title;
+    if (fromFk != null) {
+      $result.fromFk = fromFk;
     }
-    if (content != null) {
-      $result.content = content;
+    if (toFk != null) {
+      $result.toFk = toFk;
     }
-    if (summary != null) {
-      $result.summary = summary;
-    }
-    if (isPublished != null) {
-      $result.isPublished = isPublished;
-    }
-    if (publishFrom != null) {
-      $result.publishFrom = publishFrom;
-    }
-    if (publishUntil != null) {
-      $result.publishUntil = publishUntil;
+    if (message != null) {
+      $result.message = message;
     }
     return $result;
   }
@@ -287,12 +275,9 @@ class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'title')
-    ..aOS(2, _omitFieldNames ? '' : 'content')
-    ..aOS(3, _omitFieldNames ? '' : 'summary')
-    ..aOB(4, _omitFieldNames ? '' : 'isPublished')
-    ..aOM<$6.Timestamp>(5, _omitFieldNames ? '' : 'publishFrom', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(6, _omitFieldNames ? '' : 'publishUntil', subBuilder: $6.Timestamp.create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
+    ..aOS(3, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -317,69 +302,35 @@ class CreateRequest extends $pb.GeneratedMessage {
   static CreateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateRequest>(create);
   static CreateRequest? _defaultInstance;
 
-  /// Message Title
+  /// FK
   @$pb.TagNumber(1)
-  $core.String get title => $_getSZ(0);
+  $core.int get fromFk => $_getIZ(0);
   @$pb.TagNumber(1)
-  set title($core.String v) { $_setString(0, v); }
+  set fromFk($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTitle() => $_has(0);
+  $core.bool hasFromFk() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTitle() => clearField(1);
+  void clearFromFk() => clearField(1);
 
-  /// Message content text NOT NULL
+  /// FK
   @$pb.TagNumber(2)
-  $core.String get content => $_getSZ(1);
+  $core.int get toFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set content($core.String v) { $_setString(1, v); }
+  set toFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasContent() => $_has(1);
+  $core.bool hasToFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearContent() => clearField(2);
+  void clearToFk() => clearField(2);
 
-  /// Message summary varchar(2048) NOT NULL DEFAULT ''
+  /// Content
   @$pb.TagNumber(3)
-  $core.String get summary => $_getSZ(2);
+  $core.String get message => $_getSZ(2);
   @$pb.TagNumber(3)
-  set summary($core.String v) { $_setString(2, v); }
+  set message($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSummary() => $_has(2);
+  $core.bool hasMessage() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSummary() => clearField(3);
-
-  /// public or private
-  @$pb.TagNumber(4)
-  $core.bool get isPublished => $_getBF(3);
-  @$pb.TagNumber(4)
-  set isPublished($core.bool v) { $_setBool(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasIsPublished() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearIsPublished() => clearField(4);
-
-  /// start
-  @$pb.TagNumber(5)
-  $6.Timestamp get publishFrom => $_getN(4);
-  @$pb.TagNumber(5)
-  set publishFrom($6.Timestamp v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasPublishFrom() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearPublishFrom() => clearField(5);
-  @$pb.TagNumber(5)
-  $6.Timestamp ensurePublishFrom() => $_ensure(4);
-
-  /// until
-  @$pb.TagNumber(6)
-  $6.Timestamp get publishUntil => $_getN(5);
-  @$pb.TagNumber(6)
-  set publishUntil($6.Timestamp v) { setField(6, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasPublishUntil() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearPublishUntil() => clearField(6);
-  @$pb.TagNumber(6)
-  $6.Timestamp ensurePublishUntil() => $_ensure(5);
+  void clearMessage() => clearField(3);
 }
 
 class CreateResponse extends $pb.GeneratedMessage {

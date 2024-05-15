@@ -71,23 +71,17 @@ final $typed_data.Uint8List getResponseDescriptor = $convert.base64Decode(
 const CreateRequest$json = {
   '1': 'CreateRequest',
   '2': [
-    {'1': 'title', '3': 1, '4': 1, '5': 9, '8': {}, '10': 'title'},
-    {'1': 'content', '3': 2, '4': 1, '5': 9, '10': 'content'},
-    {'1': 'summary', '3': 3, '4': 1, '5': 9, '10': 'summary'},
-    {'1': 'is_published', '3': 4, '4': 1, '5': 8, '10': 'isPublished'},
-    {'1': 'publish_from', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'publishFrom'},
-    {'1': 'publish_until', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'publishUntil'},
+    {'1': 'from_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'fromFk'},
+    {'1': 'to_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'toFk'},
+    {'1': 'message', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'message'},
   ],
 };
 
 /// Descriptor for `CreateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createRequestDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVSZXF1ZXN0EiAKBXRpdGxlGAEgASgJQgr6QgdyBRABGP8BUgV0aXRsZRIYCgdjb2'
-    '50ZW50GAIgASgJUgdjb250ZW50EhgKB3N1bW1hcnkYAyABKAlSB3N1bW1hcnkSIQoMaXNfcHVi'
-    'bGlzaGVkGAQgASgIUgtpc1B1Ymxpc2hlZBJHCgxwdWJsaXNoX2Zyb20YBSABKAsyGi5nb29nbG'
-    'UucHJvdG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAFILcHVibGlzaEZyb20SSQoNcHVibGlzaF91'
-    'bnRpbBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggAUgxwdWJsaX'
-    'NoVW50aWw=');
+    'Cg1DcmVhdGVSZXF1ZXN0EiAKB2Zyb21fZmsYASABKAVCB/pCBBoCIABSBmZyb21GaxIcCgV0b1'
+    '9maxgCIAEoBUIH+kIEGgIgAFIEdG9GaxIkCgdtZXNzYWdlGAMgASgJQgr6QgdyBRABGIBQUgdt'
+    'ZXNzYWdl');
 
 @$core.Deprecated('Use createResponseDescriptor instead')
 const CreateResponse$json = {
