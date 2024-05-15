@@ -1,0 +1,230 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
+syntax = "proto3";
+
+package extremo.api.mypage.messages.v1;
+
+// import "extremo/msg/api/v1/api.proto";
+import "extremo/msg/db/v1/db.proto";
+import "extremo/msg/db/v1/enum.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+// import "google/protobuf/field_mask.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/messages/v1;messages";
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "MessageServiceProto";
+option java_package = "com.extremo.api.mypage.messages.v1";
+
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+// Service for reading from and writing to existing Messages.
+//
+service MessageService {
+  // Update updates a Message with then return a Message
+  rpc Update(UpdateRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/mypage/v1/messages/{pk}"
+      body: "*"
+    };
+  }
+  // Delete deletes a Message with return nothing
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {delete: "/api/mypage/v1/messages/{pk}"};
+  }
+  // Get returns a message
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/messages/{pk}"};
+  }
+  // List returns Messages as list with pagination
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/messages"};
+  }
+  // Create creates a Message with then return a Message
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/api/mypage/v1/messages"
+      body: "*"
+    };
+  }
+  // // CreateImage creates a image
+  // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
+  //   option (google.api.http) = {
+  //     post: "/api/mypage/v1/messages/{message_fk}/image"
+  //     body: "*"
+  //   };
+  // }
+  // // UpdateImage creates a image
+  // rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
+  //   option (google.api.http) = {
+  //     put: "/api/mypage/v1/messages/{message_fk}/image/{pk}"
+  //     body: "*"
+  //   };
+  // }
+}
+
+message ListRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // page number
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 3 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Message elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message GetRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  // Relation Key
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+}
+
+message GetResponse {
+  // A message message. if request message is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+}
+
+// PrimaryKey is set by JWT Token
+message CreateRequest {
+  // Message Title
+  string title = 1 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Message content text NOT NULL
+  string content = 2;
+  // Message summary varchar(2048) NOT NULL DEFAULT ''
+  string summary = 3;
+  // public or private
+  bool is_published = 4;
+  // start
+  google.protobuf.Timestamp publish_from = 5 [(validate.rules).timestamp = {required: false}];
+  // until
+  google.protobuf.Timestamp publish_until = 6 [(validate.rules).timestamp = {required: false}];
+  // message_images table: datauri
+  // string thumb = 7 [
+  //   (validate.rules).string = {
+  //     min_bytes: 10
+  //     max_bytes: 25000000
+  //     prefix: "data:image/"
+  //     contains: ";base64,"
+  //   }
+  // ];
+}
+
+message CreateResponse {
+  // A user message. if request user is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+}
+
+message UpdateRequest {
+  // Primary Key is confirmed by JWT Token
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Message Title
+  string title = 2 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Message content text NOT NULL
+  string content = 3;
+  // Message summary varchar(1023) NOT NULL DEFAULT ''
+  string summary = 4;
+  // public or private
+  bool is_published = 5;
+  // start
+  google.protobuf.Timestamp publish_from = 6 [(validate.rules).timestamp = {required: false}];
+  // until
+  google.protobuf.Timestamp publish_until = 7 [(validate.rules).timestamp = {required: false}];
+  // message_images table: datauri
+  // string thumb = 8 [
+  //   (validate.rules).string = {
+  //     min_bytes: 10
+  //     max_bytes: 25000000
+  //     prefix: "data:image/"
+  //     contains: ";base64,"
+  //   }
+  // ];
+}
+
+message UpdateResponse {
+  // A user message. if request user is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+}
+
+message DeleteRequest {
+  // Primary Key is confirmed by JWT Token
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+}
+
+// message CreateImageRequest {
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 message_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.MessageImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+
+// message CreateImageResponse {
+//   // A user message. if request user is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.MessageImage element = 1 [(validate.rules).message = {required: true}];
+// }
+//
+// message UpdateImageRequest {
+//   // XXX: PrimaryKey is checked correct value by JWT Token
+//   int32 pk = 5 [(validate.rules).int32 = {gt: 0}];
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 message_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.MessageImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+//
+// message UpdateImageResponse {
+//   // A user message. if request user is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.MessageImage element = 1 [(validate.rules).message = {required: true}];
+// }

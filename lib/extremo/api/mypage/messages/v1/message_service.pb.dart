@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: extremo/api/mypage/artifacts/v1/artifact_service.proto
+//  source: extremo/api/mypage/messages/v1/message_service.proto
 //
 // @dart = 2.12
 
@@ -15,7 +15,6 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../../google/protobuf/timestamp.pb.dart' as $6;
 import '../../../../msg/db/v1/db.pb.dart' as $10;
-import '../../../../msg/db/v1/enum.pbenum.dart' as $9;
 
 class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest({
@@ -35,7 +34,7 @@ class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
@@ -88,7 +87,7 @@ class ListRequest extends $pb.GeneratedMessage {
 
 class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse({
-    $core.Iterable<$10.Artifact>? elements,
+    $core.Iterable<$10.Message>? elements,
     $core.int? totalSize,
   }) {
     final $result = create();
@@ -104,8 +103,8 @@ class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..pc<$10.Artifact>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $10.Artifact.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..pc<$10.Message>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $10.Message.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -133,7 +132,7 @@ class ListResponse extends $pb.GeneratedMessage {
 
   /// article msg.db
   @$pb.TagNumber(1)
-  $core.List<$10.Artifact> get elements => $_getList(0);
+  $core.List<$10.Message> get elements => $_getList(0);
 
   /// Total Size
   @$pb.TagNumber(2)
@@ -160,7 +159,7 @@ class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -201,7 +200,7 @@ class GetRequest extends $pb.GeneratedMessage {
 
 class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse({
-    $10.Artifact? element,
+    $10.Message? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -213,8 +212,8 @@ class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$10.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Artifact.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..aOM<$10.Message>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Message.create)
     ..hasRequiredFields = false
   ;
 
@@ -239,17 +238,17 @@ class GetResponse extends $pb.GeneratedMessage {
   static GetResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetResponse>(create);
   static GetResponse? _defaultInstance;
 
-  /// A artifact message. if request artifact is not published, it filtered them. so response might be empty.
+  /// A message message. if request message is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $10.Artifact get element => $_getN(0);
+  $10.Message get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($10.Artifact v) { setField(1, v); }
+  set element($10.Message v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $10.Artifact ensureElement() => $_ensure(0);
+  $10.Message ensureElement() => $_ensure(0);
 }
 
 /// PrimaryKey is set by JWT Token
@@ -287,7 +286,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'title')
     ..aOS(2, _omitFieldNames ? '' : 'content')
     ..aOS(3, _omitFieldNames ? '' : 'summary')
@@ -318,7 +317,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   static CreateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateRequest>(create);
   static CreateRequest? _defaultInstance;
 
-  /// Artifact Title
+  /// Message Title
   @$pb.TagNumber(1)
   $core.String get title => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -328,7 +327,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTitle() => clearField(1);
 
-  /// Artifact content text NOT NULL
+  /// Message content text NOT NULL
   @$pb.TagNumber(2)
   $core.String get content => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -338,7 +337,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearContent() => clearField(2);
 
-  /// Artifact summary varchar(2048) NOT NULL DEFAULT ''
+  /// Message summary varchar(2048) NOT NULL DEFAULT ''
   @$pb.TagNumber(3)
   $core.String get summary => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -385,7 +384,7 @@ class CreateRequest extends $pb.GeneratedMessage {
 
 class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse({
-    $10.Artifact? element,
+    $10.Message? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -397,8 +396,8 @@ class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$10.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Artifact.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..aOM<$10.Message>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Message.create)
     ..hasRequiredFields = false
   ;
 
@@ -425,15 +424,15 @@ class CreateResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $10.Artifact get element => $_getN(0);
+  $10.Message get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($10.Artifact v) { setField(1, v); }
+  set element($10.Message v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $10.Artifact ensureElement() => $_ensure(0);
+  $10.Message ensureElement() => $_ensure(0);
 }
 
 class UpdateRequest extends $pb.GeneratedMessage {
@@ -474,7 +473,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
   factory UpdateRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory UpdateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..aOS(3, _omitFieldNames ? '' : 'content')
@@ -516,7 +515,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearPk() => clearField(1);
 
-  /// Artifact Title
+  /// Message Title
   @$pb.TagNumber(2)
   $core.String get title => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -526,7 +525,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearTitle() => clearField(2);
 
-  /// Artifact content text NOT NULL
+  /// Message content text NOT NULL
   @$pb.TagNumber(3)
   $core.String get content => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -536,7 +535,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearContent() => clearField(3);
 
-  /// Artifact summary varchar(1023) NOT NULL DEFAULT ''
+  /// Message summary varchar(1023) NOT NULL DEFAULT ''
   @$pb.TagNumber(4)
   $core.String get summary => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -583,7 +582,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
 
 class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse({
-    $10.Artifact? element,
+    $10.Message? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -595,8 +594,8 @@ class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory UpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$10.Artifact>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Artifact.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..aOM<$10.Message>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.Message.create)
     ..hasRequiredFields = false
   ;
 
@@ -623,15 +622,15 @@ class UpdateResponse extends $pb.GeneratedMessage {
 
   /// A user message. if request user is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $10.Artifact get element => $_getN(0);
+  $10.Message get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($10.Artifact v) { setField(1, v); }
+  set element($10.Message v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $10.Artifact ensureElement() => $_ensure(0);
+  $10.Message ensureElement() => $_ensure(0);
 }
 
 class DeleteRequest extends $pb.GeneratedMessage {
@@ -648,7 +647,7 @@ class DeleteRequest extends $pb.GeneratedMessage {
   factory DeleteRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DeleteRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -683,319 +682,6 @@ class DeleteRequest extends $pb.GeneratedMessage {
   $core.bool hasPk() => $_has(0);
   @$pb.TagNumber(1)
   void clearPk() => clearField(1);
-}
-
-class CreateImageRequest extends $pb.GeneratedMessage {
-  factory CreateImageRequest({
-    $core.int? artifactFk,
-    $9.ArtifactImageEnum_Kind? kind,
-    $core.String? image,
-    $core.String? name,
-  }) {
-    final $result = create();
-    if (artifactFk != null) {
-      $result.artifactFk = artifactFk;
-    }
-    if (kind != null) {
-      $result.kind = kind;
-    }
-    if (image != null) {
-      $result.image = image;
-    }
-    if (name != null) {
-      $result.name = name;
-    }
-    return $result;
-  }
-  CreateImageRequest._() : super();
-  factory CreateImageRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CreateImageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateImageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
-    ..e<$9.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $9.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $9.ArtifactImageEnum_Kind.valueOf, enumValues: $9.ArtifactImageEnum_Kind.values)
-    ..aOS(3, _omitFieldNames ? '' : 'image')
-    ..aOS(4, _omitFieldNames ? '' : 'name')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  CreateImageRequest clone() => CreateImageRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  CreateImageRequest copyWith(void Function(CreateImageRequest) updates) => super.copyWith((message) => updates(message as CreateImageRequest)) as CreateImageRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CreateImageRequest create() => CreateImageRequest._();
-  CreateImageRequest createEmptyInstance() => create();
-  static $pb.PbList<CreateImageRequest> createRepeated() => $pb.PbList<CreateImageRequest>();
-  @$core.pragma('dart2js:noInline')
-  static CreateImageRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateImageRequest>(create);
-  static CreateImageRequest? _defaultInstance;
-
-  /// XXX: Relation Key is checked correct value by JWT Token
-  @$pb.TagNumber(1)
-  $core.int get artifactFk => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set artifactFk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasArtifactFk() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearArtifactFk() => clearField(1);
-
-  /// kind cannot be NONE (0)
-  @$pb.TagNumber(2)
-  $9.ArtifactImageEnum_Kind get kind => $_getN(1);
-  @$pb.TagNumber(2)
-  set kind($9.ArtifactImageEnum_Kind v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasKind() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearKind() => clearField(2);
-
-  /// image Data URI: 10B ~ 20MB
-  @$pb.TagNumber(3)
-  $core.String get image => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set image($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasImage() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearImage() => clearField(3);
-
-  /// name
-  @$pb.TagNumber(4)
-  $core.String get name => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set name($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasName() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearName() => clearField(4);
-}
-
-class CreateImageResponse extends $pb.GeneratedMessage {
-  factory CreateImageResponse({
-    $10.ArtifactImage? element,
-  }) {
-    final $result = create();
-    if (element != null) {
-      $result.element = element;
-    }
-    return $result;
-  }
-  CreateImageResponse._() : super();
-  factory CreateImageResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CreateImageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateImageResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$10.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.ArtifactImage.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  CreateImageResponse clone() => CreateImageResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  CreateImageResponse copyWith(void Function(CreateImageResponse) updates) => super.copyWith((message) => updates(message as CreateImageResponse)) as CreateImageResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CreateImageResponse create() => CreateImageResponse._();
-  CreateImageResponse createEmptyInstance() => create();
-  static $pb.PbList<CreateImageResponse> createRepeated() => $pb.PbList<CreateImageResponse>();
-  @$core.pragma('dart2js:noInline')
-  static CreateImageResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateImageResponse>(create);
-  static CreateImageResponse? _defaultInstance;
-
-  /// A user message. if request user is not published, it filtered them. so response might be empty.
-  @$pb.TagNumber(1)
-  $10.ArtifactImage get element => $_getN(0);
-  @$pb.TagNumber(1)
-  set element($10.ArtifactImage v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasElement() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearElement() => clearField(1);
-  @$pb.TagNumber(1)
-  $10.ArtifactImage ensureElement() => $_ensure(0);
-}
-
-class UpdateImageRequest extends $pb.GeneratedMessage {
-  factory UpdateImageRequest({
-    $core.int? artifactFk,
-    $9.ArtifactImageEnum_Kind? kind,
-    $core.String? image,
-    $core.String? name,
-    $core.int? pk,
-  }) {
-    final $result = create();
-    if (artifactFk != null) {
-      $result.artifactFk = artifactFk;
-    }
-    if (kind != null) {
-      $result.kind = kind;
-    }
-    if (image != null) {
-      $result.image = image;
-    }
-    if (name != null) {
-      $result.name = name;
-    }
-    if (pk != null) {
-      $result.pk = pk;
-    }
-    return $result;
-  }
-  UpdateImageRequest._() : super();
-  factory UpdateImageRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UpdateImageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateImageRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
-    ..e<$9.ArtifactImageEnum_Kind>(2, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $9.ArtifactImageEnum_Kind.KIND_UNSPECIFIED, valueOf: $9.ArtifactImageEnum_Kind.valueOf, enumValues: $9.ArtifactImageEnum_Kind.values)
-    ..aOS(3, _omitFieldNames ? '' : 'image')
-    ..aOS(4, _omitFieldNames ? '' : 'name')
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  UpdateImageRequest clone() => UpdateImageRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  UpdateImageRequest copyWith(void Function(UpdateImageRequest) updates) => super.copyWith((message) => updates(message as UpdateImageRequest)) as UpdateImageRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static UpdateImageRequest create() => UpdateImageRequest._();
-  UpdateImageRequest createEmptyInstance() => create();
-  static $pb.PbList<UpdateImageRequest> createRepeated() => $pb.PbList<UpdateImageRequest>();
-  @$core.pragma('dart2js:noInline')
-  static UpdateImageRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateImageRequest>(create);
-  static UpdateImageRequest? _defaultInstance;
-
-  /// XXX: Relation Key is checked correct value by JWT Token
-  @$pb.TagNumber(1)
-  $core.int get artifactFk => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set artifactFk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasArtifactFk() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearArtifactFk() => clearField(1);
-
-  /// kind cannot be NONE (0)
-  @$pb.TagNumber(2)
-  $9.ArtifactImageEnum_Kind get kind => $_getN(1);
-  @$pb.TagNumber(2)
-  set kind($9.ArtifactImageEnum_Kind v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasKind() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearKind() => clearField(2);
-
-  /// image Data URI: 10B ~ 20MB
-  @$pb.TagNumber(3)
-  $core.String get image => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set image($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasImage() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearImage() => clearField(3);
-
-  /// name
-  @$pb.TagNumber(4)
-  $core.String get name => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set name($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasName() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearName() => clearField(4);
-
-  /// XXX: PrimaryKey is checked correct value by JWT Token
-  @$pb.TagNumber(5)
-  $core.int get pk => $_getIZ(4);
-  @$pb.TagNumber(5)
-  set pk($core.int v) { $_setSignedInt32(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasPk() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearPk() => clearField(5);
-}
-
-class UpdateImageResponse extends $pb.GeneratedMessage {
-  factory UpdateImageResponse({
-    $10.ArtifactImage? element,
-  }) {
-    final $result = create();
-    if (element != null) {
-      $result.element = element;
-    }
-    return $result;
-  }
-  UpdateImageResponse._() : super();
-  factory UpdateImageResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UpdateImageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateImageResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.artifacts.v1'), createEmptyInstance: create)
-    ..aOM<$10.ArtifactImage>(1, _omitFieldNames ? '' : 'element', subBuilder: $10.ArtifactImage.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  UpdateImageResponse clone() => UpdateImageResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  UpdateImageResponse copyWith(void Function(UpdateImageResponse) updates) => super.copyWith((message) => updates(message as UpdateImageResponse)) as UpdateImageResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static UpdateImageResponse create() => UpdateImageResponse._();
-  UpdateImageResponse createEmptyInstance() => create();
-  static $pb.PbList<UpdateImageResponse> createRepeated() => $pb.PbList<UpdateImageResponse>();
-  @$core.pragma('dart2js:noInline')
-  static UpdateImageResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateImageResponse>(create);
-  static UpdateImageResponse? _defaultInstance;
-
-  /// A user message. if request user is not published, it filtered them. so response might be empty.
-  @$pb.TagNumber(1)
-  $10.ArtifactImage get element => $_getN(0);
-  @$pb.TagNumber(1)
-  set element($10.ArtifactImage v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasElement() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearElement() => clearField(1);
-  @$pb.TagNumber(1)
-  $10.ArtifactImage ensureElement() => $_ensure(0);
 }
 
 
