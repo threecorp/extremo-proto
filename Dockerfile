@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 golang:1.21-bookworm
+FROM --platform=linux/x86_64 golang:1.22-bookworm
 
 RUN apt-get update && \
     apt-get upgrade -y && \
