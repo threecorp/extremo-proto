@@ -13,7 +13,6 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../../google/protobuf/timestamp.pb.dart' as $6;
 import '../../../../msg/db/v1/db.pb.dart' as $10;
 
 class ListRequest extends $pb.GeneratedMessage {
@@ -389,34 +388,22 @@ class CreateResponse extends $pb.GeneratedMessage {
 class UpdateRequest extends $pb.GeneratedMessage {
   factory UpdateRequest({
     $core.int? pk,
-    $core.String? title,
-    $core.String? content,
-    $core.String? summary,
-    $core.bool? isPublished,
-    $6.Timestamp? publishFrom,
-    $6.Timestamp? publishUntil,
+    $core.int? fromFk,
+    $core.int? toFk,
+    $core.String? message,
   }) {
     final $result = create();
     if (pk != null) {
       $result.pk = pk;
     }
-    if (title != null) {
-      $result.title = title;
+    if (fromFk != null) {
+      $result.fromFk = fromFk;
     }
-    if (content != null) {
-      $result.content = content;
+    if (toFk != null) {
+      $result.toFk = toFk;
     }
-    if (summary != null) {
-      $result.summary = summary;
-    }
-    if (isPublished != null) {
-      $result.isPublished = isPublished;
-    }
-    if (publishFrom != null) {
-      $result.publishFrom = publishFrom;
-    }
-    if (publishUntil != null) {
-      $result.publishUntil = publishUntil;
+    if (message != null) {
+      $result.message = message;
     }
     return $result;
   }
@@ -426,12 +413,9 @@ class UpdateRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..aOS(2, _omitFieldNames ? '' : 'title')
-    ..aOS(3, _omitFieldNames ? '' : 'content')
-    ..aOS(4, _omitFieldNames ? '' : 'summary')
-    ..aOB(5, _omitFieldNames ? '' : 'isPublished')
-    ..aOM<$6.Timestamp>(6, _omitFieldNames ? '' : 'publishFrom', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(7, _omitFieldNames ? '' : 'publishUntil', subBuilder: $6.Timestamp.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
+    ..aOS(4, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -456,7 +440,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
   static UpdateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateRequest>(create);
   static UpdateRequest? _defaultInstance;
 
-  /// Primary Key is confirmed by JWT Token
+  /// PK
   @$pb.TagNumber(1)
   $core.int get pk => $_getIZ(0);
   @$pb.TagNumber(1)
@@ -466,69 +450,35 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearPk() => clearField(1);
 
-  /// Message Title
+  /// FK
   @$pb.TagNumber(2)
-  $core.String get title => $_getSZ(1);
+  $core.int get fromFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set title($core.String v) { $_setString(1, v); }
+  set fromFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasTitle() => $_has(1);
+  $core.bool hasFromFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearTitle() => clearField(2);
+  void clearFromFk() => clearField(2);
 
-  /// Message content text NOT NULL
+  /// FK
   @$pb.TagNumber(3)
-  $core.String get content => $_getSZ(2);
+  $core.int get toFk => $_getIZ(2);
   @$pb.TagNumber(3)
-  set content($core.String v) { $_setString(2, v); }
+  set toFk($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasContent() => $_has(2);
+  $core.bool hasToFk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearContent() => clearField(3);
+  void clearToFk() => clearField(3);
 
-  /// Message summary varchar(1023) NOT NULL DEFAULT ''
+  /// Content
   @$pb.TagNumber(4)
-  $core.String get summary => $_getSZ(3);
+  $core.String get message => $_getSZ(3);
   @$pb.TagNumber(4)
-  set summary($core.String v) { $_setString(3, v); }
+  set message($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSummary() => $_has(3);
+  $core.bool hasMessage() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSummary() => clearField(4);
-
-  /// public or private
-  @$pb.TagNumber(5)
-  $core.bool get isPublished => $_getBF(4);
-  @$pb.TagNumber(5)
-  set isPublished($core.bool v) { $_setBool(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasIsPublished() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearIsPublished() => clearField(5);
-
-  /// start
-  @$pb.TagNumber(6)
-  $6.Timestamp get publishFrom => $_getN(5);
-  @$pb.TagNumber(6)
-  set publishFrom($6.Timestamp v) { setField(6, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasPublishFrom() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearPublishFrom() => clearField(6);
-  @$pb.TagNumber(6)
-  $6.Timestamp ensurePublishFrom() => $_ensure(5);
-
-  /// until
-  @$pb.TagNumber(7)
-  $6.Timestamp get publishUntil => $_getN(6);
-  @$pb.TagNumber(7)
-  set publishUntil($6.Timestamp v) { setField(7, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasPublishUntil() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearPublishUntil() => clearField(7);
-  @$pb.TagNumber(7)
-  $6.Timestamp ensurePublishUntil() => $_ensure(6);
+  void clearMessage() => clearField(4);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {

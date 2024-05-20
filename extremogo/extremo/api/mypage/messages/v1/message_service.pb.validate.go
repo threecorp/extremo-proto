@@ -866,10 +866,10 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetTitle()); l < 1 || l > 255 {
+	if m.GetFromFk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "Title",
-			reason: "value length must be between 1 and 255 runes, inclusive",
+			field:  "FromFk",
+			reason: "value must be greater than 0",
 		}
 		if !all {
 			return err
@@ -877,11 +877,27 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	// no validation rules for Content
+	if m.GetToFk() <= 0 {
+		err := UpdateRequestValidationError{
+			field:  "ToFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Summary
-
-	// no validation rules for IsPublished
+	if l := utf8.RuneCountInString(m.GetMessage()); l < 1 || l > 10240 {
+		err := UpdateRequestValidationError{
+			field:  "Message",
+			reason: "value length must be between 1 and 10240 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return UpdateRequestMultiError(errors)

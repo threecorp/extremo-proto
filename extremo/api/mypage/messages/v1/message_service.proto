@@ -122,32 +122,17 @@ message CreateResponse {
 }
 
 message UpdateRequest {
-  // Primary Key is confirmed by JWT Token
+  // PK
   int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
-  // Message Title
-  string title = 2 [(validate.rules).string = {
+  // FK
+  int32 from_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 to_fk = 3 [(validate.rules).int32 = {gt: 0}];
+  // Content
+  string message = 4 [(validate.rules).string = {
     min_len: 1
-    max_len: 255
+    max_len: 10240
   }];
-  // Message content text NOT NULL
-  string content = 3;
-  // Message summary varchar(1023) NOT NULL DEFAULT ''
-  string summary = 4;
-  // public or private
-  bool is_published = 5;
-  // start
-  google.protobuf.Timestamp publish_from = 6 [(validate.rules).timestamp = {required: false}];
-  // until
-  google.protobuf.Timestamp publish_until = 7 [(validate.rules).timestamp = {required: false}];
-  // message_images table: datauri
-  // string thumb = 8 [
-  //   (validate.rules).string = {
-  //     min_bytes: 10
-  //     max_bytes: 25000000
-  //     prefix: "data:image/"
-  //     contains: ";base64,"
-  //   }
-  // ];
 }
 
 message UpdateResponse {

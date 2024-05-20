@@ -101,23 +101,17 @@ const UpdateRequest$json = {
   '1': 'UpdateRequest',
   '2': [
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'title', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'title'},
-    {'1': 'content', '3': 3, '4': 1, '5': 9, '10': 'content'},
-    {'1': 'summary', '3': 4, '4': 1, '5': 9, '10': 'summary'},
-    {'1': 'is_published', '3': 5, '4': 1, '5': 8, '10': 'isPublished'},
-    {'1': 'publish_from', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'publishFrom'},
-    {'1': 'publish_until', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'publishUntil'},
+    {'1': 'from_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'fromFk'},
+    {'1': 'to_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'toFk'},
+    {'1': 'message', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'message'},
   ],
 };
 
 /// Descriptor for `UpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
-    'Cg1VcGRhdGVSZXF1ZXN0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIgCgV0aXRsZRgCIAEoCU'
-    'IK+kIHcgUQARj/AVIFdGl0bGUSGAoHY29udGVudBgDIAEoCVIHY29udGVudBIYCgdzdW1tYXJ5'
-    'GAQgASgJUgdzdW1tYXJ5EiEKDGlzX3B1Ymxpc2hlZBgFIAEoCFILaXNQdWJsaXNoZWQSRwoMcH'
-    'VibGlzaF9mcm9tGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCABS'
-    'C3B1Ymxpc2hGcm9tEkkKDXB1Ymxpc2hfdW50aWwYByABKAsyGi5nb29nbGUucHJvdG9idWYuVG'
-    'ltZXN0YW1wQgj6QgWyAQIIAFIMcHVibGlzaFVudGls');
+    'Cg1VcGRhdGVSZXF1ZXN0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIgCgdmcm9tX2ZrGAIgAS'
+    'gFQgf6QgQaAiAAUgZmcm9tRmsSHAoFdG9fZmsYAyABKAVCB/pCBBoCIABSBHRvRmsSJAoHbWVz'
+    'c2FnZRgEIAEoCUIK+kIHcgUQARiAUFIHbWVzc2FnZQ==');
 
 @$core.Deprecated('Use updateResponseDescriptor instead')
 const UpdateResponse$json = {
