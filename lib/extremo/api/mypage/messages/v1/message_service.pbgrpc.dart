@@ -22,6 +22,10 @@ export 'message_service.pb.dart';
 
 @$pb.GrpcServiceName('extremo.api.mypage.messages.v1.MessageService')
 class MessageServiceClient extends $grpc.Client {
+  static final _$listUsers = $grpc.ClientMethod<$3.ListUsersRequest, $3.ListUsersResponse>(
+      '/extremo.api.mypage.messages.v1.MessageService/ListUsers',
+      ($3.ListUsersRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.ListUsersResponse.fromBuffer(value));
   static final _$update = $grpc.ClientMethod<$3.UpdateRequest, $3.UpdateResponse>(
       '/extremo.api.mypage.messages.v1.MessageService/Update',
       ($3.UpdateRequest value) => value.writeToBuffer(),
@@ -49,6 +53,10 @@ class MessageServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
+  $grpc.ResponseFuture<$3.ListUsersResponse> listUsers($3.ListUsersRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$listUsers, request, options: options);
+  }
+
   $grpc.ResponseFuture<$3.UpdateResponse> update($3.UpdateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
@@ -75,6 +83,13 @@ abstract class MessageServiceBase extends $grpc.Service {
   $core.String get $name => 'extremo.api.mypage.messages.v1.MessageService';
 
   MessageServiceBase() {
+    $addMethod($grpc.ServiceMethod<$3.ListUsersRequest, $3.ListUsersResponse>(
+        'ListUsers',
+        listUsers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.ListUsersRequest.fromBuffer(value),
+        ($3.ListUsersResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.UpdateRequest, $3.UpdateResponse>(
         'Update',
         update_Pre,
@@ -112,6 +127,10 @@ abstract class MessageServiceBase extends $grpc.Service {
         ($3.CreateResponse value) => value.writeToBuffer()));
   }
 
+  $async.Future<$3.ListUsersResponse> listUsers_Pre($grpc.ServiceCall call, $async.Future<$3.ListUsersRequest> request) async {
+    return listUsers(call, await request);
+  }
+
   $async.Future<$3.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$3.UpdateRequest> request) async {
     return update(call, await request);
   }
@@ -132,6 +151,7 @@ abstract class MessageServiceBase extends $grpc.Service {
     return create(call, await request);
   }
 
+  $async.Future<$3.ListUsersResponse> listUsers($grpc.ServiceCall call, $3.ListUsersRequest request);
   $async.Future<$3.UpdateResponse> update($grpc.ServiceCall call, $3.UpdateRequest request);
   $async.Future<$1.Empty> delete($grpc.ServiceCall call, $3.DeleteRequest request);
   $async.Future<$3.GetResponse> get($grpc.ServiceCall call, $3.GetRequest request);

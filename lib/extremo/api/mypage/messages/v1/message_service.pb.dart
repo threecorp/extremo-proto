@@ -15,6 +15,135 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../msg/db/v1/db.pb.dart' as $10;
 
+class ListUsersRequest extends $pb.GeneratedMessage {
+  factory ListUsersRequest({
+    $core.int? page,
+    $core.int? pageSize,
+  }) {
+    final $result = create();
+    if (page != null) {
+      $result.page = page;
+    }
+    if (pageSize != null) {
+      $result.pageSize = pageSize;
+    }
+    return $result;
+  }
+  ListUsersRequest._() : super();
+  factory ListUsersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListUsersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListUsersRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ListUsersRequest clone() => ListUsersRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ListUsersRequest copyWith(void Function(ListUsersRequest) updates) => super.copyWith((message) => updates(message as ListUsersRequest)) as ListUsersRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListUsersRequest create() => ListUsersRequest._();
+  ListUsersRequest createEmptyInstance() => create();
+  static $pb.PbList<ListUsersRequest> createRepeated() => $pb.PbList<ListUsersRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ListUsersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListUsersRequest>(create);
+  static ListUsersRequest? _defaultInstance;
+
+  ///  Behaves as like GraphQL Field Selector
+  ///  google.protobuf.FieldMask field_mask = 1999;
+  ///
+  ///  page number
+  @$pb.TagNumber(2)
+  $core.int get page => $_getIZ(0);
+  @$pb.TagNumber(2)
+  set page($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(0);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
+
+  /// The maximum number of items to return.
+  @$pb.TagNumber(3)
+  $core.int get pageSize => $_getIZ(1);
+  @$pb.TagNumber(3)
+  set pageSize($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPageSize() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearPageSize() => clearField(3);
+}
+
+class ListUsersResponse extends $pb.GeneratedMessage {
+  factory ListUsersResponse({
+    $core.Iterable<$10.User>? elements,
+    $core.int? totalSize,
+  }) {
+    final $result = create();
+    if (elements != null) {
+      $result.elements.addAll(elements);
+    }
+    if (totalSize != null) {
+      $result.totalSize = totalSize;
+    }
+    return $result;
+  }
+  ListUsersResponse._() : super();
+  factory ListUsersResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListUsersResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListUsersResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.messages.v1'), createEmptyInstance: create)
+    ..pc<$10.User>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $10.User.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ListUsersResponse clone() => ListUsersResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ListUsersResponse copyWith(void Function(ListUsersResponse) updates) => super.copyWith((message) => updates(message as ListUsersResponse)) as ListUsersResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListUsersResponse create() => ListUsersResponse._();
+  ListUsersResponse createEmptyInstance() => create();
+  static $pb.PbList<ListUsersResponse> createRepeated() => $pb.PbList<ListUsersResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ListUsersResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListUsersResponse>(create);
+  static ListUsersResponse? _defaultInstance;
+
+  /// article msg.db
+  @$pb.TagNumber(1)
+  $core.List<$10.User> get elements => $_getList(0);
+
+  /// Total Size
+  @$pb.TagNumber(2)
+  $core.int get totalSize => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set totalSize($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTotalSize() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTotalSize() => clearField(2);
+}
+
 class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest({
     $core.int? page,

@@ -24,17 +24,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	MessageService_Update_FullMethodName = "/extremo.api.mypage.messages.v1.MessageService/Update"
-	MessageService_Delete_FullMethodName = "/extremo.api.mypage.messages.v1.MessageService/Delete"
-	MessageService_Get_FullMethodName    = "/extremo.api.mypage.messages.v1.MessageService/Get"
-	MessageService_List_FullMethodName   = "/extremo.api.mypage.messages.v1.MessageService/List"
-	MessageService_Create_FullMethodName = "/extremo.api.mypage.messages.v1.MessageService/Create"
+	MessageService_ListUsers_FullMethodName = "/extremo.api.mypage.messages.v1.MessageService/ListUsers"
+	MessageService_Update_FullMethodName    = "/extremo.api.mypage.messages.v1.MessageService/Update"
+	MessageService_Delete_FullMethodName    = "/extremo.api.mypage.messages.v1.MessageService/Delete"
+	MessageService_Get_FullMethodName       = "/extremo.api.mypage.messages.v1.MessageService/Get"
+	MessageService_List_FullMethodName      = "/extremo.api.mypage.messages.v1.MessageService/List"
+	MessageService_Create_FullMethodName    = "/extremo.api.mypage.messages.v1.MessageService/Create"
 )
 
 // MessageServiceClient is the client API for MessageService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MessageServiceClient interface {
+	// ListUsers returns Messages' users as list with pagination
+	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// Update updates a Message with then return a Message
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	// Delete deletes a Message with return nothing
@@ -53,6 +56,15 @@ type messageServiceClient struct {
 
 func NewMessageServiceClient(cc grpc.ClientConnInterface) MessageServiceClient {
 	return &messageServiceClient{cc}
+}
+
+func (c *messageServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error) {
+	out := new(ListUsersResponse)
+	err := c.cc.Invoke(ctx, MessageService_ListUsers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *messageServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
@@ -104,6 +116,8 @@ func (c *messageServiceClient) Create(ctx context.Context, in *CreateRequest, op
 // All implementations must embed UnimplementedMessageServiceServer
 // for forward compatibility
 type MessageServiceServer interface {
+	// ListUsers returns Messages' users as list with pagination
+	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// Update updates a Message with then return a Message
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	// Delete deletes a Message with return nothing
@@ -121,6 +135,9 @@ type MessageServiceServer interface {
 type UnimplementedMessageServiceServer struct {
 }
 
+func (UnimplementedMessageServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
+}
 func (UnimplementedMessageServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
@@ -147,6 +164,24 @@ type UnsafeMessageServiceServer interface {
 
 func RegisterMessageServiceServer(s grpc.ServiceRegistrar, srv MessageServiceServer) {
 	s.RegisterService(&MessageService_ServiceDesc, srv)
+}
+
+func _MessageService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessageServiceServer).ListUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MessageService_ListUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessageServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _MessageService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -246,6 +281,10 @@ var MessageService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "extremo.api.mypage.messages.v1.MessageService",
 	HandlerType: (*MessageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListUsers",
+			Handler:    _MessageService_ListUsers_Handler,
+		},
 		{
 			MethodName: "Update",
 			Handler:    _MessageService_Update_Handler,

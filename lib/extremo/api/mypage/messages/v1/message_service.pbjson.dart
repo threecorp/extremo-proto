@@ -13,6 +13,35 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use listUsersRequestDescriptor instead')
+const ListUsersRequest$json = {
+  '1': 'ListUsersRequest',
+  '2': [
+    {'1': 'page', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'page'},
+    {'1': 'page_size', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
+  ],
+};
+
+/// Descriptor for `ListUsersRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listUsersRequestDescriptor = $convert.base64Decode(
+    'ChBMaXN0VXNlcnNSZXF1ZXN0EhsKBHBhZ2UYAiABKAVCB/pCBBoCIABSBHBhZ2USJgoJcGFnZV'
+    '9zaXplGAMgASgFQgn6QgYaBBgeIABSCHBhZ2VTaXpl');
+
+@$core.Deprecated('Use listUsersResponseDescriptor instead')
+const ListUsersResponse$json = {
+  '1': 'ListUsersResponse',
+  '2': [
+    {'1': 'elements', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'elements'},
+    {'1': 'total_size', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'totalSize'},
+  ],
+};
+
+/// Descriptor for `ListUsersResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listUsersResponseDescriptor = $convert.base64Decode(
+    'ChFMaXN0VXNlcnNSZXNwb25zZRI/CghlbGVtZW50cxgBIAMoCzIXLmV4dHJlbW8ubXNnLmRiLn'
+    'YxLlVzZXJCCvpCB5IBBAgAEB5SCGVsZW1lbnRzEiYKCnRvdGFsX3NpemUYAiABKAVCB/pCBBoC'
+    'KABSCXRvdGFsU2l6ZQ==');
+
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
   '1': 'ListRequest',
