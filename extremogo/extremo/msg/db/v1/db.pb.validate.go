@@ -35,6 +35,404 @@ var (
 	_ = sort.Sort
 )
 
+// Validate checks the field values on Tenant with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Tenant) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Tenant with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in TenantMultiError, or nil if none found.
+func (m *Tenant) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Tenant) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := TenantValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantMultiError is an error wrapping multiple validation errors returned by
+// Tenant.ValidateAll() if the designated constraints aren't met.
+type TenantMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantMultiError) AllErrors() []error { return m }
+
+// TenantValidationError is the validation error returned by Tenant.Validate if
+// the designated constraints aren't met.
+type TenantValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantValidationError) ErrorName() string { return "TenantValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TenantValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenant.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantValidationError{}
+
+// Validate checks the field values on TenantProfile with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TenantProfile) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TenantProfile with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TenantProfileMultiError, or
+// nil if none found.
+func (m *TenantProfile) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TenantProfile) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := TenantProfileValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := TenantProfileValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := TenantProfileValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantProfileValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := TenantProfileValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantProfileValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TenantProfileValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TenantProfileValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TenantProfileMultiError(errors)
+	}
+
+	return nil
+}
+
+// TenantProfileMultiError is an error wrapping multiple validation errors
+// returned by TenantProfile.ValidateAll() if the designated constraints
+// aren't met.
+type TenantProfileMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TenantProfileMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TenantProfileMultiError) AllErrors() []error { return m }
+
+// TenantProfileValidationError is the validation error returned by
+// TenantProfile.Validate if the designated constraints aren't met.
+type TenantProfileValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TenantProfileValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TenantProfileValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TenantProfileValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TenantProfileValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TenantProfileValidationError) ErrorName() string { return "TenantProfileValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TenantProfileValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTenantProfile.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TenantProfileValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TenantProfileValidationError{}
+
 // Validate checks the field values on User with the rules defined in the proto
 // definition for this message. If any rules are violated, the first error
 // encountered is returned, or nil if there are no violations.
@@ -60,6 +458,68 @@ func (m *User) validate(all bool) error {
 		err := UserValidationError{
 			field:  "Pk",
 			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := UserValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := UserValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UserValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UserValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UserValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if _, ok := _User_Role_NotInLookup[m.GetRole()]; ok {
+		err := UserValidationError{
+			field:  "Role",
+			reason: "value must not be in list [ROLE_UNSPECIFIED]",
 		}
 		if !all {
 			return err
@@ -203,10 +663,10 @@ func (m *User) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetArtifacts()) > 10 {
+	if len(m.GetArtifacts()) > 25 {
 		err := UserValidationError{
 			field:  "Artifacts",
-			reason: "value must contain no more than 10 item(s)",
+			reason: "value must contain no more than 25 item(s)",
 		}
 		if !all {
 			return err
@@ -240,6 +700,51 @@ func (m *User) validate(all bool) error {
 			if err := v.Validate(); err != nil {
 				return UserValidationError{
 					field:  fmt.Sprintf("Artifacts[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(m.GetReserves()) > 25 {
+		err := UserValidationError{
+			field:  "Reserves",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetReserves() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, UserValidationError{
+						field:  fmt.Sprintf("Reserves[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, UserValidationError{
+						field:  fmt.Sprintf("Reserves[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return UserValidationError{
+					field:  fmt.Sprintf("Reserves[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -374,6 +879,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UserValidationError{}
+
+var _User_Role_NotInLookup = map[UserEnum_Role]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on UserProfile with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
@@ -604,6 +1113,1963 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UserProfileValidationError{}
+
+// Validate checks the field values on Team with the rules defined in the proto
+// definition for this message. If any rules are violated, the first error
+// encountered is returned, or nil if there are no violations.
+func (m *Team) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Team with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in TeamMultiError, or nil if none found.
+func (m *Team) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Team) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := TeamValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := TeamValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := TeamValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 1 || l > 255 {
+		err := TeamValidationError{
+			field:  "Name",
+			reason: "value length must be between 1 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(m.GetReserves()) > 25 {
+		err := TeamValidationError{
+			field:  "Reserves",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetReserves() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, TeamValidationError{
+						field:  fmt.Sprintf("Reserves[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, TeamValidationError{
+						field:  fmt.Sprintf("Reserves[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return TeamValidationError{
+					field:  fmt.Sprintf("Reserves[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return TeamMultiError(errors)
+	}
+
+	return nil
+}
+
+// TeamMultiError is an error wrapping multiple validation errors returned by
+// Team.ValidateAll() if the designated constraints aren't met.
+type TeamMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TeamMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TeamMultiError) AllErrors() []error { return m }
+
+// TeamValidationError is the validation error returned by Team.Validate if the
+// designated constraints aren't met.
+type TeamValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TeamValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TeamValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TeamValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TeamValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TeamValidationError) ErrorName() string { return "TeamValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TeamValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTeam.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TeamValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TeamValidationError{}
+
+// Validate checks the field values on TeamsUser with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TeamsUser) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TeamsUser with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TeamsUserMultiError, or nil
+// if none found.
+func (m *TeamsUser) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TeamsUser) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := TeamsUserValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := TeamsUserValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := TeamsUserValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamsUserValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetUserFk() <= 0 {
+		err := TeamsUserValidationError{
+			field:  "UserFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetUser() == nil {
+		err := TeamsUserValidationError{
+			field:  "User",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetUser()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "User",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamsUserValidationError{
+				field:  "User",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if _, ok := _TeamsUser_Role_NotInLookup[m.GetRole()]; ok {
+		err := TeamsUserValidationError{
+			field:  "Role",
+			reason: "value must not be in list [ROLE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamsUserValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, TeamsUserValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return TeamsUserValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return TeamsUserMultiError(errors)
+	}
+
+	return nil
+}
+
+// TeamsUserMultiError is an error wrapping multiple validation errors returned
+// by TeamsUser.ValidateAll() if the designated constraints aren't met.
+type TeamsUserMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TeamsUserMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TeamsUserMultiError) AllErrors() []error { return m }
+
+// TeamsUserValidationError is the validation error returned by
+// TeamsUser.Validate if the designated constraints aren't met.
+type TeamsUserValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TeamsUserValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TeamsUserValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TeamsUserValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TeamsUserValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TeamsUserValidationError) ErrorName() string { return "TeamsUserValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TeamsUserValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTeamsUser.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TeamsUserValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TeamsUserValidationError{}
+
+var _TeamsUser_Role_NotInLookup = map[TeamsUserEnum_Role]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on Reserve with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Reserve) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Reserve with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in ReserveMultiError, or nil if none found.
+func (m *Reserve) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Reserve) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := ReserveValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := ReserveValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := ReserveValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReserveValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
+		err := ReserveValidationError{
+			field:  "Name",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
+		err := ReserveValidationError{
+			field:  "Desc",
+			reason: "value length must be between 0 and 1024 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _Reserve_Status_NotInLookup[m.GetStatus()]; ok {
+		err := ReserveValidationError{
+			field:  "Status",
+			reason: "value must not be in list [STATUS_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOpenedAt() == nil {
+		err := ReserveValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := ReserveValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReserveValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReserveValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReserveValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(m.GetClients()) > 25 {
+		err := ReserveValidationError{
+			field:  "Clients",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetClients() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("Clients[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("Clients[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ReserveValidationError{
+					field:  fmt.Sprintf("Clients[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(m.GetTeams()) > 25 {
+		err := ReserveValidationError{
+			field:  "Teams",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetTeams() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("Teams[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("Teams[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ReserveValidationError{
+					field:  fmt.Sprintf("Teams[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(m.GetReservesServices()) > 25 {
+		err := ReserveValidationError{
+			field:  "ReservesServices",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetReservesServices() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ReserveValidationError{
+						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ReserveValidationError{
+					field:  fmt.Sprintf("ReservesServices[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return ReserveMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReserveMultiError is an error wrapping multiple validation errors returned
+// by Reserve.ValidateAll() if the designated constraints aren't met.
+type ReserveMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReserveMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReserveMultiError) AllErrors() []error { return m }
+
+// ReserveValidationError is the validation error returned by Reserve.Validate
+// if the designated constraints aren't met.
+type ReserveValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReserveValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReserveValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReserveValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReserveValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReserveValidationError) ErrorName() string { return "ReserveValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ReserveValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReserve.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReserveValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReserveValidationError{}
+
+var _Reserve_Status_NotInLookup = map[ReserveEnum_Status]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on Service with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Service) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Service with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in ServiceMultiError, or nil if none found.
+func (m *Service) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Service) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := ServiceValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := ServiceValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := ServiceValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ServiceValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetParentFk() < 0 {
+		err := ServiceValidationError{
+			field:  "ParentFk",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetParent()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "Parent",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "Parent",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetParent()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ServiceValidationError{
+				field:  "Parent",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
+		err := ServiceValidationError{
+			field:  "Name",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
+		err := ServiceValidationError{
+			field:  "Desc",
+			reason: "value length must be between 0 and 1024 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetPrice() < 0 {
+		err := ServiceValidationError{
+			field:  "Price",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetSort() < 0 {
+		err := ServiceValidationError{
+			field:  "Sort",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ServiceValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ServiceValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ServiceValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(m.GetReservesServices()) > 25 {
+		err := ServiceValidationError{
+			field:  "ReservesServices",
+			reason: "value must contain no more than 25 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetReservesServices() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ServiceValidationError{
+						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ServiceValidationError{
+						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ServiceValidationError{
+					field:  fmt.Sprintf("ReservesServices[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return ServiceMultiError(errors)
+	}
+
+	return nil
+}
+
+// ServiceMultiError is an error wrapping multiple validation errors returned
+// by Service.ValidateAll() if the designated constraints aren't met.
+type ServiceMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ServiceMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ServiceMultiError) AllErrors() []error { return m }
+
+// ServiceValidationError is the validation error returned by Service.Validate
+// if the designated constraints aren't met.
+type ServiceValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ServiceValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ServiceValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ServiceValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ServiceValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ServiceValidationError) ErrorName() string { return "ServiceValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ServiceValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sService.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ServiceValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ServiceValidationError{}
+
+// Validate checks the field values on ReservesService with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ReservesService) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ReservesService with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ReservesServiceMultiError, or nil if none found.
+func (m *ReservesService) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ReservesService) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := ReservesServiceValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetReserveFk() <= 0 {
+		err := ReservesServiceValidationError{
+			field:  "ReserveFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetReserve() == nil {
+		err := ReservesServiceValidationError{
+			field:  "Reserve",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetReserve()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "Reserve",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "Reserve",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetReserve()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservesServiceValidationError{
+				field:  "Reserve",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetServiceFk() <= 0 {
+		err := ReservesServiceValidationError{
+			field:  "ServiceFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetService() == nil {
+		err := ReservesServiceValidationError{
+			field:  "Service",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetService()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "Service",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "Service",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetService()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservesServiceValidationError{
+				field:  "Service",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
+		err := ReservesServiceValidationError{
+			field:  "Name",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
+		err := ReservesServiceValidationError{
+			field:  "Desc",
+			reason: "value length must be between 0 and 1024 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetPrice() < 0 {
+		err := ReservesServiceValidationError{
+			field:  "Price",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservesServiceValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ReservesServiceValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReservesServiceValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ReservesServiceMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReservesServiceMultiError is an error wrapping multiple validation errors
+// returned by ReservesService.ValidateAll() if the designated constraints
+// aren't met.
+type ReservesServiceMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReservesServiceMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReservesServiceMultiError) AllErrors() []error { return m }
+
+// ReservesServiceValidationError is the validation error returned by
+// ReservesService.Validate if the designated constraints aren't met.
+type ReservesServiceValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReservesServiceValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReservesServiceValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReservesServiceValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReservesServiceValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReservesServiceValidationError) ErrorName() string { return "ReservesServiceValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ReservesServiceValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReservesService.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReservesServiceValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReservesServiceValidationError{}
+
+// Validate checks the field values on Message with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *Message) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Message with the rules defined in the
+// proto definition for this message. If any rules are violated, the result is
+// a list of violation errors wrapped in MessageMultiError, or nil if none found.
+func (m *Message) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Message) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPk() <= 0 {
+		err := MessageValidationError{
+			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenantFk() <= 0 {
+		err := MessageValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetTenant() == nil {
+		err := MessageValidationError{
+			field:  "Tenant",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetTenant()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "Tenant",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MessageValidationError{
+				field:  "Tenant",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetFromFk() <= 0 {
+		err := MessageValidationError{
+			field:  "FromFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetFromUser() == nil {
+		err := MessageValidationError{
+			field:  "FromUser",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetFromUser()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "FromUser",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "FromUser",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetFromUser()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MessageValidationError{
+				field:  "FromUser",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if m.GetToFk() <= 0 {
+		err := MessageValidationError{
+			field:  "ToFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetToUser() == nil {
+		err := MessageValidationError{
+			field:  "ToUser",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if all {
+		switch v := interface{}(m.GetToUser()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "ToUser",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "ToUser",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetToUser()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MessageValidationError{
+				field:  "ToUser",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if l := utf8.RuneCountInString(m.GetMessage()); l < 1 || l > 10240 {
+		err := MessageValidationError{
+			field:  "Message",
+			reason: "value length must be between 1 and 10240 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for IsRead
+
+	// no validation rules for IsDeleted
+
+	if all {
+		switch v := interface{}(m.GetCreatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "CreatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MessageValidationError{
+				field:  "CreatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetUpdatedAt()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, MessageValidationError{
+					field:  "UpdatedAt",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MessageValidationError{
+				field:  "UpdatedAt",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return MessageMultiError(errors)
+	}
+
+	return nil
+}
+
+// MessageMultiError is an error wrapping multiple validation errors returned
+// by Message.ValidateAll() if the designated constraints aren't met.
+type MessageMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m MessageMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m MessageMultiError) AllErrors() []error { return m }
+
+// MessageValidationError is the validation error returned by Message.Validate
+// if the designated constraints aren't met.
+type MessageValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e MessageValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e MessageValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e MessageValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e MessageValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e MessageValidationError) ErrorName() string { return "MessageValidationError" }
+
+// Error satisfies the builtin error interface
+func (e MessageValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sMessage.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = MessageValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = MessageValidationError{}
 
 // Validate checks the field values on Artifact with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
@@ -1344,9 +3810,9 @@ func (m *Reservation) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetSummary()); l < 0 || l > 1024 {
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
 		err := ReservationValidationError{
-			field:  "Summary",
+			field:  "Desc",
 			reason: "value length must be between 0 and 1024 runes, inclusive",
 		}
 		if !all {
@@ -1526,287 +3992,3 @@ var _ interface {
 var _Reservation_Status_NotInLookup = map[ReservationEnum_Status]struct{}{
 	0: {},
 }
-
-// Validate checks the field values on Message with the rules defined in the
-// proto definition for this message. If any rules are violated, the first
-// error encountered is returned, or nil if there are no violations.
-func (m *Message) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on Message with the rules defined in the
-// proto definition for this message. If any rules are violated, the result is
-// a list of violation errors wrapped in MessageMultiError, or nil if none found.
-func (m *Message) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *Message) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	if m.GetPk() <= 0 {
-		err := MessageValidationError{
-			field:  "Pk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetFromFk() <= 0 {
-		err := MessageValidationError{
-			field:  "FromFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetFromUser() == nil {
-		err := MessageValidationError{
-			field:  "FromUser",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetFromUser()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "FromUser",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "FromUser",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetFromUser()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return MessageValidationError{
-				field:  "FromUser",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if m.GetToFk() <= 0 {
-		err := MessageValidationError{
-			field:  "ToFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetToUser() == nil {
-		err := MessageValidationError{
-			field:  "ToUser",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetToUser()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "ToUser",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "ToUser",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetToUser()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return MessageValidationError{
-				field:  "ToUser",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if l := utf8.RuneCountInString(m.GetMessage()); l < 1 || l > 10240 {
-		err := MessageValidationError{
-			field:  "Message",
-			reason: "value length must be between 1 and 10240 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	// no validation rules for IsRead
-
-	// no validation rules for IsDeleted
-
-	if all {
-		switch v := interface{}(m.GetCreatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return MessageValidationError{
-				field:  "CreatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if all {
-		switch v := interface{}(m.GetUpdatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, MessageValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return MessageValidationError{
-				field:  "UpdatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if len(errors) > 0 {
-		return MessageMultiError(errors)
-	}
-
-	return nil
-}
-
-// MessageMultiError is an error wrapping multiple validation errors returned
-// by Message.ValidateAll() if the designated constraints aren't met.
-type MessageMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m MessageMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m MessageMultiError) AllErrors() []error { return m }
-
-// MessageValidationError is the validation error returned by Message.Validate
-// if the designated constraints aren't met.
-type MessageValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e MessageValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e MessageValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e MessageValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e MessageValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e MessageValidationError) ErrorName() string { return "MessageValidationError" }
-
-// Error satisfies the builtin error interface
-func (e MessageValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sMessage.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = MessageValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = MessageValidationError{}

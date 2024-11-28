@@ -13,6 +13,59 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class UserEnum_Role extends $pb.ProtobufEnum {
+  static const UserEnum_Role ROLE_UNSPECIFIED = UserEnum_Role._(0, _omitEnumNames ? '' : 'ROLE_UNSPECIFIED');
+  static const UserEnum_Role ROLE_CLIENT = UserEnum_Role._(1, _omitEnumNames ? '' : 'ROLE_CLIENT');
+  static const UserEnum_Role ROLE_ADMIN = UserEnum_Role._(2, _omitEnumNames ? '' : 'ROLE_ADMIN');
+
+  static const $core.List<UserEnum_Role> values = <UserEnum_Role> [
+    ROLE_UNSPECIFIED,
+    ROLE_CLIENT,
+    ROLE_ADMIN,
+  ];
+
+  static final $core.Map<$core.int, UserEnum_Role> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static UserEnum_Role? valueOf($core.int value) => _byValue[value];
+
+  const UserEnum_Role._($core.int v, $core.String n) : super(v, n);
+}
+
+class TeamsUserEnum_Role extends $pb.ProtobufEnum {
+  static const TeamsUserEnum_Role ROLE_UNSPECIFIED = TeamsUserEnum_Role._(0, _omitEnumNames ? '' : 'ROLE_UNSPECIFIED');
+  static const TeamsUserEnum_Role ROLE_MEMBER = TeamsUserEnum_Role._(1, _omitEnumNames ? '' : 'ROLE_MEMBER');
+  static const TeamsUserEnum_Role ROLE_OWNER = TeamsUserEnum_Role._(2, _omitEnumNames ? '' : 'ROLE_OWNER');
+
+  static const $core.List<TeamsUserEnum_Role> values = <TeamsUserEnum_Role> [
+    ROLE_UNSPECIFIED,
+    ROLE_MEMBER,
+    ROLE_OWNER,
+  ];
+
+  static final $core.Map<$core.int, TeamsUserEnum_Role> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static TeamsUserEnum_Role? valueOf($core.int value) => _byValue[value];
+
+  const TeamsUserEnum_Role._($core.int v, $core.String n) : super(v, n);
+}
+
+class ReserveEnum_Status extends $pb.ProtobufEnum {
+  static const ReserveEnum_Status STATUS_UNSPECIFIED = ReserveEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
+  static const ReserveEnum_Status STATUS_DRAFT = ReserveEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
+  static const ReserveEnum_Status STATUS_RESERVE = ReserveEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVE');
+  static const ReserveEnum_Status STATUS_ORDER = ReserveEnum_Status._(3, _omitEnumNames ? '' : 'STATUS_ORDER');
+
+  static const $core.List<ReserveEnum_Status> values = <ReserveEnum_Status> [
+    STATUS_UNSPECIFIED,
+    STATUS_DRAFT,
+    STATUS_RESERVE,
+    STATUS_ORDER,
+  ];
+
+  static final $core.Map<$core.int, ReserveEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static ReserveEnum_Status? valueOf($core.int value) => _byValue[value];
+
+  const ReserveEnum_Status._($core.int v, $core.String n) : super(v, n);
+}
+
 class ArtifactEnum_Status extends $pb.ProtobufEnum {
   static const ArtifactEnum_Status STATUS_UNSPECIFIED = ArtifactEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
   static const ArtifactEnum_Status STATUS_DRAFT = ArtifactEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');

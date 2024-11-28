@@ -21,6 +21,43 @@ option java_package = "com.extremo.msg.db.v1";
 
 //
 //
+//   Tenant
+//
+//
+
+message Tenant {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+
+  // more properties
+  // max clients same time
+
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+message TenantProfile {
+  // primary key
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // user name
+  string name = 4 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+//
+//
 //   User
 //
 //
@@ -28,33 +65,48 @@ option java_package = "com.extremo.msg.db.v1";
 message User {
   // Priamry KEY
   int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // it cannot be NONE (0)
+  UserEnum.Role role = 4 [(validate.rules).enum = {
+    not_in: [0]
+  }];
   // Unique email
-  string email = 2 [(validate.rules).string = {
+  string email = 5 [(validate.rules).string = {
     email: true
     min_len: 1
   }];
   // A value will be encrypted.
-  string password = 3;
+  string password = 6;
   // Sign Up date
-  google.protobuf.Timestamp date_joined = 4 [(validate.rules).timestamp = {required: true}];
+  google.protobuf.Timestamp date_joined = 7 [(validate.rules).timestamp = {required: true}];
   // is deleted user
-  bool is_deleted = 5;
+  bool is_deleted = 8;
   // Deleted time
-  google.protobuf.Timestamp deleted_at = 6 [(validate.rules).timestamp = {required: false}];
+  google.protobuf.Timestamp deleted_at = 9 [(validate.rules).timestamp = {required: false}];
   // Created time
-  google.protobuf.Timestamp created_at = 7; // [(validate.rules).timestamp.required = true]
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
   // Updated time
-  google.protobuf.Timestamp updated_at = 8; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
   //
   // 1:1 Reverse Relation
   //
-  UserProfile profile = 9 [(validate.rules).message = {required: true}];
+  UserProfile profile = 12 [(validate.rules).message = {required: true}];
   //
   // 1:N relation
   //
-  repeated Artifact artifacts = 10 [(validate.rules).repeated = {
+  repeated Artifact artifacts = 13 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 10
+    max_items: 25
+  }];
+  //
+  // N:N relation
+  //
+  repeated Reserve reserves = 14 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
   }];
 }
 
@@ -74,6 +126,231 @@ message UserProfile {
   google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
   // Updated time
   google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+//
+//
+//   Team
+//
+//
+
+message Team {
+  // primary key
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // user name
+  string name = 4 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  //
+  // N:N relation
+  //
+  repeated Reserve reserves = 12 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+}
+
+// teams_users table
+message TeamsUser {
+  // primary key
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 user_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User user = 5 [(validate.rules).message = {required: true}];
+  // it cannot be NONE (0)
+  TeamsUserEnum.Role role = 6 [(validate.rules).enum = {
+    not_in: [0]
+  }];
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+//
+//
+//   Reserve
+//
+//
+
+message Reserve {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // Name of resrvation
+  string name = 4 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Describe to what is this schedule
+  string desc = 5 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // status cannot be NONE (0)
+  ReserveEnum.Status status = 6 [(validate.rules).enum = {
+    not_in: [0]
+  }];
+  // start
+  google.protobuf.Timestamp opened_at = 7 [(validate.rules).timestamp = {required: true}];
+  // until
+  google.protobuf.Timestamp closed_at = 8 [(validate.rules).timestamp = {required: true}];
+  // Created time
+  google.protobuf.Timestamp created_at = 9; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 10; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  //
+  // N:N relation users for CLIENT
+  //
+  repeated User clients = 11 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  //
+  // N:N relation
+  //
+  repeated Team teams = 12 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  //
+  // N:N relation
+  //
+  repeated ReservesService reserves_services = 13 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+}
+
+//
+//
+//   Service
+//
+//
+
+message Service {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // FK self join
+  int32 parent_fk = 4 [(validate.rules).int32 = {gte: 0}];
+  // Relation Message self join
+  Service parent = 5 [(validate.rules).message = {required: false}];
+  // Naming
+  string name = 6 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Description
+  string desc = 7 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // [OPTIONAL] pricing
+  int32 price = 8 [(validate.rules).int32 = {gte: 0}];
+  // display order
+  int32 sort = 9 [(validate.rules).int32 = {gte: 0}];
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 12; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  //
+  // N:N relation
+  //
+  repeated ReservesService reserves_services = 13 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+}
+
+// reserves_services table
+message ReservesService {
+  // primary key
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 reserve_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Reserve reserve = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 service_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Service service = 5 [(validate.rules).message = {required: true}];
+  // Naming
+  string name = 6 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Description
+  string desc = 7 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // [OPTIONAL] pricing
+  int32 price = 8 [(validate.rules).int32 = {gte: 0}];
+  // Created time
+  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+//
+//
+//   Message
+//
+//
+
+message Message {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 from_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User from_user = 5 [(validate.rules).message = {required: true}];
+  // FK
+  int32 to_fk = 6 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User to_user = 7 [(validate.rules).message = {required: true}];
+  // Content
+  string message = 8 [(validate.rules).string = {
+    min_len: 1
+    max_len: 10240
+  }];
+  // Atag Link. Therefore must be set absolute URI
+  bool is_read = 9;
+  // Read time
+  google.protobuf.Timestamp read_at = 10 [(validate.rules).timestamp.required = false];
+  // Deleted message
+  bool is_deleted = 11;
+  // Delete time
+  google.protobuf.Timestamp deleted_at = 12 [(validate.rules).timestamp.required = false];
+  // Created time
+  google.protobuf.Timestamp created_at = 13; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 14; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
 }
 
 message Artifact {
@@ -157,7 +434,7 @@ message Reservation {
     max_len: 1024
   }];
   // Describe to what is this schedule
-  string summary = 8 [(validate.rules).string = {
+  string desc = 8 [(validate.rules).string = {
     min_len: 0
     max_len: 1024
   }];
@@ -173,34 +450,4 @@ message Reservation {
   google.protobuf.Timestamp created_at = 12; // [(validate.rules).timestamp.required = true]
   // Updated time
   google.protobuf.Timestamp updated_at = 13; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
-}
-
-message Message {
-  // Priamry KEY
-  int32 pk = 1 [(validate.rules).int32.gt = 0];
-  // FK
-  int32 from_fk = 2 [(validate.rules).int32 = {gt: 0}];
-  // Relation Message
-  User from_user = 3 [(validate.rules).message = {required: true}];
-  // FK
-  int32 to_fk = 4 [(validate.rules).int32 = {gt: 0}];
-  // Relation Message
-  User to_user = 5 [(validate.rules).message = {required: true}];
-  // Content
-  string message = 6 [(validate.rules).string = {
-    min_len: 1
-    max_len: 10240
-  }];
-  // Atag Link. Therefore must be set absolute URI
-  bool is_read = 7;
-  // Read time
-  google.protobuf.Timestamp read_at = 8 [(validate.rules).timestamp.required = false];
-  // Deleted message
-  bool is_deleted = 9;
-  // Delete time
-  google.protobuf.Timestamp deleted_at = 10 [(validate.rules).timestamp.required = false];
-  // Created time
-  google.protobuf.Timestamp created_at = 11; // [(validate.rules).timestamp.required = true]
-  // Updated time
-  google.protobuf.Timestamp updated_at = 12; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
 }

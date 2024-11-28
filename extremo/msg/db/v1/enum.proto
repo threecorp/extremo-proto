@@ -15,6 +15,30 @@ option java_multiple_files = true;
 option java_outer_classname = "EnumProto";
 option java_package = "com.extremo.msg.db.v1";
 
+message UserEnum {
+  enum Role {
+    ROLE_UNSPECIFIED = 0;
+    ROLE_CLIENT = 1;
+    ROLE_ADMIN = 2;
+  }
+}
+
+message TeamsUserEnum {
+  enum Role {
+    ROLE_UNSPECIFIED = 0;
+    ROLE_MEMBER = 1;
+    ROLE_OWNER = 2;
+  }
+}
+
+message ReserveEnum {
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_DRAFT = 1;
+    STATUS_RESERVE = 2;
+    STATUS_ORDER = 3;
+  }
+}
 message ArtifactEnum {
   enum Status {
     STATUS_UNSPECIFIED = 0;

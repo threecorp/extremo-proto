@@ -13,6 +13,70 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use userEnumDescriptor instead')
+const UserEnum$json = {
+  '1': 'UserEnum',
+  '4': [UserEnum_Role$json],
+};
+
+@$core.Deprecated('Use userEnumDescriptor instead')
+const UserEnum_Role$json = {
+  '1': 'Role',
+  '2': [
+    {'1': 'ROLE_UNSPECIFIED', '2': 0},
+    {'1': 'ROLE_CLIENT', '2': 1},
+    {'1': 'ROLE_ADMIN', '2': 2},
+  ],
+};
+
+/// Descriptor for `UserEnum`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userEnumDescriptor = $convert.base64Decode(
+    'CghVc2VyRW51bSI9CgRSb2xlEhQKEFJPTEVfVU5TUEVDSUZJRUQQABIPCgtST0xFX0NMSUVOVB'
+    'ABEg4KClJPTEVfQURNSU4QAg==');
+
+@$core.Deprecated('Use teamsUserEnumDescriptor instead')
+const TeamsUserEnum$json = {
+  '1': 'TeamsUserEnum',
+  '4': [TeamsUserEnum_Role$json],
+};
+
+@$core.Deprecated('Use teamsUserEnumDescriptor instead')
+const TeamsUserEnum_Role$json = {
+  '1': 'Role',
+  '2': [
+    {'1': 'ROLE_UNSPECIFIED', '2': 0},
+    {'1': 'ROLE_MEMBER', '2': 1},
+    {'1': 'ROLE_OWNER', '2': 2},
+  ],
+};
+
+/// Descriptor for `TeamsUserEnum`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List teamsUserEnumDescriptor = $convert.base64Decode(
+    'Cg1UZWFtc1VzZXJFbnVtIj0KBFJvbGUSFAoQUk9MRV9VTlNQRUNJRklFRBAAEg8KC1JPTEVfTU'
+    'VNQkVSEAESDgoKUk9MRV9PV05FUhAC');
+
+@$core.Deprecated('Use reserveEnumDescriptor instead')
+const ReserveEnum$json = {
+  '1': 'ReserveEnum',
+  '4': [ReserveEnum_Status$json],
+};
+
+@$core.Deprecated('Use reserveEnumDescriptor instead')
+const ReserveEnum_Status$json = {
+  '1': 'Status',
+  '2': [
+    {'1': 'STATUS_UNSPECIFIED', '2': 0},
+    {'1': 'STATUS_DRAFT', '2': 1},
+    {'1': 'STATUS_RESERVE', '2': 2},
+    {'1': 'STATUS_ORDER', '2': 3},
+  ],
+};
+
+/// Descriptor for `ReserveEnum`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List reserveEnumDescriptor = $convert.base64Decode(
+    'CgtSZXNlcnZlRW51bSJYCgZTdGF0dXMSFgoSU1RBVFVTX1VOU1BFQ0lGSUVEEAASEAoMU1RBVF'
+    'VTX0RSQUZUEAESEgoOU1RBVFVTX1JFU0VSVkUQAhIQCgxTVEFUVVNfT1JERVIQAw==');
+
 @$core.Deprecated('Use artifactEnumDescriptor instead')
 const ArtifactEnum$json = {
   '1': 'ArtifactEnum',

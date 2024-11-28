@@ -15,6 +15,102 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 export 'enum.pbenum.dart';
 
+class UserEnum extends $pb.GeneratedMessage {
+  factory UserEnum() => create();
+  UserEnum._() : super();
+  factory UserEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserEnum clone() => UserEnum()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserEnum copyWith(void Function(UserEnum) updates) => super.copyWith((message) => updates(message as UserEnum)) as UserEnum;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserEnum create() => UserEnum._();
+  UserEnum createEmptyInstance() => create();
+  static $pb.PbList<UserEnum> createRepeated() => $pb.PbList<UserEnum>();
+  @$core.pragma('dart2js:noInline')
+  static UserEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserEnum>(create);
+  static UserEnum? _defaultInstance;
+}
+
+class TeamsUserEnum extends $pb.GeneratedMessage {
+  factory TeamsUserEnum() => create();
+  TeamsUserEnum._() : super();
+  factory TeamsUserEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TeamsUserEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TeamsUserEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  TeamsUserEnum clone() => TeamsUserEnum()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TeamsUserEnum copyWith(void Function(TeamsUserEnum) updates) => super.copyWith((message) => updates(message as TeamsUserEnum)) as TeamsUserEnum;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static TeamsUserEnum create() => TeamsUserEnum._();
+  TeamsUserEnum createEmptyInstance() => create();
+  static $pb.PbList<TeamsUserEnum> createRepeated() => $pb.PbList<TeamsUserEnum>();
+  @$core.pragma('dart2js:noInline')
+  static TeamsUserEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TeamsUserEnum>(create);
+  static TeamsUserEnum? _defaultInstance;
+}
+
+class ReserveEnum extends $pb.GeneratedMessage {
+  factory ReserveEnum() => create();
+  ReserveEnum._() : super();
+  factory ReserveEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReserveEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReserveEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReserveEnum clone() => ReserveEnum()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReserveEnum copyWith(void Function(ReserveEnum) updates) => super.copyWith((message) => updates(message as ReserveEnum)) as ReserveEnum;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReserveEnum create() => ReserveEnum._();
+  ReserveEnum createEmptyInstance() => create();
+  static $pb.PbList<ReserveEnum> createRepeated() => $pb.PbList<ReserveEnum>();
+  @$core.pragma('dart2js:noInline')
+  static ReserveEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReserveEnum>(create);
+  static ReserveEnum? _defaultInstance;
+}
+
 class ArtifactEnum extends $pb.GeneratedMessage {
   factory ArtifactEnum() => create();
   ArtifactEnum._() : super();

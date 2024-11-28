@@ -28,6 +28,156 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UserEnum_Role int32
+
+const (
+	UserEnum_ROLE_UNSPECIFIED UserEnum_Role = 0
+	UserEnum_ROLE_CLIENT      UserEnum_Role = 1
+	UserEnum_ROLE_ADMIN       UserEnum_Role = 2
+)
+
+// Enum value maps for UserEnum_Role.
+var (
+	UserEnum_Role_name = map[int32]string{
+		0: "ROLE_UNSPECIFIED",
+		1: "ROLE_CLIENT",
+		2: "ROLE_ADMIN",
+	}
+	UserEnum_Role_value = map[string]int32{
+		"ROLE_UNSPECIFIED": 0,
+		"ROLE_CLIENT":      1,
+		"ROLE_ADMIN":       2,
+	}
+)
+
+func (x UserEnum_Role) Enum() *UserEnum_Role {
+	p := new(UserEnum_Role)
+	*p = x
+	return p
+}
+
+func (x UserEnum_Role) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (UserEnum_Role) Descriptor() protoreflect.EnumDescriptor {
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[0].Descriptor()
+}
+
+func (UserEnum_Role) Type() protoreflect.EnumType {
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[0]
+}
+
+func (x UserEnum_Role) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use UserEnum_Role.Descriptor instead.
+func (UserEnum_Role) EnumDescriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{0, 0}
+}
+
+type TeamsUserEnum_Role int32
+
+const (
+	TeamsUserEnum_ROLE_UNSPECIFIED TeamsUserEnum_Role = 0
+	TeamsUserEnum_ROLE_MEMBER      TeamsUserEnum_Role = 1
+	TeamsUserEnum_ROLE_OWNER       TeamsUserEnum_Role = 2
+)
+
+// Enum value maps for TeamsUserEnum_Role.
+var (
+	TeamsUserEnum_Role_name = map[int32]string{
+		0: "ROLE_UNSPECIFIED",
+		1: "ROLE_MEMBER",
+		2: "ROLE_OWNER",
+	}
+	TeamsUserEnum_Role_value = map[string]int32{
+		"ROLE_UNSPECIFIED": 0,
+		"ROLE_MEMBER":      1,
+		"ROLE_OWNER":       2,
+	}
+)
+
+func (x TeamsUserEnum_Role) Enum() *TeamsUserEnum_Role {
+	p := new(TeamsUserEnum_Role)
+	*p = x
+	return p
+}
+
+func (x TeamsUserEnum_Role) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TeamsUserEnum_Role) Descriptor() protoreflect.EnumDescriptor {
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[1].Descriptor()
+}
+
+func (TeamsUserEnum_Role) Type() protoreflect.EnumType {
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[1]
+}
+
+func (x TeamsUserEnum_Role) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TeamsUserEnum_Role.Descriptor instead.
+func (TeamsUserEnum_Role) EnumDescriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{1, 0}
+}
+
+type ReserveEnum_Status int32
+
+const (
+	ReserveEnum_STATUS_UNSPECIFIED ReserveEnum_Status = 0
+	ReserveEnum_STATUS_DRAFT       ReserveEnum_Status = 1
+	ReserveEnum_STATUS_RESERVE     ReserveEnum_Status = 2
+	ReserveEnum_STATUS_ORDER       ReserveEnum_Status = 3
+)
+
+// Enum value maps for ReserveEnum_Status.
+var (
+	ReserveEnum_Status_name = map[int32]string{
+		0: "STATUS_UNSPECIFIED",
+		1: "STATUS_DRAFT",
+		2: "STATUS_RESERVE",
+		3: "STATUS_ORDER",
+	}
+	ReserveEnum_Status_value = map[string]int32{
+		"STATUS_UNSPECIFIED": 0,
+		"STATUS_DRAFT":       1,
+		"STATUS_RESERVE":     2,
+		"STATUS_ORDER":       3,
+	}
+)
+
+func (x ReserveEnum_Status) Enum() *ReserveEnum_Status {
+	p := new(ReserveEnum_Status)
+	*p = x
+	return p
+}
+
+func (x ReserveEnum_Status) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ReserveEnum_Status) Descriptor() protoreflect.EnumDescriptor {
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[2].Descriptor()
+}
+
+func (ReserveEnum_Status) Type() protoreflect.EnumType {
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[2]
+}
+
+func (x ReserveEnum_Status) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ReserveEnum_Status.Descriptor instead.
+func (ReserveEnum_Status) EnumDescriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{2, 0}
+}
+
 type ArtifactEnum_Status int32
 
 const (
@@ -61,11 +211,11 @@ func (x ArtifactEnum_Status) String() string {
 }
 
 func (ArtifactEnum_Status) Descriptor() protoreflect.EnumDescriptor {
-	return file_extremo_msg_db_v1_enum_proto_enumTypes[0].Descriptor()
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[3].Descriptor()
 }
 
 func (ArtifactEnum_Status) Type() protoreflect.EnumType {
-	return &file_extremo_msg_db_v1_enum_proto_enumTypes[0]
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[3]
 }
 
 func (x ArtifactEnum_Status) Number() protoreflect.EnumNumber {
@@ -74,7 +224,7 @@ func (x ArtifactEnum_Status) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ArtifactEnum_Status.Descriptor instead.
 func (ArtifactEnum_Status) EnumDescriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{0, 0}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{3, 0}
 }
 
 type ArtifactImageEnum_Kind int32
@@ -110,11 +260,11 @@ func (x ArtifactImageEnum_Kind) String() string {
 }
 
 func (ArtifactImageEnum_Kind) Descriptor() protoreflect.EnumDescriptor {
-	return file_extremo_msg_db_v1_enum_proto_enumTypes[1].Descriptor()
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[4].Descriptor()
 }
 
 func (ArtifactImageEnum_Kind) Type() protoreflect.EnumType {
-	return &file_extremo_msg_db_v1_enum_proto_enumTypes[1]
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[4]
 }
 
 func (x ArtifactImageEnum_Kind) Number() protoreflect.EnumNumber {
@@ -123,7 +273,7 @@ func (x ArtifactImageEnum_Kind) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ArtifactImageEnum_Kind.Descriptor instead.
 func (ArtifactImageEnum_Kind) EnumDescriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{1, 0}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{4, 0}
 }
 
 type ReservationEnum_Status int32
@@ -159,11 +309,11 @@ func (x ReservationEnum_Status) String() string {
 }
 
 func (ReservationEnum_Status) Descriptor() protoreflect.EnumDescriptor {
-	return file_extremo_msg_db_v1_enum_proto_enumTypes[2].Descriptor()
+	return file_extremo_msg_db_v1_enum_proto_enumTypes[5].Descriptor()
 }
 
 func (ReservationEnum_Status) Type() protoreflect.EnumType {
-	return &file_extremo_msg_db_v1_enum_proto_enumTypes[2]
+	return &file_extremo_msg_db_v1_enum_proto_enumTypes[5]
 }
 
 func (x ReservationEnum_Status) Number() protoreflect.EnumNumber {
@@ -172,7 +322,115 @@ func (x ReservationEnum_Status) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ReservationEnum_Status.Descriptor instead.
 func (ReservationEnum_Status) EnumDescriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{2, 0}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{5, 0}
+}
+
+type UserEnum struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *UserEnum) Reset() {
+	*x = UserEnum{}
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserEnum) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserEnum) ProtoMessage() {}
+
+func (x *UserEnum) ProtoReflect() protoreflect.Message {
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserEnum.ProtoReflect.Descriptor instead.
+func (*UserEnum) Descriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{0}
+}
+
+type TeamsUserEnum struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *TeamsUserEnum) Reset() {
+	*x = TeamsUserEnum{}
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TeamsUserEnum) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamsUserEnum) ProtoMessage() {}
+
+func (x *TeamsUserEnum) ProtoReflect() protoreflect.Message {
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamsUserEnum.ProtoReflect.Descriptor instead.
+func (*TeamsUserEnum) Descriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{1}
+}
+
+type ReserveEnum struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ReserveEnum) Reset() {
+	*x = ReserveEnum{}
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReserveEnum) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReserveEnum) ProtoMessage() {}
+
+func (x *ReserveEnum) ProtoReflect() protoreflect.Message {
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReserveEnum.ProtoReflect.Descriptor instead.
+func (*ReserveEnum) Descriptor() ([]byte, []int) {
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{2}
 }
 
 type ArtifactEnum struct {
@@ -183,7 +441,7 @@ type ArtifactEnum struct {
 
 func (x *ArtifactEnum) Reset() {
 	*x = ArtifactEnum{}
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[0]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +453,7 @@ func (x *ArtifactEnum) String() string {
 func (*ArtifactEnum) ProtoMessage() {}
 
 func (x *ArtifactEnum) ProtoReflect() protoreflect.Message {
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[0]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +466,7 @@ func (x *ArtifactEnum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArtifactEnum.ProtoReflect.Descriptor instead.
 func (*ArtifactEnum) Descriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{0}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{3}
 }
 
 type ArtifactImageEnum struct {
@@ -219,7 +477,7 @@ type ArtifactImageEnum struct {
 
 func (x *ArtifactImageEnum) Reset() {
 	*x = ArtifactImageEnum{}
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[1]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -231,7 +489,7 @@ func (x *ArtifactImageEnum) String() string {
 func (*ArtifactImageEnum) ProtoMessage() {}
 
 func (x *ArtifactImageEnum) ProtoReflect() protoreflect.Message {
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[1]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +502,7 @@ func (x *ArtifactImageEnum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArtifactImageEnum.ProtoReflect.Descriptor instead.
 func (*ArtifactImageEnum) Descriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{1}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{4}
 }
 
 type ReservationEnum struct {
@@ -255,7 +513,7 @@ type ReservationEnum struct {
 
 func (x *ReservationEnum) Reset() {
 	*x = ReservationEnum{}
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[2]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -267,7 +525,7 @@ func (x *ReservationEnum) String() string {
 func (*ReservationEnum) ProtoMessage() {}
 
 func (x *ReservationEnum) ProtoReflect() protoreflect.Message {
-	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[2]
+	mi := &file_extremo_msg_db_v1_enum_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -280,7 +538,7 @@ func (x *ReservationEnum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReservationEnum.ProtoReflect.Descriptor instead.
 func (*ReservationEnum) Descriptor() ([]byte, []int) {
-	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{2}
+	return file_extremo_msg_db_v1_enum_proto_rawDescGZIP(), []int{5}
 }
 
 var File_extremo_msg_db_v1_enum_proto protoreflect.FileDescriptor
@@ -289,30 +547,46 @@ var file_extremo_msg_db_v1_enum_proto_rawDesc = []byte{
 	0x0a, 0x1c, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x64, 0x62,
 	0x2f, 0x76, 0x31, 0x2f, 0x65, 0x6e, 0x75, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11,
 	0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76,
-	0x31, 0x22, 0x56, 0x0a, 0x0c, 0x41, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x45, 0x6e, 0x75,
-	0x6d, 0x22, 0x46, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a, 0x12, 0x53,
-	0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45,
-	0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x44, 0x52,
-	0x41, 0x46, 0x54, 0x10, 0x01, 0x12, 0x12, 0x0a, 0x0e, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f,
-	0x50, 0x55, 0x42, 0x4c, 0x49, 0x53, 0x48, 0x10, 0x02, 0x22, 0x53, 0x0a, 0x11, 0x41, 0x72, 0x74,
-	0x69, 0x66, 0x61, 0x63, 0x74, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x3e,
-	0x0a, 0x04, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x14, 0x0a, 0x10, 0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x55,
-	0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0e, 0x0a, 0x0a,
-	0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x54, 0x48, 0x55, 0x4d, 0x42, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c,
-	0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x43, 0x4f, 0x4e, 0x54, 0x45, 0x4e, 0x54, 0x10, 0x02, 0x22, 0x5a,
-	0x0a, 0x0f, 0x52, 0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x45, 0x6e, 0x75,
-	0x6d, 0x22, 0x47, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a, 0x12, 0x53,
-	0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45,
-	0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x44, 0x52,
-	0x41, 0x46, 0x54, 0x10, 0x01, 0x12, 0x13, 0x0a, 0x0f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f,
-	0x52, 0x45, 0x53, 0x45, 0x52, 0x56, 0x45, 0x44, 0x10, 0x02, 0x42, 0x67, 0x0a, 0x15, 0x63, 0x6f,
-	0x6d, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62,
-	0x2e, 0x76, 0x31, 0x42, 0x09, 0x45, 0x6e, 0x75, 0x6d, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
-	0x5a, 0x41, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x68, 0x72,
-	0x65, 0x65, 0x63, 0x6f, 0x72, 0x70, 0x2f, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2d, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x67, 0x6f, 0x2f, 0x65,
-	0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x64, 0x62, 0x2f, 0x76, 0x31,
-	0x3b, 0x64, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x31, 0x22, 0x49, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x3d, 0x0a,
+	0x04, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x52, 0x4f, 0x4c, 0x45, 0x5f, 0x55, 0x4e,
+	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x52,
+	0x4f, 0x4c, 0x45, 0x5f, 0x43, 0x4c, 0x49, 0x45, 0x4e, 0x54, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a,
+	0x52, 0x4f, 0x4c, 0x45, 0x5f, 0x41, 0x44, 0x4d, 0x49, 0x4e, 0x10, 0x02, 0x22, 0x4e, 0x0a, 0x0d,
+	0x54, 0x65, 0x61, 0x6d, 0x73, 0x55, 0x73, 0x65, 0x72, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x3d, 0x0a,
+	0x04, 0x52, 0x6f, 0x6c, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x52, 0x4f, 0x4c, 0x45, 0x5f, 0x55, 0x4e,
+	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x52,
+	0x4f, 0x4c, 0x45, 0x5f, 0x4d, 0x45, 0x4d, 0x42, 0x45, 0x52, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a,
+	0x52, 0x4f, 0x4c, 0x45, 0x5f, 0x4f, 0x57, 0x4e, 0x45, 0x52, 0x10, 0x02, 0x22, 0x67, 0x0a, 0x0b,
+	0x52, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x58, 0x0a, 0x06, 0x53,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f,
+	0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x10, 0x0a,
+	0x0c, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x44, 0x52, 0x41, 0x46, 0x54, 0x10, 0x01, 0x12,
+	0x12, 0x0a, 0x0e, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x52, 0x45, 0x53, 0x45, 0x52, 0x56,
+	0x45, 0x10, 0x02, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x4f, 0x52,
+	0x44, 0x45, 0x52, 0x10, 0x03, 0x22, 0x56, 0x0a, 0x0c, 0x41, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63,
+	0x74, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x46, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
+	0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x54, 0x41, 0x54, 0x55,
+	0x53, 0x5f, 0x44, 0x52, 0x41, 0x46, 0x54, 0x10, 0x01, 0x12, 0x12, 0x0a, 0x0e, 0x53, 0x54, 0x41,
+	0x54, 0x55, 0x53, 0x5f, 0x50, 0x55, 0x42, 0x4c, 0x49, 0x53, 0x48, 0x10, 0x02, 0x22, 0x53, 0x0a,
+	0x11, 0x41, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x45, 0x6e,
+	0x75, 0x6d, 0x22, 0x3e, 0x0a, 0x04, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x14, 0x0a, 0x10, 0x4b, 0x49,
+	0x4e, 0x44, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
+	0x12, 0x0e, 0x0a, 0x0a, 0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x54, 0x48, 0x55, 0x4d, 0x42, 0x10, 0x01,
+	0x12, 0x10, 0x0a, 0x0c, 0x4b, 0x49, 0x4e, 0x44, 0x5f, 0x43, 0x4f, 0x4e, 0x54, 0x45, 0x4e, 0x54,
+	0x10, 0x02, 0x22, 0x5a, 0x0a, 0x0f, 0x52, 0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x45, 0x6e, 0x75, 0x6d, 0x22, 0x47, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
+	0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x54, 0x41, 0x54, 0x55,
+	0x53, 0x5f, 0x44, 0x52, 0x41, 0x46, 0x54, 0x10, 0x01, 0x12, 0x13, 0x0a, 0x0f, 0x53, 0x54, 0x41,
+	0x54, 0x55, 0x53, 0x5f, 0x52, 0x45, 0x53, 0x45, 0x52, 0x56, 0x45, 0x44, 0x10, 0x02, 0x42, 0x67,
+	0x0a, 0x15, 0x63, 0x6f, 0x6d, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73,
+	0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31, 0x42, 0x09, 0x45, 0x6e, 0x75, 0x6d, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x41, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x74, 0x68, 0x72, 0x65, 0x65, 0x63, 0x6f, 0x72, 0x70, 0x2f, 0x65, 0x78, 0x74, 0x72, 0x65,
+	0x6d, 0x6f, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f,
+	0x67, 0x6f, 0x2f, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x64,
+	0x62, 0x2f, 0x76, 0x31, 0x3b, 0x64, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -327,15 +601,21 @@ func file_extremo_msg_db_v1_enum_proto_rawDescGZIP() []byte {
 	return file_extremo_msg_db_v1_enum_proto_rawDescData
 }
 
-var file_extremo_msg_db_v1_enum_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_extremo_msg_db_v1_enum_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_extremo_msg_db_v1_enum_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
+var file_extremo_msg_db_v1_enum_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_extremo_msg_db_v1_enum_proto_goTypes = []any{
-	(ArtifactEnum_Status)(0),    // 0: extremo.msg.db.v1.ArtifactEnum.Status
-	(ArtifactImageEnum_Kind)(0), // 1: extremo.msg.db.v1.ArtifactImageEnum.Kind
-	(ReservationEnum_Status)(0), // 2: extremo.msg.db.v1.ReservationEnum.Status
-	(*ArtifactEnum)(nil),        // 3: extremo.msg.db.v1.ArtifactEnum
-	(*ArtifactImageEnum)(nil),   // 4: extremo.msg.db.v1.ArtifactImageEnum
-	(*ReservationEnum)(nil),     // 5: extremo.msg.db.v1.ReservationEnum
+	(UserEnum_Role)(0),          // 0: extremo.msg.db.v1.UserEnum.Role
+	(TeamsUserEnum_Role)(0),     // 1: extremo.msg.db.v1.TeamsUserEnum.Role
+	(ReserveEnum_Status)(0),     // 2: extremo.msg.db.v1.ReserveEnum.Status
+	(ArtifactEnum_Status)(0),    // 3: extremo.msg.db.v1.ArtifactEnum.Status
+	(ArtifactImageEnum_Kind)(0), // 4: extremo.msg.db.v1.ArtifactImageEnum.Kind
+	(ReservationEnum_Status)(0), // 5: extremo.msg.db.v1.ReservationEnum.Status
+	(*UserEnum)(nil),            // 6: extremo.msg.db.v1.UserEnum
+	(*TeamsUserEnum)(nil),       // 7: extremo.msg.db.v1.TeamsUserEnum
+	(*ReserveEnum)(nil),         // 8: extremo.msg.db.v1.ReserveEnum
+	(*ArtifactEnum)(nil),        // 9: extremo.msg.db.v1.ArtifactEnum
+	(*ArtifactImageEnum)(nil),   // 10: extremo.msg.db.v1.ArtifactImageEnum
+	(*ReservationEnum)(nil),     // 11: extremo.msg.db.v1.ReservationEnum
 }
 var file_extremo_msg_db_v1_enum_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -355,8 +635,8 @@ func file_extremo_msg_db_v1_enum_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_extremo_msg_db_v1_enum_proto_rawDesc,
-			NumEnums:      3,
-			NumMessages:   3,
+			NumEnums:      6,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

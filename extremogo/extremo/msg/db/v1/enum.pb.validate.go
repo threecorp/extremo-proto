@@ -35,6 +35,304 @@ var (
 	_ = sort.Sort
 )
 
+// Validate checks the field values on UserEnum with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *UserEnum) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UserEnum with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in UserEnumMultiError, or nil
+// if none found.
+func (m *UserEnum) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UserEnum) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return UserEnumMultiError(errors)
+	}
+
+	return nil
+}
+
+// UserEnumMultiError is an error wrapping multiple validation errors returned
+// by UserEnum.ValidateAll() if the designated constraints aren't met.
+type UserEnumMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UserEnumMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UserEnumMultiError) AllErrors() []error { return m }
+
+// UserEnumValidationError is the validation error returned by
+// UserEnum.Validate if the designated constraints aren't met.
+type UserEnumValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UserEnumValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UserEnumValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UserEnumValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UserEnumValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UserEnumValidationError) ErrorName() string { return "UserEnumValidationError" }
+
+// Error satisfies the builtin error interface
+func (e UserEnumValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUserEnum.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UserEnumValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UserEnumValidationError{}
+
+// Validate checks the field values on TeamsUserEnum with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TeamsUserEnum) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on TeamsUserEnum with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TeamsUserEnumMultiError, or
+// nil if none found.
+func (m *TeamsUserEnum) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *TeamsUserEnum) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return TeamsUserEnumMultiError(errors)
+	}
+
+	return nil
+}
+
+// TeamsUserEnumMultiError is an error wrapping multiple validation errors
+// returned by TeamsUserEnum.ValidateAll() if the designated constraints
+// aren't met.
+type TeamsUserEnumMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m TeamsUserEnumMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m TeamsUserEnumMultiError) AllErrors() []error { return m }
+
+// TeamsUserEnumValidationError is the validation error returned by
+// TeamsUserEnum.Validate if the designated constraints aren't met.
+type TeamsUserEnumValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e TeamsUserEnumValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e TeamsUserEnumValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e TeamsUserEnumValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e TeamsUserEnumValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e TeamsUserEnumValidationError) ErrorName() string { return "TeamsUserEnumValidationError" }
+
+// Error satisfies the builtin error interface
+func (e TeamsUserEnumValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sTeamsUserEnum.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = TeamsUserEnumValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = TeamsUserEnumValidationError{}
+
+// Validate checks the field values on ReserveEnum with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *ReserveEnum) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ReserveEnum with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in ReserveEnumMultiError, or
+// nil if none found.
+func (m *ReserveEnum) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ReserveEnum) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return ReserveEnumMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReserveEnumMultiError is an error wrapping multiple validation errors
+// returned by ReserveEnum.ValidateAll() if the designated constraints aren't met.
+type ReserveEnumMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReserveEnumMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReserveEnumMultiError) AllErrors() []error { return m }
+
+// ReserveEnumValidationError is the validation error returned by
+// ReserveEnum.Validate if the designated constraints aren't met.
+type ReserveEnumValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReserveEnumValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReserveEnumValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReserveEnumValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReserveEnumValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReserveEnumValidationError) ErrorName() string { return "ReserveEnumValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ReserveEnumValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReserveEnum.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReserveEnumValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReserveEnumValidationError{}
+
 // Validate checks the field values on ArtifactEnum with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
