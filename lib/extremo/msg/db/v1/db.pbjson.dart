@@ -68,7 +68,7 @@ const User$json = {
     {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
     {'1': 'profile', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.UserProfile', '8': {}, '10': 'profile'},
     {'1': 'artifacts', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifacts'},
-    {'1': 'reserves', '3': 14, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Reserve', '8': {}, '10': 'reserves'},
+    {'1': 'books', '3': 14, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'books'},
   ],
 };
 
@@ -86,8 +86,8 @@ final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'gLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJCCgdwcm9maWxl'
     'GAwgASgLMh4uZXh0cmVtby5tc2cuZGIudjEuVXNlclByb2ZpbGVCCPpCBYoBAhABUgdwcm9maW'
     'xlEkUKCWFydGlmYWN0cxgNIAMoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgr6QgeS'
-    'AQQIABAZUglhcnRpZmFjdHMSQgoIcmVzZXJ2ZXMYDiADKAsyGi5leHRyZW1vLm1zZy5kYi52MS'
-    '5SZXNlcnZlQgr6QgeSAQQIABAZUghyZXNlcnZlcw==');
+    'AQQIABAZUglhcnRpZmFjdHMSOQoFYm9va3MYDiADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Cb2'
+    '9rQgr6QgeSAQQIABAZUgVib29rcw==');
 
 @$core.Deprecated('Use userProfileDescriptor instead')
 const UserProfile$json = {
@@ -121,7 +121,7 @@ const Team$json = {
     {'1': 'name', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'name'},
     {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-    {'1': 'reserves', '3': 12, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Reserve', '8': {}, '10': 'reserves'},
+    {'1': 'books', '3': 12, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'books'},
   ],
 };
 
@@ -132,8 +132,8 @@ final $typed_data.Uint8List teamDescriptor = $convert.base64Decode(
     'dEII+kIFigECEAFSBnRlbmFudBIeCgRuYW1lGAQgASgJQgr6QgdyBRABGP8BUgRuYW1lEjkKCm'
     'NyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQS'
     'OQoKdXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZW'
-    'RBdBJCCghyZXNlcnZlcxgMIAMoCzIaLmV4dHJlbW8ubXNnLmRiLnYxLlJlc2VydmVCCvpCB5IB'
-    'BAgAEBlSCHJlc2VydmVz');
+    'RBdBI5CgVib29rcxgMIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tCCvpCB5IBBAgAEBlS'
+    'BWJvb2tz');
 
 @$core.Deprecated('Use teamsUserDescriptor instead')
 const TeamsUser$json = {
@@ -161,42 +161,42 @@ final $typed_data.Uint8List teamsUserDescriptor = $convert.base64Decode(
     'aW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GAsgASgLMhouZ29vZ2xlLnByb3RvYn'
     'VmLlRpbWVzdGFtcFIJdXBkYXRlZEF0');
 
-@$core.Deprecated('Use reserveDescriptor instead')
-const Reserve$json = {
-  '1': 'Reserve',
+@$core.Deprecated('Use bookDescriptor instead')
+const Book$json = {
+  '1': 'Book',
   '2': [
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'tenant_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'tenant', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Tenant', '8': {}, '10': 'tenant'},
     {'1': 'name', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'name'},
     {'1': 'desc', '3': 5, '4': 1, '5': 9, '8': {}, '10': 'desc'},
-    {'1': 'status', '3': 6, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.ReserveEnum.Status', '8': {}, '10': 'status'},
+    {'1': 'status', '3': 6, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.BookEnum.Status', '8': {}, '10': 'status'},
     {'1': 'opened_at', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
     {'1': 'closed_at', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
     {'1': 'created_at', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
     {'1': 'clients', '3': 11, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'clients'},
     {'1': 'teams', '3': 12, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Team', '8': {}, '10': 'teams'},
-    {'1': 'reserves_services', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ReservesService', '8': {}, '10': 'reservesServices'},
+    {'1': 'books_services', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.BooksService', '8': {}, '10': 'booksServices'},
   ],
 };
 
-/// Descriptor for `Reserve`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List reserveDescriptor = $convert.base64Decode(
-    'CgdSZXNlcnZlEhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/'
-    'pCBBoCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRl'
-    'bmFudEII+kIFigECEAFSBnRlbmFudBIeCgRuYW1lGAQgASgJQgr6QgdyBRAAGP8BUgRuYW1lEh'
-    '4KBGRlc2MYBSABKAlCCvpCB3IFEAAYgAhSBGRlc2MSRwoGc3RhdHVzGAYgASgOMiUuZXh0cmVt'
-    'by5tc2cuZGIudjEuUmVzZXJ2ZUVudW0uU3RhdHVzQgj6QgWCAQIgAFIGc3RhdHVzEkEKCW9wZW'
-    '5lZF9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggBUghvcGVu'
-    'ZWRBdBJBCgljbG9zZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgj6Qg'
-    'WyAQIIAVIIY2xvc2VkQXQSOQoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5U'
-    'aW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYn'
-    'VmLlRpbWVzdGFtcFIJdXBkYXRlZEF0Ej0KB2NsaWVudHMYCyADKAsyFy5leHRyZW1vLm1zZy5k'
-    'Yi52MS5Vc2VyQgr6QgeSAQQIABAZUgdjbGllbnRzEjkKBXRlYW1zGAwgAygLMhcuZXh0cmVtby'
-    '5tc2cuZGIudjEuVGVhbUIK+kIHkgEECAAQGVIFdGVhbXMSWwoRcmVzZXJ2ZXNfc2VydmljZXMY'
-    'DSADKAsyIi5leHRyZW1vLm1zZy5kYi52MS5SZXNlcnZlc1NlcnZpY2VCCvpCB5IBBAgAEBlSEH'
-    'Jlc2VydmVzU2VydmljZXM=');
+/// Descriptor for `Book`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List bookDescriptor = $convert.base64Decode(
+    'CgRCb29rEhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/pCBB'
+    'oCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRlbmFu'
+    'dEII+kIFigECEAFSBnRlbmFudBIeCgRuYW1lGAQgASgJQgr6QgdyBRAAGP8BUgRuYW1lEh4KBG'
+    'Rlc2MYBSABKAlCCvpCB3IFEAAYgAhSBGRlc2MSRAoGc3RhdHVzGAYgASgOMiIuZXh0cmVtby5t'
+    'c2cuZGIudjEuQm9va0VudW0uU3RhdHVzQgj6QgWCAQIgAFIGc3RhdHVzEkEKCW9wZW5lZF9hdB'
+    'gHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggBUghvcGVuZWRBdBJB'
+    'CgljbG9zZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAV'
+    'IIY2xvc2VkQXQSOQoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3Rh'
+    'bXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbW'
+    'VzdGFtcFIJdXBkYXRlZEF0Ej0KB2NsaWVudHMYCyADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5V'
+    'c2VyQgr6QgeSAQQIABAZUgdjbGllbnRzEjkKBXRlYW1zGAwgAygLMhcuZXh0cmVtby5tc2cuZG'
+    'IudjEuVGVhbUIK+kIHkgEECAAQGVIFdGVhbXMSUgoOYm9va3Nfc2VydmljZXMYDSADKAsyHy5l'
+    'eHRyZW1vLm1zZy5kYi52MS5Cb29rc1NlcnZpY2VCCvpCB5IBBAgAEBlSDWJvb2tzU2VydmljZX'
+    'M=');
 
 @$core.Deprecated('Use serviceDescriptor instead')
 const Service$json = {
@@ -213,7 +213,7 @@ const Service$json = {
     {'1': 'sort', '3': 9, '4': 1, '5': 5, '8': {}, '10': 'sort'},
     {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-    {'1': 'reserves_services', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ReservesService', '8': {}, '10': 'reservesServices'},
+    {'1': 'books_services', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.BooksService', '8': {}, '10': 'booksServices'},
   ],
 };
 
@@ -227,17 +227,17 @@ final $typed_data.Uint8List serviceDescriptor = $convert.base64Decode(
     'gJQgr6QgdyBRAAGIAIUgRkZXNjEh0KBXByaWNlGAggASgFQgf6QgQaAigAUgVwcmljZRIbCgRz'
     'b3J0GAkgASgFQgf6QgQaAigAUgRzb3J0EjkKCmNyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucH'
     'JvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgMIAEoCzIaLmdvb2ds'
-    'ZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJbChFyZXNlcnZlc19zZXJ2aWNlcxgNIA'
-    'MoCzIiLmV4dHJlbW8ubXNnLmRiLnYxLlJlc2VydmVzU2VydmljZUIK+kIHkgEECAAQGVIQcmVz'
-    'ZXJ2ZXNTZXJ2aWNlcw==');
+    'ZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJSCg5ib29rc19zZXJ2aWNlcxgNIAMoCz'
+    'IfLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tzU2VydmljZUIK+kIHkgEECAAQGVINYm9va3NTZXJ2'
+    'aWNlcw==');
 
-@$core.Deprecated('Use reservesServiceDescriptor instead')
-const ReservesService$json = {
-  '1': 'ReservesService',
+@$core.Deprecated('Use booksServiceDescriptor instead')
+const BooksService$json = {
+  '1': 'BooksService',
   '2': [
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'reserve_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'reserveFk'},
-    {'1': 'reserve', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Reserve', '8': {}, '10': 'reserve'},
+    {'1': 'book_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'bookFk'},
+    {'1': 'book', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'book'},
     {'1': 'service_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'serviceFk'},
     {'1': 'service', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Service', '8': {}, '10': 'service'},
     {'1': 'name', '3': 6, '4': 1, '5': 9, '8': {}, '10': 'name'},
@@ -248,17 +248,17 @@ const ReservesService$json = {
   ],
 };
 
-/// Descriptor for `ReservesService`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List reservesServiceDescriptor = $convert.base64Decode(
-    'Cg9SZXNlcnZlc1NlcnZpY2USFwoCcGsYASABKAVCB/pCBBoCIABSAnBrEiYKCnJlc2VydmVfZm'
-    'sYAiABKAVCB/pCBBoCIABSCXJlc2VydmVGaxI+CgdyZXNlcnZlGAMgASgLMhouZXh0cmVtby5t'
-    'c2cuZGIudjEuUmVzZXJ2ZUII+kIFigECEAFSB3Jlc2VydmUSJgoKc2VydmljZV9maxgEIAEoBU'
-    'IH+kIEGgIgAFIJc2VydmljZUZrEj4KB3NlcnZpY2UYBSABKAsyGi5leHRyZW1vLm1zZy5kYi52'
-    'MS5TZXJ2aWNlQgj6QgWKAQIQAVIHc2VydmljZRIeCgRuYW1lGAYgASgJQgr6QgdyBRAAGP8BUg'
-    'RuYW1lEh4KBGRlc2MYByABKAlCCvpCB3IFEAAYgAhSBGRlc2MSHQoFcHJpY2UYCCABKAVCB/pC'
-    'BBoCKABSBXByaWNlEjkKCmNyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZX'
-    'N0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5U'
-    'aW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+/// Descriptor for `BooksService`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List booksServiceDescriptor = $convert.base64Decode(
+    'CgxCb29rc1NlcnZpY2USFwoCcGsYASABKAVCB/pCBBoCIABSAnBrEiAKB2Jvb2tfZmsYAiABKA'
+    'VCB/pCBBoCIABSBmJvb2tGaxI1CgRib29rGAMgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuQm9v'
+    'a0II+kIFigECEAFSBGJvb2sSJgoKc2VydmljZV9maxgEIAEoBUIH+kIEGgIgAFIJc2VydmljZU'
+    'ZrEj4KB3NlcnZpY2UYBSABKAsyGi5leHRyZW1vLm1zZy5kYi52MS5TZXJ2aWNlQgj6QgWKAQIQ'
+    'AVIHc2VydmljZRIeCgRuYW1lGAYgASgJQgr6QgdyBRAAGP8BUgRuYW1lEh4KBGRlc2MYByABKA'
+    'lCCvpCB3IFEAAYgAhSBGRlc2MSHQoFcHJpY2UYCCABKAVCB/pCBBoCKABSBXByaWNlEjkKCmNy'
+    'ZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQ'
+    'oKdXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRB'
+    'dA==');
 
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = {
@@ -355,39 +355,4 @@ final $typed_data.Uint8List artifactImageDescriptor = $convert.base64Decode(
     'BlZ3xnaWZ8cG5nfGJtcHx3ZWJwfHRpZikkkAEBUgRwYXRoEjkKCmNyZWF0ZWRfYXQYByABKAsy'
     'Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgIIA'
     'EoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
-
-@$core.Deprecated('Use reservationDescriptor instead')
-const Reservation$json = {
-  '1': 'Reservation',
-  '2': [
-    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'user_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'userFk'},
-    {'1': 'user', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'user'},
-    {'1': 'artifact_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'artifactFk'},
-    {'1': 'artifact', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifact'},
-    {'1': 'name', '3': 6, '4': 1, '5': 9, '8': {}, '10': 'name'},
-    {'1': 'link', '3': 7, '4': 1, '5': 9, '8': {}, '10': 'link'},
-    {'1': 'desc', '3': 8, '4': 1, '5': 9, '8': {}, '10': 'desc'},
-    {'1': 'status', '3': 9, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.ReservationEnum.Status', '8': {}, '10': 'status'},
-    {'1': 'opened_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
-    {'1': 'closed_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
-    {'1': 'created_at', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    {'1': 'updated_at', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-  ],
-};
-
-/// Descriptor for `Reservation`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List reservationDescriptor = $convert.base64Decode(
-    'CgtSZXNlcnZhdGlvbhIXCgJwaxgBIAEoBUIH+kIEGgIgAFICcGsSIAoHdXNlcl9maxgCIAEoBU'
-    'IH+kIEGgIgAFIGdXNlckZrEjUKBHVzZXIYAyABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2Vy'
-    'Qgj6QgWKAQIQAVIEdXNlchIoCgthcnRpZmFjdF9maxgEIAEoBUIH+kIEGgIgAFIKYXJ0aWZhY3'
-    'RGaxJBCghhcnRpZmFjdBgFIAEoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgj6QgWK'
-    'AQIQAVIIYXJ0aWZhY3QSHgoEbmFtZRgGIAEoCUIK+kIHcgUQABj/AVIEbmFtZRIhCgRsaW5rGA'
-    'cgASgJQg36QgpyCBAAGIAIiAEBUgRsaW5rEh4KBGRlc2MYCCABKAlCCvpCB3IFEAAYgAhSBGRl'
-    'c2MSSwoGc3RhdHVzGAkgASgOMikuZXh0cmVtby5tc2cuZGIudjEuUmVzZXJ2YXRpb25FbnVtLl'
-    'N0YXR1c0II+kIFggECIABSBnN0YXR1cxJBCglvcGVuZWRfYXQYCiABKAsyGi5nb29nbGUucHJv'
-    'dG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAVIIb3BlbmVkQXQSQQoJY2xvc2VkX2F0GAsgASgLMh'
-    'ouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCAFSCGNsb3NlZEF0EjkKCmNyZWF0'
-    'ZWRfYXQYDCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdX'
-    'BkYXRlZF9hdBgNIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
 

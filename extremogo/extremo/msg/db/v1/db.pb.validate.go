@@ -708,9 +708,9 @@ func (m *User) validate(all bool) error {
 
 	}
 
-	if len(m.GetReserves()) > 25 {
+	if len(m.GetBooks()) > 25 {
 		err := UserValidationError{
-			field:  "Reserves",
+			field:  "Books",
 			reason: "value must contain no more than 25 item(s)",
 		}
 		if !all {
@@ -719,7 +719,7 @@ func (m *User) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	for idx, item := range m.GetReserves() {
+	for idx, item := range m.GetBooks() {
 		_, _ = idx, item
 
 		if all {
@@ -727,7 +727,7 @@ func (m *User) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, UserValidationError{
-						field:  fmt.Sprintf("Reserves[%v]", idx),
+						field:  fmt.Sprintf("Books[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -735,7 +735,7 @@ func (m *User) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, UserValidationError{
-						field:  fmt.Sprintf("Reserves[%v]", idx),
+						field:  fmt.Sprintf("Books[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -744,7 +744,7 @@ func (m *User) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return UserValidationError{
-					field:  fmt.Sprintf("Reserves[%v]", idx),
+					field:  fmt.Sprintf("Books[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -1266,9 +1266,9 @@ func (m *Team) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetReserves()) > 25 {
+	if len(m.GetBooks()) > 25 {
 		err := TeamValidationError{
-			field:  "Reserves",
+			field:  "Books",
 			reason: "value must contain no more than 25 item(s)",
 		}
 		if !all {
@@ -1277,7 +1277,7 @@ func (m *Team) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	for idx, item := range m.GetReserves() {
+	for idx, item := range m.GetBooks() {
 		_, _ = idx, item
 
 		if all {
@@ -1285,7 +1285,7 @@ func (m *Team) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, TeamValidationError{
-						field:  fmt.Sprintf("Reserves[%v]", idx),
+						field:  fmt.Sprintf("Books[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -1293,7 +1293,7 @@ func (m *Team) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, TeamValidationError{
-						field:  fmt.Sprintf("Reserves[%v]", idx),
+						field:  fmt.Sprintf("Books[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -1302,7 +1302,7 @@ func (m *Team) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return TeamValidationError{
-					field:  fmt.Sprintf("Reserves[%v]", idx),
+					field:  fmt.Sprintf("Books[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -1673,21 +1673,21 @@ var _TeamsUser_Role_NotInLookup = map[TeamsUserEnum_Role]struct{}{
 	0: {},
 }
 
-// Validate checks the field values on Reserve with the rules defined in the
-// proto definition for this message. If any rules are violated, the first
-// error encountered is returned, or nil if there are no violations.
-func (m *Reserve) Validate() error {
+// Validate checks the field values on Book with the rules defined in the proto
+// definition for this message. If any rules are violated, the first error
+// encountered is returned, or nil if there are no violations.
+func (m *Book) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on Reserve with the rules defined in the
+// ValidateAll checks the field values on Book with the rules defined in the
 // proto definition for this message. If any rules are violated, the result is
-// a list of violation errors wrapped in ReserveMultiError, or nil if none found.
-func (m *Reserve) ValidateAll() error {
+// a list of violation errors wrapped in BookMultiError, or nil if none found.
+func (m *Book) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *Reserve) validate(all bool) error {
+func (m *Book) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -1695,7 +1695,7 @@ func (m *Reserve) validate(all bool) error {
 	var errors []error
 
 	if m.GetPk() <= 0 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Pk",
 			reason: "value must be greater than 0",
 		}
@@ -1706,7 +1706,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if m.GetTenantFk() <= 0 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "TenantFk",
 			reason: "value must be greater than 0",
 		}
@@ -1717,7 +1717,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if m.GetTenant() == nil {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Tenant",
 			reason: "value is required",
 		}
@@ -1731,7 +1731,7 @@ func (m *Reserve) validate(all bool) error {
 		switch v := interface{}(m.GetTenant()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1739,7 +1739,7 @@ func (m *Reserve) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "Tenant",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1748,7 +1748,7 @@ func (m *Reserve) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetTenant()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReserveValidationError{
+			return BookValidationError{
 				field:  "Tenant",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -1757,7 +1757,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Name",
 			reason: "value length must be between 0 and 255 runes, inclusive",
 		}
@@ -1768,7 +1768,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Desc",
 			reason: "value length must be between 0 and 1024 runes, inclusive",
 		}
@@ -1778,8 +1778,8 @@ func (m *Reserve) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if _, ok := _Reserve_Status_NotInLookup[m.GetStatus()]; ok {
-		err := ReserveValidationError{
+	if _, ok := _Book_Status_NotInLookup[m.GetStatus()]; ok {
+		err := BookValidationError{
 			field:  "Status",
 			reason: "value must not be in list [STATUS_UNSPECIFIED]",
 		}
@@ -1790,7 +1790,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if m.GetOpenedAt() == nil {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "OpenedAt",
 			reason: "value is required",
 		}
@@ -1801,7 +1801,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if m.GetClosedAt() == nil {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "ClosedAt",
 			reason: "value is required",
 		}
@@ -1815,7 +1815,7 @@ func (m *Reserve) validate(all bool) error {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "CreatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1823,7 +1823,7 @@ func (m *Reserve) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "CreatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1832,7 +1832,7 @@ func (m *Reserve) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReserveValidationError{
+			return BookValidationError{
 				field:  "CreatedAt",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -1844,7 +1844,7 @@ func (m *Reserve) validate(all bool) error {
 		switch v := interface{}(m.GetUpdatedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "UpdatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1852,7 +1852,7 @@ func (m *Reserve) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReserveValidationError{
+				errors = append(errors, BookValidationError{
 					field:  "UpdatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1861,7 +1861,7 @@ func (m *Reserve) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReserveValidationError{
+			return BookValidationError{
 				field:  "UpdatedAt",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -1870,7 +1870,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if len(m.GetClients()) > 25 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Clients",
 			reason: "value must contain no more than 25 item(s)",
 		}
@@ -1887,7 +1887,7 @@ func (m *Reserve) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ReserveValidationError{
+					errors = append(errors, BookValidationError{
 						field:  fmt.Sprintf("Clients[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1895,7 +1895,7 @@ func (m *Reserve) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ReserveValidationError{
+					errors = append(errors, BookValidationError{
 						field:  fmt.Sprintf("Clients[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1904,7 +1904,7 @@ func (m *Reserve) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ReserveValidationError{
+				return BookValidationError{
 					field:  fmt.Sprintf("Clients[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1915,7 +1915,7 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if len(m.GetTeams()) > 25 {
-		err := ReserveValidationError{
+		err := BookValidationError{
 			field:  "Teams",
 			reason: "value must contain no more than 25 item(s)",
 		}
@@ -1932,7 +1932,7 @@ func (m *Reserve) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ReserveValidationError{
+					errors = append(errors, BookValidationError{
 						field:  fmt.Sprintf("Teams[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1940,7 +1940,7 @@ func (m *Reserve) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ReserveValidationError{
+					errors = append(errors, BookValidationError{
 						field:  fmt.Sprintf("Teams[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1949,7 +1949,7 @@ func (m *Reserve) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ReserveValidationError{
+				return BookValidationError{
 					field:  fmt.Sprintf("Teams[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1959,9 +1959,9 @@ func (m *Reserve) validate(all bool) error {
 
 	}
 
-	if len(m.GetReservesServices()) > 25 {
-		err := ReserveValidationError{
-			field:  "ReservesServices",
+	if len(m.GetBooksServices()) > 25 {
+		err := BookValidationError{
+			field:  "BooksServices",
 			reason: "value must contain no more than 25 item(s)",
 		}
 		if !all {
@@ -1970,23 +1970,23 @@ func (m *Reserve) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	for idx, item := range m.GetReservesServices() {
+	for idx, item := range m.GetBooksServices() {
 		_, _ = idx, item
 
 		if all {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ReserveValidationError{
-						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+					errors = append(errors, BookValidationError{
+						field:  fmt.Sprintf("BooksServices[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ReserveValidationError{
-						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+					errors = append(errors, BookValidationError{
+						field:  fmt.Sprintf("BooksServices[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -1994,8 +1994,8 @@ func (m *Reserve) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ReserveValidationError{
-					field:  fmt.Sprintf("ReservesServices[%v]", idx),
+				return BookValidationError{
+					field:  fmt.Sprintf("BooksServices[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -2005,18 +2005,18 @@ func (m *Reserve) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ReserveMultiError(errors)
+		return BookMultiError(errors)
 	}
 
 	return nil
 }
 
-// ReserveMultiError is an error wrapping multiple validation errors returned
-// by Reserve.ValidateAll() if the designated constraints aren't met.
-type ReserveMultiError []error
+// BookMultiError is an error wrapping multiple validation errors returned by
+// Book.ValidateAll() if the designated constraints aren't met.
+type BookMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ReserveMultiError) Error() string {
+func (m BookMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -2025,11 +2025,11 @@ func (m ReserveMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ReserveMultiError) AllErrors() []error { return m }
+func (m BookMultiError) AllErrors() []error { return m }
 
-// ReserveValidationError is the validation error returned by Reserve.Validate
-// if the designated constraints aren't met.
-type ReserveValidationError struct {
+// BookValidationError is the validation error returned by Book.Validate if the
+// designated constraints aren't met.
+type BookValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -2037,22 +2037,22 @@ type ReserveValidationError struct {
 }
 
 // Field function returns field value.
-func (e ReserveValidationError) Field() string { return e.field }
+func (e BookValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ReserveValidationError) Reason() string { return e.reason }
+func (e BookValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ReserveValidationError) Cause() error { return e.cause }
+func (e BookValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ReserveValidationError) Key() bool { return e.key }
+func (e BookValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ReserveValidationError) ErrorName() string { return "ReserveValidationError" }
+func (e BookValidationError) ErrorName() string { return "BookValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ReserveValidationError) Error() string {
+func (e BookValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -2064,14 +2064,14 @@ func (e ReserveValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sReserve.%s: %s%s",
+		"invalid %sBook.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ReserveValidationError{}
+var _ error = BookValidationError{}
 
 var _ interface {
 	Field() string
@@ -2079,9 +2079,9 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ReserveValidationError{}
+} = BookValidationError{}
 
-var _Reserve_Status_NotInLookup = map[ReserveEnum_Status]struct{}{
+var _Book_Status_NotInLookup = map[BookEnum_Status]struct{}{
 	0: {},
 }
 
@@ -2310,9 +2310,9 @@ func (m *Service) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetReservesServices()) > 25 {
+	if len(m.GetBooksServices()) > 25 {
 		err := ServiceValidationError{
-			field:  "ReservesServices",
+			field:  "BooksServices",
 			reason: "value must contain no more than 25 item(s)",
 		}
 		if !all {
@@ -2321,7 +2321,7 @@ func (m *Service) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	for idx, item := range m.GetReservesServices() {
+	for idx, item := range m.GetBooksServices() {
 		_, _ = idx, item
 
 		if all {
@@ -2329,7 +2329,7 @@ func (m *Service) validate(all bool) error {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
 					errors = append(errors, ServiceValidationError{
-						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						field:  fmt.Sprintf("BooksServices[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2337,7 +2337,7 @@ func (m *Service) validate(all bool) error {
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
 					errors = append(errors, ServiceValidationError{
-						field:  fmt.Sprintf("ReservesServices[%v]", idx),
+						field:  fmt.Sprintf("BooksServices[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
 					})
@@ -2346,7 +2346,7 @@ func (m *Service) validate(all bool) error {
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
 				return ServiceValidationError{
-					field:  fmt.Sprintf("ReservesServices[%v]", idx),
+					field:  fmt.Sprintf("BooksServices[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
 				}
@@ -2432,22 +2432,22 @@ var _ interface {
 	ErrorName() string
 } = ServiceValidationError{}
 
-// Validate checks the field values on ReservesService with the rules defined
-// in the proto definition for this message. If any rules are violated, the
-// first error encountered is returned, or nil if there are no violations.
-func (m *ReservesService) Validate() error {
+// Validate checks the field values on BooksService with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *BooksService) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ReservesService with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// ReservesServiceMultiError, or nil if none found.
-func (m *ReservesService) ValidateAll() error {
+// ValidateAll checks the field values on BooksService with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in BooksServiceMultiError, or
+// nil if none found.
+func (m *BooksService) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ReservesService) validate(all bool) error {
+func (m *BooksService) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -2455,7 +2455,7 @@ func (m *ReservesService) validate(all bool) error {
 	var errors []error
 
 	if m.GetPk() <= 0 {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "Pk",
 			reason: "value must be greater than 0",
 		}
@@ -2465,9 +2465,9 @@ func (m *ReservesService) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetReserveFk() <= 0 {
-		err := ReservesServiceValidationError{
-			field:  "ReserveFk",
+	if m.GetBookFk() <= 0 {
+		err := BooksServiceValidationError{
+			field:  "BookFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -2476,9 +2476,9 @@ func (m *ReservesService) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetReserve() == nil {
-		err := ReservesServiceValidationError{
-			field:  "Reserve",
+	if m.GetBook() == nil {
+		err := BooksServiceValidationError{
+			field:  "Book",
 			reason: "value is required",
 		}
 		if !all {
@@ -2488,28 +2488,28 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if all {
-		switch v := interface{}(m.GetReserve()).(type) {
+		switch v := interface{}(m.GetBook()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
-					field:  "Reserve",
+				errors = append(errors, BooksServiceValidationError{
+					field:  "Book",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
-					field:  "Reserve",
+				errors = append(errors, BooksServiceValidationError{
+					field:  "Book",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetReserve()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetBook()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReservesServiceValidationError{
-				field:  "Reserve",
+			return BooksServiceValidationError{
+				field:  "Book",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
@@ -2517,7 +2517,7 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if m.GetServiceFk() <= 0 {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "ServiceFk",
 			reason: "value must be greater than 0",
 		}
@@ -2528,7 +2528,7 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if m.GetService() == nil {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "Service",
 			reason: "value is required",
 		}
@@ -2542,7 +2542,7 @@ func (m *ReservesService) validate(all bool) error {
 		switch v := interface{}(m.GetService()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "Service",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2550,7 +2550,7 @@ func (m *ReservesService) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "Service",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2559,7 +2559,7 @@ func (m *ReservesService) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetService()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReservesServiceValidationError{
+			return BooksServiceValidationError{
 				field:  "Service",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -2568,7 +2568,7 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "Name",
 			reason: "value length must be between 0 and 255 runes, inclusive",
 		}
@@ -2579,7 +2579,7 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "Desc",
 			reason: "value length must be between 0 and 1024 runes, inclusive",
 		}
@@ -2590,7 +2590,7 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if m.GetPrice() < 0 {
-		err := ReservesServiceValidationError{
+		err := BooksServiceValidationError{
 			field:  "Price",
 			reason: "value must be greater than or equal to 0",
 		}
@@ -2604,7 +2604,7 @@ func (m *ReservesService) validate(all bool) error {
 		switch v := interface{}(m.GetCreatedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "CreatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2612,7 +2612,7 @@ func (m *ReservesService) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "CreatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2621,7 +2621,7 @@ func (m *ReservesService) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReservesServiceValidationError{
+			return BooksServiceValidationError{
 				field:  "CreatedAt",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -2633,7 +2633,7 @@ func (m *ReservesService) validate(all bool) error {
 		switch v := interface{}(m.GetUpdatedAt()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "UpdatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2641,7 +2641,7 @@ func (m *ReservesService) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservesServiceValidationError{
+				errors = append(errors, BooksServiceValidationError{
 					field:  "UpdatedAt",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2650,7 +2650,7 @@ func (m *ReservesService) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ReservesServiceValidationError{
+			return BooksServiceValidationError{
 				field:  "UpdatedAt",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -2659,19 +2659,18 @@ func (m *ReservesService) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ReservesServiceMultiError(errors)
+		return BooksServiceMultiError(errors)
 	}
 
 	return nil
 }
 
-// ReservesServiceMultiError is an error wrapping multiple validation errors
-// returned by ReservesService.ValidateAll() if the designated constraints
-// aren't met.
-type ReservesServiceMultiError []error
+// BooksServiceMultiError is an error wrapping multiple validation errors
+// returned by BooksService.ValidateAll() if the designated constraints aren't met.
+type BooksServiceMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ReservesServiceMultiError) Error() string {
+func (m BooksServiceMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -2680,11 +2679,11 @@ func (m ReservesServiceMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ReservesServiceMultiError) AllErrors() []error { return m }
+func (m BooksServiceMultiError) AllErrors() []error { return m }
 
-// ReservesServiceValidationError is the validation error returned by
-// ReservesService.Validate if the designated constraints aren't met.
-type ReservesServiceValidationError struct {
+// BooksServiceValidationError is the validation error returned by
+// BooksService.Validate if the designated constraints aren't met.
+type BooksServiceValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -2692,22 +2691,22 @@ type ReservesServiceValidationError struct {
 }
 
 // Field function returns field value.
-func (e ReservesServiceValidationError) Field() string { return e.field }
+func (e BooksServiceValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ReservesServiceValidationError) Reason() string { return e.reason }
+func (e BooksServiceValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ReservesServiceValidationError) Cause() error { return e.cause }
+func (e BooksServiceValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ReservesServiceValidationError) Key() bool { return e.key }
+func (e BooksServiceValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ReservesServiceValidationError) ErrorName() string { return "ReservesServiceValidationError" }
+func (e BooksServiceValidationError) ErrorName() string { return "BooksServiceValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ReservesServiceValidationError) Error() string {
+func (e BooksServiceValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -2719,14 +2718,14 @@ func (e ReservesServiceValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sReservesService.%s: %s%s",
+		"invalid %sBooksService.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ReservesServiceValidationError{}
+var _ error = BooksServiceValidationError{}
 
 var _ interface {
 	Field() string
@@ -2734,7 +2733,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ReservesServiceValidationError{}
+} = BooksServiceValidationError{}
 
 // Validate checks the field values on Message with the rules defined in the
 // proto definition for this message. If any rules are violated, the first
@@ -3631,364 +3630,3 @@ var _ interface {
 } = ArtifactImageValidationError{}
 
 var _ArtifactImage_Path_Pattern = regexp.MustCompile("\\.(?:jpg|jpeg|gif|png|bmp|webp|tif)$")
-
-// Validate checks the field values on Reservation with the rules defined in
-// the proto definition for this message. If any rules are violated, the first
-// error encountered is returned, or nil if there are no violations.
-func (m *Reservation) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on Reservation with the rules defined in
-// the proto definition for this message. If any rules are violated, the
-// result is a list of violation errors wrapped in ReservationMultiError, or
-// nil if none found.
-func (m *Reservation) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *Reservation) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	if m.GetPk() <= 0 {
-		err := ReservationValidationError{
-			field:  "Pk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetUserFk() <= 0 {
-		err := ReservationValidationError{
-			field:  "UserFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetUser() == nil {
-		err := ReservationValidationError{
-			field:  "User",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetUser()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "User",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "User",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetUser()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ReservationValidationError{
-				field:  "User",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if m.GetArtifactFk() <= 0 {
-		err := ReservationValidationError{
-			field:  "ArtifactFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetArtifact() == nil {
-		err := ReservationValidationError{
-			field:  "Artifact",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetArtifact()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "Artifact",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "Artifact",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetArtifact()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ReservationValidationError{
-				field:  "Artifact",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
-		err := ReservationValidationError{
-			field:  "Name",
-			reason: "value length must be between 0 and 255 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if l := utf8.RuneCountInString(m.GetLink()); l < 0 || l > 1024 {
-		err := ReservationValidationError{
-			field:  "Link",
-			reason: "value length must be between 0 and 1024 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if uri, err := url.Parse(m.GetLink()); err != nil {
-		err = ReservationValidationError{
-			field:  "Link",
-			reason: "value must be a valid URI",
-			cause:  err,
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	} else if !uri.IsAbs() {
-		err := ReservationValidationError{
-			field:  "Link",
-			reason: "value must be absolute",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 1024 {
-		err := ReservationValidationError{
-			field:  "Desc",
-			reason: "value length must be between 0 and 1024 runes, inclusive",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if _, ok := _Reservation_Status_NotInLookup[m.GetStatus()]; ok {
-		err := ReservationValidationError{
-			field:  "Status",
-			reason: "value must not be in list [STATUS_UNSPECIFIED]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetOpenedAt() == nil {
-		err := ReservationValidationError{
-			field:  "OpenedAt",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetClosedAt() == nil {
-		err := ReservationValidationError{
-			field:  "ClosedAt",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetCreatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "CreatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetCreatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ReservationValidationError{
-				field:  "CreatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if all {
-		switch v := interface{}(m.GetUpdatedAt()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ReservationValidationError{
-					field:  "UpdatedAt",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetUpdatedAt()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ReservationValidationError{
-				field:  "UpdatedAt",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
-	if len(errors) > 0 {
-		return ReservationMultiError(errors)
-	}
-
-	return nil
-}
-
-// ReservationMultiError is an error wrapping multiple validation errors
-// returned by Reservation.ValidateAll() if the designated constraints aren't met.
-type ReservationMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m ReservationMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m ReservationMultiError) AllErrors() []error { return m }
-
-// ReservationValidationError is the validation error returned by
-// Reservation.Validate if the designated constraints aren't met.
-type ReservationValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e ReservationValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e ReservationValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e ReservationValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e ReservationValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e ReservationValidationError) ErrorName() string { return "ReservationValidationError" }
-
-// Error satisfies the builtin error interface
-func (e ReservationValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sReservation.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = ReservationValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = ReservationValidationError{}
-
-var _Reservation_Status_NotInLookup = map[ReservationEnum_Status]struct{}{
-	0: {},
-}

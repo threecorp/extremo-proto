@@ -79,13 +79,13 @@ class TeamsUserEnum extends $pb.GeneratedMessage {
   static TeamsUserEnum? _defaultInstance;
 }
 
-class ReserveEnum extends $pb.GeneratedMessage {
-  factory ReserveEnum() => create();
-  ReserveEnum._() : super();
-  factory ReserveEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ReserveEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class BookEnum extends $pb.GeneratedMessage {
+  factory BookEnum() => create();
+  BookEnum._() : super();
+  factory BookEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BookEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReserveEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BookEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -93,22 +93,22 @@ class ReserveEnum extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ReserveEnum clone() => ReserveEnum()..mergeFromMessage(this);
+  BookEnum clone() => BookEnum()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ReserveEnum copyWith(void Function(ReserveEnum) updates) => super.copyWith((message) => updates(message as ReserveEnum)) as ReserveEnum;
+  BookEnum copyWith(void Function(BookEnum) updates) => super.copyWith((message) => updates(message as BookEnum)) as BookEnum;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ReserveEnum create() => ReserveEnum._();
-  ReserveEnum createEmptyInstance() => create();
-  static $pb.PbList<ReserveEnum> createRepeated() => $pb.PbList<ReserveEnum>();
+  static BookEnum create() => BookEnum._();
+  BookEnum createEmptyInstance() => create();
+  static $pb.PbList<BookEnum> createRepeated() => $pb.PbList<BookEnum>();
   @$core.pragma('dart2js:noInline')
-  static ReserveEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReserveEnum>(create);
-  static ReserveEnum? _defaultInstance;
+  static BookEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BookEnum>(create);
+  static BookEnum? _defaultInstance;
 }
 
 class ArtifactEnum extends $pb.GeneratedMessage {
@@ -173,38 +173,6 @@ class ArtifactImageEnum extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static ArtifactImageEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ArtifactImageEnum>(create);
   static ArtifactImageEnum? _defaultInstance;
-}
-
-class ReservationEnum extends $pb.GeneratedMessage {
-  factory ReservationEnum() => create();
-  ReservationEnum._() : super();
-  factory ReservationEnum.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ReservationEnum.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReservationEnum', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  ReservationEnum clone() => ReservationEnum()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ReservationEnum copyWith(void Function(ReservationEnum) updates) => super.copyWith((message) => updates(message as ReservationEnum)) as ReservationEnum;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static ReservationEnum create() => ReservationEnum._();
-  ReservationEnum createEmptyInstance() => create();
-  static $pb.PbList<ReservationEnum> createRepeated() => $pb.PbList<ReservationEnum>();
-  @$core.pragma('dart2js:noInline')
-  static ReservationEnum getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReservationEnum>(create);
-  static ReservationEnum? _defaultInstance;
 }
 
 

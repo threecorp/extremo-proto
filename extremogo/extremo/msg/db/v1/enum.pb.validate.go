@@ -234,22 +234,22 @@ var _ interface {
 	ErrorName() string
 } = TeamsUserEnumValidationError{}
 
-// Validate checks the field values on ReserveEnum with the rules defined in
-// the proto definition for this message. If any rules are violated, the first
+// Validate checks the field values on BookEnum with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
 // error encountered is returned, or nil if there are no violations.
-func (m *ReserveEnum) Validate() error {
+func (m *BookEnum) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ReserveEnum with the rules defined in
+// ValidateAll checks the field values on BookEnum with the rules defined in
 // the proto definition for this message. If any rules are violated, the
-// result is a list of violation errors wrapped in ReserveEnumMultiError, or
-// nil if none found.
-func (m *ReserveEnum) ValidateAll() error {
+// result is a list of violation errors wrapped in BookEnumMultiError, or nil
+// if none found.
+func (m *BookEnum) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ReserveEnum) validate(all bool) error {
+func (m *BookEnum) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -257,18 +257,18 @@ func (m *ReserveEnum) validate(all bool) error {
 	var errors []error
 
 	if len(errors) > 0 {
-		return ReserveEnumMultiError(errors)
+		return BookEnumMultiError(errors)
 	}
 
 	return nil
 }
 
-// ReserveEnumMultiError is an error wrapping multiple validation errors
-// returned by ReserveEnum.ValidateAll() if the designated constraints aren't met.
-type ReserveEnumMultiError []error
+// BookEnumMultiError is an error wrapping multiple validation errors returned
+// by BookEnum.ValidateAll() if the designated constraints aren't met.
+type BookEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ReserveEnumMultiError) Error() string {
+func (m BookEnumMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -277,11 +277,11 @@ func (m ReserveEnumMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ReserveEnumMultiError) AllErrors() []error { return m }
+func (m BookEnumMultiError) AllErrors() []error { return m }
 
-// ReserveEnumValidationError is the validation error returned by
-// ReserveEnum.Validate if the designated constraints aren't met.
-type ReserveEnumValidationError struct {
+// BookEnumValidationError is the validation error returned by
+// BookEnum.Validate if the designated constraints aren't met.
+type BookEnumValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -289,22 +289,22 @@ type ReserveEnumValidationError struct {
 }
 
 // Field function returns field value.
-func (e ReserveEnumValidationError) Field() string { return e.field }
+func (e BookEnumValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ReserveEnumValidationError) Reason() string { return e.reason }
+func (e BookEnumValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ReserveEnumValidationError) Cause() error { return e.cause }
+func (e BookEnumValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ReserveEnumValidationError) Key() bool { return e.key }
+func (e BookEnumValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ReserveEnumValidationError) ErrorName() string { return "ReserveEnumValidationError" }
+func (e BookEnumValidationError) ErrorName() string { return "BookEnumValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ReserveEnumValidationError) Error() string {
+func (e BookEnumValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -316,14 +316,14 @@ func (e ReserveEnumValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sReserveEnum.%s: %s%s",
+		"invalid %sBookEnum.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ReserveEnumValidationError{}
+var _ error = BookEnumValidationError{}
 
 var _ interface {
 	Field() string
@@ -331,7 +331,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ReserveEnumValidationError{}
+} = BookEnumValidationError{}
 
 // Validate checks the field values on ArtifactEnum with the rules defined in
 // the proto definition for this message. If any rules are violated, the first
@@ -533,103 +533,3 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ArtifactImageEnumValidationError{}
-
-// Validate checks the field values on ReservationEnum with the rules defined
-// in the proto definition for this message. If any rules are violated, the
-// first error encountered is returned, or nil if there are no violations.
-func (m *ReservationEnum) Validate() error {
-	return m.validate(false)
-}
-
-// ValidateAll checks the field values on ReservationEnum with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// ReservationEnumMultiError, or nil if none found.
-func (m *ReservationEnum) ValidateAll() error {
-	return m.validate(true)
-}
-
-func (m *ReservationEnum) validate(all bool) error {
-	if m == nil {
-		return nil
-	}
-
-	var errors []error
-
-	if len(errors) > 0 {
-		return ReservationEnumMultiError(errors)
-	}
-
-	return nil
-}
-
-// ReservationEnumMultiError is an error wrapping multiple validation errors
-// returned by ReservationEnum.ValidateAll() if the designated constraints
-// aren't met.
-type ReservationEnumMultiError []error
-
-// Error returns a concatenation of all the error messages it wraps.
-func (m ReservationEnumMultiError) Error() string {
-	var msgs []string
-	for _, err := range m {
-		msgs = append(msgs, err.Error())
-	}
-	return strings.Join(msgs, "; ")
-}
-
-// AllErrors returns a list of validation violation errors.
-func (m ReservationEnumMultiError) AllErrors() []error { return m }
-
-// ReservationEnumValidationError is the validation error returned by
-// ReservationEnum.Validate if the designated constraints aren't met.
-type ReservationEnumValidationError struct {
-	field  string
-	reason string
-	cause  error
-	key    bool
-}
-
-// Field function returns field value.
-func (e ReservationEnumValidationError) Field() string { return e.field }
-
-// Reason function returns reason value.
-func (e ReservationEnumValidationError) Reason() string { return e.reason }
-
-// Cause function returns cause value.
-func (e ReservationEnumValidationError) Cause() error { return e.cause }
-
-// Key function returns key value.
-func (e ReservationEnumValidationError) Key() bool { return e.key }
-
-// ErrorName returns error name.
-func (e ReservationEnumValidationError) ErrorName() string { return "ReservationEnumValidationError" }
-
-// Error satisfies the builtin error interface
-func (e ReservationEnumValidationError) Error() string {
-	cause := ""
-	if e.cause != nil {
-		cause = fmt.Sprintf(" | caused by: %v", e.cause)
-	}
-
-	key := ""
-	if e.key {
-		key = "key for "
-	}
-
-	return fmt.Sprintf(
-		"invalid %sReservationEnum.%s: %s%s",
-		key,
-		e.field,
-		e.reason,
-		cause)
-}
-
-var _ error = ReservationEnumValidationError{}
-
-var _ interface {
-	Field() string
-	Reason() string
-	Key() bool
-	Cause() error
-	ErrorName() string
-} = ReservationEnumValidationError{}

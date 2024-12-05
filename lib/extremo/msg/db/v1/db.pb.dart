@@ -248,7 +248,7 @@ class User extends $pb.GeneratedMessage {
     $6.Timestamp? updatedAt,
     UserProfile? profile,
     $core.Iterable<Artifact>? artifacts,
-    $core.Iterable<Reserve>? reserves,
+    $core.Iterable<Book>? books,
   }) {
     final $result = create();
     if (pk != null) {
@@ -290,8 +290,8 @@ class User extends $pb.GeneratedMessage {
     if (artifacts != null) {
       $result.artifacts.addAll(artifacts);
     }
-    if (reserves != null) {
-      $result.reserves.addAll(reserves);
+    if (books != null) {
+      $result.books.addAll(books);
     }
     return $result;
   }
@@ -313,7 +313,7 @@ class User extends $pb.GeneratedMessage {
     ..aOM<$6.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
     ..aOM<UserProfile>(12, _omitFieldNames ? '' : 'profile', subBuilder: UserProfile.create)
     ..pc<Artifact>(13, _omitFieldNames ? '' : 'artifacts', $pb.PbFieldType.PM, subBuilder: Artifact.create)
-    ..pc<Reserve>(14, _omitFieldNames ? '' : 'reserves', $pb.PbFieldType.PM, subBuilder: Reserve.create)
+    ..pc<Book>(14, _omitFieldNames ? '' : 'books', $pb.PbFieldType.PM, subBuilder: Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -479,7 +479,7 @@ class User extends $pb.GeneratedMessage {
   ///
   ///  N:N relation
   @$pb.TagNumber(14)
-  $core.List<Reserve> get reserves => $_getList(13);
+  $core.List<Book> get books => $_getList(13);
 }
 
 class UserProfile extends $pb.GeneratedMessage {
@@ -622,7 +622,7 @@ class Team extends $pb.GeneratedMessage {
     $core.String? name,
     $6.Timestamp? createdAt,
     $6.Timestamp? updatedAt,
-    $core.Iterable<Reserve>? reserves,
+    $core.Iterable<Book>? books,
   }) {
     final $result = create();
     if (pk != null) {
@@ -643,8 +643,8 @@ class Team extends $pb.GeneratedMessage {
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
     }
-    if (reserves != null) {
-      $result.reserves.addAll(reserves);
+    if (books != null) {
+      $result.books.addAll(books);
     }
     return $result;
   }
@@ -659,7 +659,7 @@ class Team extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..aOM<$6.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
-    ..pc<Reserve>(12, _omitFieldNames ? '' : 'reserves', $pb.PbFieldType.PM, subBuilder: Reserve.create)
+    ..pc<Book>(12, _omitFieldNames ? '' : 'books', $pb.PbFieldType.PM, subBuilder: Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -753,7 +753,7 @@ class Team extends $pb.GeneratedMessage {
   ///
   ///  N:N relation
   @$pb.TagNumber(12)
-  $core.List<Reserve> get reserves => $_getList(6);
+  $core.List<Book> get books => $_getList(6);
 }
 
 /// teams_users table
@@ -921,21 +921,21 @@ class TeamsUser extends $pb.GeneratedMessage {
   $6.Timestamp ensureUpdatedAt() => $_ensure(7);
 }
 
-class Reserve extends $pb.GeneratedMessage {
-  factory Reserve({
+class Book extends $pb.GeneratedMessage {
+  factory Book({
     $core.int? pk,
     $core.int? tenantFk,
     Tenant? tenant,
     $core.String? name,
     $core.String? desc,
-    $9.ReserveEnum_Status? status,
+    $9.BookEnum_Status? status,
     $6.Timestamp? openedAt,
     $6.Timestamp? closedAt,
     $6.Timestamp? createdAt,
     $6.Timestamp? updatedAt,
     $core.Iterable<User>? clients,
     $core.Iterable<Team>? teams,
-    $core.Iterable<ReservesService>? reservesServices,
+    $core.Iterable<BooksService>? booksServices,
   }) {
     final $result = create();
     if (pk != null) {
@@ -974,29 +974,29 @@ class Reserve extends $pb.GeneratedMessage {
     if (teams != null) {
       $result.teams.addAll(teams);
     }
-    if (reservesServices != null) {
-      $result.reservesServices.addAll(reservesServices);
+    if (booksServices != null) {
+      $result.booksServices.addAll(booksServices);
     }
     return $result;
   }
-  Reserve._() : super();
-  factory Reserve.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Reserve.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Book._() : super();
+  factory Book.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Book.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Reserve', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Book', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..aOS(5, _omitFieldNames ? '' : 'desc')
-    ..e<$9.ReserveEnum_Status>(6, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $9.ReserveEnum_Status.STATUS_UNSPECIFIED, valueOf: $9.ReserveEnum_Status.valueOf, enumValues: $9.ReserveEnum_Status.values)
+    ..e<$9.BookEnum_Status>(6, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $9.BookEnum_Status.STATUS_UNSPECIFIED, valueOf: $9.BookEnum_Status.valueOf, enumValues: $9.BookEnum_Status.values)
     ..aOM<$6.Timestamp>(7, _omitFieldNames ? '' : 'openedAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(8, _omitFieldNames ? '' : 'closedAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(9, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(10, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
     ..pc<User>(11, _omitFieldNames ? '' : 'clients', $pb.PbFieldType.PM, subBuilder: User.create)
     ..pc<Team>(12, _omitFieldNames ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
-    ..pc<ReservesService>(13, _omitFieldNames ? '' : 'reservesServices', $pb.PbFieldType.PM, subBuilder: ReservesService.create)
+    ..pc<BooksService>(13, _omitFieldNames ? '' : 'booksServices', $pb.PbFieldType.PM, subBuilder: BooksService.create)
     ..hasRequiredFields = false
   ;
 
@@ -1004,22 +1004,22 @@ class Reserve extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Reserve clone() => Reserve()..mergeFromMessage(this);
+  Book clone() => Book()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Reserve copyWith(void Function(Reserve) updates) => super.copyWith((message) => updates(message as Reserve)) as Reserve;
+  Book copyWith(void Function(Book) updates) => super.copyWith((message) => updates(message as Book)) as Book;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Reserve create() => Reserve._();
-  Reserve createEmptyInstance() => create();
-  static $pb.PbList<Reserve> createRepeated() => $pb.PbList<Reserve>();
+  static Book create() => Book._();
+  Book createEmptyInstance() => create();
+  static $pb.PbList<Book> createRepeated() => $pb.PbList<Book>();
   @$core.pragma('dart2js:noInline')
-  static Reserve getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reserve>(create);
-  static Reserve? _defaultInstance;
+  static Book getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Book>(create);
+  static Book? _defaultInstance;
 
   /// Priamry KEY
   @$pb.TagNumber(1)
@@ -1075,9 +1075,9 @@ class Reserve extends $pb.GeneratedMessage {
 
   /// status cannot be NONE (0)
   @$pb.TagNumber(6)
-  $9.ReserveEnum_Status get status => $_getN(5);
+  $9.BookEnum_Status get status => $_getN(5);
   @$pb.TagNumber(6)
-  set status($9.ReserveEnum_Status v) { setField(6, v); }
+  set status($9.BookEnum_Status v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasStatus() => $_has(5);
   @$pb.TagNumber(6)
@@ -1144,7 +1144,7 @@ class Reserve extends $pb.GeneratedMessage {
   ///
   ///  N:N relation
   @$pb.TagNumber(13)
-  $core.List<ReservesService> get reservesServices => $_getList(12);
+  $core.List<BooksService> get booksServices => $_getList(12);
 }
 
 class Service extends $pb.GeneratedMessage {
@@ -1160,7 +1160,7 @@ class Service extends $pb.GeneratedMessage {
     $core.int? sort,
     $6.Timestamp? createdAt,
     $6.Timestamp? updatedAt,
-    $core.Iterable<ReservesService>? reservesServices,
+    $core.Iterable<BooksService>? booksServices,
   }) {
     final $result = create();
     if (pk != null) {
@@ -1196,8 +1196,8 @@ class Service extends $pb.GeneratedMessage {
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
     }
-    if (reservesServices != null) {
-      $result.reservesServices.addAll(reservesServices);
+    if (booksServices != null) {
+      $result.booksServices.addAll(booksServices);
     }
     return $result;
   }
@@ -1217,7 +1217,7 @@ class Service extends $pb.GeneratedMessage {
     ..a<$core.int>(9, _omitFieldNames ? '' : 'sort', $pb.PbFieldType.O3)
     ..aOM<$6.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(12, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
-    ..pc<ReservesService>(13, _omitFieldNames ? '' : 'reservesServices', $pb.PbFieldType.PM, subBuilder: ReservesService.create)
+    ..pc<BooksService>(13, _omitFieldNames ? '' : 'booksServices', $pb.PbFieldType.PM, subBuilder: BooksService.create)
     ..hasRequiredFields = false
   ;
 
@@ -1363,15 +1363,15 @@ class Service extends $pb.GeneratedMessage {
   ///
   ///  N:N relation
   @$pb.TagNumber(13)
-  $core.List<ReservesService> get reservesServices => $_getList(11);
+  $core.List<BooksService> get booksServices => $_getList(11);
 }
 
-/// reserves_services table
-class ReservesService extends $pb.GeneratedMessage {
-  factory ReservesService({
+/// books_services table
+class BooksService extends $pb.GeneratedMessage {
+  factory BooksService({
     $core.int? pk,
-    $core.int? reserveFk,
-    Reserve? reserve,
+    $core.int? bookFk,
+    Book? book,
     $core.int? serviceFk,
     Service? service,
     $core.String? name,
@@ -1384,11 +1384,11 @@ class ReservesService extends $pb.GeneratedMessage {
     if (pk != null) {
       $result.pk = pk;
     }
-    if (reserveFk != null) {
-      $result.reserveFk = reserveFk;
+    if (bookFk != null) {
+      $result.bookFk = bookFk;
     }
-    if (reserve != null) {
-      $result.reserve = reserve;
+    if (book != null) {
+      $result.book = book;
     }
     if (serviceFk != null) {
       $result.serviceFk = serviceFk;
@@ -1413,14 +1413,14 @@ class ReservesService extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  ReservesService._() : super();
-  factory ReservesService.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ReservesService.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  BooksService._() : super();
+  factory BooksService.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BooksService.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReservesService', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BooksService', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'reserveFk', $pb.PbFieldType.O3)
-    ..aOM<Reserve>(3, _omitFieldNames ? '' : 'reserve', subBuilder: Reserve.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'bookFk', $pb.PbFieldType.O3)
+    ..aOM<Book>(3, _omitFieldNames ? '' : 'book', subBuilder: Book.create)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'serviceFk', $pb.PbFieldType.O3)
     ..aOM<Service>(5, _omitFieldNames ? '' : 'service', subBuilder: Service.create)
     ..aOS(6, _omitFieldNames ? '' : 'name')
@@ -1435,22 +1435,22 @@ class ReservesService extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ReservesService clone() => ReservesService()..mergeFromMessage(this);
+  BooksService clone() => BooksService()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ReservesService copyWith(void Function(ReservesService) updates) => super.copyWith((message) => updates(message as ReservesService)) as ReservesService;
+  BooksService copyWith(void Function(BooksService) updates) => super.copyWith((message) => updates(message as BooksService)) as BooksService;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ReservesService create() => ReservesService._();
-  ReservesService createEmptyInstance() => create();
-  static $pb.PbList<ReservesService> createRepeated() => $pb.PbList<ReservesService>();
+  static BooksService create() => BooksService._();
+  BooksService createEmptyInstance() => create();
+  static $pb.PbList<BooksService> createRepeated() => $pb.PbList<BooksService>();
   @$core.pragma('dart2js:noInline')
-  static ReservesService getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReservesService>(create);
-  static ReservesService? _defaultInstance;
+  static BooksService getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BooksService>(create);
+  static BooksService? _defaultInstance;
 
   /// primary key
   @$pb.TagNumber(1)
@@ -1464,25 +1464,25 @@ class ReservesService extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(2)
-  $core.int get reserveFk => $_getIZ(1);
+  $core.int get bookFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set reserveFk($core.int v) { $_setSignedInt32(1, v); }
+  set bookFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReserveFk() => $_has(1);
+  $core.bool hasBookFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReserveFk() => clearField(2);
+  void clearBookFk() => clearField(2);
 
   /// Relation Message
   @$pb.TagNumber(3)
-  Reserve get reserve => $_getN(2);
+  Book get book => $_getN(2);
   @$pb.TagNumber(3)
-  set reserve(Reserve v) { setField(3, v); }
+  set book(Book v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasReserve() => $_has(2);
+  $core.bool hasBook() => $_has(2);
   @$pb.TagNumber(3)
-  void clearReserve() => clearField(3);
+  void clearBook() => clearField(3);
   @$pb.TagNumber(3)
-  Reserve ensureReserve() => $_ensure(2);
+  Book ensureBook() => $_ensure(2);
 
   /// FK
   @$pb.TagNumber(4)
@@ -2199,249 +2199,6 @@ class ArtifactImage extends $pb.GeneratedMessage {
   void clearUpdatedAt() => clearField(8);
   @$pb.TagNumber(8)
   $6.Timestamp ensureUpdatedAt() => $_ensure(7);
-}
-
-class Reservation extends $pb.GeneratedMessage {
-  factory Reservation({
-    $core.int? pk,
-    $core.int? userFk,
-    User? user,
-    $core.int? artifactFk,
-    Artifact? artifact,
-    $core.String? name,
-    $core.String? link,
-    $core.String? desc,
-    $9.ReservationEnum_Status? status,
-    $6.Timestamp? openedAt,
-    $6.Timestamp? closedAt,
-    $6.Timestamp? createdAt,
-    $6.Timestamp? updatedAt,
-  }) {
-    final $result = create();
-    if (pk != null) {
-      $result.pk = pk;
-    }
-    if (userFk != null) {
-      $result.userFk = userFk;
-    }
-    if (user != null) {
-      $result.user = user;
-    }
-    if (artifactFk != null) {
-      $result.artifactFk = artifactFk;
-    }
-    if (artifact != null) {
-      $result.artifact = artifact;
-    }
-    if (name != null) {
-      $result.name = name;
-    }
-    if (link != null) {
-      $result.link = link;
-    }
-    if (desc != null) {
-      $result.desc = desc;
-    }
-    if (status != null) {
-      $result.status = status;
-    }
-    if (openedAt != null) {
-      $result.openedAt = openedAt;
-    }
-    if (closedAt != null) {
-      $result.closedAt = closedAt;
-    }
-    if (createdAt != null) {
-      $result.createdAt = createdAt;
-    }
-    if (updatedAt != null) {
-      $result.updatedAt = updatedAt;
-    }
-    return $result;
-  }
-  Reservation._() : super();
-  factory Reservation.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Reservation.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Reservation', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'userFk', $pb.PbFieldType.O3)
-    ..aOM<User>(3, _omitFieldNames ? '' : 'user', subBuilder: User.create)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'artifactFk', $pb.PbFieldType.O3)
-    ..aOM<Artifact>(5, _omitFieldNames ? '' : 'artifact', subBuilder: Artifact.create)
-    ..aOS(6, _omitFieldNames ? '' : 'name')
-    ..aOS(7, _omitFieldNames ? '' : 'link')
-    ..aOS(8, _omitFieldNames ? '' : 'desc')
-    ..e<$9.ReservationEnum_Status>(9, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $9.ReservationEnum_Status.STATUS_UNSPECIFIED, valueOf: $9.ReservationEnum_Status.valueOf, enumValues: $9.ReservationEnum_Status.values)
-    ..aOM<$6.Timestamp>(10, _omitFieldNames ? '' : 'openedAt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(11, _omitFieldNames ? '' : 'closedAt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(12, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(13, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Reservation clone() => Reservation()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Reservation copyWith(void Function(Reservation) updates) => super.copyWith((message) => updates(message as Reservation)) as Reservation;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Reservation create() => Reservation._();
-  Reservation createEmptyInstance() => create();
-  static $pb.PbList<Reservation> createRepeated() => $pb.PbList<Reservation>();
-  @$core.pragma('dart2js:noInline')
-  static Reservation getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reservation>(create);
-  static Reservation? _defaultInstance;
-
-  /// Priamry KEY
-  @$pb.TagNumber(1)
-  $core.int get pk => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set pk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasPk() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearPk() => clearField(1);
-
-  /// FK
-  @$pb.TagNumber(2)
-  $core.int get userFk => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set userFk($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasUserFk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearUserFk() => clearField(2);
-
-  /// Relation Message
-  @$pb.TagNumber(3)
-  User get user => $_getN(2);
-  @$pb.TagNumber(3)
-  set user(User v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasUser() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearUser() => clearField(3);
-  @$pb.TagNumber(3)
-  User ensureUser() => $_ensure(2);
-
-  /// FK
-  @$pb.TagNumber(4)
-  $core.int get artifactFk => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set artifactFk($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasArtifactFk() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearArtifactFk() => clearField(4);
-
-  /// Relation Message
-  @$pb.TagNumber(5)
-  Artifact get artifact => $_getN(4);
-  @$pb.TagNumber(5)
-  set artifact(Artifact v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasArtifact() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearArtifact() => clearField(5);
-  @$pb.TagNumber(5)
-  Artifact ensureArtifact() => $_ensure(4);
-
-  /// Name of resrvation
-  @$pb.TagNumber(6)
-  $core.String get name => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set name($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasName() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearName() => clearField(6);
-
-  /// Atag Link. Therefore must be set absolute URI
-  @$pb.TagNumber(7)
-  $core.String get link => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set link($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasLink() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearLink() => clearField(7);
-
-  /// Describe to what is this schedule
-  @$pb.TagNumber(8)
-  $core.String get desc => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set desc($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasDesc() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearDesc() => clearField(8);
-
-  /// status cannot be NONE (0)
-  @$pb.TagNumber(9)
-  $9.ReservationEnum_Status get status => $_getN(8);
-  @$pb.TagNumber(9)
-  set status($9.ReservationEnum_Status v) { setField(9, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasStatus() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearStatus() => clearField(9);
-
-  /// start
-  @$pb.TagNumber(10)
-  $6.Timestamp get openedAt => $_getN(9);
-  @$pb.TagNumber(10)
-  set openedAt($6.Timestamp v) { setField(10, v); }
-  @$pb.TagNumber(10)
-  $core.bool hasOpenedAt() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearOpenedAt() => clearField(10);
-  @$pb.TagNumber(10)
-  $6.Timestamp ensureOpenedAt() => $_ensure(9);
-
-  /// until
-  @$pb.TagNumber(11)
-  $6.Timestamp get closedAt => $_getN(10);
-  @$pb.TagNumber(11)
-  set closedAt($6.Timestamp v) { setField(11, v); }
-  @$pb.TagNumber(11)
-  $core.bool hasClosedAt() => $_has(10);
-  @$pb.TagNumber(11)
-  void clearClosedAt() => clearField(11);
-  @$pb.TagNumber(11)
-  $6.Timestamp ensureClosedAt() => $_ensure(10);
-
-  /// Created time
-  @$pb.TagNumber(12)
-  $6.Timestamp get createdAt => $_getN(11);
-  @$pb.TagNumber(12)
-  set createdAt($6.Timestamp v) { setField(12, v); }
-  @$pb.TagNumber(12)
-  $core.bool hasCreatedAt() => $_has(11);
-  @$pb.TagNumber(12)
-  void clearCreatedAt() => clearField(12);
-  @$pb.TagNumber(12)
-  $6.Timestamp ensureCreatedAt() => $_ensure(11);
-
-  /// Updated time
-  @$pb.TagNumber(13)
-  $6.Timestamp get updatedAt => $_getN(12);
-  @$pb.TagNumber(13)
-  set updatedAt($6.Timestamp v) { setField(13, v); }
-  @$pb.TagNumber(13)
-  $core.bool hasUpdatedAt() => $_has(12);
-  @$pb.TagNumber(13)
-  void clearUpdatedAt() => clearField(13);
-  @$pb.TagNumber(13)
-  $6.Timestamp ensureUpdatedAt() => $_ensure(12);
 }
 
 

@@ -31,7 +31,7 @@ message TeamsUserEnum {
   }
 }
 
-message ReserveEnum {
+message BookEnum {
   enum Status {
     STATUS_UNSPECIFIED = 0;
     STATUS_DRAFT = 1;
@@ -52,13 +52,5 @@ message ArtifactImageEnum {
     KIND_UNSPECIFIED = 0;
     KIND_THUMB = 1;
     KIND_CONTENT = 2;
-  }
-}
-
-message ReservationEnum {
-  enum Status {
-    STATUS_UNSPECIFIED = 0;
-    STATUS_DRAFT = 1;
-    STATUS_RESERVED = 2;
   }
 }

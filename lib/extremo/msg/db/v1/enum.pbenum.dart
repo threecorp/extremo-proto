@@ -47,23 +47,23 @@ class TeamsUserEnum_Role extends $pb.ProtobufEnum {
   const TeamsUserEnum_Role._($core.int v, $core.String n) : super(v, n);
 }
 
-class ReserveEnum_Status extends $pb.ProtobufEnum {
-  static const ReserveEnum_Status STATUS_UNSPECIFIED = ReserveEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
-  static const ReserveEnum_Status STATUS_DRAFT = ReserveEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
-  static const ReserveEnum_Status STATUS_RESERVE = ReserveEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVE');
-  static const ReserveEnum_Status STATUS_ORDER = ReserveEnum_Status._(3, _omitEnumNames ? '' : 'STATUS_ORDER');
+class BookEnum_Status extends $pb.ProtobufEnum {
+  static const BookEnum_Status STATUS_UNSPECIFIED = BookEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
+  static const BookEnum_Status STATUS_DRAFT = BookEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
+  static const BookEnum_Status STATUS_RESERVE = BookEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVE');
+  static const BookEnum_Status STATUS_ORDER = BookEnum_Status._(3, _omitEnumNames ? '' : 'STATUS_ORDER');
 
-  static const $core.List<ReserveEnum_Status> values = <ReserveEnum_Status> [
+  static const $core.List<BookEnum_Status> values = <BookEnum_Status> [
     STATUS_UNSPECIFIED,
     STATUS_DRAFT,
     STATUS_RESERVE,
     STATUS_ORDER,
   ];
 
-  static final $core.Map<$core.int, ReserveEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static ReserveEnum_Status? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, BookEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static BookEnum_Status? valueOf($core.int value) => _byValue[value];
 
-  const ReserveEnum_Status._($core.int v, $core.String n) : super(v, n);
+  const BookEnum_Status._($core.int v, $core.String n) : super(v, n);
 }
 
 class ArtifactEnum_Status extends $pb.ProtobufEnum {
@@ -98,23 +98,6 @@ class ArtifactImageEnum_Kind extends $pb.ProtobufEnum {
   static ArtifactImageEnum_Kind? valueOf($core.int value) => _byValue[value];
 
   const ArtifactImageEnum_Kind._($core.int v, $core.String n) : super(v, n);
-}
-
-class ReservationEnum_Status extends $pb.ProtobufEnum {
-  static const ReservationEnum_Status STATUS_UNSPECIFIED = ReservationEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
-  static const ReservationEnum_Status STATUS_DRAFT = ReservationEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
-  static const ReservationEnum_Status STATUS_RESERVED = ReservationEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVED');
-
-  static const $core.List<ReservationEnum_Status> values = <ReservationEnum_Status> [
-    STATUS_UNSPECIFIED,
-    STATUS_DRAFT,
-    STATUS_RESERVED,
-  ];
-
-  static final $core.Map<$core.int, ReservationEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static ReservationEnum_Status? valueOf($core.int value) => _byValue[value];
-
-  const ReservationEnum_Status._($core.int v, $core.String n) : super(v, n);
 }
 
 
