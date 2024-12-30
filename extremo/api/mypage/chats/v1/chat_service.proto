@@ -4,7 +4,7 @@
 
 syntax = "proto3";
 
-package extremo.api.mypage.messages.v1;
+package extremo.api.mypage.chats.v1;
 
 // import "extremo/msg/api/v1/api.proto";
 import "extremo/msg/db/v1/db.proto";
@@ -15,58 +15,58 @@ import "google/protobuf/timestamp.proto";
 // import "google/protobuf/field_mask.proto";
 import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
 
-option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/messages/v1;messages";
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/chats/v1;chats";
 option java_generic_services = true;
 option java_multiple_files = true;
-option java_outer_classname = "MessageServiceProto";
-option java_package = "com.extremo.api.mypage.messages.v1";
+option java_outer_classname = "ChatServiceProto";
+option java_package = "com.extremo.api.mypage.chats.v1";
 
 //
 // README: https://cloud.google.com/apis/design/standard_methods
-// Service for reading from and writing to existing Messages.
+// Service for reading from and writing to existing Chats.
 //
-service MessageService {
-  // ListUsers returns Messages' users as list with pagination
+service ChatService {
+  // ListUsers returns Chats' users as list with pagination
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/messages/users"};
+    option (google.api.http) = {get: "/api/mypage/v1/chats/users"};
   }
-  // Update updates a Message with then return a Message
+  // Update updates a Chat with then return a Chat
   rpc Update(UpdateRequest) returns (UpdateResponse) {
     option (google.api.http) = {
-      put: "/api/mypage/v1/messages/{pk}"
+      put: "/api/mypage/v1/chats/{pk}"
       body: "*"
     };
   }
-  // Delete deletes a Message with return nothing
+  // Delete deletes a Chat with return nothing
   rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {delete: "/api/mypage/v1/messages/{pk}"};
+    option (google.api.http) = {delete: "/api/mypage/v1/chats/{pk}"};
   }
-  // Get returns a message
+  // Get returns a chat
   rpc Get(GetRequest) returns (GetResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/messages/{pk}"};
+    option (google.api.http) = {get: "/api/mypage/v1/chats/{pk}"};
   }
-  // List returns Messages as list with pagination
+  // List returns Chats as list with pagination
   rpc List(ListRequest) returns (ListResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/messages"};
+    option (google.api.http) = {get: "/api/mypage/v1/chats"};
   }
-  // Create creates a Message with then return a Message
+  // Create creates a Chat with then return a Chat
   rpc Create(CreateRequest) returns (CreateResponse) {
     option (google.api.http) = {
-      post: "/api/mypage/v1/messages"
+      post: "/api/mypage/v1/chats"
       body: "*"
     };
   }
   // // CreateImage creates a image
   // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
   //   option (google.api.http) = {
-  //     post: "/api/mypage/v1/messages/{message_fk}/image"
+  //     post: "/api/mypage/v1/chats/{chat_fk}/image"
   //     body: "*"
   //   };
   // }
   // // UpdateImage creates a image
   // rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
   //   option (google.api.http) = {
-  //     put: "/api/mypage/v1/messages/{message_fk}/image/{pk}"
+  //     put: "/api/mypage/v1/chats/{chat_fk}/image/{pk}"
   //     body: "*"
   //   };
   // }
@@ -110,7 +110,7 @@ message ListRequest {
 
 message ListResponse {
   // article msg.db
-  repeated extremo.msg.db.v1.Message elements = 1 [(validate.rules).repeated = {
+  repeated extremo.msg.db.v1.Chat elements = 1 [(validate.rules).repeated = {
     min_items: 0
     max_items: 30
   }];
@@ -126,8 +126,8 @@ message GetRequest {
 }
 
 message GetResponse {
-  // A message message. if request message is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+  // A chat chat. if request chat is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
 }
 
 // PrimaryKey is set by JWT Token
@@ -144,8 +144,8 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  // A user message. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+  // A user chat. if request user is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
 }
 
 message UpdateRequest {
@@ -164,7 +164,7 @@ message UpdateRequest {
 
 message UpdateResponse {
   // A user message. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Message element = 1 [(validate.rules).message = {required: true}];
+  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
 }
 
 message DeleteRequest {
@@ -174,9 +174,9 @@ message DeleteRequest {
 
 // message CreateImageRequest {
 //   // XXX: Relation Key is checked correct value by JWT Token
-//   int32 message_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   int32 chat_fk = 1 [(validate.rules).int32 = {gt: 0}];
 //   // kind cannot be NONE (0)
-//   extremo.msg.db.v1.MessageImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//   extremo.msg.db.v1.ChatImageEnum.Kind kind = 2 [(validate.rules).enum = {
 //     not_in: [0]
 //   }];
 //   // image Data URI: 10B ~ 20MB
@@ -194,17 +194,17 @@ message DeleteRequest {
 // }
 
 // message CreateImageResponse {
-//   // A user message. if request user is not published, it filtered them. so response might be empty.
-//   extremo.msg.db.v1.MessageImage element = 1 [(validate.rules).message = {required: true}];
+//   // A user chat. if request user is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.ChatImage element = 1 [(validate.rules).message = {required: true}];
 // }
 //
 // message UpdateImageRequest {
 //   // XXX: PrimaryKey is checked correct value by JWT Token
 //   int32 pk = 5 [(validate.rules).int32 = {gt: 0}];
 //   // XXX: Relation Key is checked correct value by JWT Token
-//   int32 message_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   int32 chat_fk = 1 [(validate.rules).int32 = {gt: 0}];
 //   // kind cannot be NONE (0)
-//   extremo.msg.db.v1.MessageImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//   extremo.msg.db.v1.ChatImageEnum.Kind kind = 2 [(validate.rules).enum = {
 //     not_in: [0]
 //   }];
 //   // image Data URI: 10B ~ 20MB
@@ -223,5 +223,5 @@ message DeleteRequest {
 //
 // message UpdateImageResponse {
 //   // A user message. if request user is not published, it filtered them. so response might be empty.
-//   extremo.msg.db.v1.MessageImage element = 1 [(validate.rules).message = {required: true}];
+//   extremo.msg.db.v1.ChatImage element = 1 [(validate.rules).message = {required: true}];
 // }

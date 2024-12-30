@@ -248,7 +248,6 @@ class User extends $pb.GeneratedMessage {
     $6.Timestamp? updatedAt,
     UserProfile? profile,
     $core.Iterable<Artifact>? artifacts,
-    $core.Iterable<Book>? books,
   }) {
     final $result = create();
     if (pk != null) {
@@ -290,9 +289,6 @@ class User extends $pb.GeneratedMessage {
     if (artifacts != null) {
       $result.artifacts.addAll(artifacts);
     }
-    if (books != null) {
-      $result.books.addAll(books);
-    }
     return $result;
   }
   User._() : super();
@@ -313,7 +309,6 @@ class User extends $pb.GeneratedMessage {
     ..aOM<$6.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
     ..aOM<UserProfile>(12, _omitFieldNames ? '' : 'profile', subBuilder: UserProfile.create)
     ..pc<Artifact>(13, _omitFieldNames ? '' : 'artifacts', $pb.PbFieldType.PM, subBuilder: Artifact.create)
-    ..pc<Book>(14, _omitFieldNames ? '' : 'books', $pb.PbFieldType.PM, subBuilder: Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -475,11 +470,6 @@ class User extends $pb.GeneratedMessage {
   ///  1:N relation
   @$pb.TagNumber(13)
   $core.List<Artifact> get artifacts => $_getList(12);
-
-  ///
-  ///  N:N relation
-  @$pb.TagNumber(14)
-  $core.List<Book> get books => $_getList(13);
 }
 
 class UserProfile extends $pb.GeneratedMessage {
@@ -1561,11 +1551,235 @@ class BooksService extends $pb.GeneratedMessage {
   $6.Timestamp ensureUpdatedAt() => $_ensure(9);
 }
 
-class Message extends $pb.GeneratedMessage {
-  factory Message({
+class Chat extends $pb.GeneratedMessage {
+  factory Chat({
     $core.int? pk,
     $core.int? tenantFk,
     Tenant? tenant,
+    $core.int? senderFk,
+    User? sender,
+    $core.int? recipientFk,
+    User? recipient,
+    $core.Iterable<ChatMessage>? messages,
+    ChatMessage? firstMessage,
+    ChatMessage? lastMessage,
+    $6.Timestamp? createdAt,
+    $6.Timestamp? updatedAt,
+  }) {
+    final $result = create();
+    if (pk != null) {
+      $result.pk = pk;
+    }
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
+    if (tenant != null) {
+      $result.tenant = tenant;
+    }
+    if (senderFk != null) {
+      $result.senderFk = senderFk;
+    }
+    if (sender != null) {
+      $result.sender = sender;
+    }
+    if (recipientFk != null) {
+      $result.recipientFk = recipientFk;
+    }
+    if (recipient != null) {
+      $result.recipient = recipient;
+    }
+    if (messages != null) {
+      $result.messages.addAll(messages);
+    }
+    if (firstMessage != null) {
+      $result.firstMessage = firstMessage;
+    }
+    if (lastMessage != null) {
+      $result.lastMessage = lastMessage;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
+    if (updatedAt != null) {
+      $result.updatedAt = updatedAt;
+    }
+    return $result;
+  }
+  Chat._() : super();
+  factory Chat.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Chat.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chat', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'senderFk', $pb.PbFieldType.O3)
+    ..aOM<User>(5, _omitFieldNames ? '' : 'sender', subBuilder: User.create)
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..aOM<User>(7, _omitFieldNames ? '' : 'recipient', subBuilder: User.create)
+    ..pc<ChatMessage>(10, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: ChatMessage.create)
+    ..aOM<ChatMessage>(11, _omitFieldNames ? '' : 'firstMessage', subBuilder: ChatMessage.create)
+    ..aOM<ChatMessage>(12, _omitFieldNames ? '' : 'lastMessage', subBuilder: ChatMessage.create)
+    ..aOM<$6.Timestamp>(15, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
+    ..aOM<$6.Timestamp>(16, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Chat clone() => Chat()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Chat copyWith(void Function(Chat) updates) => super.copyWith((message) => updates(message as Chat)) as Chat;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Chat create() => Chat._();
+  Chat createEmptyInstance() => create();
+  static $pb.PbList<Chat> createRepeated() => $pb.PbList<Chat>();
+  @$core.pragma('dart2js:noInline')
+  static Chat getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Chat>(create);
+  static Chat? _defaultInstance;
+
+  /// Priamry KEY
+  @$pb.TagNumber(1)
+  $core.int get pk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set pk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPk() => clearField(1);
+
+  /// FK
+  @$pb.TagNumber(2)
+  $core.int get tenantFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set tenantFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTenantFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTenantFk() => clearField(2);
+
+  /// Relation Message
+  @$pb.TagNumber(3)
+  Tenant get tenant => $_getN(2);
+  @$pb.TagNumber(3)
+  set tenant(Tenant v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTenant() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTenant() => clearField(3);
+  @$pb.TagNumber(3)
+  Tenant ensureTenant() => $_ensure(2);
+
+  /// FK
+  @$pb.TagNumber(4)
+  $core.int get senderFk => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set senderFk($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSenderFk() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSenderFk() => clearField(4);
+
+  /// Relation Message
+  @$pb.TagNumber(5)
+  User get sender => $_getN(4);
+  @$pb.TagNumber(5)
+  set sender(User v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSender() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSender() => clearField(5);
+  @$pb.TagNumber(5)
+  User ensureSender() => $_ensure(4);
+
+  /// FK
+  @$pb.TagNumber(6)
+  $core.int get recipientFk => $_getIZ(5);
+  @$pb.TagNumber(6)
+  set recipientFk($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasRecipientFk() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearRecipientFk() => clearField(6);
+
+  /// Relation Message
+  @$pb.TagNumber(7)
+  User get recipient => $_getN(6);
+  @$pb.TagNumber(7)
+  set recipient(User v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasRecipient() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRecipient() => clearField(7);
+  @$pb.TagNumber(7)
+  User ensureRecipient() => $_ensure(6);
+
+  /// 1:N relation
+  @$pb.TagNumber(10)
+  $core.List<ChatMessage> get messages => $_getList(7);
+
+  /// contact fist message
+  @$pb.TagNumber(11)
+  ChatMessage get firstMessage => $_getN(8);
+  @$pb.TagNumber(11)
+  set firstMessage(ChatMessage v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasFirstMessage() => $_has(8);
+  @$pb.TagNumber(11)
+  void clearFirstMessage() => clearField(11);
+  @$pb.TagNumber(11)
+  ChatMessage ensureFirstMessage() => $_ensure(8);
+
+  /// contact last message
+  @$pb.TagNumber(12)
+  ChatMessage get lastMessage => $_getN(9);
+  @$pb.TagNumber(12)
+  set lastMessage(ChatMessage v) { setField(12, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasLastMessage() => $_has(9);
+  @$pb.TagNumber(12)
+  void clearLastMessage() => clearField(12);
+  @$pb.TagNumber(12)
+  ChatMessage ensureLastMessage() => $_ensure(9);
+
+  /// Created time
+  @$pb.TagNumber(15)
+  $6.Timestamp get createdAt => $_getN(10);
+  @$pb.TagNumber(15)
+  set createdAt($6.Timestamp v) { setField(15, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasCreatedAt() => $_has(10);
+  @$pb.TagNumber(15)
+  void clearCreatedAt() => clearField(15);
+  @$pb.TagNumber(15)
+  $6.Timestamp ensureCreatedAt() => $_ensure(10);
+
+  /// Updated time
+  @$pb.TagNumber(16)
+  $6.Timestamp get updatedAt => $_getN(11);
+  @$pb.TagNumber(16)
+  set updatedAt($6.Timestamp v) { setField(16, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasUpdatedAt() => $_has(11);
+  @$pb.TagNumber(16)
+  void clearUpdatedAt() => clearField(16);
+  @$pb.TagNumber(16)
+  $6.Timestamp ensureUpdatedAt() => $_ensure(11);
+}
+
+class ChatMessage extends $pb.GeneratedMessage {
+  factory ChatMessage({
+    $core.int? pk,
+    $core.int? chatFk,
+    Chat? chat,
     $core.int? fromFk,
     User? fromUser,
     $core.int? toFk,
@@ -1582,11 +1796,11 @@ class Message extends $pb.GeneratedMessage {
     if (pk != null) {
       $result.pk = pk;
     }
-    if (tenantFk != null) {
-      $result.tenantFk = tenantFk;
+    if (chatFk != null) {
+      $result.chatFk = chatFk;
     }
-    if (tenant != null) {
-      $result.tenant = tenant;
+    if (chat != null) {
+      $result.chat = chat;
     }
     if (fromFk != null) {
       $result.fromFk = fromFk;
@@ -1623,14 +1837,14 @@ class Message extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Message._() : super();
-  factory Message.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Message.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ChatMessage._() : super();
+  factory ChatMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Message', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
+    ..aOM<Chat>(3, _omitFieldNames ? '' : 'chat', subBuilder: Chat.create)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
     ..aOM<User>(5, _omitFieldNames ? '' : 'fromUser', subBuilder: User.create)
     ..a<$core.int>(6, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
@@ -1649,22 +1863,22 @@ class Message extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Message clone() => Message()..mergeFromMessage(this);
+  ChatMessage clone() => ChatMessage()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Message copyWith(void Function(Message) updates) => super.copyWith((message) => updates(message as Message)) as Message;
+  ChatMessage copyWith(void Function(ChatMessage) updates) => super.copyWith((message) => updates(message as ChatMessage)) as ChatMessage;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Message create() => Message._();
-  Message createEmptyInstance() => create();
-  static $pb.PbList<Message> createRepeated() => $pb.PbList<Message>();
+  static ChatMessage create() => ChatMessage._();
+  ChatMessage createEmptyInstance() => create();
+  static $pb.PbList<ChatMessage> createRepeated() => $pb.PbList<ChatMessage>();
   @$core.pragma('dart2js:noInline')
-  static Message getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Message>(create);
-  static Message? _defaultInstance;
+  static ChatMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessage>(create);
+  static ChatMessage? _defaultInstance;
 
   /// Priamry KEY
   @$pb.TagNumber(1)
@@ -1678,25 +1892,25 @@ class Message extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(2)
-  $core.int get tenantFk => $_getIZ(1);
+  $core.int get chatFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set tenantFk($core.int v) { $_setSignedInt32(1, v); }
+  set chatFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasTenantFk() => $_has(1);
+  $core.bool hasChatFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearTenantFk() => clearField(2);
+  void clearChatFk() => clearField(2);
 
   /// Relation Message
   @$pb.TagNumber(3)
-  Tenant get tenant => $_getN(2);
+  Chat get chat => $_getN(2);
   @$pb.TagNumber(3)
-  set tenant(Tenant v) { setField(3, v); }
+  set chat(Chat v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasTenant() => $_has(2);
+  $core.bool hasChat() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTenant() => clearField(3);
+  void clearChat() => clearField(3);
   @$pb.TagNumber(3)
-  Tenant ensureTenant() => $_ensure(2);
+  Chat ensureChat() => $_ensure(2);
 
   /// FK
   @$pb.TagNumber(4)

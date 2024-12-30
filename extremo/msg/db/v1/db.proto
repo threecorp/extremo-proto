@@ -101,13 +101,6 @@ message User {
     min_items: 0
     max_items: 25
   }];
-  //
-  // N:N relation
-  //
-  repeated Book books = 14 [(validate.rules).repeated = {
-    min_items: 0
-    max_items: 25
-  }];
 }
 
 message UserProfile {
@@ -315,17 +308,47 @@ message BooksService {
 
 //
 //
-//   Message
+//   Chat Message
 //
 //
 
-message Message {
+message Chat {
   // Priamry KEY
   int32 pk = 1 [(validate.rules).int32.gt = 0];
   // FK
   int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Relation Message
   Tenant tenant = 3 [(validate.rules).message = {required: true}];
+  // FK
+  int32 sender_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User sender = 5 [(validate.rules).message = {required: true}];
+  // FK
+  int32 recipient_fk = 6 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  User recipient = 7 [(validate.rules).message = {required: true}];
+  // 1:N relation
+  repeated ChatMessage messages = 10 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  // contact fist message
+  ChatMessage first_message = 11 [(validate.rules).message = {required: true}];
+  // contact last message
+  ChatMessage last_message = 12 [(validate.rules).message = {required: true}];
+  // Created time
+  google.protobuf.Timestamp created_at = 15; // [(validate.rules).timestamp.required = true]
+  // Updated time
+  google.protobuf.Timestamp updated_at = 16; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+}
+
+message ChatMessage {
+  // Priamry KEY
+  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  // FK
+  int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Relation Message
+  Chat chat = 3 [(validate.rules).message = {required: true}];
   // FK
   int32 from_fk = 4 [(validate.rules).int32 = {gt: 0}];
   // Relation Message

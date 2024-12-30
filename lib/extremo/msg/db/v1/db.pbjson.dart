@@ -68,7 +68,6 @@ const User$json = {
     {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
     {'1': 'profile', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.UserProfile', '8': {}, '10': 'profile'},
     {'1': 'artifacts', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Artifact', '8': {}, '10': 'artifacts'},
-    {'1': 'books', '3': 14, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'books'},
   ],
 };
 
@@ -86,8 +85,7 @@ final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'gLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJCCgdwcm9maWxl'
     'GAwgASgLMh4uZXh0cmVtby5tc2cuZGIudjEuVXNlclByb2ZpbGVCCPpCBYoBAhABUgdwcm9maW'
     'xlEkUKCWFydGlmYWN0cxgNIAMoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgr6QgeS'
-    'AQQIABAZUglhcnRpZmFjdHMSOQoFYm9va3MYDiADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Cb2'
-    '9rQgr6QgeSAQQIABAZUgVib29rcw==');
+    'AQQIABAZUglhcnRpZmFjdHM=');
 
 @$core.Deprecated('Use userProfileDescriptor instead')
 const UserProfile$json = {
@@ -260,13 +258,48 @@ final $typed_data.Uint8List booksServiceDescriptor = $convert.base64Decode(
     'oKdXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRB'
     'dA==');
 
-@$core.Deprecated('Use messageDescriptor instead')
-const Message$json = {
-  '1': 'Message',
+@$core.Deprecated('Use chatDescriptor instead')
+const Chat$json = {
+  '1': 'Chat',
   '2': [
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'tenant_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'tenant', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Tenant', '8': {}, '10': 'tenant'},
+    {'1': 'sender_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'senderFk'},
+    {'1': 'sender', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'sender'},
+    {'1': 'recipient_fk', '3': 6, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'recipient', '3': 7, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'recipient'},
+    {'1': 'messages', '3': 10, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'messages'},
+    {'1': 'first_message', '3': 11, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'firstMessage'},
+    {'1': 'last_message', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'lastMessage'},
+    {'1': 'created_at', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'updated_at', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+  ],
+};
+
+/// Descriptor for `Chat`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chatDescriptor = $convert.base64Decode(
+    'CgRDaGF0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/pCBB'
+    'oCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRlbmFu'
+    'dEII+kIFigECEAFSBnRlbmFudBIkCglzZW5kZXJfZmsYBCABKAVCB/pCBBoCIABSCHNlbmRlck'
+    'ZrEjkKBnNlbmRlchgFIAEoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlVzZXJCCPpCBYoBAhABUgZz'
+    'ZW5kZXISKgoMcmVjaXBpZW50X2ZrGAYgASgFQgf6QgQaAiAAUgtyZWNpcGllbnRGaxI/CglyZW'
+    'NpcGllbnQYByABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgj6QgWKAQIQAVIJcmVjaXBp'
+    'ZW50EkYKCG1lc3NhZ2VzGAogAygLMh4uZXh0cmVtby5tc2cuZGIudjEuQ2hhdE1lc3NhZ2VCCv'
+    'pCB5IBBAgAEBlSCG1lc3NhZ2VzEk0KDWZpcnN0X21lc3NhZ2UYCyABKAsyHi5leHRyZW1vLm1z'
+    'Zy5kYi52MS5DaGF0TWVzc2FnZUII+kIFigECEAFSDGZpcnN0TWVzc2FnZRJLCgxsYXN0X21lc3'
+    'NhZ2UYDCABKAsyHi5leHRyZW1vLm1zZy5kYi52MS5DaGF0TWVzc2FnZUII+kIFigECEAFSC2xh'
+    'c3RNZXNzYWdlEjkKCmNyZWF0ZWRfYXQYDyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW'
+    '1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l'
+    'c3RhbXBSCXVwZGF0ZWRBdA==');
+
+@$core.Deprecated('Use chatMessageDescriptor instead')
+const ChatMessage$json = {
+  '1': 'ChatMessage',
+  '2': [
+    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
+    {'1': 'chat', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Chat', '8': {}, '10': 'chat'},
     {'1': 'from_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'fromFk'},
     {'1': 'from_user', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'fromUser'},
     {'1': 'to_fk', '3': 6, '4': 1, '5': 5, '8': {}, '10': 'toFk'},
@@ -281,20 +314,20 @@ const Message$json = {
   ],
 };
 
-/// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
-    'CgdNZXNzYWdlEhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/'
-    'pCBBoCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRl'
-    'bmFudEII+kIFigECEAFSBnRlbmFudBIgCgdmcm9tX2ZrGAQgASgFQgf6QgQaAiAAUgZmcm9tRm'
-    'sSPgoJZnJvbV91c2VyGAUgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuVXNlckII+kIFigECEAFS'
-    'CGZyb21Vc2VyEhwKBXRvX2ZrGAYgASgFQgf6QgQaAiAAUgR0b0ZrEjoKB3RvX3VzZXIYByABKA'
-    'syFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgj6QgWKAQIQAVIGdG9Vc2VyEiQKB21lc3NhZ2UY'
-    'CCABKAlCCvpCB3IFEAEYgFBSB21lc3NhZ2USFwoHaXNfcmVhZBgJIAEoCFIGaXNSZWFkEj0KB3'
-    'JlYWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAFIGcmVh'
-    'ZEF0Eh0KCmlzX2RlbGV0ZWQYCyABKAhSCWlzRGVsZXRlZBJDCgpkZWxldGVkX2F0GAwgASgLMh'
-    'ouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCABSCWRlbGV0ZWRBdBI5CgpjcmVh'
-    'dGVkX2F0GA0gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjkKCn'
-    'VwZGF0ZWRfYXQYDiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl1cGRhdGVkQXQ=');
+/// Descriptor for `ChatMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chatMessageDescriptor = $convert.base64Decode(
+    'CgtDaGF0TWVzc2FnZRIXCgJwaxgBIAEoBUIH+kIEGgIgAFICcGsSIAoHY2hhdF9maxgCIAEoBU'
+    'IH+kIEGgIgAFIGY2hhdEZrEjUKBGNoYXQYAyABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5DaGF0'
+    'Qgj6QgWKAQIQAVIEY2hhdBIgCgdmcm9tX2ZrGAQgASgFQgf6QgQaAiAAUgZmcm9tRmsSPgoJZn'
+    'JvbV91c2VyGAUgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuVXNlckII+kIFigECEAFSCGZyb21V'
+    'c2VyEhwKBXRvX2ZrGAYgASgFQgf6QgQaAiAAUgR0b0ZrEjoKB3RvX3VzZXIYByABKAsyFy5leH'
+    'RyZW1vLm1zZy5kYi52MS5Vc2VyQgj6QgWKAQIQAVIGdG9Vc2VyEiQKB21lc3NhZ2UYCCABKAlC'
+    'CvpCB3IFEAEYgFBSB21lc3NhZ2USFwoHaXNfcmVhZBgJIAEoCFIGaXNSZWFkEj0KB3JlYWRfYX'
+    'QYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgj6QgWyAQIIAFIGcmVhZEF0Eh0K'
+    'CmlzX2RlbGV0ZWQYCyABKAhSCWlzRGVsZXRlZBJDCgpkZWxldGVkX2F0GAwgASgLMhouZ29vZ2'
+    'xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCABSCWRlbGV0ZWRBdBI5CgpjcmVhdGVkX2F0'
+    'GA0gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjkKCnVwZGF0ZW'
+    'RfYXQYDiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl1cGRhdGVkQXQ=');
 
 @$core.Deprecated('Use artifactDescriptor instead')
 const Artifact$json = {
