@@ -4,7 +4,7 @@
 
 syntax = "proto3";
 
-package extremo.api.mypage.chats.v1;
+package extremo.api.mypage.books.v1;
 
 // import "extremo/msg/api/v1/api.proto";
 import "extremo/msg/db/v1/db.proto";
@@ -15,64 +15,60 @@ import "google/protobuf/empty.proto";
 // import "google/protobuf/field_mask.proto";
 import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
 
-option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/chats/v1;chats";
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/books/v1;books";
 option java_generic_services = true;
 option java_multiple_files = true;
-option java_outer_classname = "ChatServiceProto";
-option java_package = "com.extremo.api.mypage.chats.v1";
+option java_outer_classname = "BookServiceProto";
+option java_package = "com.extremo.api.mypage.books.v1";
 
 //
 // README: https://cloud.google.com/apis/design/standard_methods
-// Service for reading from and writing to existing Chats.
+// Service for reading from and writing to existing Books.
 //
-service ChatService {
-  // ListUsers returns Chats' users as list with pagination
-  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/users"};
+service BookService {
+  // Delete deletes a Book with return nothing
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {delete: "/api/mypage/v1/{tenant_fk}/books/{pk}"};
   }
-  // Update updates a Chat with then return a Chat
+  // Get returns a book
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/books/{pk}"};
+  }
+  // List returns Books as list with pagination
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/books"};
+  }
+  // Update updates a Book with then return a Book
   rpc Update(UpdateRequest) returns (UpdateResponse) {
     option (google.api.http) = {
-      put: "/api/mypage/v1/{tenant_fk}/chats/{pk}"
+      put: "/api/mypage/v1/{tenant_fk}/books/{pk}"
       body: "*"
     };
   }
-  // Delete deletes a Chat with return nothing
-  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {delete: "/api/mypage/v1/{tenant_fk}/chats/{pk}"};
-  }
-  // Get returns a chat
-  rpc Get(GetRequest) returns (GetResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/{pk}"};
-  }
-  // List returns Chats as list with pagination
-  rpc List(ListRequest) returns (ListResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats"};
-  }
-  // Create creates a Chat with then return a Chat
+  // Create creates a Book with then return a Book
   rpc Create(CreateRequest) returns (CreateResponse) {
     option (google.api.http) = {
-      post: "/api/mypage/v1/{tenant_fk}/chats"
+      post: "/api/mypage/v1/{tenant_fk}/books"
       body: "*"
     };
   }
   // // CreateImage creates a image
   // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
   //   option (google.api.http) = {
-  //     post: "/api/mypage/v1/chats/{chat_fk}/image"
+  //     post: "/api/mypage/v1/{tenant_fk}/books/{book_fk}/image"
   //     body: "*"
   //   };
   // }
   // // UpdateImage creates a image
   // rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
   //   option (google.api.http) = {
-  //     put: "/api/mypage/v1/chats/{chat_fk}/image/{pk}"
+  //     put: "/api/mypage/v1/{tenant_fk}/books/{book_fk}/image/{pk}"
   //     body: "*"
   //   };
   // }
 }
 
-message ListUsersRequest {
+message ListBooksRequest {
   // Behaves as like GraphQL Field Selector
   // google.protobuf.FieldMask field_mask = 1999;
   //
@@ -87,9 +83,9 @@ message ListUsersRequest {
   }];
 }
 
-message ListUsersResponse {
+message ListBooksResponse {
   // article msg.db
-  repeated extremo.msg.db.v1.User elements = 1 [(validate.rules).repeated = {
+  repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
     min_items: 0
     max_items: 30
   }];
@@ -114,7 +110,7 @@ message ListRequest {
 
 message ListResponse {
   // article msg.db
-  repeated extremo.msg.db.v1.Chat elements = 1 [(validate.rules).repeated = {
+  repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
     min_items: 0
     max_items: 30
   }];
@@ -133,28 +129,19 @@ message GetRequest {
 }
 
 message GetResponse {
-  // A chat chat. if request chat is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
+  // A book book. if request book is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Book element = 1 [(validate.rules).message = {required: true}];
 }
 
 // PrimaryKey is set by JWT Token
 message CreateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
-  // FK
-  int32 from_fk = 2 [(validate.rules).int32 = {gt: 0}];
-  // FK
-  int32 to_fk = 3 [(validate.rules).int32 = {gt: 0}];
-  // Content
-  string message = 4 [(validate.rules).string = {
-    min_len: 1
-    max_len: 10240
-  }];
 }
 
 message CreateResponse {
-  // A user chat. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
+  // A book book. if request book is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Book element = 1 [(validate.rules).message = {required: true}];
 }
 
 message UpdateRequest {
@@ -162,20 +149,11 @@ message UpdateRequest {
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // PK
   int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
-  // FK
-  int32 from_fk = 3 [(validate.rules).int32 = {gt: 0}];
-  // FK
-  int32 to_fk = 4 [(validate.rules).int32 = {gt: 0}];
-  // Content
-  string message = 5 [(validate.rules).string = {
-    min_len: 1
-    max_len: 10240
-  }];
 }
 
 message UpdateResponse {
-  // A user message. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
+  // A book message. if request book is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Book element = 1 [(validate.rules).message = {required: true}];
 }
 
 message DeleteRequest {
@@ -187,9 +165,9 @@ message DeleteRequest {
 
 // message CreateImageRequest {
 //   // XXX: Relation Key is checked correct value by JWT Token
-//   int32 chat_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   int32 book_fk = 1 [(validate.rules).int32 = {gt: 0}];
 //   // kind cannot be NONE (0)
-//   extremo.msg.db.v1.ChatImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//   extremo.msg.db.v1.BookImageEnum.Kind kind = 2 [(validate.rules).enum = {
 //     not_in: [0]
 //   }];
 //   // image Data URI: 10B ~ 20MB
@@ -207,17 +185,17 @@ message DeleteRequest {
 // }
 
 // message CreateImageResponse {
-//   // A user chat. if request user is not published, it filtered them. so response might be empty.
-//   extremo.msg.db.v1.ChatImage element = 1 [(validate.rules).message = {required: true}];
+//   // A book book. if request book is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.BookImage element = 1 [(validate.rules).message = {required: true}];
 // }
 //
 // message UpdateImageRequest {
 //   // XXX: PrimaryKey is checked correct value by JWT Token
 //   int32 pk = 5 [(validate.rules).int32 = {gt: 0}];
 //   // XXX: Relation Key is checked correct value by JWT Token
-//   int32 chat_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   int32 book_fk = 1 [(validate.rules).int32 = {gt: 0}];
 //   // kind cannot be NONE (0)
-//   extremo.msg.db.v1.ChatImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//   extremo.msg.db.v1.BookImageEnum.Kind kind = 2 [(validate.rules).enum = {
 //     not_in: [0]
 //   }];
 //   // image Data URI: 10B ~ 20MB
@@ -235,6 +213,6 @@ message DeleteRequest {
 // }
 //
 // message UpdateImageResponse {
-//   // A user message. if request user is not published, it filtered them. so response might be empty.
-//   extremo.msg.db.v1.ChatImage element = 1 [(validate.rules).message = {required: true}];
+//   // A book message. if request book is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.BookImage element = 1 [(validate.rules).message = {required: true}];
 // }

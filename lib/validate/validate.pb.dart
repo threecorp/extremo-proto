@@ -14,8 +14,8 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../google/protobuf/duration.pb.dart' as $5;
-import '../google/protobuf/timestamp.pb.dart' as $6;
+import '../google/protobuf/duration.pb.dart' as $7;
+import '../google/protobuf/timestamp.pb.dart' as $8;
 import 'validate.pbenum.dart';
 
 export 'validate.pbenum.dart';
@@ -3601,13 +3601,13 @@ class AnyRules extends $pb.GeneratedMessage {
 class DurationRules extends $pb.GeneratedMessage {
   factory DurationRules({
     $core.bool? required,
-    $5.Duration? const_2,
-    $5.Duration? lt,
-    $5.Duration? lte,
-    $5.Duration? gt,
-    $5.Duration? gte,
-    $core.Iterable<$5.Duration>? in_7,
-    $core.Iterable<$5.Duration>? notIn,
+    $7.Duration? const_2,
+    $7.Duration? lt,
+    $7.Duration? lte,
+    $7.Duration? gt,
+    $7.Duration? gte,
+    $core.Iterable<$7.Duration>? in_7,
+    $core.Iterable<$7.Duration>? notIn,
   }) {
     final $result = create();
     if (required != null) {
@@ -3642,13 +3642,13 @@ class DurationRules extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DurationRules', package: const $pb.PackageName(_omitMessageNames ? '' : 'validate'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'required')
-    ..aOM<$5.Duration>(2, _omitFieldNames ? '' : 'const', subBuilder: $5.Duration.create)
-    ..aOM<$5.Duration>(3, _omitFieldNames ? '' : 'lt', subBuilder: $5.Duration.create)
-    ..aOM<$5.Duration>(4, _omitFieldNames ? '' : 'lte', subBuilder: $5.Duration.create)
-    ..aOM<$5.Duration>(5, _omitFieldNames ? '' : 'gt', subBuilder: $5.Duration.create)
-    ..aOM<$5.Duration>(6, _omitFieldNames ? '' : 'gte', subBuilder: $5.Duration.create)
-    ..pc<$5.Duration>(7, _omitFieldNames ? '' : 'in', $pb.PbFieldType.PM, subBuilder: $5.Duration.create)
-    ..pc<$5.Duration>(8, _omitFieldNames ? '' : 'notIn', $pb.PbFieldType.PM, subBuilder: $5.Duration.create)
+    ..aOM<$7.Duration>(2, _omitFieldNames ? '' : 'const', subBuilder: $7.Duration.create)
+    ..aOM<$7.Duration>(3, _omitFieldNames ? '' : 'lt', subBuilder: $7.Duration.create)
+    ..aOM<$7.Duration>(4, _omitFieldNames ? '' : 'lte', subBuilder: $7.Duration.create)
+    ..aOM<$7.Duration>(5, _omitFieldNames ? '' : 'gt', subBuilder: $7.Duration.create)
+    ..aOM<$7.Duration>(6, _omitFieldNames ? '' : 'gte', subBuilder: $7.Duration.create)
+    ..pc<$7.Duration>(7, _omitFieldNames ? '' : 'in', $pb.PbFieldType.PM, subBuilder: $7.Duration.create)
+    ..pc<$7.Duration>(8, _omitFieldNames ? '' : 'notIn', $pb.PbFieldType.PM, subBuilder: $7.Duration.create)
     ..hasRequiredFields = false
   ;
 
@@ -3685,77 +3685,77 @@ class DurationRules extends $pb.GeneratedMessage {
 
   /// Const specifies that this field must be exactly the specified value
   @$pb.TagNumber(2)
-  $5.Duration get const_2 => $_getN(1);
+  $7.Duration get const_2 => $_getN(1);
   @$pb.TagNumber(2)
-  set const_2($5.Duration v) { setField(2, v); }
+  set const_2($7.Duration v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasConst_2() => $_has(1);
   @$pb.TagNumber(2)
   void clearConst_2() => clearField(2);
   @$pb.TagNumber(2)
-  $5.Duration ensureConst_2() => $_ensure(1);
+  $7.Duration ensureConst_2() => $_ensure(1);
 
   /// Lt specifies that this field must be less than the specified value,
   /// exclusive
   @$pb.TagNumber(3)
-  $5.Duration get lt => $_getN(2);
+  $7.Duration get lt => $_getN(2);
   @$pb.TagNumber(3)
-  set lt($5.Duration v) { setField(3, v); }
+  set lt($7.Duration v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasLt() => $_has(2);
   @$pb.TagNumber(3)
   void clearLt() => clearField(3);
   @$pb.TagNumber(3)
-  $5.Duration ensureLt() => $_ensure(2);
+  $7.Duration ensureLt() => $_ensure(2);
 
   /// Lt specifies that this field must be less than the specified value,
   /// inclusive
   @$pb.TagNumber(4)
-  $5.Duration get lte => $_getN(3);
+  $7.Duration get lte => $_getN(3);
   @$pb.TagNumber(4)
-  set lte($5.Duration v) { setField(4, v); }
+  set lte($7.Duration v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasLte() => $_has(3);
   @$pb.TagNumber(4)
   void clearLte() => clearField(4);
   @$pb.TagNumber(4)
-  $5.Duration ensureLte() => $_ensure(3);
+  $7.Duration ensureLte() => $_ensure(3);
 
   /// Gt specifies that this field must be greater than the specified value,
   /// exclusive
   @$pb.TagNumber(5)
-  $5.Duration get gt => $_getN(4);
+  $7.Duration get gt => $_getN(4);
   @$pb.TagNumber(5)
-  set gt($5.Duration v) { setField(5, v); }
+  set gt($7.Duration v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasGt() => $_has(4);
   @$pb.TagNumber(5)
   void clearGt() => clearField(5);
   @$pb.TagNumber(5)
-  $5.Duration ensureGt() => $_ensure(4);
+  $7.Duration ensureGt() => $_ensure(4);
 
   /// Gte specifies that this field must be greater than the specified value,
   /// inclusive
   @$pb.TagNumber(6)
-  $5.Duration get gte => $_getN(5);
+  $7.Duration get gte => $_getN(5);
   @$pb.TagNumber(6)
-  set gte($5.Duration v) { setField(6, v); }
+  set gte($7.Duration v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasGte() => $_has(5);
   @$pb.TagNumber(6)
   void clearGte() => clearField(6);
   @$pb.TagNumber(6)
-  $5.Duration ensureGte() => $_ensure(5);
+  $7.Duration ensureGte() => $_ensure(5);
 
   /// In specifies that this field must be equal to one of the specified
   /// values
   @$pb.TagNumber(7)
-  $core.List<$5.Duration> get in_7 => $_getList(6);
+  $core.List<$7.Duration> get in_7 => $_getList(6);
 
   /// NotIn specifies that this field cannot be equal to one of the specified
   /// values
   @$pb.TagNumber(8)
-  $core.List<$5.Duration> get notIn => $_getList(7);
+  $core.List<$7.Duration> get notIn => $_getList(7);
 }
 
 /// TimestampRules describe the constraints applied exclusively to the
@@ -3763,14 +3763,14 @@ class DurationRules extends $pb.GeneratedMessage {
 class TimestampRules extends $pb.GeneratedMessage {
   factory TimestampRules({
     $core.bool? required,
-    $6.Timestamp? const_2,
-    $6.Timestamp? lt,
-    $6.Timestamp? lte,
-    $6.Timestamp? gt,
-    $6.Timestamp? gte,
+    $8.Timestamp? const_2,
+    $8.Timestamp? lt,
+    $8.Timestamp? lte,
+    $8.Timestamp? gt,
+    $8.Timestamp? gte,
     $core.bool? ltNow,
     $core.bool? gtNow,
-    $5.Duration? within,
+    $7.Duration? within,
   }) {
     final $result = create();
     if (required != null) {
@@ -3808,14 +3808,14 @@ class TimestampRules extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TimestampRules', package: const $pb.PackageName(_omitMessageNames ? '' : 'validate'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'required')
-    ..aOM<$6.Timestamp>(2, _omitFieldNames ? '' : 'const', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(3, _omitFieldNames ? '' : 'lt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(4, _omitFieldNames ? '' : 'lte', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(5, _omitFieldNames ? '' : 'gt', subBuilder: $6.Timestamp.create)
-    ..aOM<$6.Timestamp>(6, _omitFieldNames ? '' : 'gte', subBuilder: $6.Timestamp.create)
+    ..aOM<$8.Timestamp>(2, _omitFieldNames ? '' : 'const', subBuilder: $8.Timestamp.create)
+    ..aOM<$8.Timestamp>(3, _omitFieldNames ? '' : 'lt', subBuilder: $8.Timestamp.create)
+    ..aOM<$8.Timestamp>(4, _omitFieldNames ? '' : 'lte', subBuilder: $8.Timestamp.create)
+    ..aOM<$8.Timestamp>(5, _omitFieldNames ? '' : 'gt', subBuilder: $8.Timestamp.create)
+    ..aOM<$8.Timestamp>(6, _omitFieldNames ? '' : 'gte', subBuilder: $8.Timestamp.create)
     ..aOB(7, _omitFieldNames ? '' : 'ltNow')
     ..aOB(8, _omitFieldNames ? '' : 'gtNow')
-    ..aOM<$5.Duration>(9, _omitFieldNames ? '' : 'within', subBuilder: $5.Duration.create)
+    ..aOM<$7.Duration>(9, _omitFieldNames ? '' : 'within', subBuilder: $7.Duration.create)
     ..hasRequiredFields = false
   ;
 
@@ -3852,67 +3852,67 @@ class TimestampRules extends $pb.GeneratedMessage {
 
   /// Const specifies that this field must be exactly the specified value
   @$pb.TagNumber(2)
-  $6.Timestamp get const_2 => $_getN(1);
+  $8.Timestamp get const_2 => $_getN(1);
   @$pb.TagNumber(2)
-  set const_2($6.Timestamp v) { setField(2, v); }
+  set const_2($8.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasConst_2() => $_has(1);
   @$pb.TagNumber(2)
   void clearConst_2() => clearField(2);
   @$pb.TagNumber(2)
-  $6.Timestamp ensureConst_2() => $_ensure(1);
+  $8.Timestamp ensureConst_2() => $_ensure(1);
 
   /// Lt specifies that this field must be less than the specified value,
   /// exclusive
   @$pb.TagNumber(3)
-  $6.Timestamp get lt => $_getN(2);
+  $8.Timestamp get lt => $_getN(2);
   @$pb.TagNumber(3)
-  set lt($6.Timestamp v) { setField(3, v); }
+  set lt($8.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasLt() => $_has(2);
   @$pb.TagNumber(3)
   void clearLt() => clearField(3);
   @$pb.TagNumber(3)
-  $6.Timestamp ensureLt() => $_ensure(2);
+  $8.Timestamp ensureLt() => $_ensure(2);
 
   /// Lte specifies that this field must be less than the specified value,
   /// inclusive
   @$pb.TagNumber(4)
-  $6.Timestamp get lte => $_getN(3);
+  $8.Timestamp get lte => $_getN(3);
   @$pb.TagNumber(4)
-  set lte($6.Timestamp v) { setField(4, v); }
+  set lte($8.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasLte() => $_has(3);
   @$pb.TagNumber(4)
   void clearLte() => clearField(4);
   @$pb.TagNumber(4)
-  $6.Timestamp ensureLte() => $_ensure(3);
+  $8.Timestamp ensureLte() => $_ensure(3);
 
   /// Gt specifies that this field must be greater than the specified value,
   /// exclusive
   @$pb.TagNumber(5)
-  $6.Timestamp get gt => $_getN(4);
+  $8.Timestamp get gt => $_getN(4);
   @$pb.TagNumber(5)
-  set gt($6.Timestamp v) { setField(5, v); }
+  set gt($8.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasGt() => $_has(4);
   @$pb.TagNumber(5)
   void clearGt() => clearField(5);
   @$pb.TagNumber(5)
-  $6.Timestamp ensureGt() => $_ensure(4);
+  $8.Timestamp ensureGt() => $_ensure(4);
 
   /// Gte specifies that this field must be greater than the specified value,
   /// inclusive
   @$pb.TagNumber(6)
-  $6.Timestamp get gte => $_getN(5);
+  $8.Timestamp get gte => $_getN(5);
   @$pb.TagNumber(6)
-  set gte($6.Timestamp v) { setField(6, v); }
+  set gte($8.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasGte() => $_has(5);
   @$pb.TagNumber(6)
   void clearGte() => clearField(6);
   @$pb.TagNumber(6)
-  $6.Timestamp ensureGte() => $_ensure(5);
+  $8.Timestamp ensureGte() => $_ensure(5);
 
   /// LtNow specifies that this must be less than the current time. LtNow
   /// can only be used with the Within rule.
@@ -3940,15 +3940,15 @@ class TimestampRules extends $pb.GeneratedMessage {
   /// current time. This constraint can be used alone or with the LtNow and
   /// GtNow rules.
   @$pb.TagNumber(9)
-  $5.Duration get within => $_getN(8);
+  $7.Duration get within => $_getN(8);
   @$pb.TagNumber(9)
-  set within($5.Duration v) { setField(9, v); }
+  set within($7.Duration v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasWithin() => $_has(8);
   @$pb.TagNumber(9)
   void clearWithin() => clearField(9);
   @$pb.TagNumber(9)
-  $5.Duration ensureWithin() => $_ensure(8);
+  $7.Duration ensureWithin() => $_ensure(8);
 }
 
 class Validate {

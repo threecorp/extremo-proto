@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: extremo/api/mypage/chats/v1/chat_service.proto
+//  source: extremo/api/mypage/books/v1/book_service.proto
 //
 // @dart = 2.12
 
@@ -15,8 +15,8 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../msg/db/v1/db.pb.dart' as $12;
 
-class ListUsersRequest extends $pb.GeneratedMessage {
-  factory ListUsersRequest({
+class ListBooksRequest extends $pb.GeneratedMessage {
+  factory ListBooksRequest({
     $core.int? tenantFk,
     $core.int? page,
     $core.int? pageSize,
@@ -33,11 +33,11 @@ class ListUsersRequest extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  ListUsersRequest._() : super();
-  factory ListUsersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ListUsersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ListBooksRequest._() : super();
+  factory ListBooksRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListBooksRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListUsersRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListBooksRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
@@ -48,22 +48,22 @@ class ListUsersRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ListUsersRequest clone() => ListUsersRequest()..mergeFromMessage(this);
+  ListBooksRequest clone() => ListBooksRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ListUsersRequest copyWith(void Function(ListUsersRequest) updates) => super.copyWith((message) => updates(message as ListUsersRequest)) as ListUsersRequest;
+  ListBooksRequest copyWith(void Function(ListBooksRequest) updates) => super.copyWith((message) => updates(message as ListBooksRequest)) as ListBooksRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ListUsersRequest create() => ListUsersRequest._();
-  ListUsersRequest createEmptyInstance() => create();
-  static $pb.PbList<ListUsersRequest> createRepeated() => $pb.PbList<ListUsersRequest>();
+  static ListBooksRequest create() => ListBooksRequest._();
+  ListBooksRequest createEmptyInstance() => create();
+  static $pb.PbList<ListBooksRequest> createRepeated() => $pb.PbList<ListBooksRequest>();
   @$core.pragma('dart2js:noInline')
-  static ListUsersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListUsersRequest>(create);
-  static ListUsersRequest? _defaultInstance;
+  static ListBooksRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListBooksRequest>(create);
+  static ListBooksRequest? _defaultInstance;
 
   ///  Behaves as like GraphQL Field Selector
   ///  google.protobuf.FieldMask field_mask = 1999;
@@ -99,9 +99,9 @@ class ListUsersRequest extends $pb.GeneratedMessage {
   void clearPageSize() => clearField(3);
 }
 
-class ListUsersResponse extends $pb.GeneratedMessage {
-  factory ListUsersResponse({
-    $core.Iterable<$12.User>? elements,
+class ListBooksResponse extends $pb.GeneratedMessage {
+  factory ListBooksResponse({
+    $core.Iterable<$12.Book>? elements,
     $core.int? totalSize,
   }) {
     final $result = create();
@@ -113,12 +113,12 @@ class ListUsersResponse extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  ListUsersResponse._() : super();
-  factory ListUsersResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ListUsersResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ListBooksResponse._() : super();
+  factory ListBooksResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListBooksResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListUsersResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..pc<$12.User>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $12.User.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListBooksResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..pc<$12.Book>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $12.Book.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -127,26 +127,26 @@ class ListUsersResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ListUsersResponse clone() => ListUsersResponse()..mergeFromMessage(this);
+  ListBooksResponse clone() => ListBooksResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ListUsersResponse copyWith(void Function(ListUsersResponse) updates) => super.copyWith((message) => updates(message as ListUsersResponse)) as ListUsersResponse;
+  ListBooksResponse copyWith(void Function(ListBooksResponse) updates) => super.copyWith((message) => updates(message as ListBooksResponse)) as ListBooksResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ListUsersResponse create() => ListUsersResponse._();
-  ListUsersResponse createEmptyInstance() => create();
-  static $pb.PbList<ListUsersResponse> createRepeated() => $pb.PbList<ListUsersResponse>();
+  static ListBooksResponse create() => ListBooksResponse._();
+  ListBooksResponse createEmptyInstance() => create();
+  static $pb.PbList<ListBooksResponse> createRepeated() => $pb.PbList<ListBooksResponse>();
   @$core.pragma('dart2js:noInline')
-  static ListUsersResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListUsersResponse>(create);
-  static ListUsersResponse? _defaultInstance;
+  static ListBooksResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListBooksResponse>(create);
+  static ListBooksResponse? _defaultInstance;
 
   /// article msg.db
   @$pb.TagNumber(1)
-  $core.List<$12.User> get elements => $_getList(0);
+  $core.List<$12.Book> get elements => $_getList(0);
 
   /// Total Size
   @$pb.TagNumber(2)
@@ -181,7 +181,7 @@ class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
@@ -245,7 +245,7 @@ class ListRequest extends $pb.GeneratedMessage {
 
 class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse({
-    $core.Iterable<$12.Chat>? elements,
+    $core.Iterable<$12.Book>? elements,
     $core.int? totalSize,
   }) {
     final $result = create();
@@ -261,8 +261,8 @@ class ListResponse extends $pb.GeneratedMessage {
   factory ListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..pc<$12.Chat>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $12.Chat.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..pc<$12.Book>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $12.Book.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -290,7 +290,7 @@ class ListResponse extends $pb.GeneratedMessage {
 
   /// article msg.db
   @$pb.TagNumber(1)
-  $core.List<$12.Chat> get elements => $_getList(0);
+  $core.List<$12.Book> get elements => $_getList(0);
 
   /// Total Size
   @$pb.TagNumber(2)
@@ -321,7 +321,7 @@ class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
@@ -374,7 +374,7 @@ class GetRequest extends $pb.GeneratedMessage {
 
 class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse({
-    $12.Chat? element,
+    $12.Book? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -386,8 +386,8 @@ class GetResponse extends $pb.GeneratedMessage {
   factory GetResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..aOM<$12.Chat>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Chat.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..aOM<$12.Book>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -412,39 +412,27 @@ class GetResponse extends $pb.GeneratedMessage {
   static GetResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetResponse>(create);
   static GetResponse? _defaultInstance;
 
-  /// A chat chat. if request chat is not published, it filtered them. so response might be empty.
+  /// A book book. if request book is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $12.Chat get element => $_getN(0);
+  $12.Book get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($12.Chat v) { setField(1, v); }
+  set element($12.Book v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $12.Chat ensureElement() => $_ensure(0);
+  $12.Book ensureElement() => $_ensure(0);
 }
 
 /// PrimaryKey is set by JWT Token
 class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest({
     $core.int? tenantFk,
-    $core.int? fromFk,
-    $core.int? toFk,
-    $core.String? message,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
-    }
-    if (fromFk != null) {
-      $result.fromFk = fromFk;
-    }
-    if (toFk != null) {
-      $result.toFk = toFk;
-    }
-    if (message != null) {
-      $result.message = message;
     }
     return $result;
   }
@@ -452,11 +440,8 @@ class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
-    ..aOS(4, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -490,41 +475,11 @@ class CreateRequest extends $pb.GeneratedMessage {
   $core.bool hasTenantFk() => $_has(0);
   @$pb.TagNumber(1)
   void clearTenantFk() => clearField(1);
-
-  /// FK
-  @$pb.TagNumber(2)
-  $core.int get fromFk => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set fromFk($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasFromFk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearFromFk() => clearField(2);
-
-  /// FK
-  @$pb.TagNumber(3)
-  $core.int get toFk => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set toFk($core.int v) { $_setSignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasToFk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearToFk() => clearField(3);
-
-  /// Content
-  @$pb.TagNumber(4)
-  $core.String get message => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set message($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasMessage() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearMessage() => clearField(4);
 }
 
 class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse({
-    $12.Chat? element,
+    $12.Book? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -536,8 +491,8 @@ class CreateResponse extends $pb.GeneratedMessage {
   factory CreateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CreateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..aOM<$12.Chat>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Chat.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..aOM<$12.Book>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -562,26 +517,23 @@ class CreateResponse extends $pb.GeneratedMessage {
   static CreateResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateResponse>(create);
   static CreateResponse? _defaultInstance;
 
-  /// A user chat. if request user is not published, it filtered them. so response might be empty.
+  /// A book book. if request book is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $12.Chat get element => $_getN(0);
+  $12.Book get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($12.Chat v) { setField(1, v); }
+  set element($12.Book v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $12.Chat ensureElement() => $_ensure(0);
+  $12.Book ensureElement() => $_ensure(0);
 }
 
 class UpdateRequest extends $pb.GeneratedMessage {
   factory UpdateRequest({
     $core.int? tenantFk,
     $core.int? pk,
-    $core.int? fromFk,
-    $core.int? toFk,
-    $core.String? message,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -590,27 +542,15 @@ class UpdateRequest extends $pb.GeneratedMessage {
     if (pk != null) {
       $result.pk = pk;
     }
-    if (fromFk != null) {
-      $result.fromFk = fromFk;
-    }
-    if (toFk != null) {
-      $result.toFk = toFk;
-    }
-    if (message != null) {
-      $result.message = message;
-    }
     return $result;
   }
   UpdateRequest._() : super();
   factory UpdateRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory UpdateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
-    ..aOS(5, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
 
@@ -654,41 +594,11 @@ class UpdateRequest extends $pb.GeneratedMessage {
   $core.bool hasPk() => $_has(1);
   @$pb.TagNumber(2)
   void clearPk() => clearField(2);
-
-  /// FK
-  @$pb.TagNumber(3)
-  $core.int get fromFk => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set fromFk($core.int v) { $_setSignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasFromFk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearFromFk() => clearField(3);
-
-  /// FK
-  @$pb.TagNumber(4)
-  $core.int get toFk => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set toFk($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasToFk() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearToFk() => clearField(4);
-
-  /// Content
-  @$pb.TagNumber(5)
-  $core.String get message => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set message($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasMessage() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearMessage() => clearField(5);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse({
-    $12.Chat? element,
+    $12.Book? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -700,8 +610,8 @@ class UpdateResponse extends $pb.GeneratedMessage {
   factory UpdateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory UpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..aOM<$12.Chat>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Chat.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..aOM<$12.Book>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Book.create)
     ..hasRequiredFields = false
   ;
 
@@ -726,17 +636,17 @@ class UpdateResponse extends $pb.GeneratedMessage {
   static UpdateResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateResponse>(create);
   static UpdateResponse? _defaultInstance;
 
-  /// A user message. if request user is not published, it filtered them. so response might be empty.
+  /// A book message. if request book is not published, it filtered them. so response might be empty.
   @$pb.TagNumber(1)
-  $12.Chat get element => $_getN(0);
+  $12.Book get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($12.Chat v) { setField(1, v); }
+  set element($12.Book v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $12.Chat ensureElement() => $_ensure(0);
+  $12.Book ensureElement() => $_ensure(0);
 }
 
 class DeleteRequest extends $pb.GeneratedMessage {
@@ -757,7 +667,7 @@ class DeleteRequest extends $pb.GeneratedMessage {
   factory DeleteRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DeleteRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
