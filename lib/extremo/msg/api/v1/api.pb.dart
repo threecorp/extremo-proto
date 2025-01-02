@@ -19,6 +19,7 @@ import '../../../../google/protobuf/timestamp.pb.dart' as $8;
 class Account extends $pb.GeneratedMessage {
   factory Account({
     $core.int? pk,
+    $core.int? tenantFk,
     $8.Timestamp? dateJoined,
     $core.bool? isDeleted,
     $8.Timestamp? deletedAt,
@@ -26,6 +27,9 @@ class Account extends $pb.GeneratedMessage {
     final $result = create();
     if (pk != null) {
       $result.pk = pk;
+    }
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
     }
     if (dateJoined != null) {
       $result.dateJoined = dateJoined;
@@ -43,10 +47,11 @@ class Account extends $pb.GeneratedMessage {
   factory Account.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Account', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.api.v1'), createEmptyInstance: create)
-    ..a<$core.int>(10, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..aOM<$8.Timestamp>(20, _omitFieldNames ? '' : 'dateJoined', subBuilder: $8.Timestamp.create)
-    ..aOB(30, _omitFieldNames ? '' : 'isDeleted')
-    ..aOM<$8.Timestamp>(400, _omitFieldNames ? '' : 'deletedAt', subBuilder: $8.Timestamp.create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..aOM<$8.Timestamp>(3, _omitFieldNames ? '' : 'dateJoined', subBuilder: $8.Timestamp.create)
+    ..aOB(4, _omitFieldNames ? '' : 'isDeleted')
+    ..aOM<$8.Timestamp>(5, _omitFieldNames ? '' : 'deletedAt', subBuilder: $8.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -72,48 +77,58 @@ class Account extends $pb.GeneratedMessage {
   static Account? _defaultInstance;
 
   /// Priamry KEY
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(1)
   $core.int get pk => $_getIZ(0);
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(1)
   set pk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(1)
   $core.bool hasPk() => $_has(0);
-  @$pb.TagNumber(10)
-  void clearPk() => clearField(10);
+  @$pb.TagNumber(1)
+  void clearPk() => clearField(1);
+
+  /// Priamry KEY
+  @$pb.TagNumber(2)
+  $core.int get tenantFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set tenantFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTenantFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTenantFk() => clearField(2);
 
   /// Sign Up date
-  @$pb.TagNumber(20)
-  $8.Timestamp get dateJoined => $_getN(1);
-  @$pb.TagNumber(20)
-  set dateJoined($8.Timestamp v) { setField(20, v); }
-  @$pb.TagNumber(20)
-  $core.bool hasDateJoined() => $_has(1);
-  @$pb.TagNumber(20)
-  void clearDateJoined() => clearField(20);
-  @$pb.TagNumber(20)
-  $8.Timestamp ensureDateJoined() => $_ensure(1);
+  @$pb.TagNumber(3)
+  $8.Timestamp get dateJoined => $_getN(2);
+  @$pb.TagNumber(3)
+  set dateJoined($8.Timestamp v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDateJoined() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDateJoined() => clearField(3);
+  @$pb.TagNumber(3)
+  $8.Timestamp ensureDateJoined() => $_ensure(2);
 
   /// is deleted user
-  @$pb.TagNumber(30)
-  $core.bool get isDeleted => $_getBF(2);
-  @$pb.TagNumber(30)
-  set isDeleted($core.bool v) { $_setBool(2, v); }
-  @$pb.TagNumber(30)
-  $core.bool hasIsDeleted() => $_has(2);
-  @$pb.TagNumber(30)
-  void clearIsDeleted() => clearField(30);
+  @$pb.TagNumber(4)
+  $core.bool get isDeleted => $_getBF(3);
+  @$pb.TagNumber(4)
+  set isDeleted($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasIsDeleted() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIsDeleted() => clearField(4);
 
   /// Deleted time
-  @$pb.TagNumber(400)
-  $8.Timestamp get deletedAt => $_getN(3);
-  @$pb.TagNumber(400)
-  set deletedAt($8.Timestamp v) { setField(400, v); }
-  @$pb.TagNumber(400)
-  $core.bool hasDeletedAt() => $_has(3);
-  @$pb.TagNumber(400)
-  void clearDeletedAt() => clearField(400);
-  @$pb.TagNumber(400)
-  $8.Timestamp ensureDeletedAt() => $_ensure(3);
+  @$pb.TagNumber(5)
+  $8.Timestamp get deletedAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set deletedAt($8.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDeletedAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDeletedAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $8.Timestamp ensureDeletedAt() => $_ensure(4);
 }
 
 class AccountToken extends $pb.GeneratedMessage {

@@ -67,6 +67,17 @@ func (m *Account) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetTenantFk() <= 0 {
+		err := AccountValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if m.GetDateJoined() == nil {
 		err := AccountValidationError{
 			field:  "DateJoined",

@@ -20,13 +20,15 @@ option java_package = "com.threecorp.msg.api.v1";
 
 message Account {
   // Priamry KEY
-  int32 pk = 10 [(validate.rules).int32 = {gt: 0}];
+  int32 pk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Priamry KEY
+  int32 tenant_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Sign Up date
-  google.protobuf.Timestamp date_joined = 20 [(validate.rules).timestamp = {required: true}];
+  google.protobuf.Timestamp date_joined = 3 [(validate.rules).timestamp = {required: true}];
   // is deleted user
-  bool is_deleted = 30;
+  bool is_deleted = 4;
   // Deleted time
-  google.protobuf.Timestamp deleted_at = 400 [(validate.rules).timestamp = {required: false}];
+  google.protobuf.Timestamp deleted_at = 5 [(validate.rules).timestamp = {required: false}];
 }
 
 message AccountToken {

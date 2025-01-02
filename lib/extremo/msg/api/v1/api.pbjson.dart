@@ -17,19 +17,21 @@ import 'dart:typed_data' as $typed_data;
 const Account$json = {
   '1': 'Account',
   '2': [
-    {'1': 'pk', '3': 10, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'date_joined', '3': 20, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'dateJoined'},
-    {'1': 'is_deleted', '3': 30, '4': 1, '5': 8, '10': 'isDeleted'},
-    {'1': 'deleted_at', '3': 400, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'deletedAt'},
+    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'tenant_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'date_joined', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'dateJoined'},
+    {'1': 'is_deleted', '3': 4, '4': 1, '5': 8, '10': 'isDeleted'},
+    {'1': 'deleted_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'deletedAt'},
   ],
 };
 
 /// Descriptor for `Account`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountDescriptor = $convert.base64Decode(
-    'CgdBY2NvdW50EhcKAnBrGAogASgFQgf6QgQaAiAAUgJwaxJFCgtkYXRlX2pvaW5lZBgUIAEoCz'
-    'IaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggBUgpkYXRlSm9pbmVkEh0KCmlz'
-    'X2RlbGV0ZWQYHiABKAhSCWlzRGVsZXRlZBJECgpkZWxldGVkX2F0GJADIAEoCzIaLmdvb2dsZS'
-    '5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggAUglkZWxldGVkQXQ=');
+    'CgdBY2NvdW50EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/'
+    'pCBBoCIABSCHRlbmFudEZrEkUKC2RhdGVfam9pbmVkGAMgASgLMhouZ29vZ2xlLnByb3RvYnVm'
+    'LlRpbWVzdGFtcEII+kIFsgECCAFSCmRhdGVKb2luZWQSHQoKaXNfZGVsZXRlZBgEIAEoCFIJaX'
+    'NEZWxldGVkEkMKCmRlbGV0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1w'
+    'Qgj6QgWyAQIIAFIJZGVsZXRlZEF0');
 
 @$core.Deprecated('Use accountTokenDescriptor instead')
 const AccountToken$json = {
