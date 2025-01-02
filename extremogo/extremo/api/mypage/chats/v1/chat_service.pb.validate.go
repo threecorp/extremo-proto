@@ -906,9 +906,9 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetFromFk() <= 0 {
+	if m.GetSenderFk() <= 0 {
 		err := CreateRequestValidationError{
-			field:  "FromFk",
+			field:  "SenderFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -917,9 +917,9 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetToFk() <= 0 {
+	if m.GetRecipientFk() <= 0 {
 		err := CreateRequestValidationError{
-			field:  "ToFk",
+			field:  "RecipientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1201,9 +1201,9 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetFromFk() <= 0 {
+	if m.GetSenderFk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "FromFk",
+			field:  "SenderFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1212,9 +1212,9 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetToFk() <= 0 {
+	if m.GetRecipientFk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "ToFk",
+			field:  "RecipientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
