@@ -17,13 +17,15 @@ import 'dart:typed_data' as $typed_data;
 const GetRequest$json = {
   '1': 'GetRequest',
   '2': [
-    {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'pk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'pk'},
   ],
 };
 
 /// Descriptor for `GetRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getRequestDescriptor = $convert.base64Decode(
-    'CgpHZXRSZXF1ZXN0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaw==');
+    'CgpHZXRSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSFwoCcG'
+    'sYAiABKAVCB/pCBBoCIABSAnBr');
 
 @$core.Deprecated('Use getResponseDescriptor instead')
 const GetResponse$json = {
@@ -42,15 +44,17 @@ final $typed_data.Uint8List getResponseDescriptor = $convert.base64Decode(
 const ListRequest$json = {
   '1': 'ListRequest',
   '2': [
-    {'1': 'page', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'page'},
-    {'1': 'page_size', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
+    {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'page', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'page'},
+    {'1': 'page_size', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
   ],
 };
 
 /// Descriptor for `ListRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listRequestDescriptor = $convert.base64Decode(
-    'CgtMaXN0UmVxdWVzdBIbCgRwYWdlGAEgASgFQgf6QgQaAiAAUgRwYWdlEiYKCXBhZ2Vfc2l6ZR'
-    'gCIAEoBUIJ+kIGGgQYHiAAUghwYWdlU2l6ZQ==');
+    'CgtMaXN0UmVxdWVzdBIkCgl0ZW5hbnRfZmsYASABKAVCB/pCBBoCIABSCHRlbmFudEZrEhsKBH'
+    'BhZ2UYAiABKAVCB/pCBBoCIABSBHBhZ2USJgoJcGFnZV9zaXplGAMgASgFQgn6QgYaBBgeIABS'
+    'CHBhZ2VTaXpl');
 
 @$core.Deprecated('Use listResponseDescriptor instead')
 const ListResponse$json = {

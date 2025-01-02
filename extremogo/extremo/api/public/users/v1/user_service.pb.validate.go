@@ -57,6 +57,17 @@ func (m *GetRequest) validate(all bool) error {
 
 	var errors []error
 
+	if m.GetTenantFk() <= 0 {
+		err := GetRequestValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if m.GetPk() <= 0 {
 		err := GetRequestValidationError{
 			field:  "Pk",
@@ -305,6 +316,17 @@ func (m *ListRequest) validate(all bool) error {
 	}
 
 	var errors []error
+
+	if m.GetTenantFk() <= 0 {
+		err := ListRequestValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if m.GetPage() <= 0 {
 		err := ListRequestValidationError{

@@ -27,19 +27,21 @@ option java_package = "com.extremo.api.public.users.v1";
 service UserService {
   // Get returns an user by primary key
   rpc Get(GetRequest) returns (GetResponse) {
-    option (google.api.http) = {get: "/api/public/v1/users/{pk}"};
+    option (google.api.http) = {get: "/api/public/v1/{tenant_fk}/users/{pk}"};
   }
   // List returns an user list
   rpc List(ListRequest) returns (ListResponse) {
-    option (google.api.http) = {get: "/api/public/v1/users"};
+    option (google.api.http) = {get: "/api/public/v1/{tenant_fk}/users"};
   }
 }
 
 message GetRequest {
   // Behaves as like GraphQL Field Selector
   // google.protobuf.FieldMask field_mask = 1999;
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // PrimaryKey
-  int32 pk = 1 [(validate.rules).int32.gt = 0];
+  int32 pk = 2 [(validate.rules).int32.gt = 0];
 }
 
 message GetResponse {
@@ -51,10 +53,12 @@ message ListRequest {
   // Behaves as like GraphQL Field Selector
   // google.protobuf.FieldMask field_mask = 1999;
   //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // Page Number
-  int32 page = 1 [(validate.rules).int32 = {gt: 0}];
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
   // The maximum number of items to return.
-  int32 page_size = 2 [(validate.rules).int32 = {
+  int32 page_size = 3 [(validate.rules).int32 = {
     gt: 0
     lte: 30
   }];

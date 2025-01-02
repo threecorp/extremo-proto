@@ -17,9 +17,13 @@ import '../../../../msg/db/v1/db.pb.dart' as $12;
 
 class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest({
+    $core.int? tenantFk,
     $core.int? pk,
   }) {
     final $result = create();
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
     if (pk != null) {
       $result.pk = pk;
     }
@@ -30,7 +34,8 @@ class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.public.users.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -57,15 +62,25 @@ class GetRequest extends $pb.GeneratedMessage {
 
   /// Behaves as like GraphQL Field Selector
   /// google.protobuf.FieldMask field_mask = 1999;
+  /// Tenant FK
+  @$pb.TagNumber(1)
+  $core.int get tenantFk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTenantFk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTenantFk() => clearField(1);
+
   /// PrimaryKey
-  @$pb.TagNumber(1)
-  $core.int get pk => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set pk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasPk() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearPk() => clearField(1);
+  @$pb.TagNumber(2)
+  $core.int get pk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set pk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPk() => clearField(2);
 }
 
 class GetResponse extends $pb.GeneratedMessage {
@@ -123,10 +138,14 @@ class GetResponse extends $pb.GeneratedMessage {
 
 class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest({
+    $core.int? tenantFk,
     $core.int? page,
     $core.int? pageSize,
   }) {
     final $result = create();
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
     if (page != null) {
       $result.page = page;
     }
@@ -140,8 +159,9 @@ class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.public.users.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -169,25 +189,35 @@ class ListRequest extends $pb.GeneratedMessage {
   ///  Behaves as like GraphQL Field Selector
   ///  google.protobuf.FieldMask field_mask = 1999;
   ///
-  ///  Page Number
+  ///  Tenant FK
   @$pb.TagNumber(1)
-  $core.int get page => $_getIZ(0);
+  $core.int get tenantFk => $_getIZ(0);
   @$pb.TagNumber(1)
-  set page($core.int v) { $_setSignedInt32(0, v); }
+  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasPage() => $_has(0);
+  $core.bool hasTenantFk() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPage() => clearField(1);
+  void clearTenantFk() => clearField(1);
+
+  /// Page Number
+  @$pb.TagNumber(2)
+  $core.int get page => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set page($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
 
   /// The maximum number of items to return.
-  @$pb.TagNumber(2)
-  $core.int get pageSize => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set pageSize($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPageSize() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPageSize() => clearField(2);
+  @$pb.TagNumber(3)
+  $core.int get pageSize => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set pageSize($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPageSize() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPageSize() => clearField(3);
 }
 
 class ListResponse extends $pb.GeneratedMessage {
