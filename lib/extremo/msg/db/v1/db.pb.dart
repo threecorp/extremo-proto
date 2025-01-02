@@ -21,6 +21,7 @@ class Tenant extends $pb.GeneratedMessage {
     $core.int? pk,
     $6.Timestamp? createdAt,
     $6.Timestamp? updatedAt,
+    TenantProfile? profile,
   }) {
     final $result = create();
     if (pk != null) {
@@ -32,6 +33,9 @@ class Tenant extends $pb.GeneratedMessage {
     if (updatedAt != null) {
       $result.updatedAt = updatedAt;
     }
+    if (profile != null) {
+      $result.profile = profile;
+    }
     return $result;
   }
   Tenant._() : super();
@@ -42,6 +46,7 @@ class Tenant extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..aOM<$6.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
     ..aOM<$6.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $6.Timestamp.create)
+    ..aOM<TenantProfile>(12, _omitFieldNames ? '' : 'profile', subBuilder: TenantProfile.create)
     ..hasRequiredFields = false
   ;
 
@@ -99,6 +104,18 @@ class Tenant extends $pb.GeneratedMessage {
   void clearUpdatedAt() => clearField(11);
   @$pb.TagNumber(11)
   $6.Timestamp ensureUpdatedAt() => $_ensure(2);
+
+  /// 1:1 Reverse relation
+  @$pb.TagNumber(12)
+  TenantProfile get profile => $_getN(3);
+  @$pb.TagNumber(12)
+  set profile(TenantProfile v) { setField(12, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasProfile() => $_has(3);
+  @$pb.TagNumber(12)
+  void clearProfile() => clearField(12);
+  @$pb.TagNumber(12)
+  TenantProfile ensureProfile() => $_ensure(3);
 }
 
 class TenantProfile extends $pb.GeneratedMessage {
@@ -454,7 +471,7 @@ class User extends $pb.GeneratedMessage {
   $6.Timestamp ensureUpdatedAt() => $_ensure(10);
 
   ///
-  ///  1:1 Reverse Relation
+  ///  1:1 Reverse relation
   @$pb.TagNumber(12)
   UserProfile get profile => $_getN(11);
   @$pb.TagNumber(12)
@@ -467,7 +484,7 @@ class User extends $pb.GeneratedMessage {
   UserProfile ensureProfile() => $_ensure(11);
 
   ///
-  ///  1:N relation
+  ///  1:N Relation
   @$pb.TagNumber(13)
   $core.List<Artifact> get artifacts => $_getList(12);
 }

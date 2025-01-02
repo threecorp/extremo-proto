@@ -36,6 +36,8 @@ message Tenant {
   google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
   // Updated time
   google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  // 1:1 Reverse relation
+  TenantProfile profile = 12 [(validate.rules).message = {required: true}];
 }
 
 message TenantProfile {
@@ -91,11 +93,11 @@ message User {
   // Updated time
   google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
   //
-  // 1:1 Reverse Relation
+  // 1:1 Reverse relation
   //
   UserProfile profile = 12 [(validate.rules).message = {required: true}];
   //
-  // 1:N relation
+  // 1:N Relation
   //
   repeated Artifact artifacts = 13 [(validate.rules).repeated = {
     min_items: 0
@@ -176,7 +178,7 @@ message TeamsUser {
 
 //
 //
-//   Book
+//   Book Reservation
 //
 //
 

@@ -20,6 +20,7 @@ const Tenant$json = {
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    {'1': 'profile', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.TenantProfile', '8': {}, '10': 'profile'},
   ],
 };
 
@@ -27,7 +28,8 @@ const Tenant$json = {
 final $typed_data.Uint8List tenantDescriptor = $convert.base64Decode(
     'CgZUZW5hbnQSFwoCcGsYASABKAVCB/pCBBoCIABSAnBrEjkKCmNyZWF0ZWRfYXQYCiABKAsyGi'
     '5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgLIAEo'
-    'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+    'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJECgdwcm9maWxlGAwgAS'
+    'gLMiAuZXh0cmVtby5tc2cuZGIudjEuVGVuYW50UHJvZmlsZUII+kIFigECEAFSB3Byb2ZpbGU=');
 
 @$core.Deprecated('Use tenantProfileDescriptor instead')
 const TenantProfile$json = {
