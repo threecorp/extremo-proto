@@ -22,6 +22,11 @@ class Tenant extends $pb.GeneratedMessage {
     $8.Timestamp? createdAt,
     $8.Timestamp? updatedAt,
     TenantProfile? profile,
+    $core.Iterable<User>? users,
+    $core.Iterable<Team>? teams,
+    $core.Iterable<Book>? books,
+    $core.Iterable<Chat>? chats,
+    $core.Iterable<Service>? services,
   }) {
     final $result = create();
     if (pk != null) {
@@ -36,6 +41,21 @@ class Tenant extends $pb.GeneratedMessage {
     if (profile != null) {
       $result.profile = profile;
     }
+    if (users != null) {
+      $result.users.addAll(users);
+    }
+    if (teams != null) {
+      $result.teams.addAll(teams);
+    }
+    if (books != null) {
+      $result.books.addAll(books);
+    }
+    if (chats != null) {
+      $result.chats.addAll(chats);
+    }
+    if (services != null) {
+      $result.services.addAll(services);
+    }
     return $result;
   }
   Tenant._() : super();
@@ -44,9 +64,14 @@ class Tenant extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Tenant', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.msg.db.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..aOM<$8.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $8.Timestamp.create)
-    ..aOM<$8.Timestamp>(11, _omitFieldNames ? '' : 'updatedAt', subBuilder: $8.Timestamp.create)
-    ..aOM<TenantProfile>(12, _omitFieldNames ? '' : 'profile', subBuilder: TenantProfile.create)
+    ..aOM<$8.Timestamp>(5, _omitFieldNames ? '' : 'createdAt', subBuilder: $8.Timestamp.create)
+    ..aOM<$8.Timestamp>(6, _omitFieldNames ? '' : 'updatedAt', subBuilder: $8.Timestamp.create)
+    ..aOM<TenantProfile>(7, _omitFieldNames ? '' : 'profile', subBuilder: TenantProfile.create)
+    ..pc<User>(8, _omitFieldNames ? '' : 'users', $pb.PbFieldType.PM, subBuilder: User.create)
+    ..pc<Team>(9, _omitFieldNames ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
+    ..pc<Book>(10, _omitFieldNames ? '' : 'books', $pb.PbFieldType.PM, subBuilder: Book.create)
+    ..pc<Chat>(11, _omitFieldNames ? '' : 'chats', $pb.PbFieldType.PM, subBuilder: Chat.create)
+    ..pc<Service>(12, _omitFieldNames ? '' : 'services', $pb.PbFieldType.PM, subBuilder: Service.create)
     ..hasRequiredFields = false
   ;
 
@@ -82,40 +107,60 @@ class Tenant extends $pb.GeneratedMessage {
   void clearPk() => clearField(1);
 
   /// Created time
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(5)
   $8.Timestamp get createdAt => $_getN(1);
-  @$pb.TagNumber(10)
-  set createdAt($8.Timestamp v) { setField(10, v); }
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(5)
+  set createdAt($8.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
   $core.bool hasCreatedAt() => $_has(1);
-  @$pb.TagNumber(10)
-  void clearCreatedAt() => clearField(10);
-  @$pb.TagNumber(10)
+  @$pb.TagNumber(5)
+  void clearCreatedAt() => clearField(5);
+  @$pb.TagNumber(5)
   $8.Timestamp ensureCreatedAt() => $_ensure(1);
 
   /// Updated time
-  @$pb.TagNumber(11)
+  @$pb.TagNumber(6)
   $8.Timestamp get updatedAt => $_getN(2);
-  @$pb.TagNumber(11)
-  set updatedAt($8.Timestamp v) { setField(11, v); }
-  @$pb.TagNumber(11)
+  @$pb.TagNumber(6)
+  set updatedAt($8.Timestamp v) { setField(6, v); }
+  @$pb.TagNumber(6)
   $core.bool hasUpdatedAt() => $_has(2);
-  @$pb.TagNumber(11)
-  void clearUpdatedAt() => clearField(11);
-  @$pb.TagNumber(11)
+  @$pb.TagNumber(6)
+  void clearUpdatedAt() => clearField(6);
+  @$pb.TagNumber(6)
   $8.Timestamp ensureUpdatedAt() => $_ensure(2);
 
   /// 1:1 Reverse relation
-  @$pb.TagNumber(12)
+  @$pb.TagNumber(7)
   TenantProfile get profile => $_getN(3);
-  @$pb.TagNumber(12)
-  set profile(TenantProfile v) { setField(12, v); }
-  @$pb.TagNumber(12)
+  @$pb.TagNumber(7)
+  set profile(TenantProfile v) { setField(7, v); }
+  @$pb.TagNumber(7)
   $core.bool hasProfile() => $_has(3);
-  @$pb.TagNumber(12)
-  void clearProfile() => clearField(12);
-  @$pb.TagNumber(12)
+  @$pb.TagNumber(7)
+  void clearProfile() => clearField(7);
+  @$pb.TagNumber(7)
   TenantProfile ensureProfile() => $_ensure(3);
+
+  /// 1:N Reverse relations
+  @$pb.TagNumber(8)
+  $core.List<User> get users => $_getList(4);
+
+  /// 1:N Reverse relations
+  @$pb.TagNumber(9)
+  $core.List<Team> get teams => $_getList(5);
+
+  /// 1:N Reverse relation
+  @$pb.TagNumber(10)
+  $core.List<Book> get books => $_getList(6);
+
+  /// 1:N Reverse relation
+  @$pb.TagNumber(11)
+  $core.List<Chat> get chats => $_getList(7);
+
+  /// 1:N Reverse relation
+  @$pb.TagNumber(12)
+  $core.List<Service> get services => $_getList(8);
 }
 
 class TenantProfile extends $pb.GeneratedMessage {

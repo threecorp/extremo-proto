@@ -33,11 +33,36 @@ message Tenant {
   // max clients same time
 
   // Created time
-  google.protobuf.Timestamp created_at = 10; // [(validate.rules).timestamp.required = true]
+  google.protobuf.Timestamp created_at = 5; // [(validate.rules).timestamp.required = true]
   // Updated time
-  google.protobuf.Timestamp updated_at = 11; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+  google.protobuf.Timestamp updated_at = 6; // https://github.com/envoyproxy/protoc-gen-validate#timestamps
   // 1:1 Reverse relation
-  TenantProfile profile = 12 [(validate.rules).message = {required: true}];
+  TenantProfile profile = 7 [(validate.rules).message = {required: true}];
+  // 1:N Reverse relations
+  repeated User users = 8 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  // 1:N Reverse relations
+  repeated Team teams = 9 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  // 1:N Reverse relation
+  repeated Book books = 10 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  // 1:N Reverse relation
+  repeated Chat chats = 11 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
+  // 1:N Reverse relation
+  repeated Service services = 12 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 25
+  }];
 }
 
 message TenantProfile {

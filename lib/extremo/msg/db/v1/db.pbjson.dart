@@ -18,18 +18,29 @@ const Tenant$json = {
   '1': 'Tenant',
   '2': [
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    {'1': 'updated_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
-    {'1': 'profile', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.TenantProfile', '8': {}, '10': 'profile'},
+    {'1': 'created_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'updated_at', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    {'1': 'profile', '3': 7, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.TenantProfile', '8': {}, '10': 'profile'},
+    {'1': 'users', '3': 8, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'users'},
+    {'1': 'teams', '3': 9, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Team', '8': {}, '10': 'teams'},
+    {'1': 'books', '3': 10, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'books'},
+    {'1': 'chats', '3': 11, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Chat', '8': {}, '10': 'chats'},
+    {'1': 'services', '3': 12, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Service', '8': {}, '10': 'services'},
   ],
 };
 
 /// Descriptor for `Tenant`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List tenantDescriptor = $convert.base64Decode(
-    'CgZUZW5hbnQSFwoCcGsYASABKAVCB/pCBBoCIABSAnBrEjkKCmNyZWF0ZWRfYXQYCiABKAsyGi'
-    '5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgLIAEo'
-    'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJECgdwcm9maWxlGAwgAS'
-    'gLMiAuZXh0cmVtby5tc2cuZGIudjEuVGVuYW50UHJvZmlsZUII+kIFigECEAFSB3Byb2ZpbGU=');
+    'CgZUZW5hbnQSFwoCcGsYASABKAVCB/pCBBoCIABSAnBrEjkKCmNyZWF0ZWRfYXQYBSABKAsyGi'
+    '5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgGIAEo'
+    'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJECgdwcm9maWxlGAcgAS'
+    'gLMiAuZXh0cmVtby5tc2cuZGIudjEuVGVuYW50UHJvZmlsZUII+kIFigECEAFSB3Byb2ZpbGUS'
+    'OQoFdXNlcnMYCCADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgr6QgeSAQQIABAZUgV1c2'
+    'VycxI5CgV0ZWFtcxgJIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlRlYW1CCvpCB5IBBAgAEBlS'
+    'BXRlYW1zEjkKBWJvb2tzGAogAygLMhcuZXh0cmVtby5tc2cuZGIudjEuQm9va0IK+kIHkgEECA'
+    'AQGVIFYm9va3MSOQoFY2hhdHMYCyADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5DaGF0Qgr6QgeS'
+    'AQQIABAZUgVjaGF0cxJCCghzZXJ2aWNlcxgMIAMoCzIaLmV4dHJlbW8ubXNnLmRiLnYxLlNlcn'
+    'ZpY2VCCvpCB5IBBAgAEBlSCHNlcnZpY2Vz');
 
 @$core.Deprecated('Use tenantProfileDescriptor instead')
 const TenantProfile$json = {

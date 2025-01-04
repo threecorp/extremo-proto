@@ -31,11 +31,21 @@ type Tenant struct {
 	// Priamry KEY
 	Pk int32 `protobuf:"varint,1,opt,name=pk,proto3" json:"pk,omitempty"`
 	// Created time
-	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // [(validate.rules).timestamp.required = true]
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // [(validate.rules).timestamp.required = true]
 	// Updated time
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // https://github.com/envoyproxy/protoc-gen-validate#timestamps
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"` // https://github.com/envoyproxy/protoc-gen-validate#timestamps
 	// 1:1 Reverse relation
-	Profile       *TenantProfile `protobuf:"bytes,12,opt,name=profile,proto3" json:"profile,omitempty"`
+	Profile *TenantProfile `protobuf:"bytes,7,opt,name=profile,proto3" json:"profile,omitempty"`
+	// 1:N Reverse relations
+	Users []*User `protobuf:"bytes,8,rep,name=users,proto3" json:"users,omitempty"`
+	// 1:N Reverse relations
+	Teams []*Team `protobuf:"bytes,9,rep,name=teams,proto3" json:"teams,omitempty"`
+	// 1:N Reverse relation
+	Books []*Book `protobuf:"bytes,10,rep,name=books,proto3" json:"books,omitempty"`
+	// 1:N Reverse relation
+	Chats []*Chat `protobuf:"bytes,11,rep,name=chats,proto3" json:"chats,omitempty"`
+	// 1:N Reverse relation
+	Services      []*Service `protobuf:"bytes,12,rep,name=services,proto3" json:"services,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,6 +104,41 @@ func (x *Tenant) GetUpdatedAt() *timestamppb.Timestamp {
 func (x *Tenant) GetProfile() *TenantProfile {
 	if x != nil {
 		return x.Profile
+	}
+	return nil
+}
+
+func (x *Tenant) GetUsers() []*User {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+func (x *Tenant) GetTeams() []*Team {
+	if x != nil {
+		return x.Teams
+	}
+	return nil
+}
+
+func (x *Tenant) GetBooks() []*Book {
+	if x != nil {
+		return x.Books
+	}
+	return nil
+}
+
+func (x *Tenant) GetChats() []*Chat {
+	if x != nil {
+		return x.Chats
+	}
+	return nil
+}
+
+func (x *Tenant) GetServices() []*Service {
+	if x != nil {
+		return x.Services
 	}
 	return nil
 }
@@ -1630,21 +1675,40 @@ var file_extremo_msg_db_v1_db_proto_rawDesc = []byte{
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74,
 	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17,
 	0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x2f, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74,
-	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xdd, 0x01, 0x0a, 0x06, 0x54, 0x65, 0x6e, 0x61,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x8d, 0x04, 0x0a, 0x06, 0x54, 0x65, 0x6e, 0x61,
 	0x6e, 0x74, 0x12, 0x17, 0x0a, 0x02, 0x70, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x42, 0x07,
 	0xfa, 0x42, 0x04, 0x1a, 0x02, 0x20, 0x00, 0x52, 0x02, 0x70, 0x6b, 0x12, 0x39, 0x0a, 0x0a, 0x63,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
 	0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x61, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f,
+	0x64, 0x5f, 0x61, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d,
 	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41,
-	0x74, 0x12, 0x44, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x18, 0x0c, 0x20, 0x01,
+	0x74, 0x12, 0x44, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x18, 0x07, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x20, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73, 0x67,
 	0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x54, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x50, 0x72, 0x6f,
 	0x66, 0x69, 0x6c, 0x65, 0x42, 0x08, 0xfa, 0x42, 0x05, 0x8a, 0x01, 0x02, 0x10, 0x01, 0x52, 0x07,
-	0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x22, 0xa1, 0x02, 0x0a, 0x0d, 0x54, 0x65, 0x6e, 0x61,
+	0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x39, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73,
+	0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f,
+	0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x42,
+	0x0a, 0xfa, 0x42, 0x07, 0x92, 0x01, 0x04, 0x08, 0x00, 0x10, 0x19, 0x52, 0x05, 0x75, 0x73, 0x65,
+	0x72, 0x73, 0x12, 0x39, 0x0a, 0x05, 0x74, 0x65, 0x61, 0x6d, 0x73, 0x18, 0x09, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x17, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73, 0x67, 0x2e,
+	0x64, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x92,
+	0x01, 0x04, 0x08, 0x00, 0x10, 0x19, 0x52, 0x05, 0x74, 0x65, 0x61, 0x6d, 0x73, 0x12, 0x39, 0x0a,
+	0x05, 0x62, 0x6f, 0x6f, 0x6b, 0x73, 0x18, 0x0a, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x65,
+	0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31,
+	0x2e, 0x42, 0x6f, 0x6f, 0x6b, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x92, 0x01, 0x04, 0x08, 0x00, 0x10,
+	0x19, 0x52, 0x05, 0x62, 0x6f, 0x6f, 0x6b, 0x73, 0x12, 0x39, 0x0a, 0x05, 0x63, 0x68, 0x61, 0x74,
+	0x73, 0x18, 0x0b, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d,
+	0x6f, 0x2e, 0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x68, 0x61, 0x74,
+	0x42, 0x0a, 0xfa, 0x42, 0x07, 0x92, 0x01, 0x04, 0x08, 0x00, 0x10, 0x19, 0x52, 0x05, 0x63, 0x68,
+	0x61, 0x74, 0x73, 0x12, 0x42, 0x0a, 0x08, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x18,
+	0x0c, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x65, 0x78, 0x74, 0x72, 0x65, 0x6d, 0x6f, 0x2e,
+	0x6d, 0x73, 0x67, 0x2e, 0x64, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x42, 0x0a, 0xfa, 0x42, 0x07, 0x92, 0x01, 0x04, 0x08, 0x00, 0x10, 0x19, 0x52, 0x08, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x22, 0xa1, 0x02, 0x0a, 0x0d, 0x54, 0x65, 0x6e, 0x61,
 	0x6e, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x17, 0x0a, 0x02, 0x70, 0x6b, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x05, 0x42, 0x07, 0xfa, 0x42, 0x04, 0x1a, 0x02, 0x20, 0x00, 0x52, 0x02,
 	0x70, 0x6b, 0x12, 0x24, 0x0a, 0x09, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x5f, 0x66, 0x6b, 0x18,
@@ -2077,78 +2141,83 @@ var file_extremo_msg_db_v1_db_proto_depIdxs = []int32{
 	13, // 0: extremo.msg.db.v1.Tenant.created_at:type_name -> google.protobuf.Timestamp
 	13, // 1: extremo.msg.db.v1.Tenant.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 2: extremo.msg.db.v1.Tenant.profile:type_name -> extremo.msg.db.v1.TenantProfile
-	0,  // 3: extremo.msg.db.v1.TenantProfile.tenant:type_name -> extremo.msg.db.v1.Tenant
-	13, // 4: extremo.msg.db.v1.TenantProfile.created_at:type_name -> google.protobuf.Timestamp
-	13, // 5: extremo.msg.db.v1.TenantProfile.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 6: extremo.msg.db.v1.User.tenant:type_name -> extremo.msg.db.v1.Tenant
-	14, // 7: extremo.msg.db.v1.User.role:type_name -> extremo.msg.db.v1.UserEnum.Role
-	13, // 8: extremo.msg.db.v1.User.date_joined:type_name -> google.protobuf.Timestamp
-	13, // 9: extremo.msg.db.v1.User.deleted_at:type_name -> google.protobuf.Timestamp
-	13, // 10: extremo.msg.db.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	13, // 11: extremo.msg.db.v1.User.updated_at:type_name -> google.protobuf.Timestamp
-	3,  // 12: extremo.msg.db.v1.User.profile:type_name -> extremo.msg.db.v1.UserProfile
-	11, // 13: extremo.msg.db.v1.User.artifacts:type_name -> extremo.msg.db.v1.Artifact
-	2,  // 14: extremo.msg.db.v1.UserProfile.user:type_name -> extremo.msg.db.v1.User
-	13, // 15: extremo.msg.db.v1.UserProfile.created_at:type_name -> google.protobuf.Timestamp
-	13, // 16: extremo.msg.db.v1.UserProfile.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 17: extremo.msg.db.v1.Team.tenant:type_name -> extremo.msg.db.v1.Tenant
-	13, // 18: extremo.msg.db.v1.Team.created_at:type_name -> google.protobuf.Timestamp
-	13, // 19: extremo.msg.db.v1.Team.updated_at:type_name -> google.protobuf.Timestamp
-	6,  // 20: extremo.msg.db.v1.Team.books:type_name -> extremo.msg.db.v1.Book
-	0,  // 21: extremo.msg.db.v1.TeamsUser.tenant:type_name -> extremo.msg.db.v1.Tenant
-	2,  // 22: extremo.msg.db.v1.TeamsUser.user:type_name -> extremo.msg.db.v1.User
-	15, // 23: extremo.msg.db.v1.TeamsUser.role:type_name -> extremo.msg.db.v1.TeamsUserEnum.Role
-	13, // 24: extremo.msg.db.v1.TeamsUser.created_at:type_name -> google.protobuf.Timestamp
-	13, // 25: extremo.msg.db.v1.TeamsUser.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 26: extremo.msg.db.v1.Book.tenant:type_name -> extremo.msg.db.v1.Tenant
-	16, // 27: extremo.msg.db.v1.Book.status:type_name -> extremo.msg.db.v1.BookEnum.Status
-	13, // 28: extremo.msg.db.v1.Book.opened_at:type_name -> google.protobuf.Timestamp
-	13, // 29: extremo.msg.db.v1.Book.closed_at:type_name -> google.protobuf.Timestamp
-	13, // 30: extremo.msg.db.v1.Book.created_at:type_name -> google.protobuf.Timestamp
-	13, // 31: extremo.msg.db.v1.Book.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // 32: extremo.msg.db.v1.Book.clients:type_name -> extremo.msg.db.v1.User
-	4,  // 33: extremo.msg.db.v1.Book.teams:type_name -> extremo.msg.db.v1.Team
-	8,  // 34: extremo.msg.db.v1.Book.books_services:type_name -> extremo.msg.db.v1.BooksService
-	0,  // 35: extremo.msg.db.v1.Service.tenant:type_name -> extremo.msg.db.v1.Tenant
-	7,  // 36: extremo.msg.db.v1.Service.parent:type_name -> extremo.msg.db.v1.Service
-	13, // 37: extremo.msg.db.v1.Service.created_at:type_name -> google.protobuf.Timestamp
-	13, // 38: extremo.msg.db.v1.Service.updated_at:type_name -> google.protobuf.Timestamp
-	8,  // 39: extremo.msg.db.v1.Service.books_services:type_name -> extremo.msg.db.v1.BooksService
-	6,  // 40: extremo.msg.db.v1.BooksService.book:type_name -> extremo.msg.db.v1.Book
-	7,  // 41: extremo.msg.db.v1.BooksService.service:type_name -> extremo.msg.db.v1.Service
-	13, // 42: extremo.msg.db.v1.BooksService.created_at:type_name -> google.protobuf.Timestamp
-	13, // 43: extremo.msg.db.v1.BooksService.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 44: extremo.msg.db.v1.Chat.tenant:type_name -> extremo.msg.db.v1.Tenant
-	2,  // 45: extremo.msg.db.v1.Chat.sender:type_name -> extremo.msg.db.v1.User
-	2,  // 46: extremo.msg.db.v1.Chat.recipient:type_name -> extremo.msg.db.v1.User
-	10, // 47: extremo.msg.db.v1.Chat.messages:type_name -> extremo.msg.db.v1.ChatMessage
-	10, // 48: extremo.msg.db.v1.Chat.first_message:type_name -> extremo.msg.db.v1.ChatMessage
-	10, // 49: extremo.msg.db.v1.Chat.last_message:type_name -> extremo.msg.db.v1.ChatMessage
-	13, // 50: extremo.msg.db.v1.Chat.created_at:type_name -> google.protobuf.Timestamp
-	13, // 51: extremo.msg.db.v1.Chat.updated_at:type_name -> google.protobuf.Timestamp
-	9,  // 52: extremo.msg.db.v1.ChatMessage.chat:type_name -> extremo.msg.db.v1.Chat
-	2,  // 53: extremo.msg.db.v1.ChatMessage.from_user:type_name -> extremo.msg.db.v1.User
-	2,  // 54: extremo.msg.db.v1.ChatMessage.to_user:type_name -> extremo.msg.db.v1.User
-	13, // 55: extremo.msg.db.v1.ChatMessage.read_at:type_name -> google.protobuf.Timestamp
-	13, // 56: extremo.msg.db.v1.ChatMessage.deleted_at:type_name -> google.protobuf.Timestamp
-	13, // 57: extremo.msg.db.v1.ChatMessage.created_at:type_name -> google.protobuf.Timestamp
-	13, // 58: extremo.msg.db.v1.ChatMessage.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // 59: extremo.msg.db.v1.Artifact.user:type_name -> extremo.msg.db.v1.User
-	13, // 60: extremo.msg.db.v1.Artifact.publish_from:type_name -> google.protobuf.Timestamp
-	13, // 61: extremo.msg.db.v1.Artifact.publish_until:type_name -> google.protobuf.Timestamp
-	17, // 62: extremo.msg.db.v1.Artifact.status:type_name -> extremo.msg.db.v1.ArtifactEnum.Status
-	12, // 63: extremo.msg.db.v1.Artifact.images:type_name -> extremo.msg.db.v1.ArtifactImage
-	13, // 64: extremo.msg.db.v1.Artifact.created_at:type_name -> google.protobuf.Timestamp
-	13, // 65: extremo.msg.db.v1.Artifact.updated_at:type_name -> google.protobuf.Timestamp
-	11, // 66: extremo.msg.db.v1.ArtifactImage.artifact:type_name -> extremo.msg.db.v1.Artifact
-	18, // 67: extremo.msg.db.v1.ArtifactImage.kind:type_name -> extremo.msg.db.v1.ArtifactImageEnum.Kind
-	13, // 68: extremo.msg.db.v1.ArtifactImage.created_at:type_name -> google.protobuf.Timestamp
-	13, // 69: extremo.msg.db.v1.ArtifactImage.updated_at:type_name -> google.protobuf.Timestamp
-	70, // [70:70] is the sub-list for method output_type
-	70, // [70:70] is the sub-list for method input_type
-	70, // [70:70] is the sub-list for extension type_name
-	70, // [70:70] is the sub-list for extension extendee
-	0,  // [0:70] is the sub-list for field type_name
+	2,  // 3: extremo.msg.db.v1.Tenant.users:type_name -> extremo.msg.db.v1.User
+	4,  // 4: extremo.msg.db.v1.Tenant.teams:type_name -> extremo.msg.db.v1.Team
+	6,  // 5: extremo.msg.db.v1.Tenant.books:type_name -> extremo.msg.db.v1.Book
+	9,  // 6: extremo.msg.db.v1.Tenant.chats:type_name -> extremo.msg.db.v1.Chat
+	7,  // 7: extremo.msg.db.v1.Tenant.services:type_name -> extremo.msg.db.v1.Service
+	0,  // 8: extremo.msg.db.v1.TenantProfile.tenant:type_name -> extremo.msg.db.v1.Tenant
+	13, // 9: extremo.msg.db.v1.TenantProfile.created_at:type_name -> google.protobuf.Timestamp
+	13, // 10: extremo.msg.db.v1.TenantProfile.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 11: extremo.msg.db.v1.User.tenant:type_name -> extremo.msg.db.v1.Tenant
+	14, // 12: extremo.msg.db.v1.User.role:type_name -> extremo.msg.db.v1.UserEnum.Role
+	13, // 13: extremo.msg.db.v1.User.date_joined:type_name -> google.protobuf.Timestamp
+	13, // 14: extremo.msg.db.v1.User.deleted_at:type_name -> google.protobuf.Timestamp
+	13, // 15: extremo.msg.db.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	13, // 16: extremo.msg.db.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	3,  // 17: extremo.msg.db.v1.User.profile:type_name -> extremo.msg.db.v1.UserProfile
+	11, // 18: extremo.msg.db.v1.User.artifacts:type_name -> extremo.msg.db.v1.Artifact
+	2,  // 19: extremo.msg.db.v1.UserProfile.user:type_name -> extremo.msg.db.v1.User
+	13, // 20: extremo.msg.db.v1.UserProfile.created_at:type_name -> google.protobuf.Timestamp
+	13, // 21: extremo.msg.db.v1.UserProfile.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 22: extremo.msg.db.v1.Team.tenant:type_name -> extremo.msg.db.v1.Tenant
+	13, // 23: extremo.msg.db.v1.Team.created_at:type_name -> google.protobuf.Timestamp
+	13, // 24: extremo.msg.db.v1.Team.updated_at:type_name -> google.protobuf.Timestamp
+	6,  // 25: extremo.msg.db.v1.Team.books:type_name -> extremo.msg.db.v1.Book
+	0,  // 26: extremo.msg.db.v1.TeamsUser.tenant:type_name -> extremo.msg.db.v1.Tenant
+	2,  // 27: extremo.msg.db.v1.TeamsUser.user:type_name -> extremo.msg.db.v1.User
+	15, // 28: extremo.msg.db.v1.TeamsUser.role:type_name -> extremo.msg.db.v1.TeamsUserEnum.Role
+	13, // 29: extremo.msg.db.v1.TeamsUser.created_at:type_name -> google.protobuf.Timestamp
+	13, // 30: extremo.msg.db.v1.TeamsUser.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 31: extremo.msg.db.v1.Book.tenant:type_name -> extremo.msg.db.v1.Tenant
+	16, // 32: extremo.msg.db.v1.Book.status:type_name -> extremo.msg.db.v1.BookEnum.Status
+	13, // 33: extremo.msg.db.v1.Book.opened_at:type_name -> google.protobuf.Timestamp
+	13, // 34: extremo.msg.db.v1.Book.closed_at:type_name -> google.protobuf.Timestamp
+	13, // 35: extremo.msg.db.v1.Book.created_at:type_name -> google.protobuf.Timestamp
+	13, // 36: extremo.msg.db.v1.Book.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 37: extremo.msg.db.v1.Book.clients:type_name -> extremo.msg.db.v1.User
+	4,  // 38: extremo.msg.db.v1.Book.teams:type_name -> extremo.msg.db.v1.Team
+	8,  // 39: extremo.msg.db.v1.Book.books_services:type_name -> extremo.msg.db.v1.BooksService
+	0,  // 40: extremo.msg.db.v1.Service.tenant:type_name -> extremo.msg.db.v1.Tenant
+	7,  // 41: extremo.msg.db.v1.Service.parent:type_name -> extremo.msg.db.v1.Service
+	13, // 42: extremo.msg.db.v1.Service.created_at:type_name -> google.protobuf.Timestamp
+	13, // 43: extremo.msg.db.v1.Service.updated_at:type_name -> google.protobuf.Timestamp
+	8,  // 44: extremo.msg.db.v1.Service.books_services:type_name -> extremo.msg.db.v1.BooksService
+	6,  // 45: extremo.msg.db.v1.BooksService.book:type_name -> extremo.msg.db.v1.Book
+	7,  // 46: extremo.msg.db.v1.BooksService.service:type_name -> extremo.msg.db.v1.Service
+	13, // 47: extremo.msg.db.v1.BooksService.created_at:type_name -> google.protobuf.Timestamp
+	13, // 48: extremo.msg.db.v1.BooksService.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 49: extremo.msg.db.v1.Chat.tenant:type_name -> extremo.msg.db.v1.Tenant
+	2,  // 50: extremo.msg.db.v1.Chat.sender:type_name -> extremo.msg.db.v1.User
+	2,  // 51: extremo.msg.db.v1.Chat.recipient:type_name -> extremo.msg.db.v1.User
+	10, // 52: extremo.msg.db.v1.Chat.messages:type_name -> extremo.msg.db.v1.ChatMessage
+	10, // 53: extremo.msg.db.v1.Chat.first_message:type_name -> extremo.msg.db.v1.ChatMessage
+	10, // 54: extremo.msg.db.v1.Chat.last_message:type_name -> extremo.msg.db.v1.ChatMessage
+	13, // 55: extremo.msg.db.v1.Chat.created_at:type_name -> google.protobuf.Timestamp
+	13, // 56: extremo.msg.db.v1.Chat.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 57: extremo.msg.db.v1.ChatMessage.chat:type_name -> extremo.msg.db.v1.Chat
+	2,  // 58: extremo.msg.db.v1.ChatMessage.from_user:type_name -> extremo.msg.db.v1.User
+	2,  // 59: extremo.msg.db.v1.ChatMessage.to_user:type_name -> extremo.msg.db.v1.User
+	13, // 60: extremo.msg.db.v1.ChatMessage.read_at:type_name -> google.protobuf.Timestamp
+	13, // 61: extremo.msg.db.v1.ChatMessage.deleted_at:type_name -> google.protobuf.Timestamp
+	13, // 62: extremo.msg.db.v1.ChatMessage.created_at:type_name -> google.protobuf.Timestamp
+	13, // 63: extremo.msg.db.v1.ChatMessage.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 64: extremo.msg.db.v1.Artifact.user:type_name -> extremo.msg.db.v1.User
+	13, // 65: extremo.msg.db.v1.Artifact.publish_from:type_name -> google.protobuf.Timestamp
+	13, // 66: extremo.msg.db.v1.Artifact.publish_until:type_name -> google.protobuf.Timestamp
+	17, // 67: extremo.msg.db.v1.Artifact.status:type_name -> extremo.msg.db.v1.ArtifactEnum.Status
+	12, // 68: extremo.msg.db.v1.Artifact.images:type_name -> extremo.msg.db.v1.ArtifactImage
+	13, // 69: extremo.msg.db.v1.Artifact.created_at:type_name -> google.protobuf.Timestamp
+	13, // 70: extremo.msg.db.v1.Artifact.updated_at:type_name -> google.protobuf.Timestamp
+	11, // 71: extremo.msg.db.v1.ArtifactImage.artifact:type_name -> extremo.msg.db.v1.Artifact
+	18, // 72: extremo.msg.db.v1.ArtifactImage.kind:type_name -> extremo.msg.db.v1.ArtifactImageEnum.Kind
+	13, // 73: extremo.msg.db.v1.ArtifactImage.created_at:type_name -> google.protobuf.Timestamp
+	13, // 74: extremo.msg.db.v1.ArtifactImage.updated_at:type_name -> google.protobuf.Timestamp
+	75, // [75:75] is the sub-list for method output_type
+	75, // [75:75] is the sub-list for method input_type
+	75, // [75:75] is the sub-list for extension type_name
+	75, // [75:75] is the sub-list for extension extendee
+	0,  // [0:75] is the sub-list for field type_name
 }
 
 func init() { file_extremo_msg_db_v1_db_proto_init() }
