@@ -17,6 +17,8 @@ import (
 	"unicode/utf8"
 
 	"google.golang.org/protobuf/types/known/anypb"
+
+	db "github.com/threecorp/extremo-proto/extremogo/extremo/msg/db/v1"
 )
 
 // ensure the imports are used
@@ -33,6 +35,8 @@ var (
 	_ = (*mail.Address)(nil)
 	_ = anypb.Any{}
 	_ = sort.Sort
+
+	_ = db.BookEnum_Status(0)
 )
 
 // Validate checks the field values on ListBooksRequest with the rules defined
@@ -1293,6 +1297,17 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if _, ok := _UpdateRequest_Status_NotInLookup[m.GetStatus()]; ok {
+		err := UpdateRequestValidationError{
+			field:  "Status",
+			reason: "value must not be in list [STATUS_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(m.GetClientFks()) < 1 {
 		err := UpdateRequestValidationError{
 			field:  "ClientFks",
@@ -1451,6 +1466,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = UpdateRequestValidationError{}
+
+var _UpdateRequest_Status_NotInLookup = map[db.BookEnum_Status]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on UpdateResponse with the rules defined in
 // the proto definition for this message. If any rules are violated, the first

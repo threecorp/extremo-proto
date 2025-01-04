@@ -24,15 +24,15 @@ const UserEnum_Role$json = {
   '1': 'Role',
   '2': [
     {'1': 'ROLE_UNSPECIFIED', '2': 0},
-    {'1': 'ROLE_CLIENT', '2': 1},
-    {'1': 'ROLE_ADMIN', '2': 2},
+    {'1': 'CLIENT', '2': 1},
+    {'1': 'ADMIN', '2': 2},
   ],
 };
 
 /// Descriptor for `UserEnum`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userEnumDescriptor = $convert.base64Decode(
-    'CghVc2VyRW51bSI9CgRSb2xlEhQKEFJPTEVfVU5TUEVDSUZJRUQQABIPCgtST0xFX0NMSUVOVB'
-    'ABEg4KClJPTEVfQURNSU4QAg==');
+    'CghVc2VyRW51bSIzCgRSb2xlEhQKEFJPTEVfVU5TUEVDSUZJRUQQABIKCgZDTElFTlQQARIJCg'
+    'VBRE1JThAC');
 
 @$core.Deprecated('Use teamsUserEnumDescriptor instead')
 const TeamsUserEnum$json = {
@@ -45,15 +45,15 @@ const TeamsUserEnum_Role$json = {
   '1': 'Role',
   '2': [
     {'1': 'ROLE_UNSPECIFIED', '2': 0},
-    {'1': 'ROLE_MEMBER', '2': 1},
-    {'1': 'ROLE_OWNER', '2': 2},
+    {'1': 'MEMBER', '2': 1},
+    {'1': 'OWNER', '2': 2},
   ],
 };
 
 /// Descriptor for `TeamsUserEnum`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List teamsUserEnumDescriptor = $convert.base64Decode(
-    'Cg1UZWFtc1VzZXJFbnVtIj0KBFJvbGUSFAoQUk9MRV9VTlNQRUNJRklFRBAAEg8KC1JPTEVfTU'
-    'VNQkVSEAESDgoKUk9MRV9PV05FUhAC');
+    'Cg1UZWFtc1VzZXJFbnVtIjMKBFJvbGUSFAoQUk9MRV9VTlNQRUNJRklFRBAAEgoKBk1FTUJFUh'
+    'ABEgkKBU9XTkVSEAI=');
 
 @$core.Deprecated('Use bookEnumDescriptor instead')
 const BookEnum$json = {
@@ -66,16 +66,16 @@ const BookEnum_Status$json = {
   '1': 'Status',
   '2': [
     {'1': 'STATUS_UNSPECIFIED', '2': 0},
-    {'1': 'STATUS_DRAFT', '2': 1},
-    {'1': 'STATUS_RESERVE', '2': 2},
-    {'1': 'STATUS_ORDER', '2': 3},
+    {'1': 'DRAFT', '2': 1},
+    {'1': 'RESERVE', '2': 2},
+    {'1': 'ORDER', '2': 3},
   ],
 };
 
 /// Descriptor for `BookEnum`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List bookEnumDescriptor = $convert.base64Decode(
-    'CghCb29rRW51bSJYCgZTdGF0dXMSFgoSU1RBVFVTX1VOU1BFQ0lGSUVEEAASEAoMU1RBVFVTX0'
-    'RSQUZUEAESEgoOU1RBVFVTX1JFU0VSVkUQAhIQCgxTVEFUVVNfT1JERVIQAw==');
+    'CghCb29rRW51bSJDCgZTdGF0dXMSFgoSU1RBVFVTX1VOU1BFQ0lGSUVEEAASCQoFRFJBRlQQAR'
+    'ILCgdSRVNFUlZFEAISCQoFT1JERVIQAw==');
 
 @$core.Deprecated('Use artifactEnumDescriptor instead')
 const ArtifactEnum$json = {
@@ -88,15 +88,15 @@ const ArtifactEnum_Status$json = {
   '1': 'Status',
   '2': [
     {'1': 'STATUS_UNSPECIFIED', '2': 0},
-    {'1': 'STATUS_DRAFT', '2': 1},
-    {'1': 'STATUS_PUBLISH', '2': 2},
+    {'1': 'DRAFT', '2': 1},
+    {'1': 'PUBLISH', '2': 2},
   ],
 };
 
 /// Descriptor for `ArtifactEnum`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List artifactEnumDescriptor = $convert.base64Decode(
-    'CgxBcnRpZmFjdEVudW0iRgoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEhAKDFNUQV'
-    'RVU19EUkFGVBABEhIKDlNUQVRVU19QVUJMSVNIEAI=');
+    'CgxBcnRpZmFjdEVudW0iOAoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEgkKBURSQU'
+    'ZUEAESCwoHUFVCTElTSBAC');
 
 @$core.Deprecated('Use artifactImageEnumDescriptor instead')
 const ArtifactImageEnum$json = {
@@ -109,13 +109,13 @@ const ArtifactImageEnum_Kind$json = {
   '1': 'Kind',
   '2': [
     {'1': 'KIND_UNSPECIFIED', '2': 0},
-    {'1': 'KIND_THUMB', '2': 1},
-    {'1': 'KIND_CONTENT', '2': 2},
+    {'1': 'THUMB', '2': 1},
+    {'1': 'CONTENT', '2': 2},
   ],
 };
 
 /// Descriptor for `ArtifactImageEnum`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List artifactImageEnumDescriptor = $convert.base64Decode(
-    'ChFBcnRpZmFjdEltYWdlRW51bSI+CgRLaW5kEhQKEEtJTkRfVU5TUEVDSUZJRUQQABIOCgpLSU'
-    '5EX1RIVU1CEAESEAoMS0lORF9DT05URU5UEAI=');
+    'ChFBcnRpZmFjdEltYWdlRW51bSI0CgRLaW5kEhQKEEtJTkRfVU5TUEVDSUZJRUQQABIJCgVUSF'
+    'VNQhABEgsKB0NPTlRFTlQQAg==');
 

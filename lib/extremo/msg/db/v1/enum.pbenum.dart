@@ -15,13 +15,13 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class UserEnum_Role extends $pb.ProtobufEnum {
   static const UserEnum_Role ROLE_UNSPECIFIED = UserEnum_Role._(0, _omitEnumNames ? '' : 'ROLE_UNSPECIFIED');
-  static const UserEnum_Role ROLE_CLIENT = UserEnum_Role._(1, _omitEnumNames ? '' : 'ROLE_CLIENT');
-  static const UserEnum_Role ROLE_ADMIN = UserEnum_Role._(2, _omitEnumNames ? '' : 'ROLE_ADMIN');
+  static const UserEnum_Role CLIENT = UserEnum_Role._(1, _omitEnumNames ? '' : 'CLIENT');
+  static const UserEnum_Role ADMIN = UserEnum_Role._(2, _omitEnumNames ? '' : 'ADMIN');
 
   static const $core.List<UserEnum_Role> values = <UserEnum_Role> [
     ROLE_UNSPECIFIED,
-    ROLE_CLIENT,
-    ROLE_ADMIN,
+    CLIENT,
+    ADMIN,
   ];
 
   static final $core.Map<$core.int, UserEnum_Role> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -32,13 +32,13 @@ class UserEnum_Role extends $pb.ProtobufEnum {
 
 class TeamsUserEnum_Role extends $pb.ProtobufEnum {
   static const TeamsUserEnum_Role ROLE_UNSPECIFIED = TeamsUserEnum_Role._(0, _omitEnumNames ? '' : 'ROLE_UNSPECIFIED');
-  static const TeamsUserEnum_Role ROLE_MEMBER = TeamsUserEnum_Role._(1, _omitEnumNames ? '' : 'ROLE_MEMBER');
-  static const TeamsUserEnum_Role ROLE_OWNER = TeamsUserEnum_Role._(2, _omitEnumNames ? '' : 'ROLE_OWNER');
+  static const TeamsUserEnum_Role MEMBER = TeamsUserEnum_Role._(1, _omitEnumNames ? '' : 'MEMBER');
+  static const TeamsUserEnum_Role OWNER = TeamsUserEnum_Role._(2, _omitEnumNames ? '' : 'OWNER');
 
   static const $core.List<TeamsUserEnum_Role> values = <TeamsUserEnum_Role> [
     ROLE_UNSPECIFIED,
-    ROLE_MEMBER,
-    ROLE_OWNER,
+    MEMBER,
+    OWNER,
   ];
 
   static final $core.Map<$core.int, TeamsUserEnum_Role> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -49,15 +49,15 @@ class TeamsUserEnum_Role extends $pb.ProtobufEnum {
 
 class BookEnum_Status extends $pb.ProtobufEnum {
   static const BookEnum_Status STATUS_UNSPECIFIED = BookEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
-  static const BookEnum_Status STATUS_DRAFT = BookEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
-  static const BookEnum_Status STATUS_RESERVE = BookEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_RESERVE');
-  static const BookEnum_Status STATUS_ORDER = BookEnum_Status._(3, _omitEnumNames ? '' : 'STATUS_ORDER');
+  static const BookEnum_Status DRAFT = BookEnum_Status._(1, _omitEnumNames ? '' : 'DRAFT');
+  static const BookEnum_Status RESERVE = BookEnum_Status._(2, _omitEnumNames ? '' : 'RESERVE');
+  static const BookEnum_Status ORDER = BookEnum_Status._(3, _omitEnumNames ? '' : 'ORDER');
 
   static const $core.List<BookEnum_Status> values = <BookEnum_Status> [
     STATUS_UNSPECIFIED,
-    STATUS_DRAFT,
-    STATUS_RESERVE,
-    STATUS_ORDER,
+    DRAFT,
+    RESERVE,
+    ORDER,
   ];
 
   static final $core.Map<$core.int, BookEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -68,13 +68,13 @@ class BookEnum_Status extends $pb.ProtobufEnum {
 
 class ArtifactEnum_Status extends $pb.ProtobufEnum {
   static const ArtifactEnum_Status STATUS_UNSPECIFIED = ArtifactEnum_Status._(0, _omitEnumNames ? '' : 'STATUS_UNSPECIFIED');
-  static const ArtifactEnum_Status STATUS_DRAFT = ArtifactEnum_Status._(1, _omitEnumNames ? '' : 'STATUS_DRAFT');
-  static const ArtifactEnum_Status STATUS_PUBLISH = ArtifactEnum_Status._(2, _omitEnumNames ? '' : 'STATUS_PUBLISH');
+  static const ArtifactEnum_Status DRAFT = ArtifactEnum_Status._(1, _omitEnumNames ? '' : 'DRAFT');
+  static const ArtifactEnum_Status PUBLISH = ArtifactEnum_Status._(2, _omitEnumNames ? '' : 'PUBLISH');
 
   static const $core.List<ArtifactEnum_Status> values = <ArtifactEnum_Status> [
     STATUS_UNSPECIFIED,
-    STATUS_DRAFT,
-    STATUS_PUBLISH,
+    DRAFT,
+    PUBLISH,
   ];
 
   static final $core.Map<$core.int, ArtifactEnum_Status> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -85,13 +85,13 @@ class ArtifactEnum_Status extends $pb.ProtobufEnum {
 
 class ArtifactImageEnum_Kind extends $pb.ProtobufEnum {
   static const ArtifactImageEnum_Kind KIND_UNSPECIFIED = ArtifactImageEnum_Kind._(0, _omitEnumNames ? '' : 'KIND_UNSPECIFIED');
-  static const ArtifactImageEnum_Kind KIND_THUMB = ArtifactImageEnum_Kind._(1, _omitEnumNames ? '' : 'KIND_THUMB');
-  static const ArtifactImageEnum_Kind KIND_CONTENT = ArtifactImageEnum_Kind._(2, _omitEnumNames ? '' : 'KIND_CONTENT');
+  static const ArtifactImageEnum_Kind THUMB = ArtifactImageEnum_Kind._(1, _omitEnumNames ? '' : 'THUMB');
+  static const ArtifactImageEnum_Kind CONTENT = ArtifactImageEnum_Kind._(2, _omitEnumNames ? '' : 'CONTENT');
 
   static const $core.List<ArtifactImageEnum_Kind> values = <ArtifactImageEnum_Kind> [
     KIND_UNSPECIFIED,
-    KIND_THUMB,
-    KIND_CONTENT,
+    THUMB,
+    CONTENT,
   ];
 
   static final $core.Map<$core.int, ArtifactImageEnum_Kind> _byValue = $pb.ProtobufEnum.initByValue(values);

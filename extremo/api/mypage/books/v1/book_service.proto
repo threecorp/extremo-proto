@@ -8,7 +8,7 @@ package extremo.api.mypage.books.v1;
 
 // import "extremo/msg/api/v1/api.proto";
 import "extremo/msg/db/v1/db.proto";
-// import "extremo/msg/db/v1/enum.proto";
+import "extremo/msg/db/v1/enum.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 // import "google/protobuf/timestamp.proto";
@@ -190,22 +190,24 @@ message UpdateRequest {
     min_len: 0
     max_len: 255
   }];
+  // status filter which allows NONE
+  extremo.msg.db.v1.BookEnum.Status status = 5 [(validate.rules).enum = {not_in: 0}];
   // Relation Keys: users.id for CLIENT
-  repeated int32 client_fks = 5 [(validate.rules).repeated = {
+  repeated int32 client_fks = 6 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Key
-  repeated int32 team_fks = 6 [(validate.rules).repeated = {
+  repeated int32 team_fks = 7 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Key
-  repeated int32 service_fks = 7 [(validate.rules).repeated = {
+  repeated int32 service_fks = 8 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}

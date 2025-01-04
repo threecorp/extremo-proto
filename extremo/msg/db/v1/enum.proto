@@ -18,39 +18,39 @@ option java_package = "com.extremo.msg.db.v1";
 message UserEnum {
   enum Role {
     ROLE_UNSPECIFIED = 0;
-    ROLE_CLIENT = 1;
-    ROLE_ADMIN = 2;
+    CLIENT = 1;
+    ADMIN = 2;
   }
 }
 
 message TeamsUserEnum {
   enum Role {
     ROLE_UNSPECIFIED = 0;
-    ROLE_MEMBER = 1;
-    ROLE_OWNER = 2;
+    MEMBER = 1;
+    OWNER = 2;
   }
 }
 
 message BookEnum {
   enum Status {
     STATUS_UNSPECIFIED = 0;
-    STATUS_DRAFT = 1;
-    STATUS_RESERVE = 2;
-    STATUS_ORDER = 3;
+    DRAFT = 1;
+    RESERVE = 2;
+    ORDER = 3;
   }
 }
 message ArtifactEnum {
   enum Status {
     STATUS_UNSPECIFIED = 0;
-    STATUS_DRAFT = 1;
-    STATUS_PUBLISH = 2;
+    DRAFT = 1;
+    PUBLISH = 2;
   }
 }
 
 message ArtifactImageEnum {
   enum Kind {
     KIND_UNSPECIFIED = 0;
-    KIND_THUMB = 1;
-    KIND_CONTENT = 2;
+    THUMB = 1;
+    CONTENT = 2;
   }
 }

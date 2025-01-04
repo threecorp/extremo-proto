@@ -144,9 +144,10 @@ const UpdateRequest$json = {
     {'1': 'pk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'name', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'name'},
     {'1': 'desc', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'desc'},
-    {'1': 'client_fks', '3': 5, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
-    {'1': 'team_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
-    {'1': 'service_fks', '3': 7, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
+    {'1': 'status', '3': 5, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.BookEnum.Status', '8': {}, '10': 'status'},
+    {'1': 'client_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
+    {'1': 'team_fks', '3': 7, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
+    {'1': 'service_fks', '3': 8, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
   ],
 };
 
@@ -154,10 +155,11 @@ const UpdateRequest$json = {
 final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
     'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSFw'
     'oCcGsYAiABKAVCB/pCBBoCIABSAnBrEh4KBG5hbWUYAyABKAlCCvpCB3IFEAAY/wFSBG5hbWUS'
-    'HgoEZGVzYxgEIAEoCUIK+kIHcgUQABj/AVIEZGVzYxItCgpjbGllbnRfZmtzGAUgAygFQg76Qg'
-    'uSAQgIASIEGgIgAFIJY2xpZW50RmtzEikKCHRlYW1fZmtzGAYgAygFQg76QguSAQgIASIEGgIg'
-    'AFIHdGVhbUZrcxIvCgtzZXJ2aWNlX2ZrcxgHIAMoBUIO+kILkgEICAEiBBoCIABSCnNlcnZpY2'
-    'VGa3M=');
+    'HgoEZGVzYxgEIAEoCUIK+kIHcgUQABj/AVIEZGVzYxJECgZzdGF0dXMYBSABKA4yIi5leHRyZW'
+    '1vLm1zZy5kYi52MS5Cb29rRW51bS5TdGF0dXNCCPpCBYIBAiAAUgZzdGF0dXMSLQoKY2xpZW50'
+    'X2ZrcxgGIAMoBUIO+kILkgEICAEiBBoCIABSCWNsaWVudEZrcxIpCgh0ZWFtX2ZrcxgHIAMoBU'
+    'IO+kILkgEICAEiBBoCIABSB3RlYW1Ga3MSLwoLc2VydmljZV9ma3MYCCADKAVCDvpCC5IBCAgB'
+    'IgQaAiAAUgpzZXJ2aWNlRmtz');
 
 @$core.Deprecated('Use updateResponseDescriptor instead')
 const UpdateResponse$json = {

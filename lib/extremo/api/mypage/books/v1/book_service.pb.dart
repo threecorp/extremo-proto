@@ -14,6 +14,7 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../msg/db/v1/db.pb.dart' as $13;
+import '../../../../msg/db/v1/enum.pbenum.dart' as $12;
 
 class ListBooksRequest extends $pb.GeneratedMessage {
   factory ListBooksRequest({
@@ -593,6 +594,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
     $core.int? pk,
     $core.String? name,
     $core.String? desc,
+    $12.BookEnum_Status? status,
     $core.Iterable<$core.int>? clientFks,
     $core.Iterable<$core.int>? teamFks,
     $core.Iterable<$core.int>? serviceFks,
@@ -609,6 +611,9 @@ class UpdateRequest extends $pb.GeneratedMessage {
     }
     if (desc != null) {
       $result.desc = desc;
+    }
+    if (status != null) {
+      $result.status = status;
     }
     if (clientFks != null) {
       $result.clientFks.addAll(clientFks);
@@ -630,9 +635,10 @@ class UpdateRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..aOS(3, _omitFieldNames ? '' : 'name')
     ..aOS(4, _omitFieldNames ? '' : 'desc')
-    ..p<$core.int>(5, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(6, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(7, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
+    ..e<$12.BookEnum_Status>(5, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $12.BookEnum_Status.STATUS_UNSPECIFIED, valueOf: $12.BookEnum_Status.valueOf, enumValues: $12.BookEnum_Status.values)
+    ..p<$core.int>(6, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(7, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(8, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
@@ -697,17 +703,27 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDesc() => clearField(4);
 
-  /// Relation Keys: users.id for CLIENT
+  /// status filter which allows NONE
   @$pb.TagNumber(5)
-  $core.List<$core.int> get clientFks => $_getList(4);
+  $12.BookEnum_Status get status => $_getN(4);
+  @$pb.TagNumber(5)
+  set status($12.BookEnum_Status v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasStatus() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearStatus() => clearField(5);
 
-  /// Relation Key
+  /// Relation Keys: users.id for CLIENT
   @$pb.TagNumber(6)
-  $core.List<$core.int> get teamFks => $_getList(5);
+  $core.List<$core.int> get clientFks => $_getList(5);
 
   /// Relation Key
   @$pb.TagNumber(7)
-  $core.List<$core.int> get serviceFks => $_getList(6);
+  $core.List<$core.int> get teamFks => $_getList(6);
+
+  /// Relation Key
+  @$pb.TagNumber(8)
+  $core.List<$core.int> get serviceFks => $_getList(7);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {
