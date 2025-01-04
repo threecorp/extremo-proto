@@ -107,12 +107,21 @@ const CreateRequest$json = {
   '1': 'CreateRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'name'},
+    {'1': 'desc', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'desc'},
+    {'1': 'client_fks', '3': 4, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
+    {'1': 'team_fks', '3': 5, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
+    {'1': 'service_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
   ],
 };
 
 /// Descriptor for `CreateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createRequestDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50Rms=');
+    'Cg1DcmVhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSHg'
+    'oEbmFtZRgCIAEoCUIK+kIHcgUQABj/AVIEbmFtZRIeCgRkZXNjGAMgASgJQgr6QgdyBRAAGP8B'
+    'UgRkZXNjEi0KCmNsaWVudF9ma3MYBCADKAVCDvpCC5IBCAgBIgQaAiAAUgljbGllbnRGa3MSKQ'
+    'oIdGVhbV9ma3MYBSADKAVCDvpCC5IBCAgBIgQaAiAAUgd0ZWFtRmtzEi8KC3NlcnZpY2VfZmtz'
+    'GAYgAygFQg76QguSAQgIASIEGgIgAFIKc2VydmljZUZrcw==');
 
 @$core.Deprecated('Use createResponseDescriptor instead')
 const CreateResponse$json = {
@@ -133,13 +142,22 @@ const UpdateRequest$json = {
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'pk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'pk'},
+    {'1': 'name', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'name'},
+    {'1': 'desc', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'desc'},
+    {'1': 'client_fks', '3': 5, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
+    {'1': 'team_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
+    {'1': 'service_fks', '3': 7, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
   ],
 };
 
 /// Descriptor for `UpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
     'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSFw'
-    'oCcGsYAiABKAVCB/pCBBoCIABSAnBr');
+    'oCcGsYAiABKAVCB/pCBBoCIABSAnBrEh4KBG5hbWUYAyABKAlCCvpCB3IFEAAY/wFSBG5hbWUS'
+    'HgoEZGVzYxgEIAEoCUIK+kIHcgUQABj/AVIEZGVzYxItCgpjbGllbnRfZmtzGAUgAygFQg76Qg'
+    'uSAQgIASIEGgIgAFIJY2xpZW50RmtzEikKCHRlYW1fZmtzGAYgAygFQg76QguSAQgIASIEGgIg'
+    'AFIHdGVhbUZrcxIvCgtzZXJ2aWNlX2ZrcxgHIAMoBUIO+kILkgEICAEiBBoCIABSCnNlcnZpY2'
+    'VGa3M=');
 
 @$core.Deprecated('Use updateResponseDescriptor instead')
 const UpdateResponse$json = {

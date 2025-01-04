@@ -137,6 +137,37 @@ message GetResponse {
 message CreateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // name of book
+  string name = 2 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // description of book
+  string desc = 3 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Relation Keys: users.id for CLIENT
+  repeated int32 client_fks = 4 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
+  // Relation Keys
+  repeated int32 team_fks = 5 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
+  // Relation Keys
+  repeated int32 service_fks = 6 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
 }
 
 message CreateResponse {
@@ -149,6 +180,37 @@ message UpdateRequest {
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // PK
   int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+  // name of book
+  string name = 3 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // description of book
+  string desc = 4 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Relation Keys: users.id for CLIENT
+  repeated int32 client_fks = 5 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
+  // Relation Key
+  repeated int32 team_fks = 6 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
+  // Relation Key
+  repeated int32 service_fks = 7 [(validate.rules).repeated = {
+    min_items: 1
+    items: {
+      int32: {gt: 0}
+    }
+  }];
 }
 
 message UpdateResponse {

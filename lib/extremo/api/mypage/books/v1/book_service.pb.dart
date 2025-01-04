@@ -429,10 +429,30 @@ class GetResponse extends $pb.GeneratedMessage {
 class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest({
     $core.int? tenantFk,
+    $core.String? name,
+    $core.String? desc,
+    $core.Iterable<$core.int>? clientFks,
+    $core.Iterable<$core.int>? teamFks,
+    $core.Iterable<$core.int>? serviceFks,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (desc != null) {
+      $result.desc = desc;
+    }
+    if (clientFks != null) {
+      $result.clientFks.addAll(clientFks);
+    }
+    if (teamFks != null) {
+      $result.teamFks.addAll(teamFks);
+    }
+    if (serviceFks != null) {
+      $result.serviceFks.addAll(serviceFks);
     }
     return $result;
   }
@@ -442,6 +462,11 @@ class CreateRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..aOS(3, _omitFieldNames ? '' : 'desc')
+    ..p<$core.int>(4, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(5, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(6, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
@@ -475,6 +500,38 @@ class CreateRequest extends $pb.GeneratedMessage {
   $core.bool hasTenantFk() => $_has(0);
   @$pb.TagNumber(1)
   void clearTenantFk() => clearField(1);
+
+  /// name of book
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  /// description of book
+  @$pb.TagNumber(3)
+  $core.String get desc => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set desc($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDesc() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDesc() => clearField(3);
+
+  /// Relation Keys: users.id for CLIENT
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get clientFks => $_getList(3);
+
+  /// Relation Keys
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get teamFks => $_getList(4);
+
+  /// Relation Keys
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get serviceFks => $_getList(5);
 }
 
 class CreateResponse extends $pb.GeneratedMessage {
@@ -534,6 +591,11 @@ class UpdateRequest extends $pb.GeneratedMessage {
   factory UpdateRequest({
     $core.int? tenantFk,
     $core.int? pk,
+    $core.String? name,
+    $core.String? desc,
+    $core.Iterable<$core.int>? clientFks,
+    $core.Iterable<$core.int>? teamFks,
+    $core.Iterable<$core.int>? serviceFks,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -541,6 +603,21 @@ class UpdateRequest extends $pb.GeneratedMessage {
     }
     if (pk != null) {
       $result.pk = pk;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (desc != null) {
+      $result.desc = desc;
+    }
+    if (clientFks != null) {
+      $result.clientFks.addAll(clientFks);
+    }
+    if (teamFks != null) {
+      $result.teamFks.addAll(teamFks);
+    }
+    if (serviceFks != null) {
+      $result.serviceFks.addAll(serviceFks);
     }
     return $result;
   }
@@ -551,6 +628,11 @@ class UpdateRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
+    ..aOS(3, _omitFieldNames ? '' : 'name')
+    ..aOS(4, _omitFieldNames ? '' : 'desc')
+    ..p<$core.int>(5, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(6, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(7, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
@@ -594,6 +676,38 @@ class UpdateRequest extends $pb.GeneratedMessage {
   $core.bool hasPk() => $_has(1);
   @$pb.TagNumber(2)
   void clearPk() => clearField(2);
+
+  /// name of book
+  @$pb.TagNumber(3)
+  $core.String get name => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set name($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearName() => clearField(3);
+
+  /// description of book
+  @$pb.TagNumber(4)
+  $core.String get desc => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set desc($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasDesc() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDesc() => clearField(4);
+
+  /// Relation Keys: users.id for CLIENT
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get clientFks => $_getList(4);
+
+  /// Relation Key
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get teamFks => $_getList(5);
+
+  /// Relation Key
+  @$pb.TagNumber(7)
+  $core.List<$core.int> get serviceFks => $_getList(6);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {

@@ -906,6 +906,109 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
+		err := CreateRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 255 {
+		err := CreateRequestValidationError{
+			field:  "Desc",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(m.GetClientFks()) < 1 {
+		err := CreateRequestValidationError{
+			field:  "ClientFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetClientFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := CreateRequestValidationError{
+				field:  fmt.Sprintf("ClientFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if len(m.GetTeamFks()) < 1 {
+		err := CreateRequestValidationError{
+			field:  "TeamFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetTeamFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := CreateRequestValidationError{
+				field:  fmt.Sprintf("TeamFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if len(m.GetServiceFks()) < 1 {
+		err := CreateRequestValidationError{
+			field:  "ServiceFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetServiceFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := CreateRequestValidationError{
+				field:  fmt.Sprintf("ServiceFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
 	if len(errors) > 0 {
 		return CreateRequestMultiError(errors)
 	}
@@ -1166,6 +1269,109 @@ func (m *UpdateRequest) validate(all bool) error {
 			return err
 		}
 		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetName()); l < 0 || l > 255 {
+		err := UpdateRequestValidationError{
+			field:  "Name",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if l := utf8.RuneCountInString(m.GetDesc()); l < 0 || l > 255 {
+		err := UpdateRequestValidationError{
+			field:  "Desc",
+			reason: "value length must be between 0 and 255 runes, inclusive",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(m.GetClientFks()) < 1 {
+		err := UpdateRequestValidationError{
+			field:  "ClientFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetClientFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := UpdateRequestValidationError{
+				field:  fmt.Sprintf("ClientFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if len(m.GetTeamFks()) < 1 {
+		err := UpdateRequestValidationError{
+			field:  "TeamFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetTeamFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := UpdateRequestValidationError{
+				field:  fmt.Sprintf("TeamFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if len(m.GetServiceFks()) < 1 {
+		err := UpdateRequestValidationError{
+			field:  "ServiceFks",
+			reason: "value must contain at least 1 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetServiceFks() {
+		_, _ = idx, item
+
+		if item <= 0 {
+			err := UpdateRequestValidationError{
+				field:  fmt.Sprintf("ServiceFks[%v]", idx),
+				reason: "value must be greater than 0",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
 	}
 
 	if len(errors) > 0 {
