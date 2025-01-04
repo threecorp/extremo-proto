@@ -1,0 +1,250 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
+syntax = "proto3";
+
+package extremo.api.mypage.services.v1;
+
+// import "extremo/msg/api/v1/api.proto";
+import "extremo/msg/db/v1/db.proto";
+// import "extremo/msg/db/v1/enum.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+// import "google/protobuf/timestamp.proto";
+// import "google/protobuf/field_mask.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/services/v1;services";
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServiceServiceProto";
+option java_package = "com.extremo.api.mypage.services.v1";
+
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+// Service for reading from and writing to existing Services.
+//
+service ServiceService {
+  // Delete deletes a Service with return nothing
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {delete: "/api/mypage/v1/{tenant_fk}/services/{pk}"};
+  }
+  // Get returns a service
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/services/{pk}"};
+  }
+  // List returns Services as list with pagination
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/services"};
+  }
+  // Update updates a Service with then return a Service
+  rpc Update(UpdateRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/mypage/v1/{tenant_fk}/services/{pk}"
+      body: "*"
+    };
+  }
+  // Create creates a Service with then return a Service
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/api/mypage/v1/{tenant_fk}/services"
+      body: "*"
+    };
+  }
+  // // CreateImage creates a image
+  // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
+  //   option (google.api.http) = {
+  //     post: "/api/mypage/v1/{tenant_fk}/services/{service_fk}/image"
+  //     body: "*"
+  //   };
+  // }
+  // // UpdateImage creates a image
+  // rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
+  //   option (google.api.http) = {
+  //     put: "/api/mypage/v1/{tenant_fk}/services/{service_fk}/image/{pk}"
+  //     body: "*"
+  //   };
+  // }
+}
+
+message ListServicesRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // page number
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 3 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListServicesResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Service elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message ListRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // page number
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 3 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Service elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message GetRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Relation Key
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+}
+
+message GetResponse {
+  // A service service. if request service is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Service element = 1 [(validate.rules).message = {required: true}];
+}
+
+// PrimaryKey is set by JWT Token
+message CreateRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // FK self join
+  int32 parent_fk = 2 [(validate.rules).int32 = {gte: 0}];
+  // Naming
+  string name = 3 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Description
+  string desc = 4 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // [OPTIONAL] pricing
+  int32 price = 5 [(validate.rules).int32 = {gte: 0}];
+  // display order
+  int32 sort = 6 [(validate.rules).int32 = {gte: 0}];
+}
+
+message CreateResponse {
+  // A service service. if request service is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Service element = 1 [(validate.rules).message = {required: true}];
+}
+
+message UpdateRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // PK
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+  // FK self join
+  int32 parent_fk = 3 [(validate.rules).int32 = {gte: 0}];
+  // Naming
+  string name = 4 [(validate.rules).string = {
+    min_len: 0
+    max_len: 255
+  }];
+  // Description
+  string desc = 5 [(validate.rules).string = {
+    min_len: 0
+    max_len: 1024
+  }];
+  // [OPTIONAL] pricing
+  int32 price = 6 [(validate.rules).int32 = {gte: 0}];
+  // display order
+  int32 sort = 7 [(validate.rules).int32 = {gte: 0}];
+}
+
+message UpdateResponse {
+  // A service message. if request service is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Service element = 1 [(validate.rules).message = {required: true}];
+}
+
+message DeleteRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Primary Key is confirmed by JWT Token
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+}
+
+// message CreateImageRequest {
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 service_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.ServiceImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+
+// message CreateImageResponse {
+//   // A service service. if request service is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.ServiceImage element = 1 [(validate.rules).message = {required: true}];
+// }
+//
+// message UpdateImageRequest {
+//   // XXX: PrimaryKey is checked correct value by JWT Token
+//   int32 pk = 5 [(validate.rules).int32 = {gt: 0}];
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 service_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.ServiceImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+//
+// message UpdateImageResponse {
+//   // A service message. if request service is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.ServiceImage element = 1 [(validate.rules).message = {required: true}];
+// }
