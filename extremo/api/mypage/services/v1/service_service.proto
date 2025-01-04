@@ -137,7 +137,7 @@ message GetResponse {
 message CreateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
-  // FK self join
+  // [OPTIONAL] FK self join
   int32 parent_fk = 2 [(validate.rules).int32 = {gte: 0}];
   // Naming
   string name = 3 [(validate.rules).string = {

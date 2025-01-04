@@ -375,7 +375,7 @@ type CreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Tenant FK
 	TenantFk int32 `protobuf:"varint,1,opt,name=tenant_fk,json=tenantFk,proto3" json:"tenant_fk,omitempty"`
-	// FK self join
+	// [OPTIONAL] FK self join
 	ParentFk int32 `protobuf:"varint,2,opt,name=parent_fk,json=parentFk,proto3" json:"parent_fk,omitempty"`
 	// Naming
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`

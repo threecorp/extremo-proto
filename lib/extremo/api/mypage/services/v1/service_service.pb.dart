@@ -501,7 +501,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTenantFk() => clearField(1);
 
-  /// FK self join
+  /// [OPTIONAL] FK self join
   @$pb.TagNumber(2)
   $core.int get parentFk => $_getIZ(1);
   @$pb.TagNumber(2)

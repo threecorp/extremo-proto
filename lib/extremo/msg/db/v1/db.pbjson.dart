@@ -218,11 +218,12 @@ const Service$json = {
     {'1': 'tenant', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Tenant', '8': {}, '10': 'tenant'},
     {'1': 'parent_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'parentFk'},
     {'1': 'parent', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Service', '8': {}, '10': 'parent'},
-    {'1': 'name', '3': 6, '4': 1, '5': 9, '8': {}, '10': 'name'},
-    {'1': 'desc', '3': 7, '4': 1, '5': 9, '8': {}, '10': 'desc'},
-    {'1': 'price', '3': 8, '4': 1, '5': 5, '8': {}, '10': 'price'},
-    {'1': 'sort', '3': 9, '4': 1, '5': 5, '8': {}, '10': 'sort'},
-    {'1': 'created_at', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'children', '3': 6, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Service', '8': {}, '10': 'children'},
+    {'1': 'name', '3': 7, '4': 1, '5': 9, '8': {}, '10': 'name'},
+    {'1': 'desc', '3': 8, '4': 1, '5': 9, '8': {}, '10': 'desc'},
+    {'1': 'price', '3': 9, '4': 1, '5': 5, '8': {}, '10': 'price'},
+    {'1': 'sort', '3': 10, '4': 1, '5': 5, '8': {}, '10': 'sort'},
+    {'1': 'created_at', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
     {'1': 'books_services', '3': 13, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.BooksService', '8': {}, '10': 'booksServices'},
   ],
@@ -234,13 +235,14 @@ final $typed_data.Uint8List serviceDescriptor = $convert.base64Decode(
     'pCBBoCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRl'
     'bmFudEII+kIFigECEAFSBnRlbmFudBIkCglwYXJlbnRfZmsYBCABKAVCB/pCBBoCKABSCHBhcm'
     'VudEZrEjwKBnBhcmVudBgFIAEoCzIaLmV4dHJlbW8ubXNnLmRiLnYxLlNlcnZpY2VCCPpCBYoB'
-    'AhAAUgZwYXJlbnQSHgoEbmFtZRgGIAEoCUIK+kIHcgUQABj/AVIEbmFtZRIeCgRkZXNjGAcgAS'
-    'gJQgr6QgdyBRAAGIAIUgRkZXNjEh0KBXByaWNlGAggASgFQgf6QgQaAigAUgVwcmljZRIbCgRz'
-    'b3J0GAkgASgFQgf6QgQaAigAUgRzb3J0EjkKCmNyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucH'
-    'JvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgMIAEoCzIaLmdvb2ds'
-    'ZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJSCg5ib29rc19zZXJ2aWNlcxgNIAMoCz'
-    'IfLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tzU2VydmljZUIK+kIHkgEECAAQGVINYm9va3NTZXJ2'
-    'aWNlcw==');
+    'AhAAUgZwYXJlbnQSQAoIY2hpbGRyZW4YBiADKAsyGi5leHRyZW1vLm1zZy5kYi52MS5TZXJ2aW'
+    'NlQgj6QgWSAQIIAFIIY2hpbGRyZW4SHgoEbmFtZRgHIAEoCUIK+kIHcgUQABj/AVIEbmFtZRIe'
+    'CgRkZXNjGAggASgJQgr6QgdyBRAAGIAIUgRkZXNjEh0KBXByaWNlGAkgASgFQgf6QgQaAigAUg'
+    'VwcmljZRIbCgRzb3J0GAogASgFQgf6QgQaAigAUgRzb3J0EjkKCmNyZWF0ZWRfYXQYCyABKAsy'
+    'Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgMIA'
+    'EoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJSCg5ib29rc19zZXJ2'
+    'aWNlcxgNIAMoCzIfLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tzU2VydmljZUIK+kIHkgEECAAQGV'
+    'INYm9va3NTZXJ2aWNlcw==');
 
 @$core.Deprecated('Use booksServiceDescriptor instead')
 const BooksService$json = {

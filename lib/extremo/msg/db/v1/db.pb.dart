@@ -1206,6 +1206,7 @@ class Service extends $pb.GeneratedMessage {
     Tenant? tenant,
     $core.int? parentFk,
     Service? parent,
+    $core.Iterable<Service>? children,
     $core.String? name,
     $core.String? desc,
     $core.int? price,
@@ -1229,6 +1230,9 @@ class Service extends $pb.GeneratedMessage {
     }
     if (parent != null) {
       $result.parent = parent;
+    }
+    if (children != null) {
+      $result.children.addAll(children);
     }
     if (name != null) {
       $result.name = name;
@@ -1263,11 +1267,12 @@ class Service extends $pb.GeneratedMessage {
     ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'parentFk', $pb.PbFieldType.O3)
     ..aOM<Service>(5, _omitFieldNames ? '' : 'parent', subBuilder: Service.create)
-    ..aOS(6, _omitFieldNames ? '' : 'name')
-    ..aOS(7, _omitFieldNames ? '' : 'desc')
-    ..a<$core.int>(8, _omitFieldNames ? '' : 'price', $pb.PbFieldType.O3)
-    ..a<$core.int>(9, _omitFieldNames ? '' : 'sort', $pb.PbFieldType.O3)
-    ..aOM<$9.Timestamp>(10, _omitFieldNames ? '' : 'createdAt', subBuilder: $9.Timestamp.create)
+    ..pc<Service>(6, _omitFieldNames ? '' : 'children', $pb.PbFieldType.PM, subBuilder: Service.create)
+    ..aOS(7, _omitFieldNames ? '' : 'name')
+    ..aOS(8, _omitFieldNames ? '' : 'desc')
+    ..a<$core.int>(9, _omitFieldNames ? '' : 'price', $pb.PbFieldType.O3)
+    ..a<$core.int>(10, _omitFieldNames ? '' : 'sort', $pb.PbFieldType.O3)
+    ..aOM<$9.Timestamp>(11, _omitFieldNames ? '' : 'createdAt', subBuilder: $9.Timestamp.create)
     ..aOM<$9.Timestamp>(12, _omitFieldNames ? '' : 'updatedAt', subBuilder: $9.Timestamp.create)
     ..pc<BooksService>(13, _omitFieldNames ? '' : 'booksServices', $pb.PbFieldType.PM, subBuilder: BooksService.create)
     ..hasRequiredFields = false
@@ -1336,7 +1341,7 @@ class Service extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearParentFk() => clearField(4);
 
-  /// Relation Message self join
+  /// Used by Self Join so that this field is kinda 1:N(Parent:Children)
   @$pb.TagNumber(5)
   Service get parent => $_getN(4);
   @$pb.TagNumber(5)
@@ -1348,74 +1353,78 @@ class Service extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   Service ensureParent() => $_ensure(4);
 
+  /// Children list
+  @$pb.TagNumber(6)
+  $core.List<Service> get children => $_getList(5);
+
   /// Naming
-  @$pb.TagNumber(6)
-  $core.String get name => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set name($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasName() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearName() => clearField(6);
+  @$pb.TagNumber(7)
+  $core.String get name => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set name($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasName() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearName() => clearField(7);
 
   /// Description
-  @$pb.TagNumber(7)
-  $core.String get desc => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set desc($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasDesc() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearDesc() => clearField(7);
+  @$pb.TagNumber(8)
+  $core.String get desc => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set desc($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasDesc() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDesc() => clearField(8);
 
   /// [OPTIONAL] pricing
-  @$pb.TagNumber(8)
-  $core.int get price => $_getIZ(7);
-  @$pb.TagNumber(8)
-  set price($core.int v) { $_setSignedInt32(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasPrice() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearPrice() => clearField(8);
+  @$pb.TagNumber(9)
+  $core.int get price => $_getIZ(8);
+  @$pb.TagNumber(9)
+  set price($core.int v) { $_setSignedInt32(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasPrice() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearPrice() => clearField(9);
 
   /// display order
-  @$pb.TagNumber(9)
-  $core.int get sort => $_getIZ(8);
-  @$pb.TagNumber(9)
-  set sort($core.int v) { $_setSignedInt32(8, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasSort() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearSort() => clearField(9);
+  @$pb.TagNumber(10)
+  $core.int get sort => $_getIZ(9);
+  @$pb.TagNumber(10)
+  set sort($core.int v) { $_setSignedInt32(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasSort() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearSort() => clearField(10);
 
   /// Created time
-  @$pb.TagNumber(10)
-  $9.Timestamp get createdAt => $_getN(9);
-  @$pb.TagNumber(10)
-  set createdAt($9.Timestamp v) { setField(10, v); }
-  @$pb.TagNumber(10)
-  $core.bool hasCreatedAt() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearCreatedAt() => clearField(10);
-  @$pb.TagNumber(10)
-  $9.Timestamp ensureCreatedAt() => $_ensure(9);
+  @$pb.TagNumber(11)
+  $9.Timestamp get createdAt => $_getN(10);
+  @$pb.TagNumber(11)
+  set createdAt($9.Timestamp v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasCreatedAt() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearCreatedAt() => clearField(11);
+  @$pb.TagNumber(11)
+  $9.Timestamp ensureCreatedAt() => $_ensure(10);
 
   /// Updated time
   @$pb.TagNumber(12)
-  $9.Timestamp get updatedAt => $_getN(10);
+  $9.Timestamp get updatedAt => $_getN(11);
   @$pb.TagNumber(12)
   set updatedAt($9.Timestamp v) { setField(12, v); }
   @$pb.TagNumber(12)
-  $core.bool hasUpdatedAt() => $_has(10);
+  $core.bool hasUpdatedAt() => $_has(11);
   @$pb.TagNumber(12)
   void clearUpdatedAt() => clearField(12);
   @$pb.TagNumber(12)
-  $9.Timestamp ensureUpdatedAt() => $_ensure(10);
+  $9.Timestamp ensureUpdatedAt() => $_ensure(11);
 
   ///
   ///  N:N relation
   @$pb.TagNumber(13)
-  $core.List<BooksService> get booksServices => $_getList(11);
+  $core.List<BooksService> get booksServices => $_getList(12);
 }
 
 /// books_services table
