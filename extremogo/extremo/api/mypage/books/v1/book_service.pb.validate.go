@@ -932,6 +932,28 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetOpenedAt() == nil {
+		err := CreateRequestValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := CreateRequestValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(m.GetClientFks()) < 1 {
 		err := CreateRequestValidationError{
 			field:  "ClientFks",
@@ -1301,6 +1323,28 @@ func (m *UpdateRequest) validate(all bool) error {
 		err := UpdateRequestValidationError{
 			field:  "Status",
 			reason: "value must not be in list [STATUS_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOpenedAt() == nil {
+		err := UpdateRequestValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := UpdateRequestValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
 		}
 		if !all {
 			return err

@@ -11,7 +11,7 @@ import "extremo/msg/db/v1/db.proto";
 import "extremo/msg/db/v1/enum.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-// import "google/protobuf/timestamp.proto";
+import "google/protobuf/timestamp.proto";
 // import "google/protobuf/field_mask.proto";
 import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
 
@@ -147,22 +147,26 @@ message CreateRequest {
     min_len: 0
     max_len: 255
   }];
+  // start
+  google.protobuf.Timestamp opened_at = 4 [(validate.rules).timestamp = {required: true}];
+  // until
+  google.protobuf.Timestamp closed_at = 5 [(validate.rules).timestamp = {required: true}];
   // Relation Keys: users.id for CLIENT
-  repeated int32 client_fks = 4 [(validate.rules).repeated = {
+  repeated int32 client_fks = 6 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Keys
-  repeated int32 team_fks = 5 [(validate.rules).repeated = {
+  repeated int32 team_fks = 7 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Keys
-  repeated int32 service_fks = 6 [(validate.rules).repeated = {
+  repeated int32 service_fks = 8 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
@@ -192,22 +196,26 @@ message UpdateRequest {
   }];
   // status filter which allows NONE
   extremo.msg.db.v1.BookEnum.Status status = 5 [(validate.rules).enum = {not_in: 0}];
+  // start
+  google.protobuf.Timestamp opened_at = 6 [(validate.rules).timestamp = {required: true}];
+  // until
+  google.protobuf.Timestamp closed_at = 7 [(validate.rules).timestamp = {required: true}];
   // Relation Keys: users.id for CLIENT
-  repeated int32 client_fks = 6 [(validate.rules).repeated = {
+  repeated int32 client_fks = 8 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Key
-  repeated int32 team_fks = 7 [(validate.rules).repeated = {
+  repeated int32 team_fks = 9 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}
     }
   }];
   // Relation Key
-  repeated int32 service_fks = 8 [(validate.rules).repeated = {
+  repeated int32 service_fks = 10 [(validate.rules).repeated = {
     min_items: 1
     items: {
       int32: {gt: 0}

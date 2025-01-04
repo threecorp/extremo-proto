@@ -109,9 +109,11 @@ const CreateRequest$json = {
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'name'},
     {'1': 'desc', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'desc'},
-    {'1': 'client_fks', '3': 4, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
-    {'1': 'team_fks', '3': 5, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
-    {'1': 'service_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
+    {'1': 'opened_at', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
+    {'1': 'closed_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
+    {'1': 'client_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
+    {'1': 'team_fks', '3': 7, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
+    {'1': 'service_fks', '3': 8, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
   ],
 };
 
@@ -119,9 +121,12 @@ const CreateRequest$json = {
 final $typed_data.Uint8List createRequestDescriptor = $convert.base64Decode(
     'Cg1DcmVhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSHg'
     'oEbmFtZRgCIAEoCUIK+kIHcgUQABj/AVIEbmFtZRIeCgRkZXNjGAMgASgJQgr6QgdyBRAAGP8B'
-    'UgRkZXNjEi0KCmNsaWVudF9ma3MYBCADKAVCDvpCC5IBCAgBIgQaAiAAUgljbGllbnRGa3MSKQ'
-    'oIdGVhbV9ma3MYBSADKAVCDvpCC5IBCAgBIgQaAiAAUgd0ZWFtRmtzEi8KC3NlcnZpY2VfZmtz'
-    'GAYgAygFQg76QguSAQgIASIEGgIgAFIKc2VydmljZUZrcw==');
+    'UgRkZXNjEkEKCW9wZW5lZF9hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCP'
+    'pCBbIBAggBUghvcGVuZWRBdBJBCgljbG9zZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYu'
+    'VGltZXN0YW1wQgj6QgWyAQIIAVIIY2xvc2VkQXQSLQoKY2xpZW50X2ZrcxgGIAMoBUIO+kILkg'
+    'EICAEiBBoCIABSCWNsaWVudEZrcxIpCgh0ZWFtX2ZrcxgHIAMoBUIO+kILkgEICAEiBBoCIABS'
+    'B3RlYW1Ga3MSLwoLc2VydmljZV9ma3MYCCADKAVCDvpCC5IBCAgBIgQaAiAAUgpzZXJ2aWNlRm'
+    'tz');
 
 @$core.Deprecated('Use createResponseDescriptor instead')
 const CreateResponse$json = {
@@ -145,9 +150,11 @@ const UpdateRequest$json = {
     {'1': 'name', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'name'},
     {'1': 'desc', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'desc'},
     {'1': 'status', '3': 5, '4': 1, '5': 14, '6': '.extremo.msg.db.v1.BookEnum.Status', '8': {}, '10': 'status'},
-    {'1': 'client_fks', '3': 6, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
-    {'1': 'team_fks', '3': 7, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
-    {'1': 'service_fks', '3': 8, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
+    {'1': 'opened_at', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
+    {'1': 'closed_at', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
+    {'1': 'client_fks', '3': 8, '4': 3, '5': 5, '8': {}, '10': 'clientFks'},
+    {'1': 'team_fks', '3': 9, '4': 3, '5': 5, '8': {}, '10': 'teamFks'},
+    {'1': 'service_fks', '3': 10, '4': 3, '5': 5, '8': {}, '10': 'serviceFks'},
   ],
 };
 
@@ -156,10 +163,12 @@ final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
     'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSFw'
     'oCcGsYAiABKAVCB/pCBBoCIABSAnBrEh4KBG5hbWUYAyABKAlCCvpCB3IFEAAY/wFSBG5hbWUS'
     'HgoEZGVzYxgEIAEoCUIK+kIHcgUQABj/AVIEZGVzYxJECgZzdGF0dXMYBSABKA4yIi5leHRyZW'
-    '1vLm1zZy5kYi52MS5Cb29rRW51bS5TdGF0dXNCCPpCBYIBAiAAUgZzdGF0dXMSLQoKY2xpZW50'
-    'X2ZrcxgGIAMoBUIO+kILkgEICAEiBBoCIABSCWNsaWVudEZrcxIpCgh0ZWFtX2ZrcxgHIAMoBU'
-    'IO+kILkgEICAEiBBoCIABSB3RlYW1Ga3MSLwoLc2VydmljZV9ma3MYCCADKAVCDvpCC5IBCAgB'
-    'IgQaAiAAUgpzZXJ2aWNlRmtz');
+    '1vLm1zZy5kYi52MS5Cb29rRW51bS5TdGF0dXNCCPpCBYIBAiAAUgZzdGF0dXMSQQoJb3BlbmVk'
+    'X2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEII+kIFsgECCAFSCG9wZW5lZE'
+    'F0EkEKCWNsb3NlZF9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCCPpCBbIB'
+    'AggBUghjbG9zZWRBdBItCgpjbGllbnRfZmtzGAggAygFQg76QguSAQgIASIEGgIgAFIJY2xpZW'
+    '50RmtzEikKCHRlYW1fZmtzGAkgAygFQg76QguSAQgIASIEGgIgAFIHdGVhbUZrcxIvCgtzZXJ2'
+    'aWNlX2ZrcxgKIAMoBUIO+kILkgEICAEiBBoCIABSCnNlcnZpY2VGa3M=');
 
 @$core.Deprecated('Use updateResponseDescriptor instead')
 const UpdateResponse$json = {

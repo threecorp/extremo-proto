@@ -13,6 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import '../../../../../google/protobuf/timestamp.pb.dart' as $9;
 import '../../../../msg/db/v1/db.pb.dart' as $13;
 import '../../../../msg/db/v1/enum.pbenum.dart' as $12;
 
@@ -432,6 +433,8 @@ class CreateRequest extends $pb.GeneratedMessage {
     $core.int? tenantFk,
     $core.String? name,
     $core.String? desc,
+    $9.Timestamp? openedAt,
+    $9.Timestamp? closedAt,
     $core.Iterable<$core.int>? clientFks,
     $core.Iterable<$core.int>? teamFks,
     $core.Iterable<$core.int>? serviceFks,
@@ -445,6 +448,12 @@ class CreateRequest extends $pb.GeneratedMessage {
     }
     if (desc != null) {
       $result.desc = desc;
+    }
+    if (openedAt != null) {
+      $result.openedAt = openedAt;
+    }
+    if (closedAt != null) {
+      $result.closedAt = closedAt;
     }
     if (clientFks != null) {
       $result.clientFks.addAll(clientFks);
@@ -465,9 +474,11 @@ class CreateRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'desc')
-    ..p<$core.int>(4, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(5, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(6, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
+    ..aOM<$9.Timestamp>(4, _omitFieldNames ? '' : 'openedAt', subBuilder: $9.Timestamp.create)
+    ..aOM<$9.Timestamp>(5, _omitFieldNames ? '' : 'closedAt', subBuilder: $9.Timestamp.create)
+    ..p<$core.int>(6, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(7, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(8, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
@@ -522,17 +533,41 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDesc() => clearField(3);
 
-  /// Relation Keys: users.id for CLIENT
+  /// start
   @$pb.TagNumber(4)
-  $core.List<$core.int> get clientFks => $_getList(3);
+  $9.Timestamp get openedAt => $_getN(3);
+  @$pb.TagNumber(4)
+  set openedAt($9.Timestamp v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOpenedAt() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOpenedAt() => clearField(4);
+  @$pb.TagNumber(4)
+  $9.Timestamp ensureOpenedAt() => $_ensure(3);
 
-  /// Relation Keys
+  /// until
   @$pb.TagNumber(5)
-  $core.List<$core.int> get teamFks => $_getList(4);
+  $9.Timestamp get closedAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set closedAt($9.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasClosedAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearClosedAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $9.Timestamp ensureClosedAt() => $_ensure(4);
+
+  /// Relation Keys: users.id for CLIENT
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get clientFks => $_getList(5);
 
   /// Relation Keys
-  @$pb.TagNumber(6)
-  $core.List<$core.int> get serviceFks => $_getList(5);
+  @$pb.TagNumber(7)
+  $core.List<$core.int> get teamFks => $_getList(6);
+
+  /// Relation Keys
+  @$pb.TagNumber(8)
+  $core.List<$core.int> get serviceFks => $_getList(7);
 }
 
 class CreateResponse extends $pb.GeneratedMessage {
@@ -595,6 +630,8 @@ class UpdateRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? desc,
     $12.BookEnum_Status? status,
+    $9.Timestamp? openedAt,
+    $9.Timestamp? closedAt,
     $core.Iterable<$core.int>? clientFks,
     $core.Iterable<$core.int>? teamFks,
     $core.Iterable<$core.int>? serviceFks,
@@ -614,6 +651,12 @@ class UpdateRequest extends $pb.GeneratedMessage {
     }
     if (status != null) {
       $result.status = status;
+    }
+    if (openedAt != null) {
+      $result.openedAt = openedAt;
+    }
+    if (closedAt != null) {
+      $result.closedAt = closedAt;
     }
     if (clientFks != null) {
       $result.clientFks.addAll(clientFks);
@@ -636,9 +679,11 @@ class UpdateRequest extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'name')
     ..aOS(4, _omitFieldNames ? '' : 'desc')
     ..e<$12.BookEnum_Status>(5, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: $12.BookEnum_Status.STATUS_UNSPECIFIED, valueOf: $12.BookEnum_Status.valueOf, enumValues: $12.BookEnum_Status.values)
-    ..p<$core.int>(6, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(7, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
-    ..p<$core.int>(8, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
+    ..aOM<$9.Timestamp>(6, _omitFieldNames ? '' : 'openedAt', subBuilder: $9.Timestamp.create)
+    ..aOM<$9.Timestamp>(7, _omitFieldNames ? '' : 'closedAt', subBuilder: $9.Timestamp.create)
+    ..p<$core.int>(8, _omitFieldNames ? '' : 'clientFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(9, _omitFieldNames ? '' : 'teamFks', $pb.PbFieldType.K3)
+    ..p<$core.int>(10, _omitFieldNames ? '' : 'serviceFks', $pb.PbFieldType.K3)
     ..hasRequiredFields = false
   ;
 
@@ -713,17 +758,41 @@ class UpdateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearStatus() => clearField(5);
 
-  /// Relation Keys: users.id for CLIENT
+  /// start
   @$pb.TagNumber(6)
-  $core.List<$core.int> get clientFks => $_getList(5);
+  $9.Timestamp get openedAt => $_getN(5);
+  @$pb.TagNumber(6)
+  set openedAt($9.Timestamp v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasOpenedAt() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearOpenedAt() => clearField(6);
+  @$pb.TagNumber(6)
+  $9.Timestamp ensureOpenedAt() => $_ensure(5);
 
-  /// Relation Key
+  /// until
   @$pb.TagNumber(7)
-  $core.List<$core.int> get teamFks => $_getList(6);
+  $9.Timestamp get closedAt => $_getN(6);
+  @$pb.TagNumber(7)
+  set closedAt($9.Timestamp v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasClosedAt() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearClosedAt() => clearField(7);
+  @$pb.TagNumber(7)
+  $9.Timestamp ensureClosedAt() => $_ensure(6);
+
+  /// Relation Keys: users.id for CLIENT
+  @$pb.TagNumber(8)
+  $core.List<$core.int> get clientFks => $_getList(7);
 
   /// Relation Key
-  @$pb.TagNumber(8)
-  $core.List<$core.int> get serviceFks => $_getList(7);
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get teamFks => $_getList(8);
+
+  /// Relation Key
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get serviceFks => $_getList(9);
 }
 
 class UpdateResponse extends $pb.GeneratedMessage {
