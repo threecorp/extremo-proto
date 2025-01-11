@@ -1,0 +1,228 @@
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+//
+
+syntax = "proto3";
+
+package extremo.api.mypage.teams.v1;
+
+// import "extremo/msg/api/v1/api.proto";
+import "extremo/msg/db/v1/db.proto";
+// import "extremo/msg/db/v1/enum.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+// import "google/protobuf/timestamp.proto";
+// import "google/protobuf/field_mask.proto";
+import "validate/validate.proto"; // XXX: https://github.com/envoyproxy/protoc-gen-validate
+
+option go_package = "github.com/threecorp/extremo-proto/extremogo/extremo/api/mypage/teams/v1;teams";
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "TeamServiceProto";
+option java_package = "com.extremo.api.mypage.teams.v1";
+
+//
+// README: https://cloud.google.com/apis/design/standard_methods
+// Service for reading from and writing to existing Teams.
+//
+service TeamService {
+  // Delete deletes a Team with return nothing
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {delete: "/api/mypage/v1/{tenant_fk}/teams/{pk}"};
+  }
+  // Get returns a team
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/teams/{pk}"};
+  }
+  // List returns Teams as list with pagination
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/teams"};
+  }
+  // Update updates a Team with then return a Team
+  rpc Update(UpdateRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      put: "/api/mypage/v1/{tenant_fk}/teams/{pk}"
+      body: "*"
+    };
+  }
+  // Create creates a Team with then return a Team
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/api/mypage/v1/{tenant_fk}/teams"
+      body: "*"
+    };
+  }
+  // // CreateImage creates a image
+  // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
+  //   option (google.api.http) = {
+  //     post: "/api/mypage/v1/{tenant_fk}/teams/{team_fk}/image"
+  //     body: "*"
+  //   };
+  // }
+  // // UpdateImage creates a image
+  // rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
+  //   option (google.api.http) = {
+  //     put: "/api/mypage/v1/{tenant_fk}/teams/{team_fk}/image/{pk}"
+  //     body: "*"
+  //   };
+  // }
+}
+
+message ListTeamsRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // page number
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 3 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListTeamsResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Team elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message ListRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // page number
+  int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+  // The maximum number of items to return.
+  int32 page_size = 3 [(validate.rules).int32 = {
+    gt: 0
+    lte: 30
+  }];
+}
+
+message ListResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Team elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
+  // Total Size
+  int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message GetRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Relation Key
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+}
+
+message GetResponse {
+  // A team team. if request team is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Team element = 1 [(validate.rules).message = {required: true}];
+}
+
+// PrimaryKey is set by JWT Token
+message CreateRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // name of team
+  string name = 2 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+}
+
+message CreateResponse {
+  // A team team. if request team is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Team element = 1 [(validate.rules).message = {required: true}];
+}
+
+message UpdateRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // PK
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+  // name of team
+  string name = 3 [(validate.rules).string = {
+    min_len: 1
+    max_len: 255
+  }];
+}
+
+message UpdateResponse {
+  // A team message. if request team is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.Team element = 1 [(validate.rules).message = {required: true}];
+}
+
+message DeleteRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Primary Key is confirmed by JWT Token
+  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+}
+
+// message CreateImageRequest {
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 team_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.TeamImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+
+// message CreateImageResponse {
+//   // A team team. if request team is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.TeamImage element = 1 [(validate.rules).message = {required: true}];
+// }
+//
+// message UpdateImageRequest {
+//   // XXX: PrimaryKey is checked correct value by JWT Token
+//   int32 pk = 5 [(validate.rules).int32 = {gt: 0}];
+//   // XXX: Relation Key is checked correct value by JWT Token
+//   int32 team_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // kind cannot be NONE (0)
+//   extremo.msg.db.v1.TeamImageEnum.Kind kind = 2 [(validate.rules).enum = {
+//     not_in: [0]
+//   }];
+//   // image Data URI: 10B ~ 20MB
+//   string image = 3 [(validate.rules).string = {
+//     min_bytes: 10
+//     max_bytes: 25000000
+//     prefix: "data:image/"
+//     contains: ";base64,"
+//   }]; // "data:image/tiff;base64,",
+//   // name
+//   string name = 4 [(validate.rules).string = {
+//     min_len: 0
+//     max_len: 255
+//   }];
+// }
+//
+// message UpdateImageResponse {
+//   // A team message. if request team is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.TeamImage element = 1 [(validate.rules).message = {required: true}];
+// }

@@ -16,28 +16,28 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../../google/protobuf/empty.pb.dart' as $1;
-import 'user_service.pb.dart' as $6;
+import 'user_service.pb.dart' as $7;
 
 export 'user_service.pb.dart';
 
 @$pb.GrpcServiceName('extremo.api.mypage.users.v1.UserService')
 class UserServiceClient extends $grpc.Client {
-  static final _$delete = $grpc.ClientMethod<$6.DeleteRequest, $1.Empty>(
+  static final _$delete = $grpc.ClientMethod<$7.DeleteRequest, $1.Empty>(
       '/extremo.api.mypage.users.v1.UserService/Delete',
-      ($6.DeleteRequest value) => value.writeToBuffer(),
+      ($7.DeleteRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
-  static final _$get = $grpc.ClientMethod<$6.GetRequest, $6.GetResponse>(
+  static final _$get = $grpc.ClientMethod<$7.GetRequest, $7.GetResponse>(
       '/extremo.api.mypage.users.v1.UserService/Get',
-      ($6.GetRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $6.GetResponse.fromBuffer(value));
-  static final _$list = $grpc.ClientMethod<$6.ListRequest, $6.ListResponse>(
+      ($7.GetRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $7.GetResponse.fromBuffer(value));
+  static final _$list = $grpc.ClientMethod<$7.ListRequest, $7.ListResponse>(
       '/extremo.api.mypage.users.v1.UserService/List',
-      ($6.ListRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $6.ListResponse.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$6.UpdateRequest, $6.UpdateResponse>(
+      ($7.ListRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $7.ListResponse.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$7.UpdateRequest, $7.UpdateResponse>(
       '/extremo.api.mypage.users.v1.UserService/Update',
-      ($6.UpdateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $6.UpdateResponse.fromBuffer(value));
+      ($7.UpdateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $7.UpdateResponse.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -45,19 +45,19 @@ class UserServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$1.Empty> delete($6.DeleteRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$1.Empty> delete($7.DeleteRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.GetResponse> get($6.GetRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$7.GetResponse> get($7.GetRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.ListResponse> list($6.ListRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$7.ListResponse> list($7.ListRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.UpdateResponse> update($6.UpdateRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$7.UpdateResponse> update($7.UpdateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
 }
@@ -67,54 +67,54 @@ abstract class UserServiceBase extends $grpc.Service {
   $core.String get $name => 'extremo.api.mypage.users.v1.UserService';
 
   UserServiceBase() {
-    $addMethod($grpc.ServiceMethod<$6.DeleteRequest, $1.Empty>(
+    $addMethod($grpc.ServiceMethod<$7.DeleteRequest, $1.Empty>(
         'Delete',
         delete_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.DeleteRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $7.DeleteRequest.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.GetRequest, $6.GetResponse>(
+    $addMethod($grpc.ServiceMethod<$7.GetRequest, $7.GetResponse>(
         'Get',
         get_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.GetRequest.fromBuffer(value),
-        ($6.GetResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.ListRequest, $6.ListResponse>(
+        ($core.List<$core.int> value) => $7.GetRequest.fromBuffer(value),
+        ($7.GetResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.ListRequest, $7.ListResponse>(
         'List',
         list_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.ListRequest.fromBuffer(value),
-        ($6.ListResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.UpdateRequest, $6.UpdateResponse>(
+        ($core.List<$core.int> value) => $7.ListRequest.fromBuffer(value),
+        ($7.ListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.UpdateRequest, $7.UpdateResponse>(
         'Update',
         update_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.UpdateRequest.fromBuffer(value),
-        ($6.UpdateResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $7.UpdateRequest.fromBuffer(value),
+        ($7.UpdateResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$1.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$6.DeleteRequest> request) async {
+  $async.Future<$1.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$7.DeleteRequest> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$6.GetResponse> get_Pre($grpc.ServiceCall call, $async.Future<$6.GetRequest> request) async {
+  $async.Future<$7.GetResponse> get_Pre($grpc.ServiceCall call, $async.Future<$7.GetRequest> request) async {
     return get(call, await request);
   }
 
-  $async.Future<$6.ListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$6.ListRequest> request) async {
+  $async.Future<$7.ListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$7.ListRequest> request) async {
     return list(call, await request);
   }
 
-  $async.Future<$6.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$6.UpdateRequest> request) async {
+  $async.Future<$7.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$7.UpdateRequest> request) async {
     return update(call, await request);
   }
 
-  $async.Future<$1.Empty> delete($grpc.ServiceCall call, $6.DeleteRequest request);
-  $async.Future<$6.GetResponse> get($grpc.ServiceCall call, $6.GetRequest request);
-  $async.Future<$6.ListResponse> list($grpc.ServiceCall call, $6.ListRequest request);
-  $async.Future<$6.UpdateResponse> update($grpc.ServiceCall call, $6.UpdateRequest request);
+  $async.Future<$1.Empty> delete($grpc.ServiceCall call, $7.DeleteRequest request);
+  $async.Future<$7.GetResponse> get($grpc.ServiceCall call, $7.GetRequest request);
+  $async.Future<$7.ListResponse> list($grpc.ServiceCall call, $7.ListRequest request);
+  $async.Future<$7.UpdateResponse> update($grpc.ServiceCall call, $7.UpdateRequest request);
 }

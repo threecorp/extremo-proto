@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../msg/api/v1/api.pb.dart' as $11;
+import '../../../../msg/api/v1/api.pb.dart' as $12;
 
 class RegisterRequest extends $pb.GeneratedMessage {
   factory RegisterRequest({
@@ -98,7 +98,7 @@ class RegisterRequest extends $pb.GeneratedMessage {
 
 class RegisterResponse extends $pb.GeneratedMessage {
   factory RegisterResponse({
-    $11.AccountToken? element,
+    $12.AccountToken? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -111,7 +111,7 @@ class RegisterResponse extends $pb.GeneratedMessage {
   factory RegisterResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RegisterResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
-    ..aOM<$11.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $11.AccountToken.create)
+    ..aOM<$12.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.AccountToken.create)
     ..hasRequiredFields = false
   ;
 
@@ -137,15 +137,15 @@ class RegisterResponse extends $pb.GeneratedMessage {
   static RegisterResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $11.AccountToken get element => $_getN(0);
+  $12.AccountToken get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($11.AccountToken v) { setField(1, v); }
+  set element($12.AccountToken v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $11.AccountToken ensureElement() => $_ensure(0);
+  $12.AccountToken ensureElement() => $_ensure(0);
 }
 
 class UnregisterRequest extends $pb.GeneratedMessage {
@@ -433,7 +433,7 @@ class GetAccountByTokenRequest extends $pb.GeneratedMessage {
 
 class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   factory GetAccountByTokenResponse({
-    $11.Account? element,
+    $12.Account? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -446,7 +446,7 @@ class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   factory GetAccountByTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetAccountByTokenResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
-    ..aOM<$11.Account>(1, _omitFieldNames ? '' : 'element', subBuilder: $11.Account.create)
+    ..aOM<$12.Account>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.Account.create)
     ..hasRequiredFields = false
   ;
 
@@ -472,15 +472,15 @@ class GetAccountByTokenResponse extends $pb.GeneratedMessage {
   static GetAccountByTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $11.Account get element => $_getN(0);
+  $12.Account get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($11.Account v) { setField(1, v); }
+  set element($12.Account v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $11.Account ensureElement() => $_ensure(0);
+  $12.Account ensureElement() => $_ensure(0);
 }
 
 /// A operator has administorator permit
@@ -603,7 +603,7 @@ class LoginRequest extends $pb.GeneratedMessage {
 
 class LoginResponse extends $pb.GeneratedMessage {
   factory LoginResponse({
-    $11.AccountToken? element,
+    $12.AccountToken? element,
   }) {
     final $result = create();
     if (element != null) {
@@ -616,7 +616,7 @@ class LoginResponse extends $pb.GeneratedMessage {
   factory LoginResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.auth.accounts.v1'), createEmptyInstance: create)
-    ..aOM<$11.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $11.AccountToken.create)
+    ..aOM<$12.AccountToken>(1, _omitFieldNames ? '' : 'element', subBuilder: $12.AccountToken.create)
     ..hasRequiredFields = false
   ;
 
@@ -642,15 +642,15 @@ class LoginResponse extends $pb.GeneratedMessage {
   static LoginResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $11.AccountToken get element => $_getN(0);
+  $12.AccountToken get element => $_getN(0);
   @$pb.TagNumber(1)
-  set element($11.AccountToken v) { setField(1, v); }
+  set element($12.AccountToken v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasElement() => $_has(0);
   @$pb.TagNumber(1)
   void clearElement() => clearField(1);
   @$pb.TagNumber(1)
-  $11.AccountToken ensureElement() => $_ensure(0);
+  $12.AccountToken ensureElement() => $_ensure(0);
 }
 
 /// Returns AccountToken without token
