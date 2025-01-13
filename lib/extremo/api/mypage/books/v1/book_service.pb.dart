@@ -161,6 +161,105 @@ class ListBooksResponse extends $pb.GeneratedMessage {
   void clearTotalSize() => clearField(2);
 }
 
+class FilterRequest extends $pb.GeneratedMessage {
+  factory FilterRequest({
+    $core.int? tenantFk,
+  }) {
+    final $result = create();
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
+    return $result;
+  }
+  FilterRequest._() : super();
+  factory FilterRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FilterRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FilterRequest clone() => FilterRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FilterRequest copyWith(void Function(FilterRequest) updates) => super.copyWith((message) => updates(message as FilterRequest)) as FilterRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FilterRequest create() => FilterRequest._();
+  FilterRequest createEmptyInstance() => create();
+  static $pb.PbList<FilterRequest> createRepeated() => $pb.PbList<FilterRequest>();
+  @$core.pragma('dart2js:noInline')
+  static FilterRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FilterRequest>(create);
+  static FilterRequest? _defaultInstance;
+
+  ///  Behaves as like GraphQL Field Selector
+  ///  google.protobuf.FieldMask field_mask = 1999;
+  ///
+  ///  Tenant FK
+  @$pb.TagNumber(1)
+  $core.int get tenantFk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTenantFk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTenantFk() => clearField(1);
+}
+
+class FilterResponse extends $pb.GeneratedMessage {
+  factory FilterResponse({
+    $core.Iterable<$14.Book>? elements,
+  }) {
+    final $result = create();
+    if (elements != null) {
+      $result.elements.addAll(elements);
+    }
+    return $result;
+  }
+  FilterResponse._() : super();
+  factory FilterResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FilterResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
+    ..pc<$14.Book>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $14.Book.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FilterResponse clone() => FilterResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FilterResponse copyWith(void Function(FilterResponse) updates) => super.copyWith((message) => updates(message as FilterResponse)) as FilterResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FilterResponse create() => FilterResponse._();
+  FilterResponse createEmptyInstance() => create();
+  static $pb.PbList<FilterResponse> createRepeated() => $pb.PbList<FilterResponse>();
+  @$core.pragma('dart2js:noInline')
+  static FilterResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FilterResponse>(create);
+  static FilterResponse? _defaultInstance;
+
+  /// article msg.db
+  @$pb.TagNumber(1)
+  $core.List<$14.Book> get elements => $_getList(0);
+}
+
 class ListRequest extends $pb.GeneratedMessage {
   factory ListRequest({
     $core.int? tenantFk,

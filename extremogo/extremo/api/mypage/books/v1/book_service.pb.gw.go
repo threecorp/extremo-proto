@@ -139,6 +139,42 @@ func local_request_BookService_Get_0(ctx context.Context, marshaler runtime.Mars
 	return msg, metadata, err
 }
 
+func request_BookService_Filter_0(ctx context.Context, marshaler runtime.Marshaler, client BookServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq FilterRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["tenant_fk"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tenant_fk")
+	}
+	protoReq.TenantFk, err = runtime.Int32(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
+	}
+	msg, err := client.Filter(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+}
+
+func local_request_BookService_Filter_0(ctx context.Context, marshaler runtime.Marshaler, server BookServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq FilterRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["tenant_fk"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tenant_fk")
+	}
+	protoReq.TenantFk, err = runtime.Int32(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
+	}
+	msg, err := server.Filter(ctx, &protoReq)
+	return msg, metadata, err
+}
+
 var filter_BookService_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"tenant_fk": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 
 func request_BookService_List_0(ctx context.Context, marshaler runtime.Marshaler, client BookServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -335,6 +371,26 @@ func RegisterBookServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_BookService_Get_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_BookService_Filter_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/extremo.api.mypage.books.v1.BookService/Filter", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/books/filter"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_BookService_Filter_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_BookService_Filter_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodGet, pattern_BookService_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -469,6 +525,23 @@ func RegisterBookServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_BookService_Get_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_BookService_Filter_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/extremo.api.mypage.books.v1.BookService/Filter", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/books/filter"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_BookService_Filter_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_BookService_Filter_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodGet, pattern_BookService_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -526,6 +599,7 @@ func RegisterBookServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 var (
 	pattern_BookService_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "books", "pk"}, ""))
 	pattern_BookService_Get_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "books", "pk"}, ""))
+	pattern_BookService_Filter_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "mypage", "v1", "tenant_fk", "books", "filter"}, ""))
 	pattern_BookService_List_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "mypage", "v1", "tenant_fk", "books"}, ""))
 	pattern_BookService_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "books", "pk"}, ""))
 	pattern_BookService_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "mypage", "v1", "tenant_fk", "books"}, ""))
@@ -534,6 +608,7 @@ var (
 var (
 	forward_BookService_Delete_0 = runtime.ForwardResponseMessage
 	forward_BookService_Get_0    = runtime.ForwardResponseMessage
+	forward_BookService_Filter_0 = runtime.ForwardResponseMessage
 	forward_BookService_List_0   = runtime.ForwardResponseMessage
 	forward_BookService_Update_0 = runtime.ForwardResponseMessage
 	forward_BookService_Create_0 = runtime.ForwardResponseMessage

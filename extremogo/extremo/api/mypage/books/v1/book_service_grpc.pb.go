@@ -26,6 +26,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	BookService_Delete_FullMethodName = "/extremo.api.mypage.books.v1.BookService/Delete"
 	BookService_Get_FullMethodName    = "/extremo.api.mypage.books.v1.BookService/Get"
+	BookService_Filter_FullMethodName = "/extremo.api.mypage.books.v1.BookService/Filter"
 	BookService_List_FullMethodName   = "/extremo.api.mypage.books.v1.BookService/List"
 	BookService_Update_FullMethodName = "/extremo.api.mypage.books.v1.BookService/Update"
 	BookService_Create_FullMethodName = "/extremo.api.mypage.books.v1.BookService/Create"
@@ -42,6 +43,8 @@ type BookServiceClient interface {
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Get returns a book
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
+	// Filter returns Books as list
+	Filter(ctx context.Context, in *FilterRequest, opts ...grpc.CallOption) (*FilterResponse, error)
 	// List returns Books as list with pagination
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	// Update updates a Book with then return a Book
@@ -72,6 +75,16 @@ func (c *bookServiceClient) Get(ctx context.Context, in *GetRequest, opts ...grp
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetResponse)
 	err := c.cc.Invoke(ctx, BookService_Get_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bookServiceClient) Filter(ctx context.Context, in *FilterRequest, opts ...grpc.CallOption) (*FilterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FilterResponse)
+	err := c.cc.Invoke(ctx, BookService_Filter_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -119,6 +132,8 @@ type BookServiceServer interface {
 	Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error)
 	// Get returns a book
 	Get(context.Context, *GetRequest) (*GetResponse, error)
+	// Filter returns Books as list
+	Filter(context.Context, *FilterRequest) (*FilterResponse, error)
 	// List returns Books as list with pagination
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	// Update updates a Book with then return a Book
@@ -140,6 +155,9 @@ func (UnimplementedBookServiceServer) Delete(context.Context, *DeleteRequest) (*
 }
 func (UnimplementedBookServiceServer) Get(context.Context, *GetRequest) (*GetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+}
+func (UnimplementedBookServiceServer) Filter(context.Context, *FilterRequest) (*FilterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Filter not implemented")
 }
 func (UnimplementedBookServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
@@ -203,6 +221,24 @@ func _BookService_Get_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BookServiceServer).Get(ctx, req.(*GetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BookService_Filter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FilterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookServiceServer).Filter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BookService_Filter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookServiceServer).Filter(ctx, req.(*FilterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -275,6 +311,10 @@ var BookService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Get",
 			Handler:    _BookService_Get_Handler,
+		},
+		{
+			MethodName: "Filter",
+			Handler:    _BookService_Filter_Handler,
 		},
 		{
 			MethodName: "List",

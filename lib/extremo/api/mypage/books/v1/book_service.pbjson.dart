@@ -44,6 +44,31 @@ final $typed_data.Uint8List listBooksResponseDescriptor = $convert.base64Decode(
     'YxLkJvb2tCCvpCB5IBBAgAEB5SCGVsZW1lbnRzEiYKCnRvdGFsX3NpemUYAiABKAVCB/pCBBoC'
     'KABSCXRvdGFsU2l6ZQ==');
 
+@$core.Deprecated('Use filterRequestDescriptor instead')
+const FilterRequest$json = {
+  '1': 'FilterRequest',
+  '2': [
+    {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+  ],
+};
+
+/// Descriptor for `FilterRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List filterRequestDescriptor = $convert.base64Decode(
+    'Cg1GaWx0ZXJSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50Rms=');
+
+@$core.Deprecated('Use filterResponseDescriptor instead')
+const FilterResponse$json = {
+  '1': 'FilterResponse',
+  '2': [
+    {'1': 'elements', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'elements'},
+  ],
+};
+
+/// Descriptor for `FilterResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List filterResponseDescriptor = $convert.base64Decode(
+    'Cg5GaWx0ZXJSZXNwb25zZRI/CghlbGVtZW50cxgBIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLk'
+    'Jvb2tCCvpCB5IBBAgAEB5SCGVsZW1lbnRz');
+
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
   '1': 'ListRequest',

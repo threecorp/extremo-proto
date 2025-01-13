@@ -34,6 +34,10 @@ service BookService {
   rpc Get(GetRequest) returns (GetResponse) {
     option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/books/{pk}"};
   }
+  // Filter returns Books as list
+  rpc Filter(FilterRequest) returns (FilterResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/books/filter"};
+  }
   // List returns Books as list with pagination
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/books"};
@@ -91,6 +95,22 @@ message ListBooksResponse {
   }];
   // Total Size
   int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+message FilterRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+}
+
+message FilterResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 30
+  }];
 }
 
 message ListRequest {

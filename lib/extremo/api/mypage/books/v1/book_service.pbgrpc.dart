@@ -30,6 +30,10 @@ class BookServiceClient extends $grpc.Client {
       '/extremo.api.mypage.books.v1.BookService/Get',
       ($3.GetRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.GetResponse.fromBuffer(value));
+  static final _$filter = $grpc.ClientMethod<$3.FilterRequest, $3.FilterResponse>(
+      '/extremo.api.mypage.books.v1.BookService/Filter',
+      ($3.FilterRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.FilterResponse.fromBuffer(value));
   static final _$list = $grpc.ClientMethod<$3.ListRequest, $3.ListResponse>(
       '/extremo.api.mypage.books.v1.BookService/List',
       ($3.ListRequest value) => value.writeToBuffer(),
@@ -55,6 +59,10 @@ class BookServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$3.GetResponse> get($3.GetRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.FilterResponse> filter($3.FilterRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$filter, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.ListResponse> list($3.ListRequest request, {$grpc.CallOptions? options}) {
@@ -89,6 +97,13 @@ abstract class BookServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.GetRequest.fromBuffer(value),
         ($3.GetResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.FilterRequest, $3.FilterResponse>(
+        'Filter',
+        filter_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.FilterRequest.fromBuffer(value),
+        ($3.FilterResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.ListRequest, $3.ListResponse>(
         'List',
         list_Pre,
@@ -120,6 +135,10 @@ abstract class BookServiceBase extends $grpc.Service {
     return get(call, await request);
   }
 
+  $async.Future<$3.FilterResponse> filter_Pre($grpc.ServiceCall call, $async.Future<$3.FilterRequest> request) async {
+    return filter(call, await request);
+  }
+
   $async.Future<$3.ListResponse> list_Pre($grpc.ServiceCall call, $async.Future<$3.ListRequest> request) async {
     return list(call, await request);
   }
@@ -134,6 +153,7 @@ abstract class BookServiceBase extends $grpc.Service {
 
   $async.Future<$1.Empty> delete($grpc.ServiceCall call, $3.DeleteRequest request);
   $async.Future<$3.GetResponse> get($grpc.ServiceCall call, $3.GetRequest request);
+  $async.Future<$3.FilterResponse> filter($grpc.ServiceCall call, $3.FilterRequest request);
   $async.Future<$3.ListResponse> list($grpc.ServiceCall call, $3.ListRequest request);
   $async.Future<$3.UpdateResponse> update($grpc.ServiceCall call, $3.UpdateRequest request);
   $async.Future<$3.CreateResponse> create($grpc.ServiceCall call, $3.CreateRequest request);
