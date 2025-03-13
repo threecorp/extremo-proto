@@ -49,25 +49,35 @@ const FilterRequest$json = {
   '1': 'FilterRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'page', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'page'},
+    {'1': 'page_size', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
+    {'1': 'opened_at', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
+    {'1': 'closed_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
   ],
 };
 
 /// Descriptor for `FilterRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List filterRequestDescriptor = $convert.base64Decode(
-    'Cg1GaWx0ZXJSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50Rms=');
+    'Cg1GaWx0ZXJSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSGw'
+    'oEcGFnZRgCIAEoBUIH+kIEGgIgAFIEcGFnZRImCglwYWdlX3NpemUYAyABKAVCCfpCBhoEGGQg'
+    'AFIIcGFnZVNpemUSQQoJb3BlbmVkX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdG'
+    'FtcEII+kIFsgECCAFSCG9wZW5lZEF0EkEKCWNsb3NlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90'
+    'b2J1Zi5UaW1lc3RhbXBCCPpCBbIBAggBUghjbG9zZWRBdA==');
 
 @$core.Deprecated('Use filterResponseDescriptor instead')
 const FilterResponse$json = {
   '1': 'FilterResponse',
   '2': [
     {'1': 'elements', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.Book', '8': {}, '10': 'elements'},
+    {'1': 'total_size', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'totalSize'},
   ],
 };
 
 /// Descriptor for `FilterResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List filterResponseDescriptor = $convert.base64Decode(
     'Cg5GaWx0ZXJSZXNwb25zZRI/CghlbGVtZW50cxgBIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLk'
-    'Jvb2tCCvpCB5IBBAgAEGRSCGVsZW1lbnRz');
+    'Jvb2tCCvpCB5IBBAgAEGRSCGVsZW1lbnRzEiYKCnRvdGFsX3NpemUYAiABKAVCB/pCBBoCKABS'
+    'CXRvdGFsU2l6ZQ==');
 
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
@@ -76,8 +86,6 @@ const ListRequest$json = {
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'page', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'page'},
     {'1': 'page_size', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
-    {'1': 'opened_at', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
-    {'1': 'closed_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
   ],
 };
 
@@ -85,9 +93,7 @@ const ListRequest$json = {
 final $typed_data.Uint8List listRequestDescriptor = $convert.base64Decode(
     'CgtMaXN0UmVxdWVzdBIkCgl0ZW5hbnRfZmsYASABKAVCB/pCBBoCIABSCHRlbmFudEZrEhsKBH'
     'BhZ2UYAiABKAVCB/pCBBoCIABSBHBhZ2USJgoJcGFnZV9zaXplGAMgASgFQgn6QgYaBBhkIABS'
-    'CHBhZ2VTaXplEkEKCW9wZW5lZF9hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbX'
-    'BCCPpCBbIBAggBUghvcGVuZWRBdBJBCgljbG9zZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9i'
-    'dWYuVGltZXN0YW1wQgj6QgWyAQIIAVIIY2xvc2VkQXQ=');
+    'CHBhZ2VTaXpl');
 
 @$core.Deprecated('Use listResponseDescriptor instead')
 const ListResponse$json = {

@@ -363,6 +363,50 @@ func (m *FilterRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetPage() <= 0 {
+		err := FilterRequestValidationError{
+			field:  "Page",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if val := m.GetPageSize(); val <= 0 || val > 100 {
+		err := FilterRequestValidationError{
+			field:  "PageSize",
+			reason: "value must be inside range (0, 100]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOpenedAt() == nil {
+		err := FilterRequestValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := FilterRequestValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return FilterRequestMultiError(errors)
 	}
@@ -508,6 +552,17 @@ func (m *FilterResponse) validate(all bool) error {
 
 	}
 
+	if m.GetTotalSize() < 0 {
+		err := FilterResponseValidationError{
+			field:  "TotalSize",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return FilterResponseMultiError(errors)
 	}
@@ -634,28 +689,6 @@ func (m *ListRequest) validate(all bool) error {
 		err := ListRequestValidationError{
 			field:  "PageSize",
 			reason: "value must be inside range (0, 100]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetOpenedAt() == nil {
-		err := ListRequestValidationError{
-			field:  "OpenedAt",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetClosedAt() == nil {
-		err := ListRequestValidationError{
-			field:  "ClosedAt",
-			reason: "value is required",
 		}
 		if !all {
 			return err

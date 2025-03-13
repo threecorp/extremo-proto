@@ -164,10 +164,26 @@ class ListBooksResponse extends $pb.GeneratedMessage {
 class FilterRequest extends $pb.GeneratedMessage {
   factory FilterRequest({
     $core.int? tenantFk,
+    $core.int? page,
+    $core.int? pageSize,
+    $10.Timestamp? openedAt,
+    $10.Timestamp? closedAt,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
+    }
+    if (page != null) {
+      $result.page = page;
+    }
+    if (pageSize != null) {
+      $result.pageSize = pageSize;
+    }
+    if (openedAt != null) {
+      $result.openedAt = openedAt;
+    }
+    if (closedAt != null) {
+      $result.closedAt = closedAt;
     }
     return $result;
   }
@@ -177,6 +193,10 @@ class FilterRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
+    ..aOM<$10.Timestamp>(4, _omitFieldNames ? '' : 'openedAt', subBuilder: $10.Timestamp.create)
+    ..aOM<$10.Timestamp>(5, _omitFieldNames ? '' : 'closedAt', subBuilder: $10.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -213,15 +233,61 @@ class FilterRequest extends $pb.GeneratedMessage {
   $core.bool hasTenantFk() => $_has(0);
   @$pb.TagNumber(1)
   void clearTenantFk() => clearField(1);
+
+  /// page number
+  @$pb.TagNumber(2)
+  $core.int get page => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set page($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPage() => clearField(2);
+
+  /// The maximum number of items to return.
+  @$pb.TagNumber(3)
+  $core.int get pageSize => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set pageSize($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPageSize() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPageSize() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $10.Timestamp get openedAt => $_getN(3);
+  @$pb.TagNumber(4)
+  set openedAt($10.Timestamp v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOpenedAt() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOpenedAt() => clearField(4);
+  @$pb.TagNumber(4)
+  $10.Timestamp ensureOpenedAt() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $10.Timestamp get closedAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set closedAt($10.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasClosedAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearClosedAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $10.Timestamp ensureClosedAt() => $_ensure(4);
 }
 
 class FilterResponse extends $pb.GeneratedMessage {
   factory FilterResponse({
     $core.Iterable<$14.Book>? elements,
+    $core.int? totalSize,
   }) {
     final $result = create();
     if (elements != null) {
       $result.elements.addAll(elements);
+    }
+    if (totalSize != null) {
+      $result.totalSize = totalSize;
     }
     return $result;
   }
@@ -231,6 +297,7 @@ class FilterResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.books.v1'), createEmptyInstance: create)
     ..pc<$14.Book>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $14.Book.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'totalSize', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -258,6 +325,16 @@ class FilterResponse extends $pb.GeneratedMessage {
   /// article msg.db
   @$pb.TagNumber(1)
   $core.List<$14.Book> get elements => $_getList(0);
+
+  /// Total Size
+  @$pb.TagNumber(2)
+  $core.int get totalSize => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set totalSize($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTotalSize() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTotalSize() => clearField(2);
 }
 
 class ListRequest extends $pb.GeneratedMessage {
@@ -265,8 +342,6 @@ class ListRequest extends $pb.GeneratedMessage {
     $core.int? tenantFk,
     $core.int? page,
     $core.int? pageSize,
-    $10.Timestamp? openedAt,
-    $10.Timestamp? closedAt,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -278,12 +353,6 @@ class ListRequest extends $pb.GeneratedMessage {
     if (pageSize != null) {
       $result.pageSize = pageSize;
     }
-    if (openedAt != null) {
-      $result.openedAt = openedAt;
-    }
-    if (closedAt != null) {
-      $result.closedAt = closedAt;
-    }
     return $result;
   }
   ListRequest._() : super();
@@ -294,8 +363,6 @@ class ListRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
-    ..aOM<$10.Timestamp>(4, _omitFieldNames ? '' : 'openedAt', subBuilder: $10.Timestamp.create)
-    ..aOM<$10.Timestamp>(5, _omitFieldNames ? '' : 'closedAt', subBuilder: $10.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -352,28 +419,6 @@ class ListRequest extends $pb.GeneratedMessage {
   $core.bool hasPageSize() => $_has(2);
   @$pb.TagNumber(3)
   void clearPageSize() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $10.Timestamp get openedAt => $_getN(3);
-  @$pb.TagNumber(4)
-  set openedAt($10.Timestamp v) { setField(4, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasOpenedAt() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearOpenedAt() => clearField(4);
-  @$pb.TagNumber(4)
-  $10.Timestamp ensureOpenedAt() => $_ensure(3);
-
-  @$pb.TagNumber(5)
-  $10.Timestamp get closedAt => $_getN(4);
-  @$pb.TagNumber(5)
-  set closedAt($10.Timestamp v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasClosedAt() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearClosedAt() => clearField(5);
-  @$pb.TagNumber(5)
-  $10.Timestamp ensureClosedAt() => $_ensure(4);
 }
 
 class ListResponse extends $pb.GeneratedMessage {
