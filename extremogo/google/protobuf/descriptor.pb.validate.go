@@ -105,7 +105,7 @@ type FileDescriptorSetMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FileDescriptorSetMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -409,7 +409,7 @@ type FileDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FileDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -780,7 +780,7 @@ type DescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m DescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -979,7 +979,7 @@ type ExtensionRangeOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ExtensionRangeOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1130,7 +1130,7 @@ type FieldDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FieldDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1263,7 +1263,7 @@ type OneofDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m OneofDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1464,7 +1464,7 @@ type EnumDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EnumDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1599,7 +1599,7 @@ type EnumValueDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EnumValueDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1766,7 +1766,7 @@ type ServiceDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ServiceDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1907,7 +1907,7 @@ type MethodDescriptorProtoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m MethodDescriptorProtoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2111,7 +2111,7 @@ type FileOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FileOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2284,7 +2284,7 @@ type MessageOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m MessageOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2498,7 +2498,7 @@ type FieldOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FieldOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2660,7 +2660,7 @@ type OneofOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m OneofOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2828,7 +2828,7 @@ type EnumOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EnumOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2995,7 +2995,7 @@ type EnumValueOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EnumValueOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3160,7 +3160,7 @@ type ServiceOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ServiceOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3327,7 +3327,7 @@ type MethodOptionsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m MethodOptionsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3473,7 +3473,7 @@ type UninterpretedOptionMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UninterpretedOptionMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3586,7 +3586,7 @@ type FeatureSetMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FeatureSetMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3724,7 +3724,7 @@ type FeatureSetDefaultsMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FeatureSetDefaultsMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3860,7 +3860,7 @@ type SourceCodeInfoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m SourceCodeInfoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3994,7 +3994,7 @@ type GeneratedCodeInfoMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GeneratedCodeInfoMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4129,7 +4129,7 @@ type DescriptorProto_ExtensionRangeMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m DescriptorProto_ExtensionRangeMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4236,7 +4236,7 @@ type DescriptorProto_ReservedRangeMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m DescriptorProto_ReservedRangeMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4351,7 +4351,7 @@ type ExtensionRangeOptions_DeclarationMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ExtensionRangeOptions_DeclarationMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4460,7 +4460,7 @@ type EnumDescriptorProto_EnumReservedRangeMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EnumDescriptorProto_EnumReservedRangeMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4567,7 +4567,7 @@ type FieldOptions_EditionDefaultMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FieldOptions_EditionDefaultMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4674,7 +4674,7 @@ type UninterpretedOption_NamePartMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UninterpretedOption_NamePartMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4811,7 +4811,7 @@ type FeatureSetDefaults_FeatureSetEditionDefaultMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FeatureSetDefaults_FeatureSetEditionDefaultMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4918,7 +4918,7 @@ type SourceCodeInfo_LocationMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m SourceCodeInfo_LocationMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -5028,7 +5028,7 @@ type GeneratedCodeInfo_AnnotationMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GeneratedCodeInfo_AnnotationMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

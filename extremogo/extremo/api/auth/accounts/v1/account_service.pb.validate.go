@@ -166,7 +166,7 @@ type RegisterRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m RegisterRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -306,7 +306,7 @@ type RegisterResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m RegisterResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -490,7 +490,7 @@ type UnregisterRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UnregisterRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -614,7 +614,7 @@ type ConfirmEmailRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ConfirmEmailRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -791,7 +791,7 @@ type EmailExistsRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m EmailExistsRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -977,7 +977,7 @@ type AccountExistsRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m AccountExistsRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1090,7 +1090,7 @@ type GetAccountByTokenRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GetAccountByTokenRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1232,7 +1232,7 @@ type GetAccountByTokenResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GetAccountByTokenResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1345,7 +1345,7 @@ type SpoofLoginRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m SpoofLoginRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1530,7 +1530,7 @@ type LoginRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m LoginRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1670,7 +1670,7 @@ type LoginResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m LoginResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1770,7 +1770,7 @@ type CookieRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m CookieRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1881,7 +1881,7 @@ type LogoutRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m LogoutRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2054,7 +2054,7 @@ type ResetPasswordMailRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ResetPasswordMailRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2200,7 +2200,7 @@ type ResetPasswordRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ResetPasswordRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2326,7 +2326,7 @@ type ConfirmInvitationRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ConfirmInvitationRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2474,7 +2474,7 @@ type RegisterByInvitationRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m RegisterByInvitationRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

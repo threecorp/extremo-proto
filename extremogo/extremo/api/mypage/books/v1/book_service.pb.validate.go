@@ -83,10 +83,10 @@ func (m *ListBooksRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if val := m.GetPageSize(); val <= 0 || val > 30 {
+	if val := m.GetPageSize(); val <= 0 || val > 100 {
 		err := ListBooksRequestValidationError{
 			field:  "PageSize",
-			reason: "value must be inside range (0, 30]",
+			reason: "value must be inside range (0, 100]",
 		}
 		if !all {
 			return err
@@ -108,7 +108,7 @@ type ListBooksRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ListBooksRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -194,10 +194,10 @@ func (m *ListBooksResponse) validate(all bool) error {
 
 	var errors []error
 
-	if len(m.GetElements()) > 30 {
+	if len(m.GetElements()) > 100 {
 		err := ListBooksResponseValidationError{
 			field:  "Elements",
-			reason: "value must contain no more than 30 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -264,7 +264,7 @@ type ListBooksResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ListBooksResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -377,7 +377,7 @@ type FilterRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FilterRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -463,10 +463,10 @@ func (m *FilterResponse) validate(all bool) error {
 
 	var errors []error
 
-	if len(m.GetElements()) > 30 {
+	if len(m.GetElements()) > 100 {
 		err := FilterResponseValidationError{
 			field:  "Elements",
-			reason: "value must contain no more than 30 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -522,7 +522,7 @@ type FilterResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m FilterResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -630,10 +630,32 @@ func (m *ListRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if val := m.GetPageSize(); val <= 0 || val > 30 {
+	if val := m.GetPageSize(); val <= 0 || val > 100 {
 		err := ListRequestValidationError{
 			field:  "PageSize",
-			reason: "value must be inside range (0, 30]",
+			reason: "value must be inside range (0, 100]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOpenedAt() == nil {
+		err := ListRequestValidationError{
+			field:  "OpenedAt",
+			reason: "value is required",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetClosedAt() == nil {
+		err := ListRequestValidationError{
+			field:  "ClosedAt",
+			reason: "value is required",
 		}
 		if !all {
 			return err
@@ -654,7 +676,7 @@ type ListRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ListRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -740,10 +762,10 @@ func (m *ListResponse) validate(all bool) error {
 
 	var errors []error
 
-	if len(m.GetElements()) > 30 {
+	if len(m.GetElements()) > 100 {
 		err := ListResponseValidationError{
 			field:  "Elements",
-			reason: "value must contain no more than 30 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -809,7 +831,7 @@ type ListResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ListResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -930,7 +952,7 @@ type GetRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GetRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1069,7 +1091,7 @@ type GetResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m GetResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1305,7 +1327,7 @@ type CreateRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m CreateRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1445,7 +1467,7 @@ type CreateResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m CreateResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1703,7 +1725,7 @@ type UpdateRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UpdateRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1847,7 +1869,7 @@ type UpdateResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UpdateResponseMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1969,7 +1991,7 @@ type DeleteRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m DeleteRequestMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

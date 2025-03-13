@@ -265,6 +265,8 @@ class ListRequest extends $pb.GeneratedMessage {
     $core.int? tenantFk,
     $core.int? page,
     $core.int? pageSize,
+    $10.Timestamp? openedAt,
+    $10.Timestamp? closedAt,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -276,6 +278,12 @@ class ListRequest extends $pb.GeneratedMessage {
     if (pageSize != null) {
       $result.pageSize = pageSize;
     }
+    if (openedAt != null) {
+      $result.openedAt = openedAt;
+    }
+    if (closedAt != null) {
+      $result.closedAt = closedAt;
+    }
     return $result;
   }
   ListRequest._() : super();
@@ -286,6 +294,8 @@ class ListRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
+    ..aOM<$10.Timestamp>(4, _omitFieldNames ? '' : 'openedAt', subBuilder: $10.Timestamp.create)
+    ..aOM<$10.Timestamp>(5, _omitFieldNames ? '' : 'closedAt', subBuilder: $10.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -342,6 +352,28 @@ class ListRequest extends $pb.GeneratedMessage {
   $core.bool hasPageSize() => $_has(2);
   @$pb.TagNumber(3)
   void clearPageSize() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $10.Timestamp get openedAt => $_getN(3);
+  @$pb.TagNumber(4)
+  set openedAt($10.Timestamp v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOpenedAt() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOpenedAt() => clearField(4);
+  @$pb.TagNumber(4)
+  $10.Timestamp ensureOpenedAt() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $10.Timestamp get closedAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set closedAt($10.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasClosedAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearClosedAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $10.Timestamp ensureClosedAt() => $_ensure(4);
 }
 
 class ListResponse extends $pb.GeneratedMessage {

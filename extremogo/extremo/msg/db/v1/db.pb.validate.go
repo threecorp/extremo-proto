@@ -403,7 +403,7 @@ type TenantMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m TenantMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -634,7 +634,7 @@ type TenantProfileMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m TenantProfileMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1036,7 +1036,7 @@ type UserMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UserMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1270,7 +1270,7 @@ type UserProfileMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UserProfileMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1544,7 +1544,7 @@ type TeamMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m TeamMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -1825,7 +1825,7 @@ type TeamsUserMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m TeamsUserMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2237,7 +2237,7 @@ type BookMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m BookMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2622,7 +2622,7 @@ type ServiceMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ServiceMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -2925,7 +2925,7 @@ type BooksServiceMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m BooksServiceMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3370,7 +3370,7 @@ type ChatMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ChatMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -3706,7 +3706,7 @@ type ChatMessageMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ChatMessageMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4005,7 +4005,7 @@ type ArtifactMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ArtifactMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -4265,7 +4265,7 @@ type ArtifactImageMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ArtifactImageMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

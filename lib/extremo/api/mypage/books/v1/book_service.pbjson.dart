@@ -27,7 +27,7 @@ const ListBooksRequest$json = {
 final $typed_data.Uint8List listBooksRequestDescriptor = $convert.base64Decode(
     'ChBMaXN0Qm9va3NSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50Rm'
     'sSGwoEcGFnZRgCIAEoBUIH+kIEGgIgAFIEcGFnZRImCglwYWdlX3NpemUYAyABKAVCCfpCBhoE'
-    'GB4gAFIIcGFnZVNpemU=');
+    'GGQgAFIIcGFnZVNpemU=');
 
 @$core.Deprecated('Use listBooksResponseDescriptor instead')
 const ListBooksResponse$json = {
@@ -41,7 +41,7 @@ const ListBooksResponse$json = {
 /// Descriptor for `ListBooksResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listBooksResponseDescriptor = $convert.base64Decode(
     'ChFMaXN0Qm9va3NSZXNwb25zZRI/CghlbGVtZW50cxgBIAMoCzIXLmV4dHJlbW8ubXNnLmRiLn'
-    'YxLkJvb2tCCvpCB5IBBAgAEB5SCGVsZW1lbnRzEiYKCnRvdGFsX3NpemUYAiABKAVCB/pCBBoC'
+    'YxLkJvb2tCCvpCB5IBBAgAEGRSCGVsZW1lbnRzEiYKCnRvdGFsX3NpemUYAiABKAVCB/pCBBoC'
     'KABSCXRvdGFsU2l6ZQ==');
 
 @$core.Deprecated('Use filterRequestDescriptor instead')
@@ -67,7 +67,7 @@ const FilterResponse$json = {
 /// Descriptor for `FilterResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List filterResponseDescriptor = $convert.base64Decode(
     'Cg5GaWx0ZXJSZXNwb25zZRI/CghlbGVtZW50cxgBIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLk'
-    'Jvb2tCCvpCB5IBBAgAEB5SCGVsZW1lbnRz');
+    'Jvb2tCCvpCB5IBBAgAEGRSCGVsZW1lbnRz');
 
 @$core.Deprecated('Use listRequestDescriptor instead')
 const ListRequest$json = {
@@ -76,14 +76,18 @@ const ListRequest$json = {
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'page', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'page'},
     {'1': 'page_size', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pageSize'},
+    {'1': 'opened_at', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'openedAt'},
+    {'1': 'closed_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': {}, '10': 'closedAt'},
   ],
 };
 
 /// Descriptor for `ListRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listRequestDescriptor = $convert.base64Decode(
     'CgtMaXN0UmVxdWVzdBIkCgl0ZW5hbnRfZmsYASABKAVCB/pCBBoCIABSCHRlbmFudEZrEhsKBH'
-    'BhZ2UYAiABKAVCB/pCBBoCIABSBHBhZ2USJgoJcGFnZV9zaXplGAMgASgFQgn6QgYaBBgeIABS'
-    'CHBhZ2VTaXpl');
+    'BhZ2UYAiABKAVCB/pCBBoCIABSBHBhZ2USJgoJcGFnZV9zaXplGAMgASgFQgn6QgYaBBhkIABS'
+    'CHBhZ2VTaXplEkEKCW9wZW5lZF9hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbX'
+    'BCCPpCBbIBAggBUghvcGVuZWRBdBJBCgljbG9zZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9i'
+    'dWYuVGltZXN0YW1wQgj6QgWyAQIIAVIIY2xvc2VkQXQ=');
 
 @$core.Deprecated('Use listResponseDescriptor instead')
 const ListResponse$json = {
@@ -97,7 +101,7 @@ const ListResponse$json = {
 /// Descriptor for `ListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listResponseDescriptor = $convert.base64Decode(
     'CgxMaXN0UmVzcG9uc2USPwoIZWxlbWVudHMYASADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Cb2'
-    '9rQgr6QgeSAQQIABAeUghlbGVtZW50cxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0'
+    '9rQgr6QgeSAQQIABBkUghlbGVtZW50cxImCgp0b3RhbF9zaXplGAIgASgFQgf6QgQaAigAUgl0'
     'b3RhbFNpemU=');
 
 @$core.Deprecated('Use getRequestDescriptor instead')

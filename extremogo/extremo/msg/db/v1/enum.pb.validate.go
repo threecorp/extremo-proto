@@ -70,7 +70,7 @@ type UserEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m UserEnumMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -170,7 +170,7 @@ type TeamsUserEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m TeamsUserEnumMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -269,7 +269,7 @@ type BookEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m BookEnumMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -368,7 +368,7 @@ type ArtifactEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ArtifactEnumMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -468,7 +468,7 @@ type ArtifactImageEnumMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m ArtifactImageEnumMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

@@ -83,7 +83,7 @@ message ListBooksRequest {
   // The maximum number of items to return.
   int32 page_size = 3 [(validate.rules).int32 = {
     gt: 0
-    lte: 30
+    lte: 100
   }];
 }
 
@@ -91,7 +91,7 @@ message ListBooksResponse {
   // article msg.db
   repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 30
+    max_items: 100
   }];
   // Total Size
   int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];
@@ -109,7 +109,7 @@ message FilterResponse {
   // article msg.db
   repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 30
+    max_items: 100
   }];
 }
 
@@ -124,15 +124,17 @@ message ListRequest {
   // The maximum number of items to return.
   int32 page_size = 3 [(validate.rules).int32 = {
     gt: 0
-    lte: 30
+    lte: 100
   }];
+  google.protobuf.Timestamp opened_at = 4 [(validate.rules).timestamp = {required: true}];
+  google.protobuf.Timestamp closed_at = 5 [(validate.rules).timestamp = {required: true}];
 }
 
 message ListResponse {
   // article msg.db
   repeated extremo.msg.db.v1.Book elements = 1 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 30
+    max_items: 100
   }];
   // Total Size
   int32 total_size = 2 [(validate.rules).int32 = {gte: 0}];

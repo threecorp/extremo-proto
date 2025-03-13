@@ -90,6 +90,7 @@ func request_AccountService_GetAccountByToken_0(ctx context.Context, marshaler r
 		protoReq GetAccountByTokenRequest
 		metadata runtime.ServerMetadata
 	)
+	io.Copy(io.Discard, req.Body)
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
@@ -146,6 +147,7 @@ func request_AccountService_Logout_0(ctx context.Context, marshaler runtime.Mars
 		protoReq LogoutRequest
 		metadata runtime.ServerMetadata
 	)
+	io.Copy(io.Discard, req.Body)
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}

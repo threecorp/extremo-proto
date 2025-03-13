@@ -105,7 +105,7 @@ type HttpMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m HttpMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -350,7 +350,7 @@ type HttpRuleMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m HttpRuleMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -454,7 +454,7 @@ type CustomHttpPatternMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m CustomHttpPatternMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}

@@ -104,7 +104,7 @@ type AccountMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m AccountMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
@@ -247,7 +247,7 @@ type AccountTokenMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
 func (m AccountTokenMultiError) Error() string {
-	var msgs []string
+	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
 	}
