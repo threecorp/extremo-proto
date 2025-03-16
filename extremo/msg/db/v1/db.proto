@@ -41,27 +41,27 @@ message Tenant {
   // 1:N Reverse relations
   repeated User users = 8 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   // 1:N Reverse relations
   repeated Team teams = 9 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   // 1:N Reverse relation
   repeated Book books = 10 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   // 1:N Reverse relation
   repeated Chat chats = 11 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   // 1:N Reverse relation
   repeated Service services = 12 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
 }
 
@@ -126,7 +126,7 @@ message User {
   //
   repeated Artifact artifacts = 13 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
 }
 
@@ -175,7 +175,7 @@ message Team {
   //
   repeated Book books = 12 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
 }
 
@@ -241,21 +241,21 @@ message Book {
   //
   repeated User clients = 11 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   //
   // N:N relation
   //
   repeated Team teams = 12 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   //
   // N:N relation
   //
   repeated BooksService books_services = 13 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
 }
 
@@ -301,7 +301,7 @@ message Service {
   //
   repeated BooksService books_services = 13 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
 }
 
@@ -349,22 +349,18 @@ message Chat {
   // Relation Message
   Tenant tenant = 3 [(validate.rules).message = {required: true}];
   // FK
-  int32 sender_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  int32 recipient_fk = 4 [(validate.rules).int32 = {gt: 0}];
   // Relation Message
-  User sender = 5 [(validate.rules).message = {required: true}];
-  // FK
-  int32 recipient_fk = 6 [(validate.rules).int32 = {gt: 0}];
-  // Relation Message
-  User recipient = 7 [(validate.rules).message = {required: true}];
+  User recipient = 5 [(validate.rules).message = {required: true}];
   // 1:N relation
-  repeated ChatMessage messages = 10 [(validate.rules).repeated = {
+  repeated ChatMessage messages = 6 [(validate.rules).repeated = {
     min_items: 0
-    max_items: 25
+    max_items: 100
   }];
   // contact fist message
-  ChatMessage first_message = 11 [(validate.rules).message = {required: true}];
+  ChatMessage first_message = 7 [(validate.rules).message = {required: true}];
   // contact last message
-  ChatMessage last_message = 12 [(validate.rules).message = {required: true}];
+  ChatMessage last_message = 8 [(validate.rules).message = {required: true}];
   // Created time
   google.protobuf.Timestamp created_at = 15; // [(validate.rules).timestamp.required = true]
   // Updated time

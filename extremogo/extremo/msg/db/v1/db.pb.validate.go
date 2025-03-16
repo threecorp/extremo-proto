@@ -165,10 +165,10 @@ func (m *Tenant) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetUsers()) > 25 {
+	if len(m.GetUsers()) > 100 {
 		err := TenantValidationError{
 			field:  "Users",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -210,10 +210,10 @@ func (m *Tenant) validate(all bool) error {
 
 	}
 
-	if len(m.GetTeams()) > 25 {
+	if len(m.GetTeams()) > 100 {
 		err := TenantValidationError{
 			field:  "Teams",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -255,10 +255,10 @@ func (m *Tenant) validate(all bool) error {
 
 	}
 
-	if len(m.GetBooks()) > 25 {
+	if len(m.GetBooks()) > 100 {
 		err := TenantValidationError{
 			field:  "Books",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -300,10 +300,10 @@ func (m *Tenant) validate(all bool) error {
 
 	}
 
-	if len(m.GetChats()) > 25 {
+	if len(m.GetChats()) > 100 {
 		err := TenantValidationError{
 			field:  "Chats",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -345,10 +345,10 @@ func (m *Tenant) validate(all bool) error {
 
 	}
 
-	if len(m.GetServices()) > 25 {
+	if len(m.GetServices()) > 100 {
 		err := TenantValidationError{
 			field:  "Services",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -928,10 +928,10 @@ func (m *User) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetArtifacts()) > 25 {
+	if len(m.GetArtifacts()) > 100 {
 		err := UserValidationError{
 			field:  "Artifacts",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -1486,10 +1486,10 @@ func (m *Team) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetBooks()) > 25 {
+	if len(m.GetBooks()) > 100 {
 		err := TeamValidationError{
 			field:  "Books",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -2089,10 +2089,10 @@ func (m *Book) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetClients()) > 25 {
+	if len(m.GetClients()) > 100 {
 		err := BookValidationError{
 			field:  "Clients",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -2134,10 +2134,10 @@ func (m *Book) validate(all bool) error {
 
 	}
 
-	if len(m.GetTeams()) > 25 {
+	if len(m.GetTeams()) > 100 {
 		err := BookValidationError{
 			field:  "Teams",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -2179,10 +2179,10 @@ func (m *Book) validate(all bool) error {
 
 	}
 
-	if len(m.GetBooksServices()) > 25 {
+	if len(m.GetBooksServices()) > 100 {
 		err := BookValidationError{
 			field:  "BooksServices",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -2564,10 +2564,10 @@ func (m *Service) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetBooksServices()) > 25 {
+	if len(m.GetBooksServices()) > 100 {
 		err := ServiceValidationError{
 			field:  "BooksServices",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err
@@ -3072,57 +3072,6 @@ func (m *Chat) validate(all bool) error {
 		}
 	}
 
-	if m.GetSenderFk() <= 0 {
-		err := ChatValidationError{
-			field:  "SenderFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetSender() == nil {
-		err := ChatValidationError{
-			field:  "Sender",
-			reason: "value is required",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if all {
-		switch v := interface{}(m.GetSender()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ChatValidationError{
-					field:  "Sender",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, ChatValidationError{
-					field:  "Sender",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetSender()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return ChatValidationError{
-				field:  "Sender",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
-
 	if m.GetRecipientFk() <= 0 {
 		err := ChatValidationError{
 			field:  "RecipientFk",
@@ -3174,10 +3123,10 @@ func (m *Chat) validate(all bool) error {
 		}
 	}
 
-	if len(m.GetMessages()) > 25 {
+	if len(m.GetMessages()) > 100 {
 		err := ChatValidationError{
 			field:  "Messages",
-			reason: "value must contain no more than 25 item(s)",
+			reason: "value must contain no more than 100 item(s)",
 		}
 		if !all {
 			return err

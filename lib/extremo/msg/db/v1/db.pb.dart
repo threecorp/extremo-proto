@@ -1627,8 +1627,6 @@ class Chat extends $pb.GeneratedMessage {
     $core.int? pk,
     $core.int? tenantFk,
     Tenant? tenant,
-    $core.int? senderFk,
-    User? sender,
     $core.int? recipientFk,
     User? recipient,
     $core.Iterable<ChatMessage>? messages,
@@ -1646,12 +1644,6 @@ class Chat extends $pb.GeneratedMessage {
     }
     if (tenant != null) {
       $result.tenant = tenant;
-    }
-    if (senderFk != null) {
-      $result.senderFk = senderFk;
-    }
-    if (sender != null) {
-      $result.sender = sender;
     }
     if (recipientFk != null) {
       $result.recipientFk = recipientFk;
@@ -1684,13 +1676,11 @@ class Chat extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'senderFk', $pb.PbFieldType.O3)
-    ..aOM<User>(5, _omitFieldNames ? '' : 'sender', subBuilder: User.create)
-    ..a<$core.int>(6, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
-    ..aOM<User>(7, _omitFieldNames ? '' : 'recipient', subBuilder: User.create)
-    ..pc<ChatMessage>(10, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: ChatMessage.create)
-    ..aOM<ChatMessage>(11, _omitFieldNames ? '' : 'firstMessage', subBuilder: ChatMessage.create)
-    ..aOM<ChatMessage>(12, _omitFieldNames ? '' : 'lastMessage', subBuilder: ChatMessage.create)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..aOM<User>(5, _omitFieldNames ? '' : 'recipient', subBuilder: User.create)
+    ..pc<ChatMessage>(6, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: ChatMessage.create)
+    ..aOM<ChatMessage>(7, _omitFieldNames ? '' : 'firstMessage', subBuilder: ChatMessage.create)
+    ..aOM<ChatMessage>(8, _omitFieldNames ? '' : 'lastMessage', subBuilder: ChatMessage.create)
     ..aOM<$10.Timestamp>(15, _omitFieldNames ? '' : 'createdAt', subBuilder: $10.Timestamp.create)
     ..aOM<$10.Timestamp>(16, _omitFieldNames ? '' : 'updatedAt', subBuilder: $10.Timestamp.create)
     ..hasRequiredFields = false
@@ -1751,99 +1741,77 @@ class Chat extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(4)
-  $core.int get senderFk => $_getIZ(3);
+  $core.int get recipientFk => $_getIZ(3);
   @$pb.TagNumber(4)
-  set senderFk($core.int v) { $_setSignedInt32(3, v); }
+  set recipientFk($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSenderFk() => $_has(3);
+  $core.bool hasRecipientFk() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSenderFk() => clearField(4);
+  void clearRecipientFk() => clearField(4);
 
   /// Relation Message
   @$pb.TagNumber(5)
-  User get sender => $_getN(4);
+  User get recipient => $_getN(4);
   @$pb.TagNumber(5)
-  set sender(User v) { setField(5, v); }
+  set recipient(User v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasSender() => $_has(4);
+  $core.bool hasRecipient() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSender() => clearField(5);
+  void clearRecipient() => clearField(5);
   @$pb.TagNumber(5)
-  User ensureSender() => $_ensure(4);
-
-  /// FK
-  @$pb.TagNumber(6)
-  $core.int get recipientFk => $_getIZ(5);
-  @$pb.TagNumber(6)
-  set recipientFk($core.int v) { $_setSignedInt32(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasRecipientFk() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearRecipientFk() => clearField(6);
-
-  /// Relation Message
-  @$pb.TagNumber(7)
-  User get recipient => $_getN(6);
-  @$pb.TagNumber(7)
-  set recipient(User v) { setField(7, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasRecipient() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearRecipient() => clearField(7);
-  @$pb.TagNumber(7)
-  User ensureRecipient() => $_ensure(6);
+  User ensureRecipient() => $_ensure(4);
 
   /// 1:N relation
-  @$pb.TagNumber(10)
-  $core.List<ChatMessage> get messages => $_getList(7);
+  @$pb.TagNumber(6)
+  $core.List<ChatMessage> get messages => $_getList(5);
 
   /// contact fist message
-  @$pb.TagNumber(11)
-  ChatMessage get firstMessage => $_getN(8);
-  @$pb.TagNumber(11)
-  set firstMessage(ChatMessage v) { setField(11, v); }
-  @$pb.TagNumber(11)
-  $core.bool hasFirstMessage() => $_has(8);
-  @$pb.TagNumber(11)
-  void clearFirstMessage() => clearField(11);
-  @$pb.TagNumber(11)
-  ChatMessage ensureFirstMessage() => $_ensure(8);
+  @$pb.TagNumber(7)
+  ChatMessage get firstMessage => $_getN(6);
+  @$pb.TagNumber(7)
+  set firstMessage(ChatMessage v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasFirstMessage() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearFirstMessage() => clearField(7);
+  @$pb.TagNumber(7)
+  ChatMessage ensureFirstMessage() => $_ensure(6);
 
   /// contact last message
-  @$pb.TagNumber(12)
-  ChatMessage get lastMessage => $_getN(9);
-  @$pb.TagNumber(12)
-  set lastMessage(ChatMessage v) { setField(12, v); }
-  @$pb.TagNumber(12)
-  $core.bool hasLastMessage() => $_has(9);
-  @$pb.TagNumber(12)
-  void clearLastMessage() => clearField(12);
-  @$pb.TagNumber(12)
-  ChatMessage ensureLastMessage() => $_ensure(9);
+  @$pb.TagNumber(8)
+  ChatMessage get lastMessage => $_getN(7);
+  @$pb.TagNumber(8)
+  set lastMessage(ChatMessage v) { setField(8, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasLastMessage() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearLastMessage() => clearField(8);
+  @$pb.TagNumber(8)
+  ChatMessage ensureLastMessage() => $_ensure(7);
 
   /// Created time
   @$pb.TagNumber(15)
-  $10.Timestamp get createdAt => $_getN(10);
+  $10.Timestamp get createdAt => $_getN(8);
   @$pb.TagNumber(15)
   set createdAt($10.Timestamp v) { setField(15, v); }
   @$pb.TagNumber(15)
-  $core.bool hasCreatedAt() => $_has(10);
+  $core.bool hasCreatedAt() => $_has(8);
   @$pb.TagNumber(15)
   void clearCreatedAt() => clearField(15);
   @$pb.TagNumber(15)
-  $10.Timestamp ensureCreatedAt() => $_ensure(10);
+  $10.Timestamp ensureCreatedAt() => $_ensure(8);
 
   /// Updated time
   @$pb.TagNumber(16)
-  $10.Timestamp get updatedAt => $_getN(11);
+  $10.Timestamp get updatedAt => $_getN(9);
   @$pb.TagNumber(16)
   set updatedAt($10.Timestamp v) { setField(16, v); }
   @$pb.TagNumber(16)
-  $core.bool hasUpdatedAt() => $_has(11);
+  $core.bool hasUpdatedAt() => $_has(9);
   @$pb.TagNumber(16)
   void clearUpdatedAt() => clearField(16);
   @$pb.TagNumber(16)
-  $10.Timestamp ensureUpdatedAt() => $_ensure(11);
+  $10.Timestamp ensureUpdatedAt() => $_ensure(9);
 }
 
 class ChatMessage extends $pb.GeneratedMessage {

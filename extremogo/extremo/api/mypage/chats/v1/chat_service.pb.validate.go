@@ -906,17 +906,6 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetSenderFk() <= 0 {
-		err := CreateRequestValidationError{
-			field:  "SenderFk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if m.GetRecipientFk() <= 0 {
 		err := CreateRequestValidationError{
 			field:  "RecipientFk",
@@ -1193,17 +1182,6 @@ func (m *UpdateRequest) validate(all bool) error {
 	if m.GetPk() <= 0 {
 		err := UpdateRequestValidationError{
 			field:  "Pk",
-			reason: "value must be greater than 0",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if m.GetSenderFk() <= 0 {
-		err := UpdateRequestValidationError{
-			field:  "SenderFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {

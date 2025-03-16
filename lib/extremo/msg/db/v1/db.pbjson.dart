@@ -35,12 +35,12 @@ final $typed_data.Uint8List tenantDescriptor = $convert.base64Decode(
     '5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgGIAEo'
     'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJECgdwcm9maWxlGAcgAS'
     'gLMiAuZXh0cmVtby5tc2cuZGIudjEuVGVuYW50UHJvZmlsZUII+kIFigECEAFSB3Byb2ZpbGUS'
-    'OQoFdXNlcnMYCCADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgr6QgeSAQQIABAZUgV1c2'
-    'VycxI5CgV0ZWFtcxgJIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlRlYW1CCvpCB5IBBAgAEBlS'
+    'OQoFdXNlcnMYCCADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgr6QgeSAQQIABBkUgV1c2'
+    'VycxI5CgV0ZWFtcxgJIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlRlYW1CCvpCB5IBBAgAEGRS'
     'BXRlYW1zEjkKBWJvb2tzGAogAygLMhcuZXh0cmVtby5tc2cuZGIudjEuQm9va0IK+kIHkgEECA'
-    'AQGVIFYm9va3MSOQoFY2hhdHMYCyADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5DaGF0Qgr6QgeS'
-    'AQQIABAZUgVjaGF0cxJCCghzZXJ2aWNlcxgMIAMoCzIaLmV4dHJlbW8ubXNnLmRiLnYxLlNlcn'
-    'ZpY2VCCvpCB5IBBAgAEBlSCHNlcnZpY2Vz');
+    'AQZFIFYm9va3MSOQoFY2hhdHMYCyADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5DaGF0Qgr6QgeS'
+    'AQQIABBkUgVjaGF0cxJCCghzZXJ2aWNlcxgMIAMoCzIaLmV4dHJlbW8ubXNnLmRiLnYxLlNlcn'
+    'ZpY2VCCvpCB5IBBAgAEGRSCHNlcnZpY2Vz');
 
 @$core.Deprecated('Use tenantProfileDescriptor instead')
 const TenantProfile$json = {
@@ -98,7 +98,7 @@ final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'gLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJCCgdwcm9maWxl'
     'GAwgASgLMh4uZXh0cmVtby5tc2cuZGIudjEuVXNlclByb2ZpbGVCCPpCBYoBAhABUgdwcm9maW'
     'xlEkUKCWFydGlmYWN0cxgNIAMoCzIbLmV4dHJlbW8ubXNnLmRiLnYxLkFydGlmYWN0Qgr6QgeS'
-    'AQQIABAZUglhcnRpZmFjdHM=');
+    'AQQIABBkUglhcnRpZmFjdHM=');
 
 @$core.Deprecated('Use userProfileDescriptor instead')
 const UserProfile$json = {
@@ -143,7 +143,7 @@ final $typed_data.Uint8List teamDescriptor = $convert.base64Decode(
     'dEII+kIFigECEAFSBnRlbmFudBIeCgRuYW1lGAQgASgJQgr6QgdyBRABGP8BUgRuYW1lEjkKCm'
     'NyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQS'
     'OQoKdXBkYXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZW'
-    'RBdBI5CgVib29rcxgMIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tCCvpCB5IBBAgAEBlS'
+    'RBdBI5CgVib29rcxgMIAMoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tCCvpCB5IBBAgAEGRS'
     'BWJvb2tz');
 
 @$core.Deprecated('Use teamsUserDescriptor instead')
@@ -204,9 +204,9 @@ final $typed_data.Uint8List bookDescriptor = $convert.base64Decode(
     'IIY2xvc2VkQXQSOQoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3Rh'
     'bXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbW'
     'VzdGFtcFIJdXBkYXRlZEF0Ej0KB2NsaWVudHMYCyADKAsyFy5leHRyZW1vLm1zZy5kYi52MS5V'
-    'c2VyQgr6QgeSAQQIABAZUgdjbGllbnRzEjkKBXRlYW1zGAwgAygLMhcuZXh0cmVtby5tc2cuZG'
-    'IudjEuVGVhbUIK+kIHkgEECAAQGVIFdGVhbXMSUgoOYm9va3Nfc2VydmljZXMYDSADKAsyHy5l'
-    'eHRyZW1vLm1zZy5kYi52MS5Cb29rc1NlcnZpY2VCCvpCB5IBBAgAEBlSDWJvb2tzU2VydmljZX'
+    'c2VyQgr6QgeSAQQIABBkUgdjbGllbnRzEjkKBXRlYW1zGAwgAygLMhcuZXh0cmVtby5tc2cuZG'
+    'IudjEuVGVhbUIK+kIHkgEECAAQZFIFdGVhbXMSUgoOYm9va3Nfc2VydmljZXMYDSADKAsyHy5l'
+    'eHRyZW1vLm1zZy5kYi52MS5Cb29rc1NlcnZpY2VCCvpCB5IBBAgAEGRSDWJvb2tzU2VydmljZX'
     'M=');
 
 @$core.Deprecated('Use serviceDescriptor instead')
@@ -241,7 +241,7 @@ final $typed_data.Uint8List serviceDescriptor = $convert.base64Decode(
     'VwcmljZRIbCgRzb3J0GAogASgFQgf6QgQaAigAUgRzb3J0EjkKCmNyZWF0ZWRfYXQYCyABKAsy'
     'Gi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgMIA'
     'EoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdBJSCg5ib29rc19zZXJ2'
-    'aWNlcxgNIAMoCzIfLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tzU2VydmljZUIK+kIHkgEECAAQGV'
+    'aWNlcxgNIAMoCzIfLmV4dHJlbW8ubXNnLmRiLnYxLkJvb2tzU2VydmljZUIK+kIHkgEECAAQZF'
     'INYm9va3NTZXJ2aWNlcw==');
 
 @$core.Deprecated('Use booksServiceDescriptor instead')
@@ -280,13 +280,11 @@ const Chat$json = {
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'tenant_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'tenant', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Tenant', '8': {}, '10': 'tenant'},
-    {'1': 'sender_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'senderFk'},
-    {'1': 'sender', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'sender'},
-    {'1': 'recipient_fk', '3': 6, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
-    {'1': 'recipient', '3': 7, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'recipient'},
-    {'1': 'messages', '3': 10, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'messages'},
-    {'1': 'first_message', '3': 11, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'firstMessage'},
-    {'1': 'last_message', '3': 12, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'lastMessage'},
+    {'1': 'recipient_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'recipient', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'recipient'},
+    {'1': 'messages', '3': 6, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'messages'},
+    {'1': 'first_message', '3': 7, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'firstMessage'},
+    {'1': 'last_message', '3': 8, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'lastMessage'},
     {'1': 'created_at', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
     {'1': 'updated_at', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
@@ -296,17 +294,15 @@ const Chat$json = {
 final $typed_data.Uint8List chatDescriptor = $convert.base64Decode(
     'CgRDaGF0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/pCBB'
     'oCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRlbmFu'
-    'dEII+kIFigECEAFSBnRlbmFudBIkCglzZW5kZXJfZmsYBCABKAVCB/pCBBoCIABSCHNlbmRlck'
-    'ZrEjkKBnNlbmRlchgFIAEoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlVzZXJCCPpCBYoBAhABUgZz'
-    'ZW5kZXISKgoMcmVjaXBpZW50X2ZrGAYgASgFQgf6QgQaAiAAUgtyZWNpcGllbnRGaxI/CglyZW'
-    'NpcGllbnQYByABKAsyFy5leHRyZW1vLm1zZy5kYi52MS5Vc2VyQgj6QgWKAQIQAVIJcmVjaXBp'
-    'ZW50EkYKCG1lc3NhZ2VzGAogAygLMh4uZXh0cmVtby5tc2cuZGIudjEuQ2hhdE1lc3NhZ2VCCv'
-    'pCB5IBBAgAEBlSCG1lc3NhZ2VzEk0KDWZpcnN0X21lc3NhZ2UYCyABKAsyHi5leHRyZW1vLm1z'
-    'Zy5kYi52MS5DaGF0TWVzc2FnZUII+kIFigECEAFSDGZpcnN0TWVzc2FnZRJLCgxsYXN0X21lc3'
-    'NhZ2UYDCABKAsyHi5leHRyZW1vLm1zZy5kYi52MS5DaGF0TWVzc2FnZUII+kIFigECEAFSC2xh'
-    'c3RNZXNzYWdlEjkKCmNyZWF0ZWRfYXQYDyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW'
-    '1wUgljcmVhdGVkQXQSOQoKdXBkYXRlZF9hdBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l'
-    'c3RhbXBSCXVwZGF0ZWRBdA==');
+    'dEII+kIFigECEAFSBnRlbmFudBIqCgxyZWNpcGllbnRfZmsYBCABKAVCB/pCBBoCIABSC3JlY2'
+    'lwaWVudEZrEj8KCXJlY2lwaWVudBgFIAEoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlVzZXJCCPpC'
+    'BYoBAhABUglyZWNpcGllbnQSRgoIbWVzc2FnZXMYBiADKAsyHi5leHRyZW1vLm1zZy5kYi52MS'
+    '5DaGF0TWVzc2FnZUIK+kIHkgEECAAQZFIIbWVzc2FnZXMSTQoNZmlyc3RfbWVzc2FnZRgHIAEo'
+    'CzIeLmV4dHJlbW8ubXNnLmRiLnYxLkNoYXRNZXNzYWdlQgj6QgWKAQIQAVIMZmlyc3RNZXNzYW'
+    'dlEksKDGxhc3RfbWVzc2FnZRgIIAEoCzIeLmV4dHJlbW8ubXNnLmRiLnYxLkNoYXRNZXNzYWdl'
+    'Qgj6QgWKAQIQAVILbGFzdE1lc3NhZ2USOQoKY3JlYXRlZF9hdBgPIAEoCzIaLmdvb2dsZS5wcm'
+    '90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GBAgASgLMhouZ29vZ2xl'
+    'LnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0');
 
 @$core.Deprecated('Use chatMessageDescriptor instead')
 const ChatMessage$json = {
