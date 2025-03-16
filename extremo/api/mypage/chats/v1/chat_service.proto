@@ -56,6 +56,10 @@ service ChatService {
       body: "*"
     };
   }
+  // ListMessages returns Messages as list with pagination
+  rpc ListMessages(ListMessagesRequest) returns (ListMessagesResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/{chat_fk}/messages"};
+  }
   // // CreateImage creates a image
   // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
   //   option (google.api.http) = {
@@ -238,3 +242,25 @@ message DeleteRequest {
 //   // A user message. if request user is not published, it filtered them. so response might be empty.
 //   extremo.msg.db.v1.ChatImage element = 1 [(validate.rules).message = {required: true}];
 // }
+
+message ListMessagesRequest {
+  // Behaves as like GraphQL Field Selector
+  // google.protobuf.FieldMask field_mask = 1999;
+  //
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Chat FK
+  int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // Next page token
+  int32 next = 3 [(validate.rules).int32 = {gte: 0}];
+}
+
+message ListMessagesResponse {
+  // article msg.db
+  repeated extremo.msg.db.v1.ChatMessage elements = 1 [(validate.rules).repeated = {
+    min_items: 0
+    max_items: 100
+  }];
+  // Next page token
+  int32 next = 2 [(validate.rules).int32 = {gte: 0}];
+}

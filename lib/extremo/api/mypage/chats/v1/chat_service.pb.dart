@@ -805,6 +805,150 @@ class DeleteRequest extends $pb.GeneratedMessage {
   void clearRecipientFk() => clearField(3);
 }
 
+class ListMessagesRequest extends $pb.GeneratedMessage {
+  factory ListMessagesRequest({
+    $core.int? tenantFk,
+    $core.int? chatFk,
+    $core.int? next,
+  }) {
+    final $result = create();
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
+    if (chatFk != null) {
+      $result.chatFk = chatFk;
+    }
+    if (next != null) {
+      $result.next = next;
+    }
+    return $result;
+  }
+  ListMessagesRequest._() : super();
+  factory ListMessagesRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListMessagesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ListMessagesRequest clone() => ListMessagesRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ListMessagesRequest copyWith(void Function(ListMessagesRequest) updates) => super.copyWith((message) => updates(message as ListMessagesRequest)) as ListMessagesRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListMessagesRequest create() => ListMessagesRequest._();
+  ListMessagesRequest createEmptyInstance() => create();
+  static $pb.PbList<ListMessagesRequest> createRepeated() => $pb.PbList<ListMessagesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ListMessagesRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListMessagesRequest>(create);
+  static ListMessagesRequest? _defaultInstance;
+
+  ///  Behaves as like GraphQL Field Selector
+  ///  google.protobuf.FieldMask field_mask = 1999;
+  ///
+  ///  Tenant FK
+  @$pb.TagNumber(1)
+  $core.int get tenantFk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTenantFk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTenantFk() => clearField(1);
+
+  /// Chat FK
+  @$pb.TagNumber(2)
+  $core.int get chatFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set chatFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasChatFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearChatFk() => clearField(2);
+
+  /// Next page token
+  @$pb.TagNumber(3)
+  $core.int get next => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set next($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasNext() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNext() => clearField(3);
+}
+
+class ListMessagesResponse extends $pb.GeneratedMessage {
+  factory ListMessagesResponse({
+    $core.Iterable<$14.ChatMessage>? elements,
+    $core.int? next,
+  }) {
+    final $result = create();
+    if (elements != null) {
+      $result.elements.addAll(elements);
+    }
+    if (next != null) {
+      $result.next = next;
+    }
+    return $result;
+  }
+  ListMessagesResponse._() : super();
+  factory ListMessagesResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListMessagesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+    ..pc<$14.ChatMessage>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $14.ChatMessage.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ListMessagesResponse clone() => ListMessagesResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ListMessagesResponse copyWith(void Function(ListMessagesResponse) updates) => super.copyWith((message) => updates(message as ListMessagesResponse)) as ListMessagesResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListMessagesResponse create() => ListMessagesResponse._();
+  ListMessagesResponse createEmptyInstance() => create();
+  static $pb.PbList<ListMessagesResponse> createRepeated() => $pb.PbList<ListMessagesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ListMessagesResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListMessagesResponse>(create);
+  static ListMessagesResponse? _defaultInstance;
+
+  /// article msg.db
+  @$pb.TagNumber(1)
+  $core.List<$14.ChatMessage> get elements => $_getList(0);
+
+  /// Next page token
+  @$pb.TagNumber(2)
+  $core.int get next => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set next($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasNext() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNext() => clearField(2);
+}
+
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

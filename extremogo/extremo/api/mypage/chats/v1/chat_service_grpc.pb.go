@@ -24,12 +24,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ChatService_ListUsers_FullMethodName = "/extremo.api.mypage.chats.v1.ChatService/ListUsers"
-	ChatService_Update_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/Update"
-	ChatService_Delete_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/Delete"
-	ChatService_Get_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Get"
-	ChatService_List_FullMethodName      = "/extremo.api.mypage.chats.v1.ChatService/List"
-	ChatService_Create_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/Create"
+	ChatService_ListUsers_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/ListUsers"
+	ChatService_Update_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Update"
+	ChatService_Delete_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Delete"
+	ChatService_Get_FullMethodName          = "/extremo.api.mypage.chats.v1.ChatService/Get"
+	ChatService_List_FullMethodName         = "/extremo.api.mypage.chats.v1.ChatService/List"
+	ChatService_Create_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Create"
+	ChatService_ListMessages_FullMethodName = "/extremo.api.mypage.chats.v1.ChatService/ListMessages"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -51,6 +52,8 @@ type ChatServiceClient interface {
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	// ListMessages returns Messages as list with pagination
+	ListMessages(ctx context.Context, in *ListMessagesRequest, opts ...grpc.CallOption) (*ListMessagesResponse, error)
 }
 
 type chatServiceClient struct {
@@ -121,6 +124,16 @@ func (c *chatServiceClient) Create(ctx context.Context, in *CreateRequest, opts 
 	return out, nil
 }
 
+func (c *chatServiceClient) ListMessages(ctx context.Context, in *ListMessagesRequest, opts ...grpc.CallOption) (*ListMessagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMessagesResponse)
+	err := c.cc.Invoke(ctx, ChatService_ListMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ChatServiceServer is the server API for ChatService service.
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
@@ -140,6 +153,8 @@ type ChatServiceServer interface {
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	// ListMessages returns Messages as list with pagination
+	ListMessages(context.Context, *ListMessagesRequest) (*ListMessagesResponse, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -167,6 +182,9 @@ func (UnimplementedChatServiceServer) List(context.Context, *ListRequest) (*List
 }
 func (UnimplementedChatServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedChatServiceServer) ListMessages(context.Context, *ListMessagesRequest) (*ListMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMessages not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -297,6 +315,24 @@ func _ChatService_Create_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ChatService_ListMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMessagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatServiceServer).ListMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ChatService_ListMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatServiceServer).ListMessages(ctx, req.(*ListMessagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ChatService_ServiceDesc is the grpc.ServiceDesc for ChatService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -327,6 +363,10 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _ChatService_Create_Handler,
+		},
+		{
+			MethodName: "ListMessages",
+			Handler:    _ChatService_ListMessages_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

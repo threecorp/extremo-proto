@@ -46,6 +46,10 @@ class ChatServiceClient extends $grpc.Client {
       '/extremo.api.mypage.chats.v1.ChatService/Create',
       ($4.CreateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.CreateResponse.fromBuffer(value));
+  static final _$listMessages = $grpc.ClientMethod<$4.ListMessagesRequest, $4.ListMessagesResponse>(
+      '/extremo.api.mypage.chats.v1.ChatService/ListMessages',
+      ($4.ListMessagesRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.ListMessagesResponse.fromBuffer(value));
 
   ChatServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -75,6 +79,10 @@ class ChatServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$4.CreateResponse> create($4.CreateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$create, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.ListMessagesResponse> listMessages($4.ListMessagesRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$listMessages, request, options: options);
   }
 }
 
@@ -125,6 +133,13 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.CreateRequest.fromBuffer(value),
         ($4.CreateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.ListMessagesRequest, $4.ListMessagesResponse>(
+        'ListMessages',
+        listMessages_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.ListMessagesRequest.fromBuffer(value),
+        ($4.ListMessagesResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.ListUsersResponse> listUsers_Pre($grpc.ServiceCall call, $async.Future<$4.ListUsersRequest> request) async {
@@ -151,10 +166,15 @@ abstract class ChatServiceBase extends $grpc.Service {
     return create(call, await request);
   }
 
+  $async.Future<$4.ListMessagesResponse> listMessages_Pre($grpc.ServiceCall call, $async.Future<$4.ListMessagesRequest> request) async {
+    return listMessages(call, await request);
+  }
+
   $async.Future<$4.ListUsersResponse> listUsers($grpc.ServiceCall call, $4.ListUsersRequest request);
   $async.Future<$4.UpdateResponse> update($grpc.ServiceCall call, $4.UpdateRequest request);
   $async.Future<$1.Empty> delete($grpc.ServiceCall call, $4.DeleteRequest request);
   $async.Future<$4.GetResponse> get($grpc.ServiceCall call, $4.GetRequest request);
   $async.Future<$4.ListResponse> list($grpc.ServiceCall call, $4.ListRequest request);
   $async.Future<$4.CreateResponse> create($grpc.ServiceCall call, $4.CreateRequest request);
+  $async.Future<$4.ListMessagesResponse> listMessages($grpc.ServiceCall call, $4.ListMessagesRequest request);
 }

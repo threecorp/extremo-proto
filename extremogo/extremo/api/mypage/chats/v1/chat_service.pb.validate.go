@@ -1573,3 +1573,296 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = DeleteRequestValidationError{}
+
+// Validate checks the field values on ListMessagesRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListMessagesRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListMessagesRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListMessagesRequestMultiError, or nil if none found.
+func (m *ListMessagesRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListMessagesRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetTenantFk() <= 0 {
+		err := ListMessagesRequestValidationError{
+			field:  "TenantFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetChatFk() <= 0 {
+		err := ListMessagesRequestValidationError{
+			field:  "ChatFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetNext() < 0 {
+		err := ListMessagesRequestValidationError{
+			field:  "Next",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return ListMessagesRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListMessagesRequestMultiError is an error wrapping multiple validation
+// errors returned by ListMessagesRequest.ValidateAll() if the designated
+// constraints aren't met.
+type ListMessagesRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListMessagesRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListMessagesRequestMultiError) AllErrors() []error { return m }
+
+// ListMessagesRequestValidationError is the validation error returned by
+// ListMessagesRequest.Validate if the designated constraints aren't met.
+type ListMessagesRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListMessagesRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListMessagesRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListMessagesRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListMessagesRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListMessagesRequestValidationError) ErrorName() string {
+	return "ListMessagesRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListMessagesRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListMessagesRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListMessagesRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListMessagesRequestValidationError{}
+
+// Validate checks the field values on ListMessagesResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListMessagesResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListMessagesResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListMessagesResponseMultiError, or nil if none found.
+func (m *ListMessagesResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListMessagesResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(m.GetElements()) > 100 {
+		err := ListMessagesResponseValidationError{
+			field:  "Elements",
+			reason: "value must contain no more than 100 item(s)",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	for idx, item := range m.GetElements() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ListMessagesResponseValidationError{
+						field:  fmt.Sprintf("Elements[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ListMessagesResponseValidationError{
+						field:  fmt.Sprintf("Elements[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ListMessagesResponseValidationError{
+					field:  fmt.Sprintf("Elements[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if m.GetNext() < 0 {
+		err := ListMessagesResponseValidationError{
+			field:  "Next",
+			reason: "value must be greater than or equal to 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return ListMessagesResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListMessagesResponseMultiError is an error wrapping multiple validation
+// errors returned by ListMessagesResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ListMessagesResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListMessagesResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListMessagesResponseMultiError) AllErrors() []error { return m }
+
+// ListMessagesResponseValidationError is the validation error returned by
+// ListMessagesResponse.Validate if the designated constraints aren't met.
+type ListMessagesResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListMessagesResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListMessagesResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListMessagesResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListMessagesResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListMessagesResponseValidationError) ErrorName() string {
+	return "ListMessagesResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListMessagesResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListMessagesResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListMessagesResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListMessagesResponseValidationError{}
