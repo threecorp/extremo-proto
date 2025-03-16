@@ -11,7 +11,6 @@
 
 import 'dart:core' as $core;
 
-import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../msg/db/v1/db.pb.dart' as $14;
@@ -811,7 +810,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
     $core.int? tenantFk,
     $core.int? chatFk,
     $core.int? recipientFk,
-    $fixnum.Int64? next,
+    $core.int? next,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -836,7 +835,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
-    ..aInt64(4, _omitFieldNames ? '' : 'next')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -896,9 +895,9 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 
   /// Next page token
   @$pb.TagNumber(4)
-  $fixnum.Int64 get next => $_getI64(3);
+  $core.int get next => $_getIZ(3);
   @$pb.TagNumber(4)
-  set next($fixnum.Int64 v) { $_setInt64(3, v); }
+  set next($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
   $core.bool hasNext() => $_has(3);
   @$pb.TagNumber(4)
@@ -908,7 +907,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 class ListMessagesResponse extends $pb.GeneratedMessage {
   factory ListMessagesResponse({
     $core.Iterable<$14.ChatMessage>? elements,
-    $fixnum.Int64? next,
+    $core.int? next,
   }) {
     final $result = create();
     if (elements != null) {
@@ -925,7 +924,7 @@ class ListMessagesResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..pc<$14.ChatMessage>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $14.ChatMessage.create)
-    ..aInt64(2, _omitFieldNames ? '' : 'next')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -956,9 +955,9 @@ class ListMessagesResponse extends $pb.GeneratedMessage {
 
   /// Next page token
   @$pb.TagNumber(2)
-  $fixnum.Int64 get next => $_getI64(1);
+  $core.int get next => $_getIZ(1);
   @$pb.TagNumber(2)
-  set next($fixnum.Int64 v) { $_setInt64(1, v); }
+  set next($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasNext() => $_has(1);
   @$pb.TagNumber(2)

@@ -254,7 +254,7 @@ message ListMessagesRequest {
   // Recipient FK
   int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
   // Next page token
-  int64 next = 4 [(validate.rules).int64 = {gte: 0}];
+  int32 next = 4 [(validate.rules).int32 = {gte: 0}];
 }
 
 message ListMessagesResponse {
@@ -264,5 +264,5 @@ message ListMessagesResponse {
     max_items: 100
   }];
   // Next page token
-  int64 next = 2 [(validate.rules).int64 = {gte: 0}];
+  int32 next = 2 [(validate.rules).int32 = {gte: 0}];
 }
