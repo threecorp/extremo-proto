@@ -1618,6 +1618,17 @@ func (m *ListMessagesRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetRecipientId() <= 0 {
+		err := ListMessagesRequestValidationError{
+			field:  "RecipientId",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if m.GetNext() < 0 {
 		err := ListMessagesRequestValidationError{
 			field:  "Next",
