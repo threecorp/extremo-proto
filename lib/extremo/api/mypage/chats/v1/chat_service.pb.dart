@@ -11,6 +11,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../../msg/db/v1/db.pb.dart' as $14;
@@ -809,7 +810,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   factory ListMessagesRequest({
     $core.int? tenantFk,
     $core.int? chatFk,
-    $core.int? next,
+    $fixnum.Int64? next,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -830,7 +831,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..aInt64(3, _omitFieldNames ? '' : 'next')
     ..hasRequiredFields = false
   ;
 
@@ -880,9 +881,9 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 
   /// Next page token
   @$pb.TagNumber(3)
-  $core.int get next => $_getIZ(2);
+  $fixnum.Int64 get next => $_getI64(2);
   @$pb.TagNumber(3)
-  set next($core.int v) { $_setSignedInt32(2, v); }
+  set next($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasNext() => $_has(2);
   @$pb.TagNumber(3)
@@ -892,7 +893,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 class ListMessagesResponse extends $pb.GeneratedMessage {
   factory ListMessagesResponse({
     $core.Iterable<$14.ChatMessage>? elements,
-    $core.int? next,
+    $fixnum.Int64? next,
   }) {
     final $result = create();
     if (elements != null) {
@@ -909,7 +910,7 @@ class ListMessagesResponse extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..pc<$14.ChatMessage>(1, _omitFieldNames ? '' : 'elements', $pb.PbFieldType.PM, subBuilder: $14.ChatMessage.create)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..aInt64(2, _omitFieldNames ? '' : 'next')
     ..hasRequiredFields = false
   ;
 
@@ -940,9 +941,9 @@ class ListMessagesResponse extends $pb.GeneratedMessage {
 
   /// Next page token
   @$pb.TagNumber(2)
-  $core.int get next => $_getIZ(1);
+  $fixnum.Int64 get next => $_getI64(1);
   @$pb.TagNumber(2)
-  set next($core.int v) { $_setSignedInt32(1, v); }
+  set next($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasNext() => $_has(1);
   @$pb.TagNumber(2)

@@ -185,28 +185,28 @@ const ListMessagesRequest$json = {
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
-    {'1': 'next', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'next'},
+    {'1': 'next', '3': 3, '4': 1, '5': 3, '8': {}, '10': 'next'},
   ],
 };
 
 /// Descriptor for `ListMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listMessagesRequestDescriptor = $convert.base64Decode(
     'ChNMaXN0TWVzc2FnZXNSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW'
-    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEhsKBG5leHQYAyABKAVCB/pC'
-    'BBoCKABSBG5leHQ=');
+    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEhsKBG5leHQYAyABKANCB/pC'
+    'BCICKABSBG5leHQ=');
 
 @$core.Deprecated('Use listMessagesResponseDescriptor instead')
 const ListMessagesResponse$json = {
   '1': 'ListMessagesResponse',
   '2': [
     {'1': 'elements', '3': 1, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'elements'},
-    {'1': 'next', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'next'},
+    {'1': 'next', '3': 2, '4': 1, '5': 3, '8': {}, '10': 'next'},
   ],
 };
 
 /// Descriptor for `ListMessagesResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listMessagesResponseDescriptor = $convert.base64Decode(
     'ChRMaXN0TWVzc2FnZXNSZXNwb25zZRJGCghlbGVtZW50cxgBIAMoCzIeLmV4dHJlbW8ubXNnLm'
-    'RiLnYxLkNoYXRNZXNzYWdlQgr6QgeSAQQIABBkUghlbGVtZW50cxIbCgRuZXh0GAIgASgFQgf6'
-    'QgQaAigAUgRuZXh0');
+    'RiLnYxLkNoYXRNZXNzYWdlQgr6QgeSAQQIABBkUghlbGVtZW50cxIbCgRuZXh0GAIgASgDQgf6'
+    'QgQiAigAUgRuZXh0');
 

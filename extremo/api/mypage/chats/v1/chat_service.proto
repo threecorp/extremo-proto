@@ -252,7 +252,7 @@ message ListMessagesRequest {
   // Chat FK
   int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Next page token
-  int32 next = 3 [(validate.rules).int32 = {gte: 0}];
+  int64 next = 3 [(validate.rules).int64 = {gte: 0}];
 }
 
 message ListMessagesResponse {
@@ -262,5 +262,5 @@ message ListMessagesResponse {
     max_items: 100
   }];
   // Next page token
-  int32 next = 2 [(validate.rules).int32 = {gte: 0}];
+  int64 next = 2 [(validate.rules).int64 = {gte: 0}];
 }
