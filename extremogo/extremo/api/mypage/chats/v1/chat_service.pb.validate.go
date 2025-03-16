@@ -1618,9 +1618,9 @@ func (m *ListMessagesRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientId() <= 0 {
+	if m.GetRecipientFk() <= 0 {
 		err := ListMessagesRequestValidationError{
-			field:  "RecipientId",
+			field:  "RecipientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {

@@ -810,7 +810,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   factory ListMessagesRequest({
     $core.int? tenantFk,
     $core.int? chatFk,
-    $core.int? recipientId,
+    $core.int? recipientFk,
     $fixnum.Int64? next,
   }) {
     final $result = create();
@@ -820,8 +820,8 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
     if (chatFk != null) {
       $result.chatFk = chatFk;
     }
-    if (recipientId != null) {
-      $result.recipientId = recipientId;
+    if (recipientFk != null) {
+      $result.recipientFk = recipientFk;
     }
     if (next != null) {
       $result.next = next;
@@ -835,7 +835,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'recipientId', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
     ..aInt64(4, _omitFieldNames ? '' : 'next')
     ..hasRequiredFields = false
   ;
@@ -886,13 +886,13 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 
   /// Recipient FK
   @$pb.TagNumber(3)
-  $core.int get recipientId => $_getIZ(2);
+  $core.int get recipientFk => $_getIZ(2);
   @$pb.TagNumber(3)
-  set recipientId($core.int v) { $_setSignedInt32(2, v); }
+  set recipientFk($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasRecipientId() => $_has(2);
+  $core.bool hasRecipientFk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRecipientId() => clearField(3);
+  void clearRecipientFk() => clearField(3);
 
   /// Next page token
   @$pb.TagNumber(4)

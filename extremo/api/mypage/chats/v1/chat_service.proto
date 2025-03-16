@@ -252,7 +252,7 @@ message ListMessagesRequest {
   // Chat FK
   int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Recipient FK
-  int32 recipient_id = 3 [(validate.rules).int32 = {gt: 0}];
+  int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
   // Next page token
   int64 next = 4 [(validate.rules).int64 = {gte: 0}];
 }
