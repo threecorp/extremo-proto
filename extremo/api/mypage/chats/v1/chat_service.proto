@@ -128,8 +128,10 @@ message GetRequest {
   //
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 recipient_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Relation Key
-  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+  int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
 }
 
 message GetResponse {
@@ -158,10 +160,10 @@ message CreateResponse {
 message UpdateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
-  // PK
-  int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
   // FK
-  int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
+  int32 recipient_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // PK
+  int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
   // Content
   string message = 4 [(validate.rules).string = {
     min_len: 1
@@ -179,6 +181,8 @@ message DeleteRequest {
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // Primary Key is confirmed by JWT Token
   int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
 }
 
 // message CreateImageRequest {

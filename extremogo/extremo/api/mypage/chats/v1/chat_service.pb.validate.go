@@ -646,6 +646,17 @@ func (m *GetRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetRecipientFk() <= 0 {
+		err := GetRequestValidationError{
+			field:  "RecipientFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if m.GetPk() <= 0 {
 		err := GetRequestValidationError{
 			field:  "Pk",
@@ -1179,9 +1190,9 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetPk() <= 0 {
+	if m.GetRecipientFk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "Pk",
+			field:  "RecipientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1190,9 +1201,9 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetPk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "RecipientFk",
+			field:  "Pk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1466,6 +1477,17 @@ func (m *DeleteRequest) validate(all bool) error {
 	if m.GetPk() <= 0 {
 		err := DeleteRequestValidationError{
 			field:  "Pk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetRecipientFk() <= 0 {
+		err := DeleteRequestValidationError{
+			field:  "RecipientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
