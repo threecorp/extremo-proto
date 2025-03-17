@@ -306,15 +306,15 @@ class ListResponse extends $pb.GeneratedMessage {
 class GetRequest extends $pb.GeneratedMessage {
   factory GetRequest({
     $core.int? tenantFk,
-    $core.int? recipientFk,
+    $core.int? clientFk,
     $core.int? pk,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     if (pk != null) {
       $result.pk = pk;
@@ -327,7 +327,7 @@ class GetRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -368,13 +368,13 @@ class GetRequest extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(2)
-  $core.int get recipientFk => $_getIZ(1);
+  $core.int get clientFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set recipientFk($core.int v) { $_setSignedInt32(1, v); }
+  set clientFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasRecipientFk() => $_has(1);
+  $core.bool hasClientFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRecipientFk() => clearField(2);
+  void clearClientFk() => clearField(2);
 
   /// Relation Key
   @$pb.TagNumber(3)
@@ -444,15 +444,15 @@ class GetResponse extends $pb.GeneratedMessage {
 class CreateRequest extends $pb.GeneratedMessage {
   factory CreateRequest({
     $core.int? tenantFk,
-    $core.int? recipientFk,
+    $core.int? clientFk,
     $core.String? message,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     if (message != null) {
       $result.message = message;
@@ -465,7 +465,7 @@ class CreateRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
     ..aOS(3, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
   ;
@@ -503,13 +503,13 @@ class CreateRequest extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(2)
-  $core.int get recipientFk => $_getIZ(1);
+  $core.int get clientFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set recipientFk($core.int v) { $_setSignedInt32(1, v); }
+  set clientFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasRecipientFk() => $_has(1);
+  $core.bool hasClientFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRecipientFk() => clearField(2);
+  void clearClientFk() => clearField(2);
 
   /// Content
   @$pb.TagNumber(3)
@@ -578,7 +578,7 @@ class CreateResponse extends $pb.GeneratedMessage {
 class UpdateRequest extends $pb.GeneratedMessage {
   factory UpdateRequest({
     $core.int? tenantFk,
-    $core.int? recipientFk,
+    $core.int? clientFk,
     $core.int? pk,
     $core.String? message,
   }) {
@@ -586,8 +586,8 @@ class UpdateRequest extends $pb.GeneratedMessage {
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     if (pk != null) {
       $result.pk = pk;
@@ -603,7 +603,7 @@ class UpdateRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..aOS(4, _omitFieldNames ? '' : 'message')
     ..hasRequiredFields = false
@@ -642,13 +642,13 @@ class UpdateRequest extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(2)
-  $core.int get recipientFk => $_getIZ(1);
+  $core.int get clientFk => $_getIZ(1);
   @$pb.TagNumber(2)
-  set recipientFk($core.int v) { $_setSignedInt32(1, v); }
+  set clientFk($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasRecipientFk() => $_has(1);
+  $core.bool hasClientFk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRecipientFk() => clearField(2);
+  void clearClientFk() => clearField(2);
 
   /// PK
   @$pb.TagNumber(3)
@@ -728,7 +728,7 @@ class DeleteRequest extends $pb.GeneratedMessage {
   factory DeleteRequest({
     $core.int? tenantFk,
     $core.int? pk,
-    $core.int? recipientFk,
+    $core.int? clientFk,
   }) {
     final $result = create();
     if (tenantFk != null) {
@@ -737,8 +737,8 @@ class DeleteRequest extends $pb.GeneratedMessage {
     if (pk != null) {
       $result.pk = pk;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     return $result;
   }
@@ -749,7 +749,7 @@ class DeleteRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -796,20 +796,20 @@ class DeleteRequest extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(3)
-  $core.int get recipientFk => $_getIZ(2);
+  $core.int get clientFk => $_getIZ(2);
   @$pb.TagNumber(3)
-  set recipientFk($core.int v) { $_setSignedInt32(2, v); }
+  set clientFk($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasRecipientFk() => $_has(2);
+  $core.bool hasClientFk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRecipientFk() => clearField(3);
+  void clearClientFk() => clearField(3);
 }
 
 class ListMessagesRequest extends $pb.GeneratedMessage {
   factory ListMessagesRequest({
     $core.int? tenantFk,
     $core.int? chatFk,
-    $core.int? recipientFk,
+    $core.int? clientFk,
     $core.int? next,
   }) {
     final $result = create();
@@ -819,8 +819,8 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
     if (chatFk != null) {
       $result.chatFk = chatFk;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     if (next != null) {
       $result.next = next;
@@ -834,7 +834,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -885,13 +885,13 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 
   /// Recipient FK
   @$pb.TagNumber(3)
-  $core.int get recipientFk => $_getIZ(2);
+  $core.int get clientFk => $_getIZ(2);
   @$pb.TagNumber(3)
-  set recipientFk($core.int v) { $_setSignedInt32(2, v); }
+  set clientFk($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasRecipientFk() => $_has(2);
+  $core.bool hasClientFk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearRecipientFk() => clearField(3);
+  void clearClientFk() => clearField(3);
 
   /// Next page token
   @$pb.TagNumber(4)

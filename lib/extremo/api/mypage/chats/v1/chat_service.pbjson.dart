@@ -80,16 +80,16 @@ const GetRequest$json = {
   '1': 'GetRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
-    {'1': 'recipient_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'client_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
     {'1': 'pk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pk'},
   ],
 };
 
 /// Descriptor for `GetRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getRequestDescriptor = $convert.base64Decode(
-    'CgpHZXRSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSKgoMcm'
-    'VjaXBpZW50X2ZrGAIgASgFQgf6QgQaAiAAUgtyZWNpcGllbnRGaxIXCgJwaxgDIAEoBUIH+kIE'
-    'GgIgAFICcGs=');
+    'CgpHZXRSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSJAoJY2'
+    'xpZW50X2ZrGAIgASgFQgf6QgQaAiAAUghjbGllbnRGaxIXCgJwaxgDIAEoBUIH+kIEGgIgAFIC'
+    'cGs=');
 
 @$core.Deprecated('Use getResponseDescriptor instead')
 const GetResponse$json = {
@@ -109,16 +109,16 @@ const CreateRequest$json = {
   '1': 'CreateRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
-    {'1': 'recipient_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'client_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
     {'1': 'message', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'message'},
   ],
 };
 
 /// Descriptor for `CreateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createRequestDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSKg'
-    'oMcmVjaXBpZW50X2ZrGAIgASgFQgf6QgQaAiAAUgtyZWNpcGllbnRGaxIkCgdtZXNzYWdlGAMg'
-    'ASgJQgr6QgdyBRABGIBQUgdtZXNzYWdl');
+    'Cg1DcmVhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSJA'
+    'oJY2xpZW50X2ZrGAIgASgFQgf6QgQaAiAAUghjbGllbnRGaxIkCgdtZXNzYWdlGAMgASgJQgr6'
+    'QgdyBRABGIBQUgdtZXNzYWdl');
 
 @$core.Deprecated('Use createResponseDescriptor instead')
 const CreateResponse$json = {
@@ -138,7 +138,7 @@ const UpdateRequest$json = {
   '1': 'UpdateRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
-    {'1': 'recipient_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'client_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
     {'1': 'pk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'message', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'message'},
   ],
@@ -146,9 +146,9 @@ const UpdateRequest$json = {
 
 /// Descriptor for `UpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
-    'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSKg'
-    'oMcmVjaXBpZW50X2ZrGAIgASgFQgf6QgQaAiAAUgtyZWNpcGllbnRGaxIXCgJwaxgDIAEoBUIH'
-    '+kIEGgIgAFICcGsSJAoHbWVzc2FnZRgEIAEoCUIK+kIHcgUQARiAUFIHbWVzc2FnZQ==');
+    'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSJA'
+    'oJY2xpZW50X2ZrGAIgASgFQgf6QgQaAiAAUghjbGllbnRGaxIXCgJwaxgDIAEoBUIH+kIEGgIg'
+    'AFICcGsSJAoHbWVzc2FnZRgEIAEoCUIK+kIHcgUQARiAUFIHbWVzc2FnZQ==');
 
 @$core.Deprecated('Use updateResponseDescriptor instead')
 const UpdateResponse$json = {
@@ -169,15 +169,15 @@ const DeleteRequest$json = {
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'pk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'recipient_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'client_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
   ],
 };
 
 /// Descriptor for `DeleteRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteRequestDescriptor = $convert.base64Decode(
     'Cg1EZWxldGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSFw'
-    'oCcGsYAiABKAVCB/pCBBoCIABSAnBrEioKDHJlY2lwaWVudF9maxgDIAEoBUIH+kIEGgIgAFIL'
-    'cmVjaXBpZW50Rms=');
+    'oCcGsYAiABKAVCB/pCBBoCIABSAnBrEiQKCWNsaWVudF9maxgDIAEoBUIH+kIEGgIgAFIIY2xp'
+    'ZW50Rms=');
 
 @$core.Deprecated('Use listMessagesRequestDescriptor instead')
 const ListMessagesRequest$json = {
@@ -185,7 +185,7 @@ const ListMessagesRequest$json = {
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
-    {'1': 'recipient_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
+    {'1': 'client_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
     {'1': 'next', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'next'},
   ],
 };
@@ -193,9 +193,8 @@ const ListMessagesRequest$json = {
 /// Descriptor for `ListMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listMessagesRequestDescriptor = $convert.base64Decode(
     'ChNMaXN0TWVzc2FnZXNSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW'
-    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEioKDHJlY2lwaWVudF9maxgD'
-    'IAEoBUIH+kIEGgIgAFILcmVjaXBpZW50RmsSGwoEbmV4dBgEIAEoBUIH+kIEGgIoAFIEbmV4dA'
-    '==');
+    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEiQKCWNsaWVudF9maxgDIAEo'
+    'BUIH+kIEGgIgAFIIY2xpZW50RmsSGwoEbmV4dBgEIAEoBUIH+kIEGgIoAFIEbmV4dA==');
 
 @$core.Deprecated('Use listMessagesResponseDescriptor instead')
 const ListMessagesResponse$json = {

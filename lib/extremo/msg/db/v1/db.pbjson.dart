@@ -280,8 +280,8 @@ const Chat$json = {
     {'1': 'pk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'pk'},
     {'1': 'tenant_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'tenant', '3': 3, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Tenant', '8': {}, '10': 'tenant'},
-    {'1': 'recipient_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'recipientFk'},
-    {'1': 'recipient', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'recipient'},
+    {'1': 'client_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
+    {'1': 'client', '3': 5, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.User', '8': {}, '10': 'client'},
     {'1': 'messages', '3': 6, '4': 3, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'messages'},
     {'1': 'first_message', '3': 7, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'firstMessage'},
     {'1': 'last_message', '3': 8, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'lastMessage'},
@@ -294,15 +294,15 @@ const Chat$json = {
 final $typed_data.Uint8List chatDescriptor = $convert.base64Decode(
     'CgRDaGF0EhcKAnBrGAEgASgFQgf6QgQaAiAAUgJwaxIkCgl0ZW5hbnRfZmsYAiABKAVCB/pCBB'
     'oCIABSCHRlbmFudEZrEjsKBnRlbmFudBgDIAEoCzIZLmV4dHJlbW8ubXNnLmRiLnYxLlRlbmFu'
-    'dEII+kIFigECEAFSBnRlbmFudBIqCgxyZWNpcGllbnRfZmsYBCABKAVCB/pCBBoCIABSC3JlY2'
-    'lwaWVudEZrEj8KCXJlY2lwaWVudBgFIAEoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlVzZXJCCPpC'
-    'BYoBAhABUglyZWNpcGllbnQSRgoIbWVzc2FnZXMYBiADKAsyHi5leHRyZW1vLm1zZy5kYi52MS'
-    '5DaGF0TWVzc2FnZUIK+kIHkgEECAAQZFIIbWVzc2FnZXMSTQoNZmlyc3RfbWVzc2FnZRgHIAEo'
-    'CzIeLmV4dHJlbW8ubXNnLmRiLnYxLkNoYXRNZXNzYWdlQgj6QgWKAQIQAVIMZmlyc3RNZXNzYW'
-    'dlEksKDGxhc3RfbWVzc2FnZRgIIAEoCzIeLmV4dHJlbW8ubXNnLmRiLnYxLkNoYXRNZXNzYWdl'
-    'Qgj6QgWKAQIQAVILbGFzdE1lc3NhZ2USOQoKY3JlYXRlZF9hdBgPIAEoCzIaLmdvb2dsZS5wcm'
-    '90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GBAgASgLMhouZ29vZ2xl'
-    'LnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0');
+    'dEII+kIFigECEAFSBnRlbmFudBIkCgljbGllbnRfZmsYBCABKAVCB/pCBBoCIABSCGNsaWVudE'
+    'ZrEjkKBmNsaWVudBgFIAEoCzIXLmV4dHJlbW8ubXNnLmRiLnYxLlVzZXJCCPpCBYoBAhABUgZj'
+    'bGllbnQSRgoIbWVzc2FnZXMYBiADKAsyHi5leHRyZW1vLm1zZy5kYi52MS5DaGF0TWVzc2FnZU'
+    'IK+kIHkgEECAAQZFIIbWVzc2FnZXMSTQoNZmlyc3RfbWVzc2FnZRgHIAEoCzIeLmV4dHJlbW8u'
+    'bXNnLmRiLnYxLkNoYXRNZXNzYWdlQgj6QgWKAQIQAVIMZmlyc3RNZXNzYWdlEksKDGxhc3RfbW'
+    'Vzc2FnZRgIIAEoCzIeLmV4dHJlbW8ubXNnLmRiLnYxLkNoYXRNZXNzYWdlQgj6QgWKAQIQAVIL'
+    'bGFzdE1lc3NhZ2USOQoKY3JlYXRlZF9hdBgPIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3'
+    'RhbXBSCWNyZWF0ZWRBdBI5Cgp1cGRhdGVkX2F0GBAgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp'
+    'bWVzdGFtcFIJdXBkYXRlZEF0');
 
 @$core.Deprecated('Use chatMessageDescriptor instead')
 const ChatMessage$json = {

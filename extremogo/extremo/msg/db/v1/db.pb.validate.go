@@ -3072,9 +3072,9 @@ func (m *Chat) validate(all bool) error {
 		}
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := ChatValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -3083,9 +3083,9 @@ func (m *Chat) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipient() == nil {
+	if m.GetClient() == nil {
 		err := ChatValidationError{
-			field:  "Recipient",
+			field:  "Client",
 			reason: "value is required",
 		}
 		if !all {
@@ -3095,11 +3095,11 @@ func (m *Chat) validate(all bool) error {
 	}
 
 	if all {
-		switch v := interface{}(m.GetRecipient()).(type) {
+		switch v := interface{}(m.GetClient()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, ChatValidationError{
-					field:  "Recipient",
+					field:  "Client",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -3107,16 +3107,16 @@ func (m *Chat) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, ChatValidationError{
-					field:  "Recipient",
+					field:  "Client",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetRecipient()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetClient()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return ChatValidationError{
-				field:  "Recipient",
+				field:  "Client",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}

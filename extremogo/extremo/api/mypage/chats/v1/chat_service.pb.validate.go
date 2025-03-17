@@ -646,9 +646,9 @@ func (m *GetRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := GetRequestValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -917,9 +917,9 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := CreateRequestValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1190,9 +1190,9 @@ func (m *UpdateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := UpdateRequestValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1485,9 +1485,9 @@ func (m *DeleteRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := DeleteRequestValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {
@@ -1618,9 +1618,9 @@ func (m *ListMessagesRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if m.GetRecipientFk() <= 0 {
+	if m.GetClientFk() <= 0 {
 		err := ListMessagesRequestValidationError{
-			field:  "RecipientFk",
+			field:  "ClientFk",
 			reason: "value must be greater than 0",
 		}
 		if !all {

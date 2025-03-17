@@ -1627,8 +1627,8 @@ class Chat extends $pb.GeneratedMessage {
     $core.int? pk,
     $core.int? tenantFk,
     Tenant? tenant,
-    $core.int? recipientFk,
-    User? recipient,
+    $core.int? clientFk,
+    User? client,
     $core.Iterable<ChatMessage>? messages,
     ChatMessage? firstMessage,
     ChatMessage? lastMessage,
@@ -1645,11 +1645,11 @@ class Chat extends $pb.GeneratedMessage {
     if (tenant != null) {
       $result.tenant = tenant;
     }
-    if (recipientFk != null) {
-      $result.recipientFk = recipientFk;
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
-    if (recipient != null) {
-      $result.recipient = recipient;
+    if (client != null) {
+      $result.client = client;
     }
     if (messages != null) {
       $result.messages.addAll(messages);
@@ -1676,8 +1676,8 @@ class Chat extends $pb.GeneratedMessage {
     ..a<$core.int>(1, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..aOM<Tenant>(3, _omitFieldNames ? '' : 'tenant', subBuilder: Tenant.create)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'recipientFk', $pb.PbFieldType.O3)
-    ..aOM<User>(5, _omitFieldNames ? '' : 'recipient', subBuilder: User.create)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
+    ..aOM<User>(5, _omitFieldNames ? '' : 'client', subBuilder: User.create)
     ..pc<ChatMessage>(6, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: ChatMessage.create)
     ..aOM<ChatMessage>(7, _omitFieldNames ? '' : 'firstMessage', subBuilder: ChatMessage.create)
     ..aOM<ChatMessage>(8, _omitFieldNames ? '' : 'lastMessage', subBuilder: ChatMessage.create)
@@ -1741,25 +1741,25 @@ class Chat extends $pb.GeneratedMessage {
 
   /// FK
   @$pb.TagNumber(4)
-  $core.int get recipientFk => $_getIZ(3);
+  $core.int get clientFk => $_getIZ(3);
   @$pb.TagNumber(4)
-  set recipientFk($core.int v) { $_setSignedInt32(3, v); }
+  set clientFk($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasRecipientFk() => $_has(3);
+  $core.bool hasClientFk() => $_has(3);
   @$pb.TagNumber(4)
-  void clearRecipientFk() => clearField(4);
+  void clearClientFk() => clearField(4);
 
   /// Relation Message
   @$pb.TagNumber(5)
-  User get recipient => $_getN(4);
+  User get client => $_getN(4);
   @$pb.TagNumber(5)
-  set recipient(User v) { setField(5, v); }
+  set client(User v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasRecipient() => $_has(4);
+  $core.bool hasClient() => $_has(4);
   @$pb.TagNumber(5)
-  void clearRecipient() => clearField(5);
+  void clearClient() => clearField(5);
   @$pb.TagNumber(5)
-  User ensureRecipient() => $_ensure(4);
+  User ensureClient() => $_ensure(4);
 
   /// 1:N relation
   @$pb.TagNumber(6)

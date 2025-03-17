@@ -133,7 +133,7 @@ message GetRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // FK
-  int32 recipient_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Relation Key
   int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
 }
@@ -148,7 +148,7 @@ message CreateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // FK
-  int32 recipient_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Content
   string message = 3 [(validate.rules).string = {
     min_len: 1
@@ -165,7 +165,7 @@ message UpdateRequest {
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // FK
-  int32 recipient_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // PK
   int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
   // Content
@@ -186,7 +186,7 @@ message DeleteRequest {
   // Primary Key is confirmed by JWT Token
   int32 pk = 2 [(validate.rules).int32 = {gt: 0}];
   // FK
-  int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
+  int32 client_fk = 3 [(validate.rules).int32 = {gt: 0}];
 }
 
 // message CreateImageRequest {
@@ -252,7 +252,7 @@ message ListMessagesRequest {
   // Chat FK
   int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Recipient FK
-  int32 recipient_fk = 3 [(validate.rules).int32 = {gt: 0}];
+  int32 client_fk = 3 [(validate.rules).int32 = {gt: 0}];
   // Next page token
   int32 next = 4 [(validate.rules).int32 = {gte: 0}];
 }
