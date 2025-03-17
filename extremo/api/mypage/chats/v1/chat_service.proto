@@ -256,10 +256,12 @@ message ListMessagesRequest {
   //
   // Tenant FK
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Client FK
+  int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
   // Chat FK
-  int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  int32 chat_fk = 3 [(validate.rules).int32 = {gt: 0}];
   // Next page token
-  int32 next = 3 [(validate.rules).int32 = {gte: 0}];
+  int32 next = 4 [(validate.rules).int32 = {gte: 0}];
 }
 
 message ListMessagesResponse {

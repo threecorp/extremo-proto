@@ -1323,6 +1323,17 @@ func (m *ListMessagesRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetClientFk() <= 0 {
+		err := ListMessagesRequestValidationError{
+			field:  "ClientFk",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if m.GetChatFk() <= 0 {
 		err := ListMessagesRequestValidationError{
 			field:  "ChatFk",

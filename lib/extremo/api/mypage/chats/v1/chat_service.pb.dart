@@ -659,12 +659,16 @@ class DeleteRequest extends $pb.GeneratedMessage {
 class ListMessagesRequest extends $pb.GeneratedMessage {
   factory ListMessagesRequest({
     $core.int? tenantFk,
+    $core.int? clientFk,
     $core.int? chatFk,
     $core.int? next,
   }) {
     final $result = create();
     if (tenantFk != null) {
       $result.tenantFk = tenantFk;
+    }
+    if (clientFk != null) {
+      $result.clientFk = clientFk;
     }
     if (chatFk != null) {
       $result.chatFk = chatFk;
@@ -680,8 +684,9 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -719,25 +724,35 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTenantFk() => clearField(1);
 
+  /// Client FK
+  @$pb.TagNumber(2)
+  $core.int get clientFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set clientFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasClientFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearClientFk() => clearField(2);
+
   /// Chat FK
-  @$pb.TagNumber(2)
-  $core.int get chatFk => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set chatFk($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasChatFk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearChatFk() => clearField(2);
+  @$pb.TagNumber(3)
+  $core.int get chatFk => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set chatFk($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasChatFk() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearChatFk() => clearField(3);
 
   /// Next page token
-  @$pb.TagNumber(3)
-  $core.int get next => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set next($core.int v) { $_setSignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasNext() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearNext() => clearField(3);
+  @$pb.TagNumber(4)
+  $core.int get next => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set next($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasNext() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearNext() => clearField(4);
 }
 
 class ListMessagesResponse extends $pb.GeneratedMessage {

@@ -154,16 +154,17 @@ const ListMessagesRequest$json = {
   '1': 'ListMessagesRequest',
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
-    {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
-    {'1': 'next', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'next'},
+    {'1': 'client_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
+    {'1': 'chat_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
+    {'1': 'next', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'next'},
   ],
 };
 
 /// Descriptor for `ListMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listMessagesRequestDescriptor = $convert.base64Decode(
     'ChNMaXN0TWVzc2FnZXNSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW'
-    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEhsKBG5leHQYAyABKAVCB/pC'
-    'BBoCKABSBG5leHQ=');
+    '50RmsSJAoJY2xpZW50X2ZrGAIgASgFQgf6QgQaAiAAUghjbGllbnRGaxIgCgdjaGF0X2ZrGAMg'
+    'ASgFQgf6QgQaAiAAUgZjaGF0RmsSGwoEbmV4dBgEIAEoBUIH+kIEGgIoAFIEbmV4dA==');
 
 @$core.Deprecated('Use listMessagesResponseDescriptor instead')
 const ListMessagesResponse$json = {
