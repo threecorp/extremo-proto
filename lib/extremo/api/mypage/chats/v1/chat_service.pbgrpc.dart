@@ -38,8 +38,12 @@ class ChatServiceClient extends $grpc.Client {
       '/extremo.api.mypage.chats.v1.ChatService/List',
       ($4.ListRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.ListResponse.fromBuffer(value));
-  static final _$create = $grpc.ClientMethod<$4.CreateRequest, $4.CreateResponse>(
-      '/extremo.api.mypage.chats.v1.ChatService/Create',
+  static final _$createByAdmin = $grpc.ClientMethod<$4.CreateRequest, $4.CreateResponse>(
+      '/extremo.api.mypage.chats.v1.ChatService/CreateByAdmin',
+      ($4.CreateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.CreateResponse.fromBuffer(value));
+  static final _$createByClient = $grpc.ClientMethod<$4.CreateRequest, $4.CreateResponse>(
+      '/extremo.api.mypage.chats.v1.ChatService/CreateByClient',
       ($4.CreateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.CreateResponse.fromBuffer(value));
   static final _$listMessages = $grpc.ClientMethod<$4.ListMessagesRequest, $4.ListMessagesResponse>(
@@ -73,8 +77,12 @@ class ChatServiceClient extends $grpc.Client {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.CreateResponse> create($4.CreateRequest request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$create, request, options: options);
+  $grpc.ResponseFuture<$4.CreateResponse> createByAdmin($4.CreateRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$createByAdmin, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.CreateResponse> createByClient($4.CreateRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$createByClient, request, options: options);
   }
 
   $grpc.ResponseFuture<$4.ListMessagesResponse> listMessages($4.ListMessagesRequest request, {$grpc.CallOptions? options}) {
@@ -120,8 +128,15 @@ abstract class ChatServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $4.ListRequest.fromBuffer(value),
         ($4.ListResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.CreateRequest, $4.CreateResponse>(
-        'Create',
-        create_Pre,
+        'CreateByAdmin',
+        createByAdmin_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.CreateRequest.fromBuffer(value),
+        ($4.CreateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.CreateRequest, $4.CreateResponse>(
+        'CreateByClient',
+        createByClient_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $4.CreateRequest.fromBuffer(value),
@@ -158,8 +173,12 @@ abstract class ChatServiceBase extends $grpc.Service {
     return list(call, await request);
   }
 
-  $async.Future<$4.CreateResponse> create_Pre($grpc.ServiceCall call, $async.Future<$4.CreateRequest> request) async {
-    return create(call, await request);
+  $async.Future<$4.CreateResponse> createByAdmin_Pre($grpc.ServiceCall call, $async.Future<$4.CreateRequest> request) async {
+    return createByAdmin(call, await request);
+  }
+
+  $async.Future<$4.CreateResponse> createByClient_Pre($grpc.ServiceCall call, $async.Future<$4.CreateRequest> request) async {
+    return createByClient(call, await request);
   }
 
   $async.Future<$4.ListMessagesResponse> listMessages_Pre($grpc.ServiceCall call, $async.Future<$4.ListMessagesRequest> request) async {
@@ -174,7 +193,8 @@ abstract class ChatServiceBase extends $grpc.Service {
   $async.Future<$1.Empty> delete($grpc.ServiceCall call, $4.DeleteRequest request);
   $async.Future<$4.GetResponse> get($grpc.ServiceCall call, $4.GetRequest request);
   $async.Future<$4.ListResponse> list($grpc.ServiceCall call, $4.ListRequest request);
-  $async.Future<$4.CreateResponse> create($grpc.ServiceCall call, $4.CreateRequest request);
+  $async.Future<$4.CreateResponse> createByAdmin($grpc.ServiceCall call, $4.CreateRequest request);
+  $async.Future<$4.CreateResponse> createByClient($grpc.ServiceCall call, $4.CreateRequest request);
   $async.Future<$4.ListMessagesResponse> listMessages($grpc.ServiceCall call, $4.ListMessagesRequest request);
   $async.Future<$4.ReplyResponse> reply($grpc.ServiceCall call, $4.ReplyRequest request);
 }

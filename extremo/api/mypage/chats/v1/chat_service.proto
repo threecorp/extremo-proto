@@ -50,9 +50,16 @@ service ChatService {
     option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats"};
   }
   // Create creates a Chat with then return a Chat
-  rpc Create(CreateRequest) returns (CreateResponse) {
+  rpc CreateByAdmin(CreateRequest) returns (CreateResponse) {
     option (google.api.http) = {
-      post: "/api/mypage/v1/{tenant_fk}/chats"
+      post: "/api/mypage/v1/{tenant_fk}/chats/by-admin"
+      body: "*"
+    };
+  }
+  // Create creates a Chat with then return a Chat
+  rpc CreateByClient(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/api/mypage/v1/{tenant_fk}/chats/by-client"
       body: "*"
     };
   }
