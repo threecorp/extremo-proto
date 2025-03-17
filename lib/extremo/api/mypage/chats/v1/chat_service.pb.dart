@@ -511,7 +511,7 @@ class CreateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearClientFk() => clearField(2);
 
-  /// Content
+  /// [OPTIONAL] Content
   @$pb.TagNumber(3)
   $core.String get message => $_getSZ(2);
   @$pb.TagNumber(3)

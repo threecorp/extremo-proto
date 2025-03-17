@@ -928,10 +928,10 @@ func (m *CreateRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if l := utf8.RuneCountInString(m.GetMessage()); l < 1 || l > 10240 {
+	if l := utf8.RuneCountInString(m.GetMessage()); l < 0 || l > 10240 {
 		err := CreateRequestValidationError{
 			field:  "Message",
-			reason: "value length must be between 1 and 10240 runes, inclusive",
+			reason: "value length must be between 0 and 10240 runes, inclusive",
 		}
 		if !all {
 			return err

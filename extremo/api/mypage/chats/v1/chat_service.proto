@@ -50,16 +50,9 @@ service ChatService {
     option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats"};
   }
   // Create creates a Chat with then return a Chat
-  rpc CreateByAdmin(CreateRequest) returns (CreateResponse) {
+  rpc Create(CreateRequest) returns (CreateResponse) {
     option (google.api.http) = {
-      post: "/api/mypage/v1/{tenant_fk}/chats/by-admin"
-      body: "*"
-    };
-  }
-  // Create creates a Chat with then return a Chat
-  rpc CreateByClient(CreateRequest) returns (CreateResponse) {
-    option (google.api.http) = {
-      post: "/api/mypage/v1/{tenant_fk}/chats/by-client"
+      post: "/api/mypage/v1/{tenant_fk}/chats"
       body: "*"
     };
   }
@@ -163,9 +156,9 @@ message CreateRequest {
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // FK
   int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
-  // Content
+  // [OPTIONAL] Content
   string message = 3 [(validate.rules).string = {
-    min_len: 1
+    min_len: 0
     max_len: 10240
   }];
 }

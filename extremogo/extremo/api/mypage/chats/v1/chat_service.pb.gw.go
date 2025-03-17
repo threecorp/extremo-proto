@@ -271,7 +271,7 @@ func local_request_ChatService_List_0(ctx context.Context, marshaler runtime.Mar
 	return msg, metadata, err
 }
 
-func request_ChatService_CreateByAdmin_0(ctx context.Context, marshaler runtime.Marshaler, client ChatServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChatService_Create_0(ctx context.Context, marshaler runtime.Marshaler, client ChatServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq CreateRequest
 		metadata runtime.ServerMetadata
@@ -288,11 +288,11 @@ func request_ChatService_CreateByAdmin_0(ctx context.Context, marshaler runtime.
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
 	}
-	msg, err := client.CreateByAdmin(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 }
 
-func local_request_ChatService_CreateByAdmin_0(ctx context.Context, marshaler runtime.Marshaler, server ChatServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChatService_Create_0(ctx context.Context, marshaler runtime.Marshaler, server ChatServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq CreateRequest
 		metadata runtime.ServerMetadata
@@ -309,49 +309,7 @@ func local_request_ChatService_CreateByAdmin_0(ctx context.Context, marshaler ru
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
 	}
-	msg, err := server.CreateByAdmin(ctx, &protoReq)
-	return msg, metadata, err
-}
-
-func request_ChatService_CreateByClient_0(ctx context.Context, marshaler runtime.Marshaler, client ChatServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq CreateRequest
-		metadata runtime.ServerMetadata
-		err      error
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	val, ok := pathParams["tenant_fk"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tenant_fk")
-	}
-	protoReq.TenantFk, err = runtime.Int32(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
-	}
-	msg, err := client.CreateByClient(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_ChatService_CreateByClient_0(ctx context.Context, marshaler runtime.Marshaler, server ChatServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq CreateRequest
-		metadata runtime.ServerMetadata
-		err      error
-	)
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	val, ok := pathParams["tenant_fk"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tenant_fk")
-	}
-	protoReq.TenantFk, err = runtime.Int32(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tenant_fk", err)
-	}
-	msg, err := server.CreateByClient(ctx, &protoReq)
+	msg, err := server.Create(ctx, &protoReq)
 	return msg, metadata, err
 }
 
@@ -566,45 +524,25 @@ func RegisterChatServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_ChatService_List_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_ChatService_CreateByAdmin_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_ChatService_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/CreateByAdmin", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats/by-admin"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/Create", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChatService_CreateByAdmin_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChatService_Create_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_ChatService_CreateByAdmin_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_ChatService_CreateByClient_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/CreateByClient", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats/by-client"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ChatService_CreateByClient_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_ChatService_CreateByClient_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChatService_Create_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodGet, pattern_ChatService_ListMessages_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -754,39 +692,22 @@ func RegisterChatServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 		forward_ChatService_List_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_ChatService_CreateByAdmin_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_ChatService_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/CreateByAdmin", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats/by-admin"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/Create", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ChatService_CreateByAdmin_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ChatService_Create_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_ChatService_CreateByAdmin_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodPost, pattern_ChatService_CreateByClient_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/extremo.api.mypage.chats.v1.ChatService/CreateByClient", runtime.WithHTTPPathPattern("/api/mypage/v1/{tenant_fk}/chats/by-client"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChatService_CreateByClient_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_ChatService_CreateByClient_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChatService_Create_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodGet, pattern_ChatService_ListMessages_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -826,23 +747,21 @@ func RegisterChatServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_ChatService_ListUsers_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "users"}, ""))
-	pattern_ChatService_Delete_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "pk"}, ""))
-	pattern_ChatService_Get_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "pk"}, ""))
-	pattern_ChatService_List_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "mypage", "v1", "tenant_fk", "chats"}, ""))
-	pattern_ChatService_CreateByAdmin_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "by-admin"}, ""))
-	pattern_ChatService_CreateByClient_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "by-client"}, ""))
-	pattern_ChatService_ListMessages_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "chat_fk", "messages"}, ""))
-	pattern_ChatService_Reply_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "chat_fk", "messages"}, ""))
+	pattern_ChatService_ListUsers_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "users"}, ""))
+	pattern_ChatService_Delete_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "pk"}, ""))
+	pattern_ChatService_Get_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "pk"}, ""))
+	pattern_ChatService_List_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "mypage", "v1", "tenant_fk", "chats"}, ""))
+	pattern_ChatService_Create_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "mypage", "v1", "tenant_fk", "chats"}, ""))
+	pattern_ChatService_ListMessages_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "chat_fk", "messages"}, ""))
+	pattern_ChatService_Reply_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "mypage", "v1", "tenant_fk", "chats", "chat_fk", "messages"}, ""))
 )
 
 var (
-	forward_ChatService_ListUsers_0      = runtime.ForwardResponseMessage
-	forward_ChatService_Delete_0         = runtime.ForwardResponseMessage
-	forward_ChatService_Get_0            = runtime.ForwardResponseMessage
-	forward_ChatService_List_0           = runtime.ForwardResponseMessage
-	forward_ChatService_CreateByAdmin_0  = runtime.ForwardResponseMessage
-	forward_ChatService_CreateByClient_0 = runtime.ForwardResponseMessage
-	forward_ChatService_ListMessages_0   = runtime.ForwardResponseMessage
-	forward_ChatService_Reply_0          = runtime.ForwardResponseMessage
+	forward_ChatService_ListUsers_0    = runtime.ForwardResponseMessage
+	forward_ChatService_Delete_0       = runtime.ForwardResponseMessage
+	forward_ChatService_Get_0          = runtime.ForwardResponseMessage
+	forward_ChatService_List_0         = runtime.ForwardResponseMessage
+	forward_ChatService_Create_0       = runtime.ForwardResponseMessage
+	forward_ChatService_ListMessages_0 = runtime.ForwardResponseMessage
+	forward_ChatService_Reply_0        = runtime.ForwardResponseMessage
 )

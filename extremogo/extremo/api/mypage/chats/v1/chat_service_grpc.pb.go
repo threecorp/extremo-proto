@@ -24,14 +24,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ChatService_ListUsers_FullMethodName      = "/extremo.api.mypage.chats.v1.ChatService/ListUsers"
-	ChatService_Delete_FullMethodName         = "/extremo.api.mypage.chats.v1.ChatService/Delete"
-	ChatService_Get_FullMethodName            = "/extremo.api.mypage.chats.v1.ChatService/Get"
-	ChatService_List_FullMethodName           = "/extremo.api.mypage.chats.v1.ChatService/List"
-	ChatService_CreateByAdmin_FullMethodName  = "/extremo.api.mypage.chats.v1.ChatService/CreateByAdmin"
-	ChatService_CreateByClient_FullMethodName = "/extremo.api.mypage.chats.v1.ChatService/CreateByClient"
-	ChatService_ListMessages_FullMethodName   = "/extremo.api.mypage.chats.v1.ChatService/ListMessages"
-	ChatService_Reply_FullMethodName          = "/extremo.api.mypage.chats.v1.ChatService/Reply"
+	ChatService_ListUsers_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/ListUsers"
+	ChatService_Delete_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Delete"
+	ChatService_Get_FullMethodName          = "/extremo.api.mypage.chats.v1.ChatService/Get"
+	ChatService_List_FullMethodName         = "/extremo.api.mypage.chats.v1.ChatService/List"
+	ChatService_Create_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Create"
+	ChatService_ListMessages_FullMethodName = "/extremo.api.mypage.chats.v1.ChatService/ListMessages"
+	ChatService_Reply_FullMethodName        = "/extremo.api.mypage.chats.v1.ChatService/Reply"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -59,9 +58,7 @@ type ChatServiceClient interface {
 	// List returns Chats as list with pagination
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
-	CreateByAdmin(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
-	// Create creates a Chat with then return a Chat
-	CreateByClient(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	// // CreateImage creates a image
 	//
 	//	rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
@@ -134,20 +131,10 @@ func (c *chatServiceClient) List(ctx context.Context, in *ListRequest, opts ...g
 	return out, nil
 }
 
-func (c *chatServiceClient) CreateByAdmin(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+func (c *chatServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, ChatService_CreateByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chatServiceClient) CreateByClient(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, ChatService_CreateByClient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ChatService_Create_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -199,9 +186,7 @@ type ChatServiceServer interface {
 	// List returns Chats as list with pagination
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
-	CreateByAdmin(context.Context, *CreateRequest) (*CreateResponse, error)
-	// Create creates a Chat with then return a Chat
-	CreateByClient(context.Context, *CreateRequest) (*CreateResponse, error)
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	// // CreateImage creates a image
 	//
 	//	rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
@@ -246,11 +231,8 @@ func (UnimplementedChatServiceServer) Get(context.Context, *GetRequest) (*GetRes
 func (UnimplementedChatServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedChatServiceServer) CreateByAdmin(context.Context, *CreateRequest) (*CreateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateByAdmin not implemented")
-}
-func (UnimplementedChatServiceServer) CreateByClient(context.Context, *CreateRequest) (*CreateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateByClient not implemented")
+func (UnimplementedChatServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
 func (UnimplementedChatServiceServer) ListMessages(context.Context, *ListMessagesRequest) (*ListMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMessages not implemented")
@@ -351,38 +333,20 @@ func _ChatService_List_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ChatService_CreateByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ChatService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatServiceServer).CreateByAdmin(ctx, in)
+		return srv.(ChatServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatService_CreateByAdmin_FullMethodName,
+		FullMethod: ChatService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).CreateByAdmin(ctx, req.(*CreateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChatService_CreateByClient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChatServiceServer).CreateByClient(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ChatService_CreateByClient_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).CreateByClient(ctx, req.(*CreateRequest))
+		return srv.(ChatServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -447,12 +411,8 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ChatService_List_Handler,
 		},
 		{
-			MethodName: "CreateByAdmin",
-			Handler:    _ChatService_CreateByAdmin_Handler,
-		},
-		{
-			MethodName: "CreateByClient",
-			Handler:    _ChatService_CreateByClient_Handler,
+			MethodName: "Create",
+			Handler:    _ChatService_Create_Handler,
 		},
 		{
 			MethodName: "ListMessages",
