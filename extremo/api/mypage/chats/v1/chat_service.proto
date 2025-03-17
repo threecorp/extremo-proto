@@ -31,12 +31,12 @@ service ChatService {
     option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/users"};
   }
   // Update updates a Chat with then return a Chat
-  rpc Update(UpdateRequest) returns (UpdateResponse) {
-    option (google.api.http) = {
-      put: "/api/mypage/v1/{tenant_fk}/chats/{pk}"
-      body: "*"
-    };
-  }
+  // rpc Update(UpdateRequest) returns (UpdateResponse) {
+  //   option (google.api.http) = {
+  //     put: "/api/mypage/v1/{tenant_fk}/chats/{pk}"
+  //     body: "*"
+  //   };
+  // }
   // Delete deletes a Chat with return nothing
   rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {delete: "/api/mypage/v1/{tenant_fk}/chats/{pk}"};
@@ -56,10 +56,6 @@ service ChatService {
       body: "*"
     };
   }
-  // ListMessages returns Messages as list with pagination
-  rpc ListMessages(ListMessagesRequest) returns (ListMessagesResponse) {
-    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/{chat_fk}/messages"};
-  }
   // // CreateImage creates a image
   // rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
   //   option (google.api.http) = {
@@ -74,6 +70,17 @@ service ChatService {
   //     body: "*"
   //   };
   // }
+  // ListMessages returns Messages as list with pagination
+  rpc ListMessages(ListMessagesRequest) returns (ListMessagesResponse) {
+    option (google.api.http) = {get: "/api/mypage/v1/{tenant_fk}/chats/{chat_fk}/messages"};
+  }
+  // Reply creates a Chat with then return a Chat
+  rpc Reply(ReplyRequest) returns (ReplyResponse) {
+    option (google.api.http) = {
+      post: "/api/mypage/v1/{tenant_fk}/chats/{chat_fk}/messages"
+      body: "*"
+    };
+  }
 }
 
 message ListUsersRequest {
@@ -161,24 +168,24 @@ message CreateResponse {
   extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
 }
 
-message UpdateRequest {
-  // Tenant FK
-  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
-  // FK
-  int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
-  // PK
-  int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
-  // Content
-  string message = 4 [(validate.rules).string = {
-    min_len: 1
-    max_len: 10240
-  }];
-}
-
-message UpdateResponse {
-  // A user message. if request user is not published, it filtered them. so response might be empty.
-  extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
-}
+// message UpdateRequest {
+//   // Tenant FK
+//   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+//   // FK
+//   int32 client_fk = 2 [(validate.rules).int32 = {gt: 0}];
+//   // PK
+//   int32 pk = 3 [(validate.rules).int32 = {gt: 0}];
+//   // Content
+//   string message = 4 [(validate.rules).string = {
+//     min_len: 1
+//     max_len: 10240
+//   }];
+// }
+//
+// message UpdateResponse {
+//   // A user message. if request user is not published, it filtered them. so response might be empty.
+//   extremo.msg.db.v1.Chat element = 1 [(validate.rules).message = {required: true}];
+// }
 
 message DeleteRequest {
   // Tenant FK
@@ -251,10 +258,8 @@ message ListMessagesRequest {
   int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
   // Chat FK
   int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
-  // Recipient FK
-  int32 client_fk = 3 [(validate.rules).int32 = {gt: 0}];
   // Next page token
-  int32 next = 4 [(validate.rules).int32 = {gte: 0}];
+  int32 next = 3 [(validate.rules).int32 = {gte: 0}];
 }
 
 message ListMessagesResponse {
@@ -265,4 +270,26 @@ message ListMessagesResponse {
   }];
   // Next page token
   int32 next = 2 [(validate.rules).int32 = {gte: 0}];
+}
+
+// PrimaryKey is set by JWT Token
+message ReplyRequest {
+  // Tenant FK
+  int32 tenant_fk = 1 [(validate.rules).int32 = {gt: 0}];
+  // Chat FK
+  int32 chat_fk = 2 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 from_fk = 3 [(validate.rules).int32 = {gt: 0}];
+  // FK
+  int32 to_fk = 4 [(validate.rules).int32 = {gt: 0}];
+  // Content
+  string message = 5 [(validate.rules).string = {
+    min_len: 1
+    max_len: 10240
+  }];
+}
+
+message ReplyResponse {
+  // A user chat. if request user is not published, it filtered them. so response might be empty.
+  extremo.msg.db.v1.ChatMessage element = 1 [(validate.rules).message = {required: true}];
 }

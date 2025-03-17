@@ -26,10 +26,6 @@ class ChatServiceClient extends $grpc.Client {
       '/extremo.api.mypage.chats.v1.ChatService/ListUsers',
       ($4.ListUsersRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.ListUsersResponse.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$4.UpdateRequest, $4.UpdateResponse>(
-      '/extremo.api.mypage.chats.v1.ChatService/Update',
-      ($4.UpdateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.UpdateResponse.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$4.DeleteRequest, $1.Empty>(
       '/extremo.api.mypage.chats.v1.ChatService/Delete',
       ($4.DeleteRequest value) => value.writeToBuffer(),
@@ -50,6 +46,10 @@ class ChatServiceClient extends $grpc.Client {
       '/extremo.api.mypage.chats.v1.ChatService/ListMessages',
       ($4.ListMessagesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.ListMessagesResponse.fromBuffer(value));
+  static final _$reply = $grpc.ClientMethod<$4.ReplyRequest, $4.ReplyResponse>(
+      '/extremo.api.mypage.chats.v1.ChatService/Reply',
+      ($4.ReplyRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.ReplyResponse.fromBuffer(value));
 
   ChatServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -59,10 +59,6 @@ class ChatServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$4.ListUsersResponse> listUsers($4.ListUsersRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listUsers, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.UpdateResponse> update($4.UpdateRequest request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$update, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.Empty> delete($4.DeleteRequest request, {$grpc.CallOptions? options}) {
@@ -84,6 +80,10 @@ class ChatServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$4.ListMessagesResponse> listMessages($4.ListMessagesRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listMessages, request, options: options);
   }
+
+  $grpc.ResponseFuture<$4.ReplyResponse> reply($4.ReplyRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$reply, request, options: options);
+  }
 }
 
 @$pb.GrpcServiceName('extremo.api.mypage.chats.v1.ChatService')
@@ -98,13 +98,6 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.ListUsersRequest.fromBuffer(value),
         ($4.ListUsersResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.UpdateRequest, $4.UpdateResponse>(
-        'Update',
-        update_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $4.UpdateRequest.fromBuffer(value),
-        ($4.UpdateResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.DeleteRequest, $1.Empty>(
         'Delete',
         delete_Pre,
@@ -140,14 +133,17 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.ListMessagesRequest.fromBuffer(value),
         ($4.ListMessagesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.ReplyRequest, $4.ReplyResponse>(
+        'Reply',
+        reply_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.ReplyRequest.fromBuffer(value),
+        ($4.ReplyResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.ListUsersResponse> listUsers_Pre($grpc.ServiceCall call, $async.Future<$4.ListUsersRequest> request) async {
     return listUsers(call, await request);
-  }
-
-  $async.Future<$4.UpdateResponse> update_Pre($grpc.ServiceCall call, $async.Future<$4.UpdateRequest> request) async {
-    return update(call, await request);
   }
 
   $async.Future<$1.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$4.DeleteRequest> request) async {
@@ -170,11 +166,15 @@ abstract class ChatServiceBase extends $grpc.Service {
     return listMessages(call, await request);
   }
 
+  $async.Future<$4.ReplyResponse> reply_Pre($grpc.ServiceCall call, $async.Future<$4.ReplyRequest> request) async {
+    return reply(call, await request);
+  }
+
   $async.Future<$4.ListUsersResponse> listUsers($grpc.ServiceCall call, $4.ListUsersRequest request);
-  $async.Future<$4.UpdateResponse> update($grpc.ServiceCall call, $4.UpdateRequest request);
   $async.Future<$1.Empty> delete($grpc.ServiceCall call, $4.DeleteRequest request);
   $async.Future<$4.GetResponse> get($grpc.ServiceCall call, $4.GetRequest request);
   $async.Future<$4.ListResponse> list($grpc.ServiceCall call, $4.ListRequest request);
   $async.Future<$4.CreateResponse> create($grpc.ServiceCall call, $4.CreateRequest request);
   $async.Future<$4.ListMessagesResponse> listMessages($grpc.ServiceCall call, $4.ListMessagesRequest request);
+  $async.Future<$4.ReplyResponse> reply($grpc.ServiceCall call, $4.ReplyRequest request);
 }

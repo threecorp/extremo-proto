@@ -133,36 +133,6 @@ final $typed_data.Uint8List createResponseDescriptor = $convert.base64Decode(
     'Cg5DcmVhdGVSZXNwb25zZRI7CgdlbGVtZW50GAEgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuQ2'
     'hhdEII+kIFigECEAFSB2VsZW1lbnQ=');
 
-@$core.Deprecated('Use updateRequestDescriptor instead')
-const UpdateRequest$json = {
-  '1': 'UpdateRequest',
-  '2': [
-    {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
-    {'1': 'client_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
-    {'1': 'pk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'pk'},
-    {'1': 'message', '3': 4, '4': 1, '5': 9, '8': {}, '10': 'message'},
-  ],
-};
-
-/// Descriptor for `UpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateRequestDescriptor = $convert.base64Decode(
-    'Cg1VcGRhdGVSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW50RmsSJA'
-    'oJY2xpZW50X2ZrGAIgASgFQgf6QgQaAiAAUghjbGllbnRGaxIXCgJwaxgDIAEoBUIH+kIEGgIg'
-    'AFICcGsSJAoHbWVzc2FnZRgEIAEoCUIK+kIHcgUQARiAUFIHbWVzc2FnZQ==');
-
-@$core.Deprecated('Use updateResponseDescriptor instead')
-const UpdateResponse$json = {
-  '1': 'UpdateResponse',
-  '2': [
-    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.Chat', '8': {}, '10': 'element'},
-  ],
-};
-
-/// Descriptor for `UpdateResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateResponseDescriptor = $convert.base64Decode(
-    'Cg5VcGRhdGVSZXNwb25zZRI7CgdlbGVtZW50GAEgASgLMhcuZXh0cmVtby5tc2cuZGIudjEuQ2'
-    'hhdEII+kIFigECEAFSB2VsZW1lbnQ=');
-
 @$core.Deprecated('Use deleteRequestDescriptor instead')
 const DeleteRequest$json = {
   '1': 'DeleteRequest',
@@ -185,16 +155,15 @@ const ListMessagesRequest$json = {
   '2': [
     {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
     {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
-    {'1': 'client_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'clientFk'},
-    {'1': 'next', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'next'},
+    {'1': 'next', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'next'},
   ],
 };
 
 /// Descriptor for `ListMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listMessagesRequestDescriptor = $convert.base64Decode(
     'ChNMaXN0TWVzc2FnZXNSZXF1ZXN0EiQKCXRlbmFudF9maxgBIAEoBUIH+kIEGgIgAFIIdGVuYW'
-    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEiQKCWNsaWVudF9maxgDIAEo'
-    'BUIH+kIEGgIgAFIIY2xpZW50RmsSGwoEbmV4dBgEIAEoBUIH+kIEGgIoAFIEbmV4dA==');
+    '50RmsSIAoHY2hhdF9maxgCIAEoBUIH+kIEGgIgAFIGY2hhdEZrEhsKBG5leHQYAyABKAVCB/pC'
+    'BBoCKABSBG5leHQ=');
 
 @$core.Deprecated('Use listMessagesResponseDescriptor instead')
 const ListMessagesResponse$json = {
@@ -210,4 +179,36 @@ final $typed_data.Uint8List listMessagesResponseDescriptor = $convert.base64Deco
     'ChRMaXN0TWVzc2FnZXNSZXNwb25zZRJGCghlbGVtZW50cxgBIAMoCzIeLmV4dHJlbW8ubXNnLm'
     'RiLnYxLkNoYXRNZXNzYWdlQgr6QgeSAQQIABBkUghlbGVtZW50cxIbCgRuZXh0GAIgASgFQgf6'
     'QgQaAigAUgRuZXh0');
+
+@$core.Deprecated('Use replyRequestDescriptor instead')
+const ReplyRequest$json = {
+  '1': 'ReplyRequest',
+  '2': [
+    {'1': 'tenant_fk', '3': 1, '4': 1, '5': 5, '8': {}, '10': 'tenantFk'},
+    {'1': 'chat_fk', '3': 2, '4': 1, '5': 5, '8': {}, '10': 'chatFk'},
+    {'1': 'from_fk', '3': 3, '4': 1, '5': 5, '8': {}, '10': 'fromFk'},
+    {'1': 'to_fk', '3': 4, '4': 1, '5': 5, '8': {}, '10': 'toFk'},
+    {'1': 'message', '3': 5, '4': 1, '5': 9, '8': {}, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `ReplyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List replyRequestDescriptor = $convert.base64Decode(
+    'CgxSZXBseVJlcXVlc3QSJAoJdGVuYW50X2ZrGAEgASgFQgf6QgQaAiAAUgh0ZW5hbnRGaxIgCg'
+    'djaGF0X2ZrGAIgASgFQgf6QgQaAiAAUgZjaGF0RmsSIAoHZnJvbV9maxgDIAEoBUIH+kIEGgIg'
+    'AFIGZnJvbUZrEhwKBXRvX2ZrGAQgASgFQgf6QgQaAiAAUgR0b0ZrEiQKB21lc3NhZ2UYBSABKA'
+    'lCCvpCB3IFEAEYgFBSB21lc3NhZ2U=');
+
+@$core.Deprecated('Use replyResponseDescriptor instead')
+const ReplyResponse$json = {
+  '1': 'ReplyResponse',
+  '2': [
+    {'1': 'element', '3': 1, '4': 1, '5': 11, '6': '.extremo.msg.db.v1.ChatMessage', '8': {}, '10': 'element'},
+  ],
+};
+
+/// Descriptor for `ReplyResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List replyResponseDescriptor = $convert.base64Decode(
+    'Cg1SZXBseVJlc3BvbnNlEkIKB2VsZW1lbnQYASABKAsyHi5leHRyZW1vLm1zZy5kYi52MS5DaG'
+    'F0TWVzc2FnZUII+kIFigECEAFSB2VsZW1lbnQ=');
 

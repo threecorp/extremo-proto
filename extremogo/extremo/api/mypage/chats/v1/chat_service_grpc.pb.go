@@ -25,12 +25,12 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	ChatService_ListUsers_FullMethodName    = "/extremo.api.mypage.chats.v1.ChatService/ListUsers"
-	ChatService_Update_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Update"
 	ChatService_Delete_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Delete"
 	ChatService_Get_FullMethodName          = "/extremo.api.mypage.chats.v1.ChatService/Get"
 	ChatService_List_FullMethodName         = "/extremo.api.mypage.chats.v1.ChatService/List"
 	ChatService_Create_FullMethodName       = "/extremo.api.mypage.chats.v1.ChatService/Create"
 	ChatService_ListMessages_FullMethodName = "/extremo.api.mypage.chats.v1.ChatService/ListMessages"
+	ChatService_Reply_FullMethodName        = "/extremo.api.mypage.chats.v1.ChatService/Reply"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -43,7 +43,14 @@ type ChatServiceClient interface {
 	// ListUsers returns Chats' users as list with pagination
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// Update updates a Chat with then return a Chat
-	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	//
+	//	rpc Update(UpdateRequest) returns (UpdateResponse) {
+	//	  option (google.api.http) = {
+	//	    put: "/api/mypage/v1/{tenant_fk}/chats/{pk}"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
 	// Delete deletes a Chat with return nothing
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Get returns a chat
@@ -52,8 +59,28 @@ type ChatServiceClient interface {
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	// // CreateImage creates a image
+	//
+	//	rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
+	//	  option (google.api.http) = {
+	//	    post: "/api/mypage/v1/chats/{chat_fk}/image"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
+	// // UpdateImage creates a image
+	//
+	//	rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
+	//	  option (google.api.http) = {
+	//	    put: "/api/mypage/v1/chats/{chat_fk}/image/{pk}"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
 	// ListMessages returns Messages as list with pagination
 	ListMessages(ctx context.Context, in *ListMessagesRequest, opts ...grpc.CallOption) (*ListMessagesResponse, error)
+	// Reply creates a Chat with then return a Chat
+	Reply(ctx context.Context, in *ReplyRequest, opts ...grpc.CallOption) (*ReplyResponse, error)
 }
 
 type chatServiceClient struct {
@@ -68,16 +95,6 @@ func (c *chatServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest,
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListUsersResponse)
 	err := c.cc.Invoke(ctx, ChatService_ListUsers_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chatServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateResponse)
-	err := c.cc.Invoke(ctx, ChatService_Update_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -134,6 +151,16 @@ func (c *chatServiceClient) ListMessages(ctx context.Context, in *ListMessagesRe
 	return out, nil
 }
 
+func (c *chatServiceClient) Reply(ctx context.Context, in *ReplyRequest, opts ...grpc.CallOption) (*ReplyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReplyResponse)
+	err := c.cc.Invoke(ctx, ChatService_Reply_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ChatServiceServer is the server API for ChatService service.
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
@@ -144,7 +171,14 @@ type ChatServiceServer interface {
 	// ListUsers returns Chats' users as list with pagination
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// Update updates a Chat with then return a Chat
-	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	//
+	//	rpc Update(UpdateRequest) returns (UpdateResponse) {
+	//	  option (google.api.http) = {
+	//	    put: "/api/mypage/v1/{tenant_fk}/chats/{pk}"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
 	// Delete deletes a Chat with return nothing
 	Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error)
 	// Get returns a chat
@@ -153,8 +187,28 @@ type ChatServiceServer interface {
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	// Create creates a Chat with then return a Chat
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	// // CreateImage creates a image
+	//
+	//	rpc CreateImage(CreateImageRequest) returns (CreateImageResponse) {
+	//	  option (google.api.http) = {
+	//	    post: "/api/mypage/v1/chats/{chat_fk}/image"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
+	// // UpdateImage creates a image
+	//
+	//	rpc UpdateImage(UpdateImageRequest) returns (UpdateImageResponse) {
+	//	  option (google.api.http) = {
+	//	    put: "/api/mypage/v1/chats/{chat_fk}/image/{pk}"
+	//	    body: "*"
+	//	  };
+	//	}
+	//
 	// ListMessages returns Messages as list with pagination
 	ListMessages(context.Context, *ListMessagesRequest) (*ListMessagesResponse, error)
+	// Reply creates a Chat with then return a Chat
+	Reply(context.Context, *ReplyRequest) (*ReplyResponse, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -167,9 +221,6 @@ type UnimplementedChatServiceServer struct{}
 
 func (UnimplementedChatServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
-}
-func (UnimplementedChatServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedChatServiceServer) Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
@@ -185,6 +236,9 @@ func (UnimplementedChatServiceServer) Create(context.Context, *CreateRequest) (*
 }
 func (UnimplementedChatServiceServer) ListMessages(context.Context, *ListMessagesRequest) (*ListMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMessages not implemented")
+}
+func (UnimplementedChatServiceServer) Reply(context.Context, *ReplyRequest) (*ReplyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Reply not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -221,24 +275,6 @@ func _ChatService_ListUsers_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ChatServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChatService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChatServiceServer).Update(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ChatService_Update_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -333,6 +369,24 @@ func _ChatService_ListMessages_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ChatService_Reply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReplyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatServiceServer).Reply(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ChatService_Reply_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatServiceServer).Reply(ctx, req.(*ReplyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ChatService_ServiceDesc is the grpc.ServiceDesc for ChatService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -343,10 +397,6 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListUsers",
 			Handler:    _ChatService_ListUsers_Handler,
-		},
-		{
-			MethodName: "Update",
-			Handler:    _ChatService_Update_Handler,
 		},
 		{
 			MethodName: "Delete",
@@ -367,6 +417,10 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListMessages",
 			Handler:    _ChatService_ListMessages_Handler,
+		},
+		{
+			MethodName: "Reply",
+			Handler:    _ChatService_Reply_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

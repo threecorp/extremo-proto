@@ -575,155 +575,6 @@ class CreateResponse extends $pb.GeneratedMessage {
   $14.Chat ensureElement() => $_ensure(0);
 }
 
-class UpdateRequest extends $pb.GeneratedMessage {
-  factory UpdateRequest({
-    $core.int? tenantFk,
-    $core.int? clientFk,
-    $core.int? pk,
-    $core.String? message,
-  }) {
-    final $result = create();
-    if (tenantFk != null) {
-      $result.tenantFk = tenantFk;
-    }
-    if (clientFk != null) {
-      $result.clientFk = clientFk;
-    }
-    if (pk != null) {
-      $result.pk = pk;
-    }
-    if (message != null) {
-      $result.message = message;
-    }
-    return $result;
-  }
-  UpdateRequest._() : super();
-  factory UpdateRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UpdateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.O3)
-    ..aOS(4, _omitFieldNames ? '' : 'message')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  UpdateRequest clone() => UpdateRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  UpdateRequest copyWith(void Function(UpdateRequest) updates) => super.copyWith((message) => updates(message as UpdateRequest)) as UpdateRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static UpdateRequest create() => UpdateRequest._();
-  UpdateRequest createEmptyInstance() => create();
-  static $pb.PbList<UpdateRequest> createRepeated() => $pb.PbList<UpdateRequest>();
-  @$core.pragma('dart2js:noInline')
-  static UpdateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateRequest>(create);
-  static UpdateRequest? _defaultInstance;
-
-  /// Tenant FK
-  @$pb.TagNumber(1)
-  $core.int get tenantFk => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasTenantFk() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearTenantFk() => clearField(1);
-
-  /// FK
-  @$pb.TagNumber(2)
-  $core.int get clientFk => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set clientFk($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasClientFk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearClientFk() => clearField(2);
-
-  /// PK
-  @$pb.TagNumber(3)
-  $core.int get pk => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set pk($core.int v) { $_setSignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasPk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearPk() => clearField(3);
-
-  /// Content
-  @$pb.TagNumber(4)
-  $core.String get message => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set message($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasMessage() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearMessage() => clearField(4);
-}
-
-class UpdateResponse extends $pb.GeneratedMessage {
-  factory UpdateResponse({
-    $14.Chat? element,
-  }) {
-    final $result = create();
-    if (element != null) {
-      $result.element = element;
-    }
-    return $result;
-  }
-  UpdateResponse._() : super();
-  factory UpdateResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UpdateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
-    ..aOM<$14.Chat>(1, _omitFieldNames ? '' : 'element', subBuilder: $14.Chat.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  UpdateResponse clone() => UpdateResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  UpdateResponse copyWith(void Function(UpdateResponse) updates) => super.copyWith((message) => updates(message as UpdateResponse)) as UpdateResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static UpdateResponse create() => UpdateResponse._();
-  UpdateResponse createEmptyInstance() => create();
-  static $pb.PbList<UpdateResponse> createRepeated() => $pb.PbList<UpdateResponse>();
-  @$core.pragma('dart2js:noInline')
-  static UpdateResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateResponse>(create);
-  static UpdateResponse? _defaultInstance;
-
-  /// A user message. if request user is not published, it filtered them. so response might be empty.
-  @$pb.TagNumber(1)
-  $14.Chat get element => $_getN(0);
-  @$pb.TagNumber(1)
-  set element($14.Chat v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasElement() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearElement() => clearField(1);
-  @$pb.TagNumber(1)
-  $14.Chat ensureElement() => $_ensure(0);
-}
-
 class DeleteRequest extends $pb.GeneratedMessage {
   factory DeleteRequest({
     $core.int? tenantFk,
@@ -809,7 +660,6 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   factory ListMessagesRequest({
     $core.int? tenantFk,
     $core.int? chatFk,
-    $core.int? clientFk,
     $core.int? next,
   }) {
     final $result = create();
@@ -818,9 +668,6 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
     }
     if (chatFk != null) {
       $result.chatFk = chatFk;
-    }
-    if (clientFk != null) {
-      $result.clientFk = clientFk;
     }
     if (next != null) {
       $result.next = next;
@@ -834,8 +681,7 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListMessagesRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'clientFk', $pb.PbFieldType.O3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'next', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -883,25 +729,15 @@ class ListMessagesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearChatFk() => clearField(2);
 
-  /// Recipient FK
-  @$pb.TagNumber(3)
-  $core.int get clientFk => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set clientFk($core.int v) { $_setSignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasClientFk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearClientFk() => clearField(3);
-
   /// Next page token
-  @$pb.TagNumber(4)
-  $core.int get next => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set next($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasNext() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearNext() => clearField(4);
+  @$pb.TagNumber(3)
+  $core.int get next => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set next($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasNext() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNext() => clearField(3);
 }
 
 class ListMessagesResponse extends $pb.GeneratedMessage {
@@ -962,6 +798,171 @@ class ListMessagesResponse extends $pb.GeneratedMessage {
   $core.bool hasNext() => $_has(1);
   @$pb.TagNumber(2)
   void clearNext() => clearField(2);
+}
+
+/// PrimaryKey is set by JWT Token
+class ReplyRequest extends $pb.GeneratedMessage {
+  factory ReplyRequest({
+    $core.int? tenantFk,
+    $core.int? chatFk,
+    $core.int? fromFk,
+    $core.int? toFk,
+    $core.String? message,
+  }) {
+    final $result = create();
+    if (tenantFk != null) {
+      $result.tenantFk = tenantFk;
+    }
+    if (chatFk != null) {
+      $result.chatFk = chatFk;
+    }
+    if (fromFk != null) {
+      $result.fromFk = fromFk;
+    }
+    if (toFk != null) {
+      $result.toFk = toFk;
+    }
+    if (message != null) {
+      $result.message = message;
+    }
+    return $result;
+  }
+  ReplyRequest._() : super();
+  factory ReplyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReplyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReplyRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'tenantFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'chatFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'fromFk', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'toFk', $pb.PbFieldType.O3)
+    ..aOS(5, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReplyRequest clone() => ReplyRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReplyRequest copyWith(void Function(ReplyRequest) updates) => super.copyWith((message) => updates(message as ReplyRequest)) as ReplyRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReplyRequest create() => ReplyRequest._();
+  ReplyRequest createEmptyInstance() => create();
+  static $pb.PbList<ReplyRequest> createRepeated() => $pb.PbList<ReplyRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ReplyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReplyRequest>(create);
+  static ReplyRequest? _defaultInstance;
+
+  /// Tenant FK
+  @$pb.TagNumber(1)
+  $core.int get tenantFk => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set tenantFk($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTenantFk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTenantFk() => clearField(1);
+
+  /// Chat FK
+  @$pb.TagNumber(2)
+  $core.int get chatFk => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set chatFk($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasChatFk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearChatFk() => clearField(2);
+
+  /// FK
+  @$pb.TagNumber(3)
+  $core.int get fromFk => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set fromFk($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFromFk() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFromFk() => clearField(3);
+
+  /// FK
+  @$pb.TagNumber(4)
+  $core.int get toFk => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set toFk($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasToFk() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearToFk() => clearField(4);
+
+  /// Content
+  @$pb.TagNumber(5)
+  $core.String get message => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set message($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasMessage() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMessage() => clearField(5);
+}
+
+class ReplyResponse extends $pb.GeneratedMessage {
+  factory ReplyResponse({
+    $14.ChatMessage? element,
+  }) {
+    final $result = create();
+    if (element != null) {
+      $result.element = element;
+    }
+    return $result;
+  }
+  ReplyResponse._() : super();
+  factory ReplyResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReplyResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReplyResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'extremo.api.mypage.chats.v1'), createEmptyInstance: create)
+    ..aOM<$14.ChatMessage>(1, _omitFieldNames ? '' : 'element', subBuilder: $14.ChatMessage.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReplyResponse clone() => ReplyResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReplyResponse copyWith(void Function(ReplyResponse) updates) => super.copyWith((message) => updates(message as ReplyResponse)) as ReplyResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReplyResponse create() => ReplyResponse._();
+  ReplyResponse createEmptyInstance() => create();
+  static $pb.PbList<ReplyResponse> createRepeated() => $pb.PbList<ReplyResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ReplyResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReplyResponse>(create);
+  static ReplyResponse? _defaultInstance;
+
+  /// A user chat. if request user is not published, it filtered them. so response might be empty.
+  @$pb.TagNumber(1)
+  $14.ChatMessage get element => $_getN(0);
+  @$pb.TagNumber(1)
+  set element($14.ChatMessage v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasElement() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearElement() => clearField(1);
+  @$pb.TagNumber(1)
+  $14.ChatMessage ensureElement() => $_ensure(0);
 }
 
 
